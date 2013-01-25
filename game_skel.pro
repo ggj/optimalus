@@ -3,7 +3,7 @@ CONFIG += console
 CONFIG -= qt
 CONFIG += glfw
 
-INCLUDEPATH += ../../include ../../contrib
+INCLUDEPATH += ../seed/include ../seed/contrib
 
 SOURCES += source/main.cpp \
 	source/gameflow.cpp \
@@ -73,11 +73,11 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
 	DEFINES += DEBUG
-	LIBS += -L../../lib/debug
+	LIBS += -L../seed/lib/debug
 } else {
 	DESTDIR = bin
 	DEFINES += RELEASE
-	LIBS += -L../../lib/release
+	LIBS += -L../seed/lib/release
 }
 
 unix:!macx {
@@ -92,7 +92,7 @@ unix:!macx {
 
 macx {
 	DEFINES += LINUX
-	INCLUDEPATH += ../../contrib/osx/
+	INCLUDEPATH += ../seed/contrib/osx/
 	LIBS += -lseed -lseedcontrib -framework OpenAL -framework OpenGL -framework Cocoa -framework IOKit
 	CONFIG -= sdl
 	CONFIG += glfw
@@ -122,8 +122,8 @@ macx {
 }
 
 win32 {
-	LIBS += -L../../contrib/windows/ -lseed -lseedcontrib -mwindows -lmingw32 -lopengl32 -lopenal32
-	INCLUDEPATH += ../../contrib/windows/
+	LIBS += -L../seed/contrib/windows/ -lseed -lseedcontrib -mwindows -lmingw32 -lopengl32 -lopenal32
+	INCLUDEPATH += ../seed/contrib/windows/
 	CONFIG -= glfw
 	CONFIG += sdl
 	sdl {
