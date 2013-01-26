@@ -26,6 +26,7 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 	SpriteEntity::Load(metadata, sprites);
 
 	pBody = gPhysics->CreateBody(pSprite);
+	pBody->SetFixedRotation(true);
 
 	pInput->AddKeyboardListener(this);
 	fVelocity = 5.0f;
