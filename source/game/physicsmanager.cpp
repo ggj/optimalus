@@ -51,10 +51,10 @@ void PhysicsManager::ClearWorld()
 	}
 }
 
-void PhysicsManager::CreateBody(ISceneObject *obj)
+b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 {
 	if (!obj)
-		return;
+		return NULL;
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -71,6 +71,8 @@ void PhysicsManager::CreateBody(ISceneObject *obj)
 	fixDef.density = 1.0f;
 	fixDef.restitution = 0.75f;
 	b->CreateFixture(&fixDef);
+
+	return b;
 }
 
 void PhysicsManager::CreateStaticBody(ISceneObject *obj)
