@@ -8,9 +8,6 @@
     <Filter Include="data">
       <UniqueIdentifier>{f9308dfc-7999-42b9-9541-2bf1ebb4458c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="scenes">
-      <UniqueIdentifier>{d0abfcfa-2704-4799-a53f-b9c057abf573}</UniqueIdentifier>
-    </Filter>
     <Filter Include="states">
       <UniqueIdentifier>{21953a21-c6a4-49bb-b7a8-fc42f3cba409}</UniqueIdentifier>
     </Filter>
@@ -39,9 +36,6 @@
     <ClCompile Include="..\..\..\source\states\options_state.cpp">
       <Filter>states</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\scenes\game_scene.cpp">
-      <Filter>scenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp">
       <Filter>game</Filter>
     </ClCompile>
@@ -58,6 +52,24 @@
       <Filter>states</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\HeartEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\ItemEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\physicsmanager.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\TriggerEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\cameracontroller.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\GameScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,9 +93,6 @@
     <ClInclude Include="..\..\..\source\states\options_state.h">
       <Filter>states</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\scenes\game_scene.h">
-      <Filter>scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\game\WorldManager.h">
       <Filter>game</Filter>
     </ClInclude>
@@ -104,6 +113,21 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\HeartEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\physicsmanager.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\TriggerEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\cameracontroller.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\GameScene.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

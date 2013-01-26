@@ -51,10 +51,10 @@ void PhysicsManager::ClearWorld()
 	}
 }
 
-void PhysicsManager::CreateBody(ISceneObject *obj)
+b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 {
 	if (!obj)
-		return;
+		return NULL;
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -71,6 +71,21 @@ void PhysicsManager::CreateBody(ISceneObject *obj)
 	fixDef.density = 1.0f;
 	fixDef.restitution = 0.75f;
 	b->CreateFixture(&fixDef);
+
+	return b;
+
+	/*
+	b2FixtureDef sensorDef;
+	sensorDef.shape = &boxShape;
+	sensorDef.isSensor = true;
+	b->CreateFixture(&sensorDef);
+	*/
+}
+
+void PhysicsManager::DestroyBody(b2Body *body)
+{
+	if (body)
+		pWorld->DestroyBody(body);
 }
 
 void PhysicsManager::CreateStaticBody(ISceneObject *obj)
@@ -80,7 +95,10 @@ void PhysicsManager::CreateStaticBody(ISceneObject *obj)
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_staticBody;
-	bodyDef.position.Set(obj->GetX() * PIX2M, obj->GetY() * PIX2M);
+
+	// FIXME: Metadata objects nao tem o pivot no centro do objeto - corrigir na Seed durante o load dos objects.
+	// Aqui estou compensando o x e y com metade da largura e altura.
+	bodyDef.position.Set((obj->GetX() + (obj->GetWidth() * 0.5f)) * PIX2M, (obj->GetY() + (obj->GetHeight() * 0.5f)) * PIX2M);
 	bodyDef.angle = 0.0f;
 	b2Body *b = pWorld->CreateBody(&bodyDef);
 

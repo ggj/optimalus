@@ -1,6 +1,6 @@
 #include "game_run_state.h"
 #include "../gameflow.h"
-#include "../scenes/game_scene.h"
+#include "../game/GameScene.h"
 
 GameRunState::GameRunState()
 {

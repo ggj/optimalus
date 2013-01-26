@@ -1,4 +1,4 @@
-#include "game_scene.h"
+#include "GameScene.h"
 #include "../gameflow.h"
 
 #include <SceneNode.h>
@@ -14,12 +14,14 @@ enum
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	: pPlayer(NULL)
 	, pCamera(mainCamera)
+	, clCamera()
 	, pScene(parent)
 	, musTheme()
 	, bPaused(false)
+	, bInitialized(false)
 {
 	gScene = this->pScene;
-    gPhysics = &clPhysicsManager;
+	gPhysics = &clPhysicsManager;
 }
 
 GameScene::~GameScene()
@@ -53,9 +55,16 @@ bool GameScene::Initialize()
 bool GameScene::Update(f32 dt)
 {
 	UNUSED(dt)
+	if (!bInitialized)
+		return true;
+
 	cFlow.Update(dt);
 
-    clPhysicsManager.Update(dt);
+	if (!bPaused)
+	{
+		clPhysicsManager.Update(dt);
+		clCamera.LookAt(pPlayer->GetPosition());
+	}
 
 	return true;
 }
@@ -63,6 +72,8 @@ bool GameScene::Update(f32 dt)
 bool GameScene::Shutdown()
 {
 	musTheme.Unload();
+
+	clWorldManager.Clear();
 
 	gFlow->RemoveScene(pScene);
 	pScene->Unload();
@@ -107,7 +118,6 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			}
 
 			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
-
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
@@ -118,20 +128,22 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 
 				if (type == "Entity")
 				{
-                    Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
-
-                    Log("%s", entity->GetName().c_str());
-                    if (entity->GetName() == "Player")
-                    {
-                        pPlayer = static_cast<PlayerEntity*>(entity);
-                    }
+					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
+					//Log("%s", entity->GetName().c_str());
+					if (entity->GetName() == "Player")
+					{
+						pPlayer = static_cast<PlayerEntity*>(entity);
+					}
 				}
 			}
 
-            LoadMapColliders();
+			this->LoadMapColliders();
+			clCamera.SetCamera(pCamera);
+			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-            pCamera->SetPosition(pPlayer->GetPosition());
-            sprites->SetVisible(false);
+			sprites->SetVisible(false);
+
+			bInitialized = true;
 		}
 		break;
 	}
@@ -168,11 +180,11 @@ void GameScene::Resume()
 
 void GameScene::LoadMapColliders()
 {
-    MapLayerMetadata *game = pGameMap->GetLayerByName("Colliders")->AsMetadata();
-    for (unsigned i = 0, len = game->Size(); i < len; ++i)
-    {
-        IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
+	MapLayerMetadata *game = pGameMap->GetLayerByName("Colliders")->AsMetadata();
+	for (unsigned i = 0, len = game->Size(); i < len; ++i)
+	{
+		IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
 
-        clPhysicsManager.CreateStaticBody(placeHolder);
-    }
+		clPhysicsManager.CreateStaticBody(placeHolder);
+	}
 }

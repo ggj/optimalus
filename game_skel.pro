@@ -12,7 +12,6 @@ SOURCES += source/main.cpp \
 	source/states/options_state.cpp \
 	source/states/game_pause_state.cpp \
 	source/states/game_state.cpp \
-	source/scenes/game_scene.cpp \
 	source/data/game_data.cpp \
 	source/game/WorldManager.cpp \
 	source/game/PlayerEntity.cpp \
@@ -20,7 +19,12 @@ SOURCES += source/main.cpp \
 	source/game/entity.cpp \
 	source/states/game_run_state.cpp \
 	source/game/physicsmanager.cpp \
-	source/game/SpriteEntity.cpp
+	source/game/SpriteEntity.cpp \
+	source/game/ItemEntity.cpp \
+	source/game/HeartEntity.cpp \
+	source/game/cameracontroller.cpp \
+	source/game/TriggerEntity.cpp \
+	source/game/GameScene.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -29,7 +33,6 @@ HEADERS += \
 	source/states/options_state.h \
 	source/states/game_pause_state.h \
 	source/states/game_state.h \
-	source/scenes/game_scene.h \
 	source/data/game_data.h \
 	source/defines.h \
 	source/game/WorldManager.h \
@@ -38,7 +41,12 @@ HEADERS += \
 	source/game/entity.h \
 	source/states/game_run_state.h \
 	source/game/physicsmanager.h \
-	source/game/SpriteEntity.h
+	source/game/SpriteEntity.h \
+	source/game/ItemEntity.h \
+	source/game/HeartEntity.h \
+	source/game/cameracontroller.h \
+	source/game/TriggerEntity.h \
+	source/game/GameScene.h
 
 OTHER_FILES_CONFIG = \
 #Configs

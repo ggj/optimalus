@@ -1,5 +1,5 @@
 #include "gameflow.h"
-#include "scenes/game_scene.h"
+#include "game/GameScene.h"
 
 #include <Rocket/Debugger.h>
 #include <Rocket/Controls.h>

@@ -1,6 +1,6 @@
 #include "game_pause_state.h"
 #include "../gameflow.h"
-#include "../scenes/game_scene.h"
+#include "../game/GameScene.h"
 
 GamePauseState::GamePauseState()
 {

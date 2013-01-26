@@ -168,8 +168,34 @@
                     },
                  "type":"",
                  "width":0,
-                 "x":655,
-                 "y":139
+                 "x":652,
+                 "y":242
+                }, 
+                {
+                 "height":0,
+                 "name":"Heart1",
+                 "properties":
+                    {
+                     "Class":"Heart",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":754,
+                 "y":238
+                }, 
+                {
+                 "height":95,
+                 "name":"trigger_test",
+                 "properties":
+                    {
+                     "Class":"Trigger",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":74,
+                 "x":884,
+                 "y":171
                 }],
          "opacity":1,
          "type":"objectgroup",

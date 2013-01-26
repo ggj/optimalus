@@ -11,7 +11,8 @@ class PhysicsManager
 		~PhysicsManager();
 
 		void Update(f32 dt);
-		void CreateBody(ISceneObject *obj);
+		b2Body* CreateBody(ISceneObject *obj);
+		void DestroyBody(b2Body *body);
 		void CreateStaticBody(ISceneObject *obj);
 
 	private:
