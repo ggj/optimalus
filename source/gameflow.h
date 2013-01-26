@@ -17,6 +17,7 @@ using namespace Seed::RocketGui;
 
 class GameFlow;
 extern GameFlow *gFlow;
+extern GameData *gGameData;
 
 class GameFlow : public IGameApp,
 			public IEventSystemListener,
@@ -90,9 +91,6 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cGameToGamePause;
 		StateMachineTransition cGamePauseToGame;
 		StateMachineTransition cGamePauseToMenu;
-
-		// State Machine data
-		GameData *pGameData;
 
 		// GUI
 		RocketInterface			*pRocket;

@@ -68,9 +68,13 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 
-			musTheme.Load("sounds/theme.ogg");
-			musTheme.SetVolume(1.0f);
-			pSoundSystem->PlayMusic(&musTheme);
+			// Validate the music to play
+			if(gGameData->IsBgmEnabled() == true)
+			{
+			    musTheme.Load("sounds/theme.ogg");
+			    musTheme.SetVolume(1.0f);
+			    pSoundSystem->PlayMusic(&musTheme);
+			}
 
 			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
 
