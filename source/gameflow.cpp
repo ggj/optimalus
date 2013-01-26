@@ -32,7 +32,7 @@ bool GameFlow::Initialize()
 	gGameData = New(GameData());
 
 	if (this->SaveSystemFlow())
-		pSaveSystem->Load(0, &pGameData->sPlayer, &pGameData->sOptions);
+		pSaveSystem->Load(0, &gGameData->sPlayer, &gGameData->sOptions);
 
 	// Create the transitions
 	cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
@@ -69,8 +69,7 @@ bool GameFlow::Update(f32 dt)
 
 bool GameFlow::Shutdown()
 {
-	pGameData->SetFullScreenEnabled(false);
-	pSaveSystem->Save(0, &pGameData->sPlayer, &pGameData->sOptions);
+	pSaveSystem->Save(0, &gGameData->sPlayer, &gGameData->sOptions);
 
 	if (cFlow.GetCurrentState() == &cGame)
 	{
