@@ -18,10 +18,10 @@ SpriteEntity::~SpriteEntity()
 
 void SpriteEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
-    strName = metadata.GetProperty("Class");
+	strName = metadata.GetProperty("Class");
 
 	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName(pszSpriteName))));
-    pSprite->SetPosition(metadata.GetPosition());
+	pSprite->SetPosition(metadata.GetPosition());
 
 	gScene->Add(pSprite);
 
