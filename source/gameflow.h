@@ -58,6 +58,9 @@ class GameFlow : public IGameApp,
 		inline Camera *GetCamera() const;
 
 	private:
+		bool SaveSystemFlow() const;
+
+	private:
 		SEED_DISABLE_COPY(GameFlow);
 
 		SceneNode			*pScene;

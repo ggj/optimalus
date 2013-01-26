@@ -1,13 +1,16 @@
 #include "game_data.h"
 
 GameData::GameData()
-	: iScore(0)
-	, bGameOver(false)
-	, bSfxEnabled(true)
-	, bBgmEnabled(true)
-	, fSfxVol(1.0f)
-	, fBgmVol(1.0f)
+	: sPlayer()
+	, sOptions()
 {
+	sPlayer.iScore = 0;
+	sPlayer.bGameOver = false;
+
+	sOptions.bSfxEnabled = true;
+	sOptions.bBgmEnabled = true;
+	sOptions.fSfxVol = 1.0f;
+	sOptions.fBgmVol = 1.0f;
 }
 
 GameData::~GameData()
@@ -16,80 +19,70 @@ GameData::~GameData()
 
 u32 GameData::GetScore() const
 {
-	return iScore;
+	return sPlayer.iScore;
 }
 
 void GameData::SetScore(const u32 score)
 {
-	iScore = score;
+	sPlayer.iScore = score;
 }
 
 bool GameData::IsGameOver() const
 {
-	return bGameOver;
+	return sPlayer.bGameOver;
 }
 
 void GameData::SetGameOver(bool b)
 {
-	bGameOver = b;
+	sPlayer.bGameOver = b;
 }
 
 bool GameData::IsSfxEnabled() const
 {
-	return bSfxEnabled;
+	return sOptions.bSfxEnabled;
 }
 
 void GameData::SetSfxEnabled(bool b)
 {
-	bSfxEnabled = b;
+	sOptions.bSfxEnabled = b;
 }
 
 bool GameData::IsBgmEnabled() const
 {
-	return bBgmEnabled;
+	return sOptions.bBgmEnabled;
 }
 
 void GameData::SetBgmEnabled(bool b)
 {
-	bBgmEnabled = b;
+	sOptions.bBgmEnabled = b;
 }
 
 bool GameData::IsFullScreenEnabled() const
 {
-	return bFullScreenEnabled;
+	return sOptions.bFullScreenEnabled;
 }
 
 void GameData::SetFullScreenEnabled(bool b)
 {
-	bFullScreenEnabled = b;
+	sOptions.bFullScreenEnabled = b;
 }
 
 f32 GameData::GetSfxVolume() const
 {
-	return fSfxVol;
+	return sOptions.fSfxVol;
 }
 
 void GameData::SetSfxVolume(f32 v)
 {
-	fSfxVol = v;
+	sOptions.fSfxVol = v;
 }
 
 f32 GameData::GetBgmVolume() const
 {
-	return fBgmVol;
+	return sOptions.fBgmVol;
 }
 
 void GameData::SetBgmVolume(f32 v)
 {
-	fBgmVol = v;
-}
-
-const String GameData::GetClassName() const
-{
-	return "GameData";
-}
-
-int GameData::GetObjectType() const
-{
-	return nGameData;
+	sOptions.fBgmVol = v;
 }

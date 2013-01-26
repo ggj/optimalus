@@ -3,11 +3,11 @@
 
 #include "../defines.h"
 
-class GameData : public IObject
+class GameData
 {
 	public:
 		GameData();
-		virtual ~GameData();
+		~GameData();
 
 		u32 GetScore() const;
 		void SetScore(u32);
@@ -30,18 +30,18 @@ class GameData : public IObject
 		f32 GetSfxVolume() const;
 		void SetSfxVolume(f32 v);
 
-		// IObject
-		virtual const String GetClassName() const override;
-		virtual int GetObjectType() const override;
+		struct PlayerData {
+			u32 iScore;
+			bool bGameOver;
+		} sPlayer;
 
-	private:
-		u32 iScore;
-		bool bGameOver;
-		bool bSfxEnabled;
-		bool bBgmEnabled;
-		bool bFullScreenEnabled;
-		f32 fSfxVol;
-		f32 fBgmVol;
+		struct OptinsData {
+			bool bSfxEnabled;
+			bool bBgmEnabled;
+			bool bFullScreenEnabled;
+			f32 fSfxVol;
+			f32 fBgmVol;
+		} sOptions;
 };
 
 #endif // _GAME_DATA_H

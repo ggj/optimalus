@@ -4,6 +4,8 @@
 #include <Rocket/Debugger.h>
 #include <Rocket/Controls.h>
 
+#define GAME_ID	0xF0000001
+
 GameFlow *gFlow = NULL;
 GameData *gGameData = NULL;
 
@@ -28,6 +30,9 @@ bool GameFlow::Initialize()
 
 	// Create the State Machine Data
 	gGameData = New(GameData());
+
+	if (this->SaveSystemFlow())
+		pSaveSystem->Load(0, &pGameData->sPlayer, &pGameData->sOptions);
 
 	// Create the transitions
 	cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
@@ -64,6 +69,9 @@ bool GameFlow::Update(f32 dt)
 
 bool GameFlow::Shutdown()
 {
+	pGameData->SetFullScreenEnabled(false);
+	pSaveSystem->Save(0, &pGameData->sPlayer, &pGameData->sOptions);
+
 	if (cFlow.GetCurrentState() == &cGame)
 	{
 		cGame.OnStop(NULL);
@@ -322,3 +330,61 @@ void GameFlow::RemoveScene(ISceneObject *node)
 {
 	pScene->Remove(node);
 }
+
+bool GameFlow::SaveSystemFlow() const
+{
+	GameData data;
+	pSaveSystem->SetTotalSlots(4);
+
+	eCartridgeError error = pSaveSystem->Initialize(Seed::Cartridge262144b);
+	if (error == Seed::ErrorNone)
+		error = pSaveSystem->Prepare(GAME_ID, &data.sPlayer, sizeof(data.sPlayer), &data.sOptions, sizeof(data.sOptions));
+
+	if (error == Seed::ErrorDeviceFull)
+	{
+		Log("Not enough space available on device.");
+		return false;
+	}
+
+	if (error == Seed::ErrorInodeFull)
+	{
+		Log("Not enough inodes available on device.");
+		return false;
+	}
+
+	if (error == Seed::ErrorNoCard || error == Seed::ErrorAccessDenied)
+	{
+		Log("Unknown file system error - no card or access denied - system hungup");
+		pSystem->HangUp();
+		return false;
+	}
+
+	if (error == Seed::ErrorNotFormatted)
+	{
+		Log("Save file doesn't exist or corrupted, creating one now.");
+		error = pSaveSystem->FormatCard(&data.sPlayer, &data.sOptions);
+	}
+
+	if (error == Seed::ErrorDataCorrupt)
+	{
+		Log("One or more saved games were corrupted and had to be reset");
+		error = Seed::ErrorNone;
+	}
+
+	if (error == Seed::ErrorFilesystemCorrupt)
+	{
+		Log("File system became corrupted - system hungup");
+		pSystem->HangUp();
+		return false;
+	}
+
+	if (error == Seed::ErrorNone)
+	{
+		Log("Save data CRC ok.");
+		// Do your initial loading here.
+		return true;
+	}
+
+	return false;
+}
+
