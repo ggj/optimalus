@@ -7,9 +7,10 @@ enum
 };
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
-    : pPlayer(NULL)
-    , pCamera(NULL)
-	, pScene(parent)	
+	: pPlayer(NULL)
+	, pCamera(mainCamera)
+	, pScene(parent)
+	, musTheme()
 {
 }
 
@@ -38,6 +39,8 @@ bool GameScene::Update(f32 dt)
 
 bool GameScene::Shutdown()
 {
+	musTheme.Unload();
+
 	gFlow->RemoveScene(pScene);
 	pScene->Unload();
 	pScene = NULL;
@@ -64,8 +67,11 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 
-			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
+			musTheme.Load("sounds/theme.ogg");
+			musTheme.SetVolume(1.0f);
+			pSoundSystem->PlayMusic(&musTheme);
 
+			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
@@ -79,8 +85,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				{
 					clWorldManager.BuildEntity(*placeHolder);
 				}
-			}			
-			
+			}
+
 			pPlayer = game->GetChildByName("Player");
 		}
 		break;

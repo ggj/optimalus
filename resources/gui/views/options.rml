@@ -23,8 +23,17 @@
 		</style>
 	</head>
 	<body template="window" onload="init options">
-		<input type="checkbox" id="sfx" onClick="toggle sfx" /> Sound FX <br/>
-		<input type="checkbox" id="bgm" onClick="toggle bgm"/ >Music <br/>
+	    <div>
+		<p>
+		    <strong>Graphics:</strong><br/>
+		    <input type="checkbox" id="fullScreen" onClick="toggle fullscreen"/>Full Screen <br/>
+		</p>
+		<p>
+		    <strong>Audio:</strong><br/>
+		    <input type="checkbox" id="sfx" onClick="toggle sfx" /> Sound FX <br/>
+		    <input type="checkbox" id="bgm" onClick="toggle bgm"/ >Music <br/>
+		</p>
 		<button onClick="goto menu">Back</button>
+	    </div>
 	</body>
 </rml>

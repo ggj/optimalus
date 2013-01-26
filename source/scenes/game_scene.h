@@ -28,6 +28,7 @@ class GameScene : public IEventInputKeyboardListener,
 		SEED_DISABLE_COPY(GameScene);
 
 		ISceneObject	*pPlayer;
+		Music		musTheme;
 		Camera			*pCamera;
 		SceneNode		*pScene;
 		GameMap			*pGameMap;

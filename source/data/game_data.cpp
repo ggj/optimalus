@@ -54,6 +54,16 @@ void GameData::SetBgmEnabled(bool b)
 	bBgmEnabled = b;
 }
 
+bool GameData::IsFullScreenEnabled() const
+{
+	return bFullScreenEnabled;
+}
+
+void GameData::SetFullScreenEnabled(bool b)
+{
+	bFullScreenEnabled = b;
+}
+
 f32 GameData::GetSfxVolume() const
 {
 	return fSfxVol;

@@ -13,7 +13,11 @@ SOURCES += source/main.cpp \
     source/states/game_pause_state.cpp \
     source/states/game_state.cpp \
     source/scenes/game_scene.cpp \
-    source/data/game_data.cpp
+    source/data/game_data.cpp \
+    source/game/WorldManager.cpp \
+    source/game/PlayerEntity.cpp \
+    source/game/EntityFactory.cpp \
+    source/game/entity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -24,7 +28,11 @@ HEADERS += \
     source/states/game_state.h \
     source/scenes/game_scene.h \
     source/data/game_data.h \
-    source/defines.h
+    source/defines.h \
+    source/game/WorldManager.h \
+    source/game/PlayerEntity.h \
+    source/game/EntityFactory.h \
+    source/game/entity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -67,6 +75,10 @@ OTHER_FILES_GUI_VIEW = \
 	resources/gui/views/game.rml \
 	resources/gui/views/gamepause.rml
 
+OTHER_FILES_SOUND = \
+#Sounds
+	resources/sounds/sfx.ogg \
+	resources/sounds/theme.ogg
 #Maps
 OTHER_FILES_MAPS = \
 resources/level1.json
@@ -77,11 +89,8 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
-    resources/sprites/player.sprite \
-    resources/textures/Idle/idle_frame2.png \
-    resources/textures/Idle/idle_frame1.png \
-    resources/level1.json \
-    resources/textures/tile_map.png
+        $${OTHER_FILES_SOUND} \
+        $${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
@@ -129,13 +138,16 @@ macx {
 	    #Views
 	    APP_GUI_VIEW_FILES.files = $$OTHER_FILES_GUI_VIEW
 	    APP_GUI_VIEW_FILES.path = Contents/Resources/gui/views
+	#Sounds
+	APP_SOUND_FILES.files = $$OTHER_FILES_SOUND
+	APP_SOUND_FILES.path = Contents/Resources/sounds
+
+	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
+			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
+                        APP_SOUND_FILES APP_MAPS_FILES
 	#Maps
 	APP_MAPS_FILES.files = $$OTHER_FILES_MAPS
 	APP_MAPS_FILES.path = Contents/Resources/
-
-
-	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
-			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES APP_MAPS_FILES
 }
 
 win32 {
@@ -154,6 +166,8 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
 
 
 

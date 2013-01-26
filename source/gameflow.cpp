@@ -8,11 +8,11 @@ GameFlow *gFlow = NULL;
 
 GameFlow::GameFlow()
 	: pScene(NULL)
+	, pCamera(NULL)
 	, pGameData(NULL)
 	, pRocket(NULL)
 	, pContext(NULL)
 	, pDoc(NULL)
-	, pCamera(NULL)
 {
 	gFlow = this;
 }
@@ -115,7 +115,7 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 	RocketEventManager::AddListener(this);
 
 	pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
-    Viewport *viewport = cPres.GetViewportByName("MainView");
+	Viewport *viewport = cPres.GetViewportByName("MainView");
 
 	pCamera = viewport->GetCamera();
 
@@ -224,6 +224,7 @@ void GameFlow::ReleaseGUI()
 
 void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
 {
+	UNUSED(ev)
 	Rocket::Core::StringList commands;
 	Rocket::Core::StringUtilities::ExpandString(commands, script, ';');
 	for (size_t i = 0; i < commands.size(); ++i)
@@ -238,9 +239,6 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			if (values[1] == "options")
 			{
 				// Atualizar os checkboxes de acordo com o pGameData...
-				// Adicionar sliders para volume
-				// toggle fullscreen
-
 				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
 				//pDoc->GetElementById("bgm");
 			}
@@ -288,6 +286,19 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 				{
 					pSoundSystem->SetMusicVolume(pGameData->GetBgmVolume());
 					pGameData->SetBgmEnabled(true);
+				}
+			}
+			else if (values[1] == "fullscreen")
+			{
+				if (pGameData->IsFullScreenEnabled())
+				{
+					pGameData->SetFullScreenEnabled(false);
+					pScreen->ToggleFullscreen();
+				}
+				else
+				{
+					pGameData->SetFullScreenEnabled(true);
+					pScreen->ToggleFullscreen();
 				}
 			}
 		}

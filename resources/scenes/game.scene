@@ -5,6 +5,9 @@
 		{
 			sType: sprite
 			sName: Player
+			sResource: textures/frame03.png
+		}
+		{
 			cScale: {x: 1, y: 1, z: 1}
 			cPosition: {z: 100}
 			sBlending: none
@@ -34,5 +37,14 @@
 			sResource: level1.json
 			cPosition: {z: 200}
 		}
+                {
+                    sType: SoundSource
+                    sName: audio
+                    cPosition: {x: 0, y: 0, z: 0}
+                    bAutoPlay: false
+                    bLoop: true
+                    fVolume: 0.5
+                    sResource: sounds/sfx.ogg
+                }
 	]
 }
