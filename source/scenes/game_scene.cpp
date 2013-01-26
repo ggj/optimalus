@@ -63,7 +63,13 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			pScene->Load(r);
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
-			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");			
+			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
+
+			pGameMap = (GameMap *)pScene->GetChildByName("Map");
+
+			auto game = pGameMap->GetLayerByName("Game")->AsMetadata();
+			
+			pPlayer = game->GetChildByName("Player");
 		}
 		break;
 	}

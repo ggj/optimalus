@@ -42,10 +42,13 @@
     <ClCompile Include="..\..\..\source\scenes\game_scene.cpp">
       <Filter>scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\game\entity.cpp">
+    <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp">
       <Filter>world</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\game\player_entity.cpp">
+    <ClCompile Include="..\..\..\source\game\EntityFactory.cpp">
+      <Filter>world</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\Entity.cpp">
       <Filter>world</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,13 +75,16 @@
     <ClInclude Include="..\..\..\source\scenes\game_scene.h">
       <Filter>scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\game\world_manager.h">
+    <ClInclude Include="..\..\..\source\game\WorldManager.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\game\entity.h">
+    <ClInclude Include="..\..\..\source\game\PlayerEntity.h">
       <Filter>world</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\game\player_entity.h">
+    <ClInclude Include="..\..\..\source\game\EntityFactory.h">
+      <Filter>world</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\Entity.h">
       <Filter>world</Filter>
     </ClInclude>
   </ItemGroup>

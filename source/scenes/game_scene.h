@@ -27,7 +27,8 @@ class GameScene : public IEventInputKeyboardListener,
 
 		ISceneObject	*pPlayer;
 		Camera			*pCamera;
-		SceneNode	*pScene;
+		SceneNode		*pScene;
+		GameMap			*pGameMap;
 };
 
 #endif // _GAMEFLOW_H_

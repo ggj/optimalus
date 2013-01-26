@@ -7,8 +7,7 @@ class Entity;
 
 class WorldManager
 {
-	public:
-
+	public:		
 
 	private:
 		std::vector<Entity *> vEntities;

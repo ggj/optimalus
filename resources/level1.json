@@ -153,6 +153,30 @@
          "width":100,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":100,
+         "name":"Game",
+         "objects":[
+                {
+                 "height":0,
+                 "name":"Player",
+                 "properties":
+                    {
+                     "Class":"Player",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":652,
+                 "y":242
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":100,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
@@ -174,6 +198,14 @@
             },
          "spacing":1,
          "tileheight":32,
+         "tileproperties":
+            {
+             "30":
+                {
+                 "class":"Player",
+                 "type":"Entity"
+                }
+            },
          "tilewidth":32
         }],
  "tilewidth":32,
