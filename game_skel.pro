@@ -12,7 +12,6 @@ SOURCES += source/main.cpp \
 	source/states/options_state.cpp \
 	source/states/game_pause_state.cpp \
 	source/states/game_state.cpp \
-	source/scenes/game_scene.cpp \
 	source/data/game_data.cpp \
 	source/game/WorldManager.cpp \
 	source/game/PlayerEntity.cpp \
@@ -24,7 +23,8 @@ SOURCES += source/main.cpp \
 	source/game/ItemEntity.cpp \
 	source/game/HeartEntity.cpp \
 	source/game/cameracontroller.cpp \
-    source/game/TriggerEntity.cpp
+	source/game/TriggerEntity.cpp \
+	source/game/GameScene.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -33,7 +33,6 @@ HEADERS += \
 	source/states/options_state.h \
 	source/states/game_pause_state.h \
 	source/states/game_state.h \
-	source/scenes/game_scene.h \
 	source/data/game_data.h \
 	source/defines.h \
 	source/game/WorldManager.h \
@@ -46,7 +45,8 @@ HEADERS += \
 	source/game/ItemEntity.h \
 	source/game/HeartEntity.h \
 	source/game/cameracontroller.h \
-    source/game/TriggerEntity.h
+	source/game/TriggerEntity.h \
+	source/game/GameScene.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -71,7 +71,16 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
 	resources/textures/player_idle_frame2.png \
-	resources/textures/player_idle_frame1.png
+	resources/textures/player_idle_frame1.png \
+	resources/textures/player_run_frame8.png \
+	resources/textures/player_run_frame7.png \
+	resources/textures/player_run_frame6.png \
+	resources/textures/player_run_frame5.png \
+	resources/textures/player_run_frame4.png \
+	resources/textures/player_run_frame3.png \
+	resources/textures/player_run_frame2.png \
+	resources/textures/player_run_frame1.png \
+	resources/textures/heart.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

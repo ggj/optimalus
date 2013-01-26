@@ -47,16 +47,17 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
+	b2Vec2 vel = pBody->GetLinearVelocity();
+
 	if (k == Seed::KeyUp || k == Seed::KeyW)
 	{
-		// Sum the normalized vector up with the current vector
-		pBody->ApplyForce( b2Vec2(0,50), pBody->GetWorldCenter());
+		pBody->ApplyForce(b2Vec2(0,300), pBody->GetWorldCenter());
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
 	{
-		// Sum the normalized vector left with the current vector
-		pBody->ApplyForce( b2Vec2(-25,0), pBody->GetWorldCenter());
+		vel.x = -5;
+		pBody->SetLinearVelocity(vel);
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() > 0)
@@ -65,8 +66,8 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	if (k == Seed::KeyRight || k == Seed::KeyD)
 	{
-		// Sum the normalized vector right with the current vector
-		pBody->ApplyForce( b2Vec2(25,0), pBody->GetWorldCenter());
+		vel.x = 5;
+		pBody->SetLinearVelocity(vel);
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() < 0)
@@ -86,23 +87,26 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
+	b2Vec2 vel = pBody->GetLinearVelocity();
+	vel.x = 0;
+
 	// Remove the directions
-	if (k == Seed::KeyUp)
+	if (k == Seed::KeyUp|| k == Seed::KeyW)
 	{
 		vPlayerVectorDirection -= VECTOR_UP;
 	}
 
-	if (k == Seed::KeyLeft)
+	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
-		vPlayerVectorDirection -= VECTOR_LEFT;
+		pBody->SetLinearVelocity(vel);
 	}
 
-	if (k == Seed::KeyRight)
+	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
-		vPlayerVectorDirection -= VECTOR_RIGHT;
+		pBody->SetLinearVelocity(vel);
 	}
 
-	if (k == Seed::KeyDown)
+	if (k == Seed::KeyDown|| k == Seed::KeyS)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}

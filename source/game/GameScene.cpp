@@ -18,6 +18,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	, pScene(parent)
 	, musTheme()
 	, bPaused(false)
+	, bInitialized(false)
 {
 	gScene = this->pScene;
 	gPhysics = &clPhysicsManager;
@@ -53,9 +54,26 @@ bool GameScene::Initialize()
 
 bool GameScene::Update(f32 dt)
 {
-	UNUSED(dt)
+/*
+TEST: Bug de raster/texel.
+*/
+//	if (pPlayer)
+//	{
+//		//pPlayer->GetSprite()->AddY(0.5f);
+//		pPlayer->GetSprite()->AddX(0.05f);
+//		clCamera.LookAt(pPlayer->GetPosition());
+//	}
+//	return true;
+
+	if (!bInitialized)
+		return true;
+
 	cFlow.Update(dt);
-	clPhysicsManager.Update(dt);
+	if (!bPaused)
+	{
+		clPhysicsManager.Update(dt);
+		clCamera.LookAt(pPlayer->GetPosition());
+	}
 
 	return true;
 }
@@ -133,6 +151,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
 			sprites->SetVisible(false);
+
+			bInitialized = true;
 		}
 		break;
 	}
