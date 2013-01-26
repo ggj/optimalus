@@ -79,7 +79,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame4.png \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
-	resources/textures/player_run_frame1.png
+	resources/textures/player_run_frame1.png \
 	resources/textures/heart.png
 
 #Gui
