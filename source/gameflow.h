@@ -19,10 +19,10 @@ class GameFlow;
 extern GameFlow *gFlow;
 
 class GameFlow : public IGameApp,
-		    public IEventSystemListener,
-		    public IEventInputKeyboardListener,
-		    public IEventPresentationListener,
-		    public Rocket::Core::EventListener
+			public IEventSystemListener,
+			public IEventInputKeyboardListener,
+			public IEventPresentationListener,
+			public IRocketEventListener
 {
 	public:
 		GameFlow();
@@ -51,8 +51,8 @@ class GameFlow : public IGameApp,
 		// IEventPresentationListener
 		virtual void OnPresentationLoaded(const EventPresentation *ev);
 
-		// Rocket::Core::EventListener
-		virtual void ProcessEvent(Rocket::Core::Event &ev);
+		// IRocketEventListener
+		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
 
 	private:
 		SEED_DISABLE_COPY(GameFlow);
