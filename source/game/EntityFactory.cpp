@@ -24,9 +24,9 @@ void EntityFactory::AddCreator(const char *name, CreateEntityProc_t proc)
 
 Entity *EntityFactory::CreateEntity(const std::string &name)
 {
-	auto &mapCreators = GetCreatorMap();
+	EntityCreatorMap_t &mapCreators = GetCreatorMap();
 
-	auto it = mapCreators.find(name);
+	EntityCreatorMap_t::iterator it = mapCreators.find(name);
 	if(it == mapCreators.end())
 	{
 		Log("Entity %s not found.", name);
