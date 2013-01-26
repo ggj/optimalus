@@ -73,6 +73,15 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
 	resources/textures/ui_icons_game.png
+	resources/textures/player_run_frame8.png \
+	resources/textures/player_run_frame7.png \
+	resources/textures/player_run_frame6.png \
+	resources/textures/player_run_frame5.png \
+	resources/textures/player_run_frame4.png \
+	resources/textures/player_run_frame3.png \
+	resources/textures/player_run_frame2.png \
+	resources/textures/player_run_frame1.png
+	resources/textures/heart.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

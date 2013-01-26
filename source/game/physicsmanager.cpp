@@ -69,7 +69,8 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 	b2FixtureDef fixDef;
 	fixDef.shape = &boxShape;
 	fixDef.density = 1.0f;
-	fixDef.restitution = 0.75f;
+	fixDef.restitution = 0.10f;
+	fixDef.friction = 0.0f;
 	b->CreateFixture(&fixDef);
 
 	return b;
