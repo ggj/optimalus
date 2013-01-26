@@ -18,6 +18,9 @@ class Entity
 
     protected:
         String strName;
+
+	private:
+		SEED_DISABLE_COPY(Entity);
 };
 
 const String &Entity::GetName() const

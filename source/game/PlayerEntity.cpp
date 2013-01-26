@@ -5,32 +5,27 @@
 #include <SceneNode.h>
 #include <LeakReport.h>
 #include <Sprite.h>
-
 #include "../scenes/game_scene.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
-	pSprite(NULL)
+	SpriteEntity("Player")
 {
 	//empty
 }
 
 PlayerEntity::~PlayerEntity()
 {
-	Delete(pSprite);
+	//empty
 }
 
 void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
-	//FIXME
-	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Player"))));
-    pSprite->SetPosition(metadata.GetPosition());
+    SpriteEntity::Load(metadata, sprites);
 
-    strName = "Player";
-
-	gScene->Add(pSprite);
     gPhysics->CreateBody(pSprite);
+
 }
 
 Vector3f PlayerEntity::GetPosition()
@@ -39,3 +34,4 @@ Vector3f PlayerEntity::GetPosition()
 
     return position;
 }
+

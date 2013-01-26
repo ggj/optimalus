@@ -54,6 +54,12 @@
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\states\game_run_state.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -91,5 +97,14 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\defines.h" />
+    <ClInclude Include="..\..\..\source\states\game_run_state.h">
+      <Filter>states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\ItemEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\SpriteEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

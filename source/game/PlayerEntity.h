@@ -1,11 +1,11 @@
 #ifndef _PLAYER_ENTITY_H
 #define _PLAYER_ENTITY_H
 
-#include "Entity.h"
+#include "SpriteEntity.h"
 
 #include "../defines.h"
 
-class PlayerEntity: public Entity
+class PlayerEntity: public SpriteEntity
 {
 	public:
 		PlayerEntity();
@@ -15,7 +15,6 @@ class PlayerEntity: public Entity
 
         Vector3f GetPosition();
 	private:
-		Seed::Sprite *pSprite;
 };
 
 #endif
