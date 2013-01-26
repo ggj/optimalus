@@ -7,8 +7,8 @@ enum
 };
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
-	: pPlayer(nullptr)
-	, pCamera(nullptr)
+    : pPlayer(NULL)
+    , pCamera(NULL)
 	, pScene(parent)	
 {
 }
@@ -68,7 +68,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
-			auto game = pGameMap->GetLayerByName("Game")->AsMetadata();
+            MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
 			
 			pPlayer = game->GetChildByName("Player");
 		}
