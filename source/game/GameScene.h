@@ -54,6 +54,7 @@ class GameScene : public IEventInputKeyboardListener,
 		Music			musTheme;
 		GameMap			*pGameMap;
 		bool			bPaused;
+		bool			bInitialized;
 
 		WorldManager	clWorldManager;
 		PhysicsManager	clPhysicsManager;

@@ -10,11 +10,13 @@ class CameraController
 		~CameraController();
 
 		void SetCamera(Camera *cam);
+		void SetArea(const Rect4f &area);
 		void LookAt(const Vector3f &pos);
 
 	protected:
 		Camera		*pCamera;
 		Vector3f	cOffset;
+		Rect4f		cArea;
 };
 
 #endif // CAMERACONTROLLER_H
