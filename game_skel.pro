@@ -64,12 +64,18 @@ OTHER_FILES_GUI_VIEW = \
 	resources/gui/views/game.rml \
 	resources/gui/views/gamepause.rml
 
+OTHER_FILES_SOUND = \
+#Sounds
+	resources/sounds/sfx.ogg \
+	resources/sounds/theme.ogg
+
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
 	$${OTHER_FILES_SCENE} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
-	$${OTHER_FILES_GUI_VIEW}
+	$${OTHER_FILES_GUI_VIEW} \
+	$${OTHER_FILES_SOUND}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
@@ -117,9 +123,13 @@ macx {
 	    #Views
 	    APP_GUI_VIEW_FILES.files = $$OTHER_FILES_GUI_VIEW
 	    APP_GUI_VIEW_FILES.path = Contents/Resources/gui/views
+	#Sounds
+	APP_SOUND_FILES.files = $$OTHER_FILES_SOUND
+	APP_SOUND_FILES.path = Contents/Resources/sounds
 
 	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
-			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES
+			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
+			APP_SOUND_FILES
 }
 
 win32 {

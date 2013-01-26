@@ -234,9 +234,6 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			if (values[1] == "options")
 			{
 				// Atualizar os checkboxes de acordo com o pGameData...
-				// Adicionar sliders para volume
-				// toggle fullscreen
-
 				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
 				//pDoc->GetElementById("bgm");
 			}
@@ -284,6 +281,19 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 				{
 					pSoundSystem->SetMusicVolume(pGameData->GetBgmVolume());
 					pGameData->SetBgmEnabled(true);
+				}
+			}
+			else if (values[1] == "fullscreen")
+			{
+				if (pGameData->IsFullScreenEnabled())
+				{
+					pGameData->SetFullScreenEnabled(false);
+					pScreen->ToggleFullscreen();
+				}
+				else
+				{
+					pGameData->SetFullScreenEnabled(true);
+					pScreen->ToggleFullscreen();
 				}
 			}
 		}

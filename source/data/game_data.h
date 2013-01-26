@@ -21,6 +21,9 @@ class GameData : public IObject
 		bool IsBgmEnabled() const;
 		void SetBgmEnabled(bool);
 
+		bool IsFullScreenEnabled() const;
+		void SetFullScreenEnabled(bool);
+
 		f32 GetBgmVolume() const;
 		void SetBgmVolume(f32 v);
 
@@ -36,6 +39,7 @@ class GameData : public IObject
 		bool bGameOver;
 		bool bSfxEnabled;
 		bool bBgmEnabled;
+		bool bFullScreenEnabled;
 		f32 fSfxVol;
 		f32 fBgmVol;
 };

@@ -27,6 +27,7 @@ class GameScene : public IEventInputKeyboardListener,
 
 		ISceneObject	*pPlayer;
 		SceneNode	*pScene;
+		Music		musTheme;
 };
 
 #endif // _GAMEFLOW_H_

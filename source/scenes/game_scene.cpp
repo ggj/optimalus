@@ -9,6 +9,7 @@ enum
 GameScene::GameScene(SceneNode *parent)
 	: pPlayer(NULL)
 	, pScene(parent)
+	, musTheme()
 {
 }
 
@@ -37,6 +38,8 @@ bool GameScene::Update(f32 dt)
 
 bool GameScene::Shutdown()
 {
+	musTheme.Unload();
+
 	gFlow->RemoveScene(pScene);
 	pScene->Unload();
 	pScene = NULL;
@@ -63,6 +66,10 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");
+
+			musTheme.Load("sounds/theme.ogg");
+			musTheme.SetVolume(1.0f);
+			pSoundSystem->PlayMusic(&musTheme);
 		}
 		break;
 	}
