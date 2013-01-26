@@ -89,6 +89,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 					clWorldManager.BuildEntity(*placeHolder, sprites);
 				}
 			}
+
+			sprites->SetVisible(false);
 		}
 		break;
 	}

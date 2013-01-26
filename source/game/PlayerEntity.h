@@ -9,6 +9,7 @@ class PlayerEntity: public Entity
 {
 	public:
 		PlayerEntity();
+		virtual ~PlayerEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 

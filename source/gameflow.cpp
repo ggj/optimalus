@@ -305,12 +305,12 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 	}
 }
 
-void GameFlow::AddScene(SceneNode *node)
+void GameFlow::AddScene(ISceneObject *node)
 {
 	pScene->Add(node);
 }
 
-void GameFlow::RemoveScene(SceneNode *node)
+void GameFlow::RemoveScene(ISceneObject *node)
 {
 	pScene->Remove(node);
 }

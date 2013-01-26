@@ -32,8 +32,8 @@ class GameFlow : public IGameApp,
 		virtual bool Update(f32 dt);
 		virtual bool Shutdown();
 
-		void AddScene(SceneNode *node);
-		void RemoveScene(SceneNode *node);
+		void AddScene(ISceneObject *node);
+		void RemoveScene(ISceneObject *node);
 
 		// GUI
 		bool LoadGUI(const String &doc);

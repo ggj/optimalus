@@ -10,6 +10,7 @@ class Entity
 {
 	public:
 		Entity();
+		virtual ~Entity();
 
 		inline const std::string &GetName() const;
 
