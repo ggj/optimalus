@@ -2,15 +2,17 @@
 #define _GAME_H_
 
 #include <api/rocket/RocketInterface.h>
-#include <Seed.h>
-using namespace Seed;
-using namespace Seed::RocketGui;
 
+#include "../defines.h"
+#include "../game/physicsmanager.h"
 #include "../game/WorldManager.h"
 #include "../states/game_pause_state.h"
 #include "../states/game_run_state.h"
 
+using namespace Seed::RocketGui;
+
 extern SceneNode *gScene;
+extern PhysicsManager *gPhysics;
 
 class GameScene : public IEventInputKeyboardListener,
 				  public IEventJobListener,
@@ -48,6 +50,7 @@ class GameScene : public IEventInputKeyboardListener,
 		bool			bPaused;
 
 		WorldManager	clWorldManager;
+		PhysicsManager	clPhysicsManager;
 
 		// State Machine
 		StateMachine		cFlow;

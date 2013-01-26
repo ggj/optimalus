@@ -4,6 +4,7 @@
 #include <SceneNode.h>
 
 SceneNode *gScene = NULL;
+PhysicsManager *gPhysics = NULL;
 
 enum
 {
