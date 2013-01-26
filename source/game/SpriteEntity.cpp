@@ -11,6 +11,7 @@ SpriteEntity::SpriteEntity(const char *spriteName)
 
 SpriteEntity::~SpriteEntity()
 {
+	gScene->Remove(pSprite);
 	Delete(pSprite);
 }
 
