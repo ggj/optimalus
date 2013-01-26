@@ -7,9 +7,9 @@ enum
 };
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
-    : pPlayer(NULL)
-    , pCamera(NULL)
-	, pScene(parent)	
+	: pPlayer(NULL)
+	, pCamera(mainCamera)
+	, pScene(parent)
 {
 }
 
@@ -64,7 +64,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 
-			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
+			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");
 
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
@@ -79,8 +79,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				{
 					clWorldManager.BuildEntity(*placeHolder);
 				}
-			}			
-			
+			}
+
 			pPlayer = game->GetChildByName("Player");
 		}
 		break;
