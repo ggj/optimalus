@@ -5,7 +5,7 @@
 using namespace Seed;
 
 class GameScene : public IEventInputKeyboardListener,
-			 public IEventJobListener
+                  public IEventJobListener
 {
 	public:
 		GameScene(SceneNode *parent);
@@ -26,7 +26,7 @@ class GameScene : public IEventInputKeyboardListener,
 		SEED_DISABLE_COPY(GameScene);
 
 		ISceneObject	*pPlayer;
-		SceneNode	*pScene;
+        SceneNode	*pScene;
 };
 
 #endif // _GAMEFLOW_H_

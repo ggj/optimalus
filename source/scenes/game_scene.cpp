@@ -63,6 +63,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");
+
+
 		}
 		break;
 	}

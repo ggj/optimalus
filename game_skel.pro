@@ -47,6 +47,8 @@ OTHER_FILES_TEXTURE = \
 #Textures
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
+	resources/textures/Idle/idle_frame2.png \
+	resources/textures/Idle/idle_frame1.png \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -69,7 +71,10 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_SCENE} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
-	$${OTHER_FILES_GUI_VIEW}
+	$${OTHER_FILES_GUI_VIEW} \
+    resources/sprites/player.sprite \
+    resources/textures/Idle/idle_frame2.png \
+    resources/textures/Idle/idle_frame1.png
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
