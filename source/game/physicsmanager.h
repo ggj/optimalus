@@ -12,6 +12,7 @@ class PhysicsManager
 
 		void Update(f32 dt);
 		void CreateBody(ISceneObject *obj);
+		void DestroyBody(b2Body *body);
 		void CreateStaticBody(ISceneObject *obj);
 
 	private:
@@ -19,6 +20,7 @@ class PhysicsManager
 
 	private:
 		b2World *pWorld;
+
 };
 
 #endif // PHYSICSMANAGER_H

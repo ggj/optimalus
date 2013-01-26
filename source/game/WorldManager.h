@@ -9,8 +9,10 @@ class Entity;
 class WorldManager
 {
 	public:
-		void BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
+        Entity* BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
 		~WorldManager();
+
+		void Clear();
 
 	private:
 		typedef std::vector<Entity *> EntitiesVector_t;

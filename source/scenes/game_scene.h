@@ -8,6 +8,7 @@
 #include "../game/WorldManager.h"
 #include "../states/game_pause_state.h"
 #include "../states/game_run_state.h"
+#include "../game/PlayerEntity.h"
 
 using namespace Seed::RocketGui;
 
@@ -39,10 +40,13 @@ class GameScene : public IEventInputKeyboardListener,
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
 
+        // Load
+        virtual void LoadMapColliders();
+
 	private:
 		SEED_DISABLE_COPY(GameScene);
 
-		Sprite			*pPlayer;
+        PlayerEntity	*pPlayer;
 		Camera			*pCamera;
 		SceneNode		*pScene;
 		Music			musTheme;

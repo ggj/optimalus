@@ -12,6 +12,9 @@ class PlayerEntity: public SpriteEntity
 		virtual ~PlayerEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
+
+        Vector3f GetPosition();
+	private:
 };
 
 #endif
