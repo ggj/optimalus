@@ -13,6 +13,8 @@ class TriggerEntity: public Entity
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
+		virtual void OnCollision(const CollisionEvent &event);
+
 	private:
 		b2Body		*pBody;
 };
