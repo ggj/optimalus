@@ -6,8 +6,10 @@ using namespace Seed;
 
 #include "../game/WorldManager.h"
 
+extern SceneNode *gScene;
+
 class GameScene : public IEventInputKeyboardListener,
-                  public IEventJobListener
+				  public IEventJobListener
 {
 	public:
 		GameScene(SceneNode *parent, Camera *mainCamera);
@@ -27,7 +29,7 @@ class GameScene : public IEventInputKeyboardListener,
 	private:
 		SEED_DISABLE_COPY(GameScene);
 
-		ISceneObject	*pPlayer;
+		Sprite			*pPlayer;
 		Camera			*pCamera;
 		SceneNode		*pScene;
 		Music			musTheme;

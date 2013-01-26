@@ -2,6 +2,9 @@
 #include "../gameflow.h"
 
 #include <SceneNode.h>
+
+SceneNode *gScene = NULL;
+
 enum
 {
 	kJobLoadScene
@@ -13,10 +16,12 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	, pScene(parent)
 	, musTheme()
 {
+	gScene = this->pScene;
 }
 
 GameScene::~GameScene()
 {
+	gScene = NULL;
 }
 
 bool GameScene::Initialize()
@@ -69,26 +74,25 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Delete(job);
 
 			// Validate the music to play
-			if(gGameData->IsBgmEnabled() == true)
+			if (gGameData->IsBgmEnabled() == true)
 			{
-			    musTheme.Load("sounds/theme.ogg");
-			    musTheme.SetVolume(1.0f);
-			    pSoundSystem->PlayMusic(&musTheme);
+				musTheme.Load("sounds/theme.ogg");
+				musTheme.SetVolume(1.0f);
+				pSoundSystem->PlayMusic(&musTheme);
 			}
 
 			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
 
-			pPlayer = static_cast<ISceneObject *>(pScene->GetChildByName("Player"));
+			pPlayer = static_cast<Sprite *>(pScene->GetChildByName("Player"));
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
-
-			for(unsigned i = 0, len = game->Size(); i < len; ++i)
+			for (unsigned i = 0, len = game->Size(); i < len; ++i)
 			{
 				IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
 				const String &type = placeHolder->GetProperty("Type");
 
-				if(type == "Entity")
+				if (type == "Entity")
 				{
 					clWorldManager.BuildEntity(*placeHolder, sprites);
 				}

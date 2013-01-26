@@ -6,9 +6,9 @@
 #include <LeakReport.h>
 #include <Sprite.h>
 
-#include "../gameflow.h"
+#include "../scenes/game_scene.h"
 
-ENTITY_CREATOR("Player", PlayerEntity);
+ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
 	pSprite(NULL)
@@ -25,5 +25,5 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 {
 	//FIXME
 	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Player"))));
-	gFlow->AddScene(pSprite);
+	gScene->Add(pSprite);
 }

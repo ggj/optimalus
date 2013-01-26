@@ -2,7 +2,6 @@
 #define _WORLD_MANAGER_H
 
 #include "../defines.h"
-
 #include <vector>
 
 class Entity;
@@ -10,8 +9,7 @@ class Entity;
 class WorldManager
 {
 	public:
-		void BuildEntity(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
-
+		void BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
 		~WorldManager();
 
 	private:
