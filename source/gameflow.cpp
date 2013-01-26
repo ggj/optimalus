@@ -290,16 +290,24 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			}
 			else if (values[1] == "fullscreen")
 			{
+				//this->ReleaseGUI();
+
 				if (pGameData->IsFullScreenEnabled())
 				{
 					pGameData->SetFullScreenEnabled(false);
-					pScreen->ToggleFullscreen();
+					//pScreen->ToggleFullscreen();
+					pSystem->Shutdown();
 				}
 				else
 				{
 					pGameData->SetFullScreenEnabled(true);
-					pScreen->ToggleFullscreen();
+					//pScreen->ToggleFullscreen();
+					pSystem->Shutdown();
 				}
+
+
+				//this->InitializeGUI();
+				//this->ReloadGUI();
 			}
 		}
 	}

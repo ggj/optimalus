@@ -67,6 +67,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
 
+			// Validate the music to play
 			musTheme.Load("sounds/theme.ogg");
 			musTheme.SetVolume(1.0f);
 			pSoundSystem->PlayMusic(&musTheme);
