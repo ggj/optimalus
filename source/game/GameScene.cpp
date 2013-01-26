@@ -1,4 +1,4 @@
-#include "game_scene.h"
+#include "GameScene.h"
 #include "../gameflow.h"
 
 #include <SceneNode.h>

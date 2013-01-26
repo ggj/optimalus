@@ -1,6 +1,6 @@
 #include "SpriteEntity.h"
 
-#include "../scenes/game_scene.h"
+#include "GameScene.h"
 
 SpriteEntity::SpriteEntity(const char *spriteName)
 	:	pSprite(NULL)

@@ -5,7 +5,7 @@
 #include <SceneNode.h>
 #include <LeakReport.h>
 #include <Sprite.h>
-#include "../scenes/game_scene.h"
+#include "GameScene.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 

@@ -3,15 +3,18 @@
 
 #include "entity.h"
 
+#include <Box2D/Box2D.h>
+
 class TriggerEntity: public Entity
 {
 	public:  
 		TriggerEntity();
+		~TriggerEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
 	private:
-
+		b2Body		*pBody;
 };
 
 #endif

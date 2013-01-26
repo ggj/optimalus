@@ -89,6 +89,7 @@
     <ClCompile Include="..\..\..\source\game\cameracontroller.cpp" />
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
+    <ClCompile Include="..\..\..\source\game\GameScene.cpp" />
     <ClCompile Include="..\..\..\source\game\HeartEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\ItemEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\physicsmanager.cpp" />
@@ -97,7 +98,6 @@
     <ClCompile Include="..\..\..\source\game\TriggerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
     <ClCompile Include="..\..\..\source\main.cpp" />
-    <ClCompile Include="..\..\..\source\scenes\game_scene.cpp" />
     <ClCompile Include="..\..\..\source\states\credits_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_pause_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_run_state.cpp" />
@@ -112,6 +112,7 @@
     <ClInclude Include="..\..\..\source\game\cameracontroller.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />
+    <ClInclude Include="..\..\..\source\game\GameScene.h" />
     <ClInclude Include="..\..\..\source\game\HeartEntity.h" />
     <ClInclude Include="..\..\..\source\game\ItemEntity.h" />
     <ClInclude Include="..\..\..\source\game\physicsmanager.h" />
@@ -119,7 +120,6 @@
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h" />
     <ClInclude Include="..\..\..\source\game\TriggerEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />
-    <ClInclude Include="..\..\..\source\scenes\game_scene.h" />
     <ClInclude Include="..\..\..\source\states\credits_state.h" />
     <ClInclude Include="..\..\..\source\states\game_pause_state.h" />
     <ClInclude Include="..\..\..\source\states\game_run_state.h" />

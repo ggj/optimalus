@@ -8,9 +8,6 @@
     <Filter Include="data">
       <UniqueIdentifier>{f9308dfc-7999-42b9-9541-2bf1ebb4458c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="scenes">
-      <UniqueIdentifier>{d0abfcfa-2704-4799-a53f-b9c057abf573}</UniqueIdentifier>
-    </Filter>
     <Filter Include="states">
       <UniqueIdentifier>{21953a21-c6a4-49bb-b7a8-fc42f3cba409}</UniqueIdentifier>
     </Filter>
@@ -38,9 +35,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\states\options_state.cpp">
       <Filter>states</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\scenes\game_scene.cpp">
-      <Filter>scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp">
       <Filter>game</Filter>
@@ -75,6 +69,9 @@
     <ClCompile Include="..\..\..\source\game\cameracontroller.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\GameScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -95,9 +92,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\states\options_state.h">
       <Filter>states</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\scenes\game_scene.h">
-      <Filter>scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\WorldManager.h">
       <Filter>game</Filter>
@@ -131,6 +125,9 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\cameracontroller.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\GameScene.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
