@@ -68,9 +68,12 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			Delete(job);
 
 			// Validate the music to play
-			musTheme.Load("sounds/theme.ogg");
-			musTheme.SetVolume(1.0f);
-			pSoundSystem->PlayMusic(&musTheme);
+			if(gGameData->IsBgmEnabled() == true)
+			{
+			    musTheme.Load("sounds/theme.ogg");
+			    musTheme.SetVolume(1.0f);
+			    pSoundSystem->PlayMusic(&musTheme);
+			}
 
 			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");

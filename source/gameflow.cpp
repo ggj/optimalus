@@ -5,11 +5,11 @@
 #include <Rocket/Controls.h>
 
 GameFlow *gFlow = NULL;
+GameData *gGameData = NULL;
 
 GameFlow::GameFlow()
 	: pScene(NULL)
 	, pCamera(NULL)
-	, pGameData(NULL)
 	, pRocket(NULL)
 	, pContext(NULL)
 	, pDoc(NULL)
@@ -27,7 +27,7 @@ bool GameFlow::Initialize()
 	bool init = cPres.Load("configs/game.config", this);
 
 	// Create the State Machine Data
-	pGameData = New(GameData());
+	gGameData = New(GameData());
 
 	// Create the transitions
 	cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
@@ -77,7 +77,7 @@ bool GameFlow::Shutdown()
 	this->ReleaseGUI();
 	cPres.Unload();
 
-	Delete(pGameData);
+	Delete(gGameData);
 
 	return IGameApp::Shutdown();
 }
@@ -95,7 +95,7 @@ void GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	if (k == Seed::KeyEscape && cFlow.GetCurrentState() == &cMenu)
 		pSystem->Shutdown();
 	if (k == Seed::KeyEscape && cFlow.GetCurrentState() == &cGame)
-		cFlow.OnEvent(&cOnGamePause, pGameData);
+		cFlow.OnEvent(&cOnGamePause);
 	else if (k == Seed::KeyF1)
 		pResourceManager->Print();
 	else if (k == Seed::KeyF2)
@@ -248,11 +248,11 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			if (values[1] == "credits")
 				cFlow.OnEvent(&cOnCredits);
 			else if (values[1] == "menu")
-				cFlow.OnEvent(&cOnMenu, pGameData);
+				cFlow.OnEvent(&cOnMenu);
 			else if (values[1] == "options")
-				cFlow.OnEvent(&cOnOptions, pGameData);
+				cFlow.OnEvent(&cOnOptions);
 			else if (values[1] == "game")
-				cFlow.OnEvent(&cOnGame, pGameData);
+				cFlow.OnEvent(&cOnGame);
 		}
 		else if (values[0] == "exit")
 		{
@@ -262,45 +262,45 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 		{
 			if (values[1] == "sfx")
 			{
-				if (pGameData->IsSfxEnabled())
+				if (gGameData->IsSfxEnabled())
 				{
-					pGameData->SetSfxVolume(pSoundSystem->GetSfxVolume());
+					gGameData->SetSfxVolume(pSoundSystem->GetSfxVolume());
 					pSoundSystem->SetSfxVolume(0.0f);
-					pGameData->SetSfxEnabled(false);
+					gGameData->SetSfxEnabled(false);
 				}
 				else
 				{
-					pSoundSystem->SetSfxVolume(pGameData->GetSfxVolume());
-					pGameData->SetSfxEnabled(true);
+					pSoundSystem->SetSfxVolume(gGameData->GetSfxVolume());
+					gGameData->SetSfxEnabled(true);
 				}
 			}
 			else if (values[1] == "bgm")
 			{
-				if (pGameData->IsBgmEnabled())
+				if (gGameData->IsBgmEnabled())
 				{
-					pGameData->SetBgmVolume(pSoundSystem->GetMusicVolume());
+					gGameData->SetBgmVolume(pSoundSystem->GetMusicVolume());
 					pSoundSystem->SetMusicVolume(0.0f);
-					pGameData->SetBgmEnabled(false);
+					gGameData->SetBgmEnabled(false);
 				}
 				else
 				{
-					pSoundSystem->SetMusicVolume(pGameData->GetBgmVolume());
-					pGameData->SetBgmEnabled(true);
+					pSoundSystem->SetMusicVolume(gGameData->GetBgmVolume());
+					gGameData->SetBgmEnabled(true);
 				}
 			}
 			else if (values[1] == "fullscreen")
 			{
 				//this->ReleaseGUI();
 
-				if (pGameData->IsFullScreenEnabled())
+				if (gGameData->IsFullScreenEnabled())
 				{
-					pGameData->SetFullScreenEnabled(false);
+					gGameData->SetFullScreenEnabled(false);
 					//pScreen->ToggleFullscreen();
 					pSystem->Shutdown();
 				}
 				else
 				{
-					pGameData->SetFullScreenEnabled(true);
+					gGameData->SetFullScreenEnabled(true);
 					//pScreen->ToggleFullscreen();
 					pSystem->Shutdown();
 				}
