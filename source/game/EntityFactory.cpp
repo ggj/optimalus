@@ -29,7 +29,7 @@ Entity *EntityFactory::CreateEntity(const std::string &name)
 	EntityCreatorMap_t::iterator it = mapCreators.find(name);
 	if(it == mapCreators.end())
 	{
-		Log("Entity %s not found.", name);
+		Log("Entity %s not found.", name.c_str());
 
 		return NULL;
 	}
