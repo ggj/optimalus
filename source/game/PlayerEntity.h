@@ -17,4 +17,3 @@ class PlayerEntity: public Entity
 };
 
 #endif
-
