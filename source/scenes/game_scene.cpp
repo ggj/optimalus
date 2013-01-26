@@ -8,7 +8,7 @@ enum
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	: pPlayer(NULL)
-	, pCamera(NULL)
+	, pCamera(mainCamera)
 	, pScene(parent)
 	, musTheme()
 {
@@ -73,7 +73,20 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 
 			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
+
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
+
+			for(unsigned i = 0, len = game->Size(); i < len; ++i)
+			{
+				IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
+				const String &type = placeHolder->GetProperty("Type");
+
+				if(type == "Entity")
+				{
+					clWorldManager.BuildEntity(*placeHolder);
+				}
+			}
+
 			pPlayer = game->GetChildByName("Player");
 		}
 		break;

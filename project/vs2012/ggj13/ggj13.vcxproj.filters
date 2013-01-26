@@ -14,7 +14,7 @@
     <Filter Include="states">
       <UniqueIdentifier>{21953a21-c6a4-49bb-b7a8-fc42f3cba409}</UniqueIdentifier>
     </Filter>
-    <Filter Include="world">
+    <Filter Include="game">
       <UniqueIdentifier>{e10a6ceb-cbee-404a-9ba3-66541c281a7c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -43,13 +43,16 @@
       <Filter>scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\game\Entity.cpp">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\WorldManager.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,16 +79,16 @@
       <Filter>scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\WorldManager.h">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\PlayerEntity.h">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\EntityFactory.h">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\Entity.h">
-      <Filter>world</Filter>
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

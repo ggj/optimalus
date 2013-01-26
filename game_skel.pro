@@ -13,7 +13,11 @@ SOURCES += source/main.cpp \
     source/states/game_pause_state.cpp \
     source/states/game_state.cpp \
     source/scenes/game_scene.cpp \
-    source/data/game_data.cpp
+    source/data/game_data.cpp \
+    source/game/WorldManager.cpp \
+    source/game/PlayerEntity.cpp \
+    source/game/EntityFactory.cpp \
+    source/game/entity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -24,7 +28,11 @@ HEADERS += \
     source/states/game_state.h \
     source/scenes/game_scene.h \
     source/data/game_data.h \
-    source/defines.h
+    source/defines.h \
+    source/game/WorldManager.h \
+    source/game/PlayerEntity.h \
+    source/game/EntityFactory.h \
+    source/game/entity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -158,6 +166,8 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
 
 
 

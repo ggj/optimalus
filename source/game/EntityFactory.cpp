@@ -22,11 +22,11 @@ void EntityFactory::AddCreator(const char *name, CreateEntityProc_t proc)
 	GetCreatorMap().insert(std::make_pair(name, proc));
 }
 
-Entity *EntityFactory::CreateEntity(const char *name)
+Entity *EntityFactory::CreateEntity(const std::string &name)
 {
-	auto &mapCreators = GetCreatorMap();
+	EntityCreatorMap_t &mapCreators = GetCreatorMap();
 
-	auto it = mapCreators.find(name);
+	EntityCreatorMap_t::iterator it = mapCreators.find(name);
 	if(it == mapCreators.end())
 	{
 		Log("Entity %s not found.", name);
@@ -35,4 +35,9 @@ Entity *EntityFactory::CreateEntity(const char *name)
 	}
 
 	return it->second();
+}
+
+Entity *EntityFactory::CreateEntity(const char *name)
+{
+	return CreateEntity(std::string(name));
 }
