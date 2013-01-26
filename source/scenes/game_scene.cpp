@@ -15,6 +15,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	, pCamera(mainCamera)
 	, pScene(parent)
 	, musTheme()
+	, bPaused(false)
 {
 	gScene = this->pScene;
 }
@@ -27,6 +28,22 @@ GameScene::~GameScene()
 bool GameScene::Initialize()
 {
 	gFlow->AddScene(pScene);
+
+	// Create the transitions
+	cRunToPause.Initialize(&cRun, &cOnPause, &cPause);
+	cPauseToRun.Initialize(&cPause, &cOnRun, &cRun);
+	cPauseToMenu.Initialize(&cPause, &cOnMenu, &cMenu);
+
+	// Create the State Machine.
+	cFlow.RegisterTransition(&cRunToPause);
+	cFlow.RegisterTransition(&cPauseToRun);
+	cFlow.RegisterTransition(&cPauseToMenu);
+
+	cFlow.Initialize(&cRun);
+
+	RocketEventManager::AddListener(this);
+	pInput->AddKeyboardListener(this);
+
 	pJobManager->Add(New(FileLoader("scenes/game.scene", kJobLoadScene, this)));
 	return true;
 }
@@ -34,6 +51,7 @@ bool GameScene::Initialize()
 bool GameScene::Update(f32 dt)
 {
 	UNUSED(dt)
+	cFlow.Update(dt);
 
 	if (pPlayer)
 	{
@@ -52,6 +70,7 @@ bool GameScene::Shutdown()
 	pScene = NULL;
 
 	pInput->RemoveKeyboardListener(this);
+	RocketEventManager::RemoveListener(this);
 
 	return true;
 }
@@ -59,6 +78,13 @@ bool GameScene::Shutdown()
 void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
+	if (k == Seed::KeyEscape)
+	{
+		if (bPaused)
+			cFlow.OnEvent(&cOnRun, this);
+		else
+			cFlow.OnEvent(&cOnPause, this);
+	}
 }
 
 void GameScene::OnJobCompleted(const EventJob *ev)
@@ -108,4 +134,27 @@ void GameScene::OnJobAborted(const EventJob *ev)
 {
 	Job *job = ev->GetJob();
 	Delete(job);
+}
+
+void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
+{
+	if (script == "resume")
+	{
+		cFlow.OnEvent(&cOnRun, this);
+	}
+	if (script == "quit")
+	{
+		cFlow.OnEvent(&cOnMenu);
+		gFlow->Menu();
+	}
+}
+
+void GameScene::Pause()
+{
+	bPaused = true;
+}
+
+void GameScene::Resume()
+{
+	bPaused = false;
 }

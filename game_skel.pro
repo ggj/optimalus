@@ -17,7 +17,8 @@ SOURCES += source/main.cpp \
     source/game/WorldManager.cpp \
     source/game/PlayerEntity.cpp \
     source/game/EntityFactory.cpp \
-    source/game/entity.cpp
+    source/game/entity.cpp \
+    source/states/game_run_state.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -32,7 +33,8 @@ HEADERS += \
     source/game/WorldManager.h \
     source/game/PlayerEntity.h \
     source/game/EntityFactory.h \
-    source/game/entity.h
+    source/game/entity.h \
+    source/states/game_run_state.h
 
 OTHER_FILES_CONFIG = \
 #Configs

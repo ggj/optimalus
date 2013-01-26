@@ -24,6 +24,6 @@
 	</head>
 	<body template="window" onload="load">
 		<button onCLick="resume">Resume</button>
-		<button onClick="goto menu">Quit to main menu</button>
+		<button onClick="quit">Return to menu</button>
 	</body>
 </rml>

@@ -9,7 +9,6 @@
 #include "states/options_state.h"
 #include "states/credits_state.h"
 #include "states/game_state.h"
-#include "states/game_pause_state.h"
 #include "data/game_data.h"
 
 using namespace Seed;
@@ -56,6 +55,7 @@ class GameFlow : public IGameApp,
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
 
 		inline Camera *GetCamera() const;
+		void Menu();
 
 	private:
 		bool SaveSystemFlow() const;
@@ -72,18 +72,16 @@ class GameFlow : public IGameApp,
 		StateMachine		cFlow;
 
 		// State Machine states
-		MainMenuState			cMenu;
-		OptionsState			cOptions;
-		CreditsState				cCredits;
+		MainMenuState		cMenu;
+		OptionsState		cOptions;
+		CreditsState		cCredits;
 		GameState			cGame;
-		GamePauseState			cGamePause;
 
 		// State Machine Events
 		StateMachineEvent	cOnMenu;
 		StateMachineEvent	cOnOptions;
 		StateMachineEvent	cOnCredits;
 		StateMachineEvent	cOnGame;
-		StateMachineEvent	cOnGamePause;
 
 		// State Machine transitions
 		StateMachineTransition cMenuToGame;
@@ -91,9 +89,7 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cMenuToCredits;
 		StateMachineTransition cOptionsToMenu;
 		StateMachineTransition cCreditsToMenu;
-		StateMachineTransition cGameToGamePause;
-		StateMachineTransition cGamePauseToGame;
-		StateMachineTransition cGamePauseToMenu;
+		StateMachineTransition cGameToMenu;
 
 		// GUI
 		RocketInterface			*pRocket;
