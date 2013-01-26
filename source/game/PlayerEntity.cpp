@@ -106,7 +106,4 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}
-
-	if (k == Seed::KeyEscape)
-		pSystem->Shutdown();
 }
