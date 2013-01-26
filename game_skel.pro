@@ -56,8 +56,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
-	resources/textures/Idle/idle_frame2.png \
-	resources/textures/Idle/idle_frame1.png
+	resources/textures/player_idle_frame2.png \
+	resources/textures/player_idle_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
