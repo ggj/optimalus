@@ -54,6 +54,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;BUILD_SDL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,11 +85,13 @@
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
     <ClCompile Include="..\..\..\source\main.cpp" />
     <ClCompile Include="..\..\..\source\scenes\game_scene.cpp" />
     <ClCompile Include="..\..\..\source\states\credits_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_pause_state.cpp" />
+    <ClCompile Include="..\..\..\source\states\game_run_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_state.cpp" />
     <ClCompile Include="..\..\..\source\states\main_menu_state.cpp" />
     <ClCompile Include="..\..\..\source\states\options_state.cpp" />
@@ -99,11 +102,14 @@
     <ClInclude Include="..\..\..\source\gameflow.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />
+    <ClInclude Include="..\..\..\source\game\ItemEntity.h" />
     <ClInclude Include="..\..\..\source\game\PlayerEntity.h" />
+    <ClInclude Include="..\..\..\source\game\SpriteEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />
     <ClInclude Include="..\..\..\source\scenes\game_scene.h" />
     <ClInclude Include="..\..\..\source\states\credits_state.h" />
     <ClInclude Include="..\..\..\source\states\game_pause_state.h" />
+    <ClInclude Include="..\..\..\source\states\game_run_state.h" />
     <ClInclude Include="..\..\..\source\states\game_state.h" />
     <ClInclude Include="..\..\..\source\states\main_menu_state.h" />
     <ClInclude Include="..\..\..\source\states\options_state.h" />
