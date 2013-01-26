@@ -7,5 +7,11 @@
 			sName: Player
 			sResource: frame03.png
 		}
+		{
+			sType: GameMap
+			sName: Map
+			sResource: level1.json
+			cPosition: {z: 200}
+		}
 	]
 }

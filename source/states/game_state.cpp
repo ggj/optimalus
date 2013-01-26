@@ -20,7 +20,7 @@ void GameState::OnStart(IObject *data)
 	bDoStop = false;
 
 	gFlow->LoadGUI("gui/views/game.rml");
-	pGame = New(GameScene(&cScene));
+	pGame = New(GameScene(&cScene, gFlow->GetCamera()));
 	pGame->Initialize();
 	cScene.SetVisible(true);
 }
