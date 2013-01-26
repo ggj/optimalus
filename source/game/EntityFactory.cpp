@@ -31,7 +31,7 @@ Entity *EntityFactory::CreateEntity(const std::string &name)
 	{
 		Log("Entity %s not found.", name);
 
-		return nullptr;
+		return NULL;
 	}
 
 	return it->second();
