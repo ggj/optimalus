@@ -57,7 +57,7 @@ icon
 
 div#hostages_div icon
 {
-	icon-image-s: 0px 0px;
+	icon-image-s: 100px 100px;
 }
 
 div#time_div icon

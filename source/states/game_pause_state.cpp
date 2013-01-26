@@ -14,6 +14,7 @@ void GamePauseState::OnStart(void *data)
 {
 	Log("Entering GamePause State");
 	gFlow->LoadGUI("gui/views/gamepause.rml");
+	pSoundSystem->Mute();
 	GameScene *g = static_cast<GameScene *>(data);
 	g->Pause();
 }
@@ -27,4 +28,5 @@ void GamePauseState::OnStop(void *data)
 {
 	UNUSED(data)
 	Log("Exiting GamePause State");
+	pSoundSystem->Unmute();
 }
