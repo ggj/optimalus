@@ -3,34 +3,35 @@
 	sName: GameScene
 	aObjects: [
 		{
-			sType: sprite
-			sName: Player
-			sResource: textures/frame03.png
-		}
-		{
-			cScale: {x: 1, y: 1, z: 1}
-			cPosition: {z: 100}
-			sBlending: none
-			cColor: {r: 255, g: 255, b: 255, a: 255}
-			aAnimations:
-			[
-				{
-					sName: "Idle"
-					bAnimated: true
-					bLoop: true
-					iFps: 1
-					aFrames:
-					[
-						{
-							sResource: textures/player_frame1.png
-						}
-						{
-							sResource: textures/player_frame2.png
-						}
-					]
-				}
-			]
-		}
+		  sName: Sprites
+		  sType: SceneNode
+		  aObjects: [
+    		  cScale: {x: 1, y: 1, z: 1}
+    		  cPosition: {z: 100}
+    			sBlending: none
+    			sName: Player
+    			cColor: {r: 255, g: 255, b: 255, a: 255}
+    			bVisible: false
+    			aAnimations:
+    			[
+    				{
+    					sName: "Idle"
+    					bAnimated: true
+    					bLoop: true
+    					iFps: 1
+    					aFrames:
+    					[
+    						{
+    							sResource: textures/player_frame1.png
+    						}
+    						{
+    							sResource: textures/player_frame2.png
+    						}
+    					]
+    				}
+    			]
+          ]
+        }	
 		{
 			sType: GameMap
 			sName: Map
