@@ -4,10 +4,7 @@
 
 #include <LeakReport.h>
 
-namespace
-{
-	EntityFactory::AutoCreator acPlayer("Player", []() -> Entity * { return new PlayerEntity(); });
-}
+ENTITY_CREATOR("Player", PlayerEntity);
 
 PlayerEntity::PlayerEntity()
 {

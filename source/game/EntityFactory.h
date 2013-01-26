@@ -24,4 +24,14 @@ namespace EntityFactory
 	};
 }
 
+#define ENTITY_CREATOR(NAME, CLASS)												\
+	namespace																	\
+	{																			\
+		Entity *Create##CLASS()													\
+		{																		\
+			return New(CLASS());												\
+		}																		\
+		EntityFactory::AutoCreator clAutoCreator##CLASS_g(NAME, Create##CLASS);	\
+    }
+
 #endif
