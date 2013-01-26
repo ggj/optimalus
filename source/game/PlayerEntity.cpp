@@ -51,7 +51,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	if (k == Seed::KeyUp || k == Seed::KeyW)
 	{
-		pBody->ApplyForce(b2Vec2(0,250), pBody->GetWorldCenter());
+		pBody->ApplyForce(b2Vec2(0,300), pBody->GetWorldCenter());
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
@@ -87,23 +87,26 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
+	b2Vec2 vel = pBody->GetLinearVelocity();
+	vel.x = 0;
+
 	// Remove the directions
-	if (k == Seed::KeyUp)
+	if (k == Seed::KeyUp|| k == Seed::KeyW)
 	{
 		vPlayerVectorDirection -= VECTOR_UP;
 	}
 
-	if (k == Seed::KeyLeft)
+	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
-		pBody->SetLinearVelocity(b2Vec2(0,0));
+		pBody->SetLinearVelocity(vel);
 	}
 
-	if (k == Seed::KeyRight)
+	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
-		pBody->SetLinearVelocity(b2Vec2(0,0));
+		pBody->SetLinearVelocity(vel);
 	}
 
-	if (k == Seed::KeyDown)
+	if (k == Seed::KeyDown|| k == Seed::KeyS)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}
