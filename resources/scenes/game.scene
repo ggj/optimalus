@@ -3,18 +3,48 @@
 	sName: GameScene
 	aObjects: [
 		{
-			sType: Image
+			sType: sprite
 			sName: Player
 			sResource: textures/frame03.png
 		}
 		{
-			sType: SoundSource
-			sName: audio
-			cPosition: {x: 0, y: 0, z: 0}
-			bAutoPlay: false
-			bLoop: true
-			fVolume: 0.5
-			sResource: sounds/sfx.ogg
+			cScale: {x: 1, y: 1, z: 1}
+			cPosition: {z: 100}
+			sBlending: none
+			cColor: {r: 255, g: 255, b: 255, a: 255}
+			aAnimations:
+			[
+				{
+					sName: "Idle"
+					bAnimated: true
+					bLoop: true
+					iFps: 1
+					aFrames:
+					[
+						{
+							sResource: textures/player_frame1.png
+						}
+						{
+							sResource: textures/player_frame2.png
+						}
+					]
+				}
+			]
 		}
+		{
+			sType: GameMap
+			sName: Map
+			sResource: level1.json
+			cPosition: {z: 200}
+		}
+                {
+                    sType: SoundSource
+                    sName: audio
+                    cPosition: {x: 0, y: 0, z: 0}
+                    bAutoPlay: false
+                    bLoop: true
+                    fVolume: 0.5
+                    sResource: sounds/sfx.ogg
+                }
 	]
 }

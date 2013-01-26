@@ -12,6 +12,7 @@ GameFlow::GameFlow()
 	, pRocket(NULL)
 	, pContext(NULL)
 	, pDoc(NULL)
+	, pCamera(NULL)
 {
 	gFlow = this;
 }
@@ -114,6 +115,9 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 	RocketEventManager::AddListener(this);
 
 	pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
+    Viewport *viewport = cPres.GetViewportByName("MainView");
+
+	pCamera = viewport->GetCamera();
 
 	this->InitializeGUI();
 	cFlow.Initialize(&cMenu);

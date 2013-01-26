@@ -5,10 +5,10 @@
 using namespace Seed;
 
 class GameScene : public IEventInputKeyboardListener,
-			 public IEventJobListener
+                  public IEventJobListener
 {
 	public:
-		GameScene(SceneNode *parent);
+		GameScene(SceneNode *parent, Camera *mainCamera);
 		virtual ~GameScene();
 
 		virtual bool Initialize();
@@ -26,8 +26,10 @@ class GameScene : public IEventInputKeyboardListener,
 		SEED_DISABLE_COPY(GameScene);
 
 		ISceneObject	*pPlayer;
-		SceneNode	*pScene;
 		Music		musTheme;
+		Camera			*pCamera;
+		SceneNode		*pScene;
+		GameMap			*pGameMap;
 };
 
 #endif // _GAMEFLOW_H_

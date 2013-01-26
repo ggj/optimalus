@@ -47,6 +47,9 @@ OTHER_FILES_TEXTURE = \
 #Textures
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
+	resources/textures/tile_map.png \
+	resources/textures/Idle/idle_frame2.png \
+	resources/textures/Idle/idle_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -68,6 +71,9 @@ OTHER_FILES_SOUND = \
 #Sounds
 	resources/sounds/sfx.ogg \
 	resources/sounds/theme.ogg
+#Maps
+OTHER_FILES_MAPS = \
+resources/level1.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -75,7 +81,8 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
-	$${OTHER_FILES_SOUND}
+        $${OTHER_FILES_SOUND} \
+        $${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
@@ -129,7 +136,10 @@ macx {
 
 	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
 			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
-			APP_SOUND_FILES
+                        APP_SOUND_FILES APP_MAPS_FILES
+	#Maps
+	APP_MAPS_FILES.files = $$OTHER_FILES_MAPS
+	APP_MAPS_FILES.path = Contents/Resources/
 }
 
 win32 {
