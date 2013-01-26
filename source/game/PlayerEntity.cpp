@@ -18,7 +18,7 @@ PlayerEntity::PlayerEntity():
 PlayerEntity::~PlayerEntity()
 {
 	pInput->RemoveKeyboardListener(this);
-	//gPhysics->DestroyBody(pBody);
+	gPhysics->DestroyBody(pBody);
 }
 
 void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)

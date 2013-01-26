@@ -20,7 +20,9 @@ SOURCES += source/main.cpp \
     source/game/entity.cpp \
     source/states/game_run_state.cpp \
     source/game/physicsmanager.cpp \
-    source/game/SpriteEntity.cpp
+    source/game/SpriteEntity.cpp \
+    source/game/ItemEntity.cpp \
+    source/game/HeartEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -38,7 +40,9 @@ HEADERS += \
     source/game/entity.h \
     source/states/game_run_state.h \
     source/game/physicsmanager.h \
-    source/game/SpriteEntity.h
+    source/game/SpriteEntity.h \
+    source/game/ItemEntity.h \
+    source/game/HeartEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs

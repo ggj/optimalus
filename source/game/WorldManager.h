@@ -12,6 +12,8 @@ class WorldManager
         Entity* BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
 		~WorldManager();
 
+		void Clear();
+
 	private:
 		typedef std::vector<Entity *> EntitiesVector_t;
 		EntitiesVector_t vEntities;

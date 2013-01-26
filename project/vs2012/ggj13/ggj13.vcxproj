@@ -46,6 +46,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SEED_HOME)\include;$(SEED_HOME)\contrib\windows;$(SEED_HOME)\contrib\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SEED_HOME)\lib;$(SDL_HOME)\lib\x86;$(OPENAL_HOME)\libs\Win32\;$(SDL_IMAGE_HOME)\lib\x86\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -70,13 +72,15 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;BUILD_SDL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL.lib;OpenAL32.lib;SDL_image.lib;seed.lib;contrib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -84,6 +88,9 @@
     <ClCompile Include="..\..\..\source\gameflow.cpp" />
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
+    <ClCompile Include="..\..\..\source\game\HeartEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\ItemEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\physicsmanager.cpp" />
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
@@ -102,7 +109,9 @@
     <ClInclude Include="..\..\..\source\gameflow.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />
+    <ClInclude Include="..\..\..\source\game\HeartEntity.h" />
     <ClInclude Include="..\..\..\source\game\ItemEntity.h" />
+    <ClInclude Include="..\..\..\source\game\physicsmanager.h" />
     <ClInclude Include="..\..\..\source\game\PlayerEntity.h" />
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />

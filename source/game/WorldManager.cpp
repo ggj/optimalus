@@ -4,10 +4,7 @@
 
 WorldManager::~WorldManager()
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
-	{
-		Delete(*it);
-	}
+	this->Clear();
 }
 
 Entity* WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
@@ -27,5 +24,14 @@ Entity* WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
     return ent;
 }
 
+void WorldManager::Clear()
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		Delete(*it);
+	}
+
+	vEntities.clear();
+}
 
 

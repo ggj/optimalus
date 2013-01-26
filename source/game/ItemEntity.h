@@ -6,7 +6,7 @@
 class ItemEntity: public SpriteEntity
 {
 	public:
-		ItemEntity();
+		ItemEntity(const char *spriteName);
 };
 
 #endif

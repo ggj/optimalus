@@ -19,7 +19,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	, bPaused(false)
 {
 	gScene = this->pScene;
-    gPhysics = &clPhysicsManager;
+	gPhysics = &clPhysicsManager;
 }
 
 GameScene::~GameScene()
@@ -55,7 +55,7 @@ bool GameScene::Update(f32 dt)
 	UNUSED(dt)
 	cFlow.Update(dt);
 
-    clPhysicsManager.Update(dt);
+	clPhysicsManager.Update(dt);
 
 	return true;
 }
@@ -63,6 +63,8 @@ bool GameScene::Update(f32 dt)
 bool GameScene::Shutdown()
 {
 	musTheme.Unload();
+
+	clWorldManager.Clear();
 
 	gFlow->RemoveScene(pScene);
 	pScene->Unload();
@@ -118,20 +120,20 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 
 				if (type == "Entity")
 				{
-                    Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
+					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
 
-                    Log("%s", entity->GetName().c_str());
-                    if (entity->GetName() == "Player")
-                    {
-                        pPlayer = static_cast<PlayerEntity*>(entity);
-                    }
+					//Log("%s", entity->GetName().c_str());
+					if (entity->GetName() == "Player")
+					{
+						pPlayer = static_cast<PlayerEntity*>(entity);
+					}
 				}
 			}
 
-            LoadMapColliders();
+			LoadMapColliders();
 
-            pCamera->SetPosition(pPlayer->GetPosition());
-            sprites->SetVisible(false);
+			pCamera->SetPosition(pPlayer->GetPosition());
+			sprites->SetVisible(false);
 		}
 		break;
 	}
@@ -168,11 +170,11 @@ void GameScene::Resume()
 
 void GameScene::LoadMapColliders()
 {
-    MapLayerMetadata *game = pGameMap->GetLayerByName("Colliders")->AsMetadata();
-    for (unsigned i = 0, len = game->Size(); i < len; ++i)
-    {
-        IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
+	MapLayerMetadata *game = pGameMap->GetLayerByName("Colliders")->AsMetadata();
+	for (unsigned i = 0, len = game->Size(); i < len; ++i)
+	{
+		IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
 
-        clPhysicsManager.CreateStaticBody(placeHolder);
-    }
+		clPhysicsManager.CreateStaticBody(placeHolder);
+	}
 }

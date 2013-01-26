@@ -60,6 +60,15 @@
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\HeartEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\ItemEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\physicsmanager.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -104,6 +113,12 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\HeartEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\physicsmanager.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

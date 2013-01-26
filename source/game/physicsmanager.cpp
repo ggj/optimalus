@@ -73,6 +73,18 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 	b->CreateFixture(&fixDef);
 
 	return b;
+
+	/*
+	b2FixtureDef sensorDef;
+	sensorDef.shape = &boxShape;
+	sensorDef.isSensor = true;
+	b->CreateFixture(&sensorDef);
+	*/
+}
+
+void PhysicsManager::DestroyBody(b2Body *body)
+{
+	pWorld->DestroyBody(body);
 }
 
 void PhysicsManager::CreateStaticBody(ISceneObject *obj)
