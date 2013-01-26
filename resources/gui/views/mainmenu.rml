@@ -23,9 +23,9 @@
 		</style>
 	</head>
 	<body template="window" onload="load">
-		<button id="game">Start Game</button><br />
-		<button id="options">Options</button><br />
-		<button id="credits">Credits</button><br />
-		<button id="exit">Exit</button>
+		<button onClick="goto game">Start Game</button><br />
+		<button onClick="goto options">Options</button><br />
+		<button onClick="goto credits">Credits</button><br />
+		<button onClick="exit">Exit</button>
 	</body>
 </rml>

@@ -66,8 +66,10 @@ bool GameFlow::Shutdown()
 	if (cFlow.GetCurrentState() == &cGame)
 	{
 		cGame.OnStop(NULL);
+		cGame.LateStop();
 	}
 
+	RocketEventManager::RemoveListener(this);
 	pInput->RemoveKeyboardListener(this);
 	pSystem->RemoveListener(this);
 
@@ -109,6 +111,7 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 
 	pSystem->AddListener(this);
 	pInput->AddKeyboardListener(this);
+	RocketEventManager::AddListener(this);
 
 	pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
 
@@ -191,17 +194,11 @@ bool GameFlow::InitializeGUI()
 	pRocket->SetZ(-1000.0f);
 	pScene->Add(pRocket);
 
-	pContext->AddEventListener("load", this);
-	pContext->AddEventListener("click", this);
-
 	return true;
 }
 
 void GameFlow::ReleaseGUI()
 {
-	pContext->RemoveEventListener("load", this);
-	pContext->RemoveEventListener("click", this);
-
 	pInput->RemovePointerListener(pRocket);
 	pInput->RemoveKeyboardListener(pRocket);
 
@@ -221,28 +218,75 @@ void GameFlow::ReleaseGUI()
 	Delete(pRocket);
 }
 
-void GameFlow::ProcessEvent(Rocket::Core::Event &ev)
+void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
 {
-	if (ev.GetType() == "load")
+	Rocket::Core::StringList commands;
+	Rocket::Core::StringUtilities::ExpandString(commands, script, ';');
+	for (size_t i = 0; i < commands.size(); ++i)
 	{
-
-	}
-	else if (ev.GetType() == "click")
-	{
-		Rocket::Core::String eid = ev.GetTargetElement()->GetId().ToLower();
-		if (eid.Empty())
+		Rocket::Core::StringList values;
+		Rocket::Core::StringUtilities::ExpandString(values, commands[i], ' ');
+		if (values.empty())
 			return;
 
-		if (eid == "exit")
+		if (values[0] == "init" && values.size() > 1)
+		{
+			if (values[1] == "options")
+			{
+				// Atualizar os checkboxes de acordo com o pGameData...
+				// Adicionar sliders para volume
+				// toggle fullscreen
+
+				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
+				//pDoc->GetElementById("bgm");
+			}
+		}
+		else if (values[0] == "goto" && values.size() > 1)
+		{
+			if (values[1] == "credits")
+				cFlow.OnEvent(&cOnCredits);
+			else if (values[1] == "menu")
+				cFlow.OnEvent(&cOnMenu, pGameData);
+			else if (values[1] == "options")
+				cFlow.OnEvent(&cOnOptions, pGameData);
+			else if (values[1] == "game")
+				cFlow.OnEvent(&cOnGame, pGameData);
+		}
+		else if (values[0] == "exit")
+		{
 			pSystem->Shutdown();
-		else if (eid == "credits")
-			cFlow.OnEvent(&cOnCredits);
-		else if (eid == "menu")
-			cFlow.OnEvent(&cOnMenu, pGameData);
-		else if (eid == "options")
-			cFlow.OnEvent(&cOnOptions, pGameData);
-		else if (eid == "game")
-			cFlow.OnEvent(&cOnGame, pGameData);
+		}
+		else if (values[0] == "toggle" && values.size() > 1)
+		{
+			if (values[1] == "sfx")
+			{
+				if (pGameData->IsSfxEnabled())
+				{
+					pGameData->SetSfxVolume(pSoundSystem->GetSfxVolume());
+					pSoundSystem->SetSfxVolume(0.0f);
+					pGameData->SetSfxEnabled(false);
+				}
+				else
+				{
+					pSoundSystem->SetSfxVolume(pGameData->GetSfxVolume());
+					pGameData->SetSfxEnabled(true);
+				}
+			}
+			else if (values[1] == "bgm")
+			{
+				if (pGameData->IsBgmEnabled())
+				{
+					pGameData->SetBgmVolume(pSoundSystem->GetMusicVolume());
+					pSoundSystem->SetMusicVolume(0.0f);
+					pGameData->SetBgmEnabled(false);
+				}
+				else
+				{
+					pSoundSystem->SetMusicVolume(pGameData->GetBgmVolume());
+					pGameData->SetBgmEnabled(true);
+				}
+			}
+		}
 	}
 }
 

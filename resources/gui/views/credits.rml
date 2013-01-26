@@ -23,6 +23,6 @@
 		</style>
 	</head>
 	<body template="window" onload="load">
-		<button id="menu">Back</button>
+		<button onClick="goto menu">Back</button>
 	</body>
 </rml>

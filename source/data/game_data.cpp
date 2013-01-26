@@ -1,8 +1,12 @@
 #include "game_data.h"
 
 GameData::GameData()
-    : iScore(0)
-    , bGameOver(false)
+	: iScore(0)
+	, bGameOver(false)
+	, bSfxEnabled(true)
+	, bBgmEnabled(true)
+	, fSfxVol(1.0f)
+	, fBgmVol(1.0f)
 {
 }
 
@@ -10,7 +14,7 @@ GameData::~GameData()
 {
 }
 
-u32 GameData::GetScore()
+u32 GameData::GetScore() const
 {
 	return iScore;
 }
@@ -20,34 +24,54 @@ void GameData::SetScore(const u32 score)
 	iScore = score;
 }
 
-bool GameData::IsGameOver()
+bool GameData::IsGameOver() const
 {
 	return bGameOver;
 }
 
-void GameData::SetGameOver(const bool gameOver)
+void GameData::SetGameOver(bool b)
 {
-	bGameOver = gameOver;
+	bGameOver = b;
 }
 
-bool GameData::IsSoundFXEnable()
+bool GameData::IsSfxEnabled() const
 {
-	return bSoundFXEnable;
+	return bSfxEnabled;
 }
 
-void GameData::SetSoundFXEnable(const bool soundFX)
+void GameData::SetSfxEnabled(bool b)
 {
-	bSoundFXEnable = soundFX;
+	bSfxEnabled = b;
 }
 
-bool GameData::IsMusicEnable()
+bool GameData::IsBgmEnabled() const
 {
-	return bGameOver;
+	return bBgmEnabled;
 }
 
-void GameData::SetMusicEnable(const bool musicEnable)
+void GameData::SetBgmEnabled(bool b)
 {
-	bMusicEnable = musicEnable;
+	bBgmEnabled = b;
+}
+
+f32 GameData::GetSfxVolume() const
+{
+	return fSfxVol;
+}
+
+void GameData::SetSfxVolume(f32 v)
+{
+	fSfxVol = v;
+}
+
+f32 GameData::GetBgmVolume() const
+{
+	return fBgmVol;
+}
+
+void GameData::SetBgmVolume(f32 v)
+{
+	fBgmVol = v;
 }
 
 const String GameData::GetClassName() const
@@ -57,5 +81,5 @@ const String GameData::GetClassName() const
 
 int GameData::GetObjectType() const
 {
-	return TYPE_GAMEDATA;
+	return nGameData;
 }

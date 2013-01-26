@@ -23,7 +23,8 @@ HEADERS += \
     source/states/game_pause_state.h \
     source/states/game_state.h \
     source/scenes/game_scene.h \
-    source/data/game_data.h
+    source/data/game_data.h \
+    source/defines.h
 
 OTHER_FILES_CONFIG = \
 #Configs

@@ -22,9 +22,9 @@
 			}
 		</style>
 	</head>
-	<body template="window" onload="load">
-		<input type="checkbox" id="soundFX"/> Sound FX <br/>
-		<input type="checkbox" id="music"/ >Music <br/>
-		<button id="menu">Back</button>
+	<body template="window" onload="init options">
+		<input type="checkbox" id="sfx" onClick="toggle sfx" /> Sound FX <br/>
+		<input type="checkbox" id="bgm" onClick="toggle bgm"/ >Music <br/>
+		<button onClick="goto menu">Back</button>
 	</body>
 </rml>

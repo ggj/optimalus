@@ -1,10 +1,7 @@
 #ifndef _GAME_DATA_H
 #define _GAME_DATA_H
 
-#include <Seed.h>
-using namespace Seed;
-
-#define TYPE_GAMEDATA (Seed::TypeUser + 1)
+#include "../defines.h"
 
 class GameData : public IObject
 {
@@ -12,17 +9,23 @@ class GameData : public IObject
 		GameData();
 		virtual ~GameData();
 
-		virtual u32 GetScore();
-		virtual void SetScore(u32);
+		u32 GetScore() const;
+		void SetScore(u32);
 
-		virtual bool IsGameOver();
-		virtual void SetGameOver(bool);
+		bool IsGameOver() const;
+		void SetGameOver(bool);
 
-		virtual bool IsSoundFXEnable();
-		virtual void SetSoundFXEnable(bool);
+		bool IsSfxEnabled() const;
+		void SetSfxEnabled(bool);
 
-		virtual bool IsMusicEnable();
-		virtual void SetMusicEnable(bool);
+		bool IsBgmEnabled() const;
+		void SetBgmEnabled(bool);
+
+		f32 GetBgmVolume() const;
+		void SetBgmVolume(f32 v);
+
+		f32 GetSfxVolume() const;
+		void SetSfxVolume(f32 v);
 
 		// IObject
 		virtual const String GetClassName() const override;
@@ -31,8 +34,10 @@ class GameData : public IObject
 	private:
 		u32 iScore;
 		bool bGameOver;
-		bool bSoundFXEnable;
-		bool bMusicEnable;
+		bool bSfxEnabled;
+		bool bBgmEnabled;
+		f32 fSfxVol;
+		f32 fBgmVol;
 };
 
 #endif // _GAME_DATA_H
