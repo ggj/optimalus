@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Background" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="../textures/tile_map.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Background" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3ZQQqDQAADQM8+of9/aOlBkFLcyraYyAzswYsm5LLgunRarw7wJ629WnOPtPZqzT3S2qs190hrr9bcI629WnOPtPZqzT3S2qs198ir12Pi7M2858x3ttx3dNQruXNythn2yGKPLPbIYo8s7732d5rkzsnZZmz33WX5boOZO+ov3XmPo+dULTnPskcWe2SxRxZ7ZLFHFntksUcWe2SxRxZ7ZGnt1Zp7ZPb/+VXnrnsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAJ0/8bWy0QJwAAA==
+  </data>
+ </layer>
+ <objectgroup name="Colliders" width="100" height="100">
+  <object x="608" y="270" width="737" height="16"/>
+  <object x="26" y="271" width="485" height="15"/>
+  <object x="386" y="494" width="349" height="16"/>
+  <object x="2" y="3" width="27" height="925"/>
+  <object x="31" y="497" width="32" height="15"/>
+  <object x="97" y="497" width="30" height="16"/>
+  <object x="129" y="462" width="93" height="16"/>
+  <object x="130" y="480" width="27" height="383"/>
+  <object x="227" y="287" width="26" height="192"/>
+  <object x="33" y="912" width="1440" height="16"/>
+  <object x="1476" y="3" width="26" height="925"/>
+ </objectgroup>
+</map>
