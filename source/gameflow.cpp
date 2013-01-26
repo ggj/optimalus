@@ -115,7 +115,7 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 	RocketEventManager::AddListener(this);
 
 	pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
-	auto viewport = cPres.GetViewportByName("MainView");
+    Viewport *viewport = cPres.GetViewportByName("MainView");
 
 	pCamera = viewport->GetCamera();
 

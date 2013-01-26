@@ -7,7 +7,7 @@ using namespace Seed;
 #include "../game/WorldManager.h"
 
 class GameScene : public IEventInputKeyboardListener,
-			 public IEventJobListener
+                  public IEventJobListener
 {
 	public:
 		GameScene(SceneNode *parent, Camera *mainCamera);

@@ -7,8 +7,8 @@ enum
 };
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
-	: pPlayer(nullptr)
-	, pCamera(nullptr)
+    : pPlayer(NULL)
+    , pCamera(NULL)
 	, pScene(parent)	
 {
 }
@@ -63,11 +63,12 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			pScene->Load(r);
 			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
 			Delete(job);
+
 			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
 
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
-			auto game = pGameMap->GetLayerByName("Game")->AsMetadata();
+			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
 
 			for(unsigned i = 0, len = game->Size(); i < len; ++i)
 			{
