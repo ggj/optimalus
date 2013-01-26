@@ -1,20 +1,17 @@
 #ifndef _PLAYER_ENTITY_H
 #define _PLAYER_ENTITY_H
 
-#include "Entity.h"
+#include "SpriteEntity.h"
 
 #include "../defines.h"
 
-class PlayerEntity: public Entity
+class PlayerEntity: public SpriteEntity
 {
 	public:
 		PlayerEntity();
 		virtual ~PlayerEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
-
-	private:
-		Seed::Sprite *pSprite;
 };
 
 #endif

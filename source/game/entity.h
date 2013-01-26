@@ -17,6 +17,8 @@ class Entity
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites) = 0;
 
 	private:
+		SEED_DISABLE_COPY(Entity);
+
 		std::string strName;
 };
 

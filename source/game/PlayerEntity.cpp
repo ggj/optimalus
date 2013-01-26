@@ -6,24 +6,21 @@
 #include <LeakReport.h>
 #include <Sprite.h>
 
-#include "../scenes/game_scene.h"
-
 ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
-	pSprite(NULL)
+	SpriteEntity("Player")
 {
 	//empty
 }
 
 PlayerEntity::~PlayerEntity()
 {
-	Delete(pSprite);
+	//empty
 }
 
 void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
-	//FIXME
-	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Player"))));
-	gScene->Add(pSprite);
+	SpriteEntity::Load(metadata, sprites);
 }
+
