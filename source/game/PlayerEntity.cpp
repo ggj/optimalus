@@ -25,5 +25,17 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 {
 	//FIXME
 	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Player"))));
+    pSprite->SetPosition(metadata.GetPosition());
+
+    strName = "Player";
+
 	gScene->Add(pSprite);
+    gPhysics->CreateBody(pSprite);
+}
+
+Vector3f PlayerEntity::GetPosition()
+{
+    Vector3f position = Vector3f(pSprite->GetPosition().getX() - 200, pSprite->GetPosition().getY() - 300, 0);
+
+    return position;
 }

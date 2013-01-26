@@ -12,17 +12,17 @@ class Entity
 		Entity();
 		virtual ~Entity();
 
-		inline const std::string &GetName() const;
+        inline const String &GetName() const;
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites) = 0;
 
-	private:
-		std::string strName;
+    protected:
+        String strName;
 };
 
-const std::string &Entity::GetName() const
+const String &Entity::GetName() const
 {
-	return strName;
+    return strName;
 }
 
 #endif

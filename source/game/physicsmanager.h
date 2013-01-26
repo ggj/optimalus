@@ -19,6 +19,7 @@ class PhysicsManager
 
 	private:
 		b2World *pWorld;
+
 };
 
 #endif // PHYSICSMANAGER_H
