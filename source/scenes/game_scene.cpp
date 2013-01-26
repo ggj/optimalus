@@ -14,6 +14,7 @@ enum
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	: pPlayer(NULL)
 	, pCamera(mainCamera)
+	, clCamera()
 	, pScene(parent)
 	, musTheme()
 	, bPaused(false)
@@ -54,7 +55,10 @@ bool GameScene::Update(f32 dt)
 {
 	UNUSED(dt)
 	cFlow.Update(dt);
+<<<<<<< HEAD
 
+=======
+>>>>>>> Camera e colisao
 	clPhysicsManager.Update(dt);
 
 	return true;
@@ -109,7 +113,6 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			}
 
 			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
-
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
@@ -121,7 +124,6 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				if (type == "Entity")
 				{
 					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
-
 					//Log("%s", entity->GetName().c_str());
 					if (entity->GetName() == "Player")
 					{
@@ -130,9 +132,10 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				}
 			}
 
-			LoadMapColliders();
+			this->LoadMapColliders();
+			clCamera.SetCamera(pCamera);
+			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-			pCamera->SetPosition(pPlayer->GetPosition());
 			sprites->SetVisible(false);
 		}
 		break;

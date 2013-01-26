@@ -3,9 +3,8 @@
 #include "../scenes/game_scene.h"
 
 SpriteEntity::SpriteEntity(const char *spriteName)
-	:	pszSpriteName(spriteName)
-	,	pSprite(NULL)
-
+	:	pSprite(NULL)
+	,	pszSpriteName(spriteName)
 {
 	SEED_ASSERT(spriteName);
 }
@@ -24,4 +23,5 @@ void SpriteEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 
 	gScene->Add(pSprite);
 }
+
 

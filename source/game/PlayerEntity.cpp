@@ -34,9 +34,12 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 
 Vector3f PlayerEntity::GetPosition()
 {
-	Vector3f position = Vector3f(pSprite->GetPosition().getX() - 200, pSprite->GetPosition().getY() - 300, 0);
+	return pSprite->GetPosition();
+}
 
-	return position;
+Sprite *PlayerEntity::GetSprite() const
+{
+	return pSprite;
 }
 
 void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)

@@ -7,42 +7,44 @@ INCLUDEPATH += ../seed/include ../seed/contrib
 
 SOURCES += source/main.cpp \
 	source/gameflow.cpp \
-    source/states/credits_state.cpp \
-    source/states/main_menu_state.cpp \
-    source/states/options_state.cpp \
-    source/states/game_pause_state.cpp \
-    source/states/game_state.cpp \
-    source/scenes/game_scene.cpp \
-    source/data/game_data.cpp \
-    source/game/WorldManager.cpp \
-    source/game/PlayerEntity.cpp \
-    source/game/EntityFactory.cpp \
-    source/game/entity.cpp \
-    source/states/game_run_state.cpp \
-    source/game/physicsmanager.cpp \
-    source/game/SpriteEntity.cpp \
-    source/game/ItemEntity.cpp \
-    source/game/HeartEntity.cpp
+	source/states/credits_state.cpp \
+	source/states/main_menu_state.cpp \
+	source/states/options_state.cpp \
+	source/states/game_pause_state.cpp \
+	source/states/game_state.cpp \
+	source/scenes/game_scene.cpp \
+	source/data/game_data.cpp \
+	source/game/WorldManager.cpp \
+	source/game/PlayerEntity.cpp \
+	source/game/EntityFactory.cpp \
+	source/game/entity.cpp \
+	source/states/game_run_state.cpp \
+	source/game/physicsmanager.cpp \
+	source/game/SpriteEntity.cpp \
+	source/game/ItemEntity.cpp \
+	source/game/HeartEntity.cpp \
+	source/game/cameracontroller.cpp
 
 HEADERS += \
 	source/gameflow.h \
-    source/states/main_menu_state.h \
-    source/states/credits_state.h \
-    source/states/options_state.h \
-    source/states/game_pause_state.h \
-    source/states/game_state.h \
-    source/scenes/game_scene.h \
-    source/data/game_data.h \
-    source/defines.h \
-    source/game/WorldManager.h \
-    source/game/PlayerEntity.h \
-    source/game/EntityFactory.h \
-    source/game/entity.h \
-    source/states/game_run_state.h \
-    source/game/physicsmanager.h \
-    source/game/SpriteEntity.h \
-    source/game/ItemEntity.h \
-    source/game/HeartEntity.h
+	source/states/main_menu_state.h \
+	source/states/credits_state.h \
+	source/states/options_state.h \
+	source/states/game_pause_state.h \
+	source/states/game_state.h \
+	source/scenes/game_scene.h \
+	source/data/game_data.h \
+	source/defines.h \
+	source/game/WorldManager.h \
+	source/game/PlayerEntity.h \
+	source/game/EntityFactory.h \
+	source/game/entity.h \
+	source/states/game_run_state.h \
+	source/game/physicsmanager.h \
+	source/game/SpriteEntity.h \
+	source/game/ItemEntity.h \
+	source/game/HeartEntity.h \
+	source/game/cameracontroller.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -71,12 +73,12 @@ OTHER_FILES_TEXTURE = \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
-    #Styles
+	#Styles
 	resources/gui/styles/common.rcss \
 	resources/gui/styles/window.rcss \
 
 OTHER_FILES_GUI_VIEW = \
-    #Views
+	#Views
 	resources/gui/views/mainmenu.rml \
 	resources/gui/views/window.rml \
 	resources/gui/views/gameplay.rml \
@@ -99,8 +101,8 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
-        $${OTHER_FILES_SOUND} \
-        $${OTHER_FILES_MAPS}
+		$${OTHER_FILES_SOUND} \
+		$${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
@@ -142,19 +144,19 @@ macx {
 	APP_TEXTURE_FILES.files = $$OTHER_FILES_TEXTURE
 	APP_TEXTURE_FILES.path = Contents/Resources/textures
 	#Gui
-	    #Styles
-	    APP_GUI_STYLE_FILES.files = $$OTHER_FILES_GUI_STYLE
-	    APP_GUI_STYLE_FILES.path = Contents/Resources/gui/styles
-	    #Views
-	    APP_GUI_VIEW_FILES.files = $$OTHER_FILES_GUI_VIEW
-	    APP_GUI_VIEW_FILES.path = Contents/Resources/gui/views
+		#Styles
+		APP_GUI_STYLE_FILES.files = $$OTHER_FILES_GUI_STYLE
+		APP_GUI_STYLE_FILES.path = Contents/Resources/gui/styles
+		#Views
+		APP_GUI_VIEW_FILES.files = $$OTHER_FILES_GUI_VIEW
+		APP_GUI_VIEW_FILES.path = Contents/Resources/gui/views
 	#Sounds
 	APP_SOUND_FILES.files = $$OTHER_FILES_SOUND
 	APP_SOUND_FILES.path = Contents/Resources/sounds
 
 	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
 			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
-                        APP_SOUND_FILES APP_MAPS_FILES
+						APP_SOUND_FILES APP_MAPS_FILES
 	#Maps
 	APP_MAPS_FILES.files = $$OTHER_FILES_MAPS
 	APP_MAPS_FILES.path = Contents/Resources/

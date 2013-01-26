@@ -14,6 +14,7 @@ class PlayerEntity: public SpriteEntity,
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
+
 		// IEventInputKeyboardListener
 		virtual void OnInputKeyboardPress(const EventInputKeyboard *ev);
 
@@ -21,6 +22,8 @@ class PlayerEntity: public SpriteEntity,
 		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
 
 		Vector3f GetPosition();
+		Sprite *GetSprite() const;
+
 	protected:
 		b2Body		*pBody;
 		float		fVelocity;

@@ -94,7 +94,10 @@ void PhysicsManager::CreateStaticBody(ISceneObject *obj)
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_staticBody;
-	bodyDef.position.Set(obj->GetX() * PIX2M, obj->GetY() * PIX2M);
+
+	// FIXME: Metadata objects nao tem o pivot no centro do objeto - corrigir na Seed durante o load dos objects.
+	// Aqui estou compensando o x e y com metade da largura e altura.
+	bodyDef.position.Set((obj->GetX() + (obj->GetWidth() * 0.5f)) * PIX2M, (obj->GetY() + (obj->GetHeight() * 0.5f)) * PIX2M);
 	bodyDef.angle = 0.0f;
 	b2Body *b = pWorld->CreateBody(&bodyDef);
 
