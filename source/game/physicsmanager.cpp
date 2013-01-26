@@ -84,7 +84,8 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 
 void PhysicsManager::DestroyBody(b2Body *body)
 {
-	pWorld->DestroyBody(body);
+	if (body)
+		pWorld->DestroyBody(body);
 }
 
 void PhysicsManager::CreateStaticBody(ISceneObject *obj)
