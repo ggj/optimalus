@@ -4,6 +4,8 @@
 #include <Seed.h>
 using namespace Seed;
 
+#include "../game/WorldManager.h"
+
 class GameScene : public IEventInputKeyboardListener,
 			 public IEventJobListener
 {
@@ -29,6 +31,8 @@ class GameScene : public IEventInputKeyboardListener,
 		Camera			*pCamera;
 		SceneNode		*pScene;
 		GameMap			*pGameMap;
+
+		WorldManager	clWorldManager;
 };
 
 #endif // _GAMEFLOW_H_

@@ -84,6 +84,7 @@
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
     <ClCompile Include="..\..\..\source\main.cpp" />
     <ClCompile Include="..\..\..\source\scenes\game_scene.cpp" />
     <ClCompile Include="..\..\..\source\states\credits_state.cpp" />
