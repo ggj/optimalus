@@ -4,8 +4,8 @@
   <image source="../textures/tile_map.png" width="265" height="199"/>
  </tileset>
  <layer name="Background" width="100" height="100">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3ZQQqDQAADQM8+of9/aOlBkFLcyraYyAzswYsm5LLgunRarw7wJ629WnOPtPZqzT3S2qs190hrr9bcI629WnOPtPZqzT3S2qs198ir12Pi7M2858x3ttx3dNQruXNythn2yGKPLPbIYo8s7732d5rkzsnZZmz33WX5boOZO+ov3XmPo+dULTnPskcWe2SxRxZ7ZLFHFntksUcWe2SxRxZ7ZGnt1Zp7ZPb/+VXnrnsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAJ0/8bWy0QJwAAA==
+  <data encoding="base64" compression="zlib">
+   eJzt2TGuglAQQFFqlvAL979Mq58YKwxR7jxOcVqY4Wp8xH3btsdAe2AGe82fe9W9ps696l5T5151r6lzr7rX1LlX3Wvq3KvuNXXuI3v9nfB6rTPX+eQ+q/eY+Bksz6bHOvRo0aNFj5b3vV7PNOWdy7Od3ev/PHmkwZkzqh6f7zVlzylz6jGbHi16tOjRokeLHi16tOjRokeLHi1T95o695G9vvm/97fsQ1zd9w7flaP3u2uTao+70qNFjxY9WvRo0aNFj5ZfPp+7vlOUe1y9b50eLXq06NGiR4seLc67Ld4HW/Ro0aPF70eL81WLHi16tOjRokeLHi16tOjRokeLHi16tOjRokeLHi16tHhGLXoAAAAAAAAAAAAAAAAAXO8JDtaDaQ==
   </data>
  </layer>
  <objectgroup name="Colliders" width="100" height="100">

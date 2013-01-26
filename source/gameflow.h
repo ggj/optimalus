@@ -54,10 +54,13 @@ class GameFlow : public IGameApp,
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
 
+		inline Camera *GetCamera() const;
+
 	private:
 		SEED_DISABLE_COPY(GameFlow);
 
 		SceneNode			*pScene;
+		Camera				*pCamera;
 		Presentation		cPres;
 		String				sDocument;
 
@@ -96,5 +99,10 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
 };
+
+inline Camera *GameFlow::GetCamera() const
+{
+	return pCamera;
+}
 
 #endif // _GAMEFLOW_H_
