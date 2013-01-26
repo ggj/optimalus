@@ -55,10 +55,6 @@ bool GameScene::Update(f32 dt)
 {
 	UNUSED(dt)
 	cFlow.Update(dt);
-<<<<<<< HEAD
-
-=======
->>>>>>> Camera e colisao
 	clPhysicsManager.Update(dt);
 
 	return true;
