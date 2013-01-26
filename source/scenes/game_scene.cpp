@@ -1,6 +1,7 @@
 #include "game_scene.h"
 #include "../gameflow.h"
 
+#include <SceneNode.h>
 enum
 {
 	kJobLoadScene
@@ -71,7 +72,9 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			musTheme.SetVolume(1.0f);
 			pSoundSystem->PlayMusic(&musTheme);
 
-			pPlayer = (ISceneObject *)pScene->GetChildByName("Player");		
+			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
+
+			pPlayer = static_cast<ISceneObject *>(pScene->GetChildByName("Player"));
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
@@ -83,11 +86,9 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 
 				if(type == "Entity")
 				{
-					clWorldManager.BuildEntity(*placeHolder);
+					clWorldManager.BuildEntity(*placeHolder, sprites);
 				}
 			}
-
-			pPlayer = game->GetChildByName("Player");
 		}
 		break;
 	}

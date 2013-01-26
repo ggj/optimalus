@@ -3,12 +3,16 @@
 
 #include <string>
 
+#include "../defines.h"
+
 class Entity
 {
 	public:
 		Entity();
 
 		inline const std::string &GetName() const;
+
+		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites) = 0;
 
 	private:
 		std::string strName;

@@ -2,11 +2,20 @@
 
 #include "EntityFactory.h"
 
+#include <SceneNode.h>
 #include <LeakReport.h>
+#include <Sprite.h>
 
 ENTITY_CREATOR("Player", PlayerEntity);
 
-PlayerEntity::PlayerEntity()
+PlayerEntity::PlayerEntity():
+	pSprite(NULL)
 {
 	//empty
+}
+
+void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+{
+	//FIXME
+	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Player"))));
 }

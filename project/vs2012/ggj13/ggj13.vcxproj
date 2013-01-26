@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\data\game_data.h" />
+    <ClInclude Include="..\..\..\source\defines.h" />
     <ClInclude Include="..\..\..\source\gameflow.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />

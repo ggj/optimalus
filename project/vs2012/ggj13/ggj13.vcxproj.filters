@@ -90,5 +90,6 @@
     <ClInclude Include="..\..\..\source\game\Entity.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\defines.h" />
   </ItemGroup>
 </Project>

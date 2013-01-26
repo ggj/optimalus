@@ -1,10 +1,7 @@
 #ifndef _WORLD_MANAGER_H
 #define _WORLD_MANAGER_H
 
-namespace Seed
-{
-	class IMetadataObject;
-}
+#include "../defines.h"
 
 #include <vector>
 
@@ -13,10 +10,13 @@ class Entity;
 class WorldManager
 {
 	public:
-		void BuildEntity(Seed::IMetadataObject &metadata);
+		void BuildEntity(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
+
+		~WorldManager();
 
 	private:
-		std::vector<Entity *> vEntities;
+		typedef std::vector<Entity *> EntitiesVector_t;
+		EntitiesVector_t vEntities;
 };
 
 
