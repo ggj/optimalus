@@ -24,10 +24,10 @@
     					aFrames:
     					[
     						{
-    							sResource: textures/player_frame1.png
+							sResource: textures/player_idle_frame1.png
     						}
     						{
-    							sResource: textures/player_frame2.png
+							sResource: textures/player_idle_frame2.png
     						}
     					]
     				}
