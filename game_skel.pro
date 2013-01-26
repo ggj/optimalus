@@ -71,7 +71,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
 	resources/textures/player_idle_frame2.png \
-	resources/textures/player_idle_frame1.png
+	resources/textures/player_idle_frame1.png \
+	resources/textures/heart.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

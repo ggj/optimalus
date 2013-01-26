@@ -54,12 +54,21 @@ bool GameScene::Initialize()
 
 bool GameScene::Update(f32 dt)
 {
-	UNUSED(dt)
+/*
+TEST: Bug de raster/texel.
+*/
+//	if (pPlayer)
+//	{
+//		//pPlayer->GetSprite()->AddY(0.5f);
+//		pPlayer->GetSprite()->AddX(0.05f);
+//		clCamera.LookAt(pPlayer->GetPosition());
+//	}
+//	return true;
+
 	if (!bInitialized)
 		return true;
 
 	cFlow.Update(dt);
-
 	if (!bPaused)
 	{
 		clPhysicsManager.Update(dt);
