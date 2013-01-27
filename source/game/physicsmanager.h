@@ -107,6 +107,8 @@ class PhysicsManager: public b2ContactListener
 		typedef std::list<CollisionEvent> CollisionEventList_t;
 		CollisionEventList_t lstEvents;
 
+		f32		fpTimeLeft;
+
 };
 
 #endif // PHYSICSMANAGER_H

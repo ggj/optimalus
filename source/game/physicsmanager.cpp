@@ -11,6 +11,7 @@
 
 PhysicsManager::PhysicsManager()
 	: pWorld(NULL)
+	, fpTimeLeft(0)
 {
 	pWorld = New(b2World(b2Vec2(0.0f, 10.0f)));
 
@@ -25,8 +26,15 @@ PhysicsManager::~PhysicsManager()
 
 void PhysicsManager::Update(f32 dt)
 {
-	pWorld->Step(dt, 8, 3);
-	pWorld->ClearForces();
+	const f32 timeStep = 1/60.0f;
+	fpTimeLeft += dt;
+
+	while(fpTimeLeft >= timeStep)
+	{
+		fpTimeLeft -= timeStep;
+		pWorld->Step(timeStep, 8, 3);
+		pWorld->ClearForces();
+	}
 
 	for (b2Body *b = pWorld->GetBodyList(); b; b = b->GetNext())
 	{
