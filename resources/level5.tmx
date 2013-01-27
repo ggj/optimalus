@@ -1,241 +1,241 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="84" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="140" height="124" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Background" tilewidth="32" tileheight="32">
   <image source="textures/village_tileset.bmp" width="640" height="480"/>
  </tileset>
- <layer name="Background" width="100" height="84">
+ <layer name="Background" width="140" height="124">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <objectgroup name="Colliders" width="100" height="84">
-  <object x="2" y="3" width="23" height="3189"/>
-  <object x="32" y="321" width="602" height="57"/>
-  <object x="33" y="164" width="60" height="158"/>
-  <object x="97" y="259" width="26" height="60"/>
-  <object x="128" y="291" width="28" height="29"/>
-  <object x="739" y="355" width="26" height="89"/>
-  <object x="771" y="389" width="24" height="55"/>
-  <object x="802" y="421" width="25" height="24"/>
-  <object x="707" y="421" width="28" height="25"/>
-  <object x="707" y="449" width="2458" height="67"/>
-  <object x="581" y="515" width="183" height="25"/>
-  <object x="643" y="480" width="62" height="34"/>
-  <object x="33" y="384" width="411" height="123"/>
-  <object x="450" y="385" width="89" height="29"/>
-  <object x="448" y="418" width="60" height="27"/>
-  <object x="448" y="449" width="31" height="27"/>
-  <object x="224" y="516" width="30" height="58"/>
-  <object x="227" y="678" width="24" height="55"/>
-  <object x="166" y="742" width="150" height="55"/>
-  <object x="28" y="804" width="2977" height="953"/>
-  <object name="Morte" x="979" y="734" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="2374" y="736" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-   </properties>
-  </object>
-  <object name="Morte" x="3071" y="930" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-   </properties>
-  </object>
-  <object name="Morte" x="3095" y="2523" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="196" y="1657" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="1754" y="1615" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="3080" y="1686" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object x="28" y="2597" width="3134" height="87"/>
-  <object name="Morte" x="88" y="2543" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="870" y="2541" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="1188" y="2251" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object name="Morte" x="2299" y="2285" width="28" height="30">
-   <properties>
-    <property name="Class" value="Death"/>
-    <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
-   </properties>
-  </object>
-  <object x="3171" y="37" width="10" height="1"/>
-  <object x="3168" y="8" width="26" height="2673"/>
-  <object x="2114" y="2342" width="348" height="24"/>
-  <object x="2147" y="2310" width="89" height="24"/>
-  <object x="2212" y="2279" width="57" height="24"/>
-  <object x="2147" y="2373" width="88" height="24"/>
-  <object x="2213" y="2405" width="55" height="25"/>
-  <object x="1668" y="2564" width="249" height="25"/>
-  <object x="1763" y="2532" width="90" height="26"/>
-  <object x="1123" y="2310" width="635" height="25"/>
-  <object x="548" y="2438" width="24" height="158"/>
-  <object x="579" y="2470" width="26" height="123"/>
-  <object x="611" y="2530" width="56" height="63"/>
-  <object x="195" y="2534" width="57" height="58"/>
-  <object x="257" y="2563" width="58" height="29"/>
-  <object x="30" y="2437" width="157" height="21"/>
-  <object x="291" y="2372" width="153" height="24"/>
-  <object x="548" y="2310" width="152" height="21"/>
-  <object x="645" y="2279" width="56" height="25"/>
-  <object x="773" y="2213" width="215" height="24"/>
-  <object x="899" y="2148" width="218" height="24"/>
-  <object x="900" y="2179" width="88" height="27"/>
-  <object x="2972" y="1761" width="32" height="661"/>
-  <object x="2342" y="1766" width="627" height="251"/>
-  <object x="2593" y="2020" width="376" height="59"/>
-  <object x="2660" y="2087" width="309" height="56"/>
-  <object x="2724" y="2151" width="245" height="55"/>
-  <object x="2790" y="2212" width="177" height="56"/>
-  <object x="2850" y="2278" width="117" height="52"/>
-  <object x="2916" y="2340" width="53" height="58"/>
-  <object x="387" y="645" width="219" height="29"/>
-  <object x="963" y="771" width="252" height="31"/>
-  <object x="1026" y="740" width="189" height="30"/>
-  <object x="1088" y="708" width="126" height="28"/>
-  <object x="1154" y="678" width="60" height="28"/>
-  <object x="2788" y="739" width="153" height="65"/>
-  <object x="2851" y="709" width="27" height="29"/>
-  <object x="1381" y="521" width="25" height="181"/>
-  <object x="1380" y="707" width="277" height="25"/>
-  <object x="1476" y="612" width="156" height="25"/>
-  <object x="1604" y="523" width="27" height="87"/>
-  <object x="1764" y="709" width="184" height="92"/>
-  <object x="1828" y="615" width="57" height="89"/>
+ <objectgroup name="Colliders" width="140" height="124">
+  <object x="642" y="643" width="27" height="2681"/>
+  <object x="672" y="961" width="602" height="57"/>
+  <object x="673" y="804" width="60" height="158"/>
+  <object x="737" y="899" width="26" height="60"/>
+  <object x="768" y="931" width="28" height="29"/>
+  <object x="1379" y="995" width="26" height="89"/>
+  <object x="1411" y="1029" width="24" height="55"/>
+  <object x="1442" y="1061" width="25" height="24"/>
+  <object x="1347" y="1061" width="28" height="25"/>
+  <object x="1347" y="1089" width="2458" height="67"/>
+  <object x="1221" y="1155" width="183" height="25"/>
+  <object x="1283" y="1120" width="62" height="34"/>
+  <object x="673" y="1024" width="411" height="123"/>
+  <object x="1090" y="1025" width="89" height="29"/>
+  <object x="1088" y="1058" width="60" height="27"/>
+  <object x="1088" y="1089" width="31" height="27"/>
+  <object x="864" y="1156" width="30" height="58"/>
+  <object x="867" y="1318" width="24" height="55"/>
+  <object x="806" y="1382" width="150" height="55"/>
+  <object x="668" y="1444" width="2977" height="953"/>
+  <object x="668" y="3237" width="3134" height="87"/>
+  <object x="3811" y="643" width="26" height="2673"/>
+  <object x="2754" y="2982" width="348" height="24"/>
+  <object x="2787" y="2950" width="89" height="24"/>
+  <object x="2852" y="2919" width="57" height="24"/>
+  <object x="2787" y="3013" width="88" height="24"/>
+  <object x="2853" y="3045" width="55" height="25"/>
+  <object x="2308" y="3204" width="249" height="25"/>
+  <object x="2403" y="3172" width="90" height="26"/>
+  <object x="1763" y="2950" width="635" height="25"/>
+  <object x="1188" y="3078" width="24" height="158"/>
+  <object x="1219" y="3110" width="26" height="123"/>
+  <object x="1251" y="3170" width="56" height="63"/>
+  <object x="835" y="3174" width="57" height="58"/>
+  <object x="897" y="3203" width="58" height="29"/>
+  <object x="670" y="3077" width="157" height="21"/>
+  <object x="931" y="3012" width="153" height="24"/>
+  <object x="1188" y="2950" width="152" height="21"/>
+  <object x="1285" y="2919" width="56" height="25"/>
+  <object x="1413" y="2853" width="215" height="24"/>
+  <object x="1539" y="2788" width="218" height="24"/>
+  <object x="1540" y="2819" width="88" height="27"/>
+  <object x="3612" y="2401" width="32" height="661"/>
+  <object x="2982" y="2406" width="627" height="251"/>
+  <object x="3233" y="2660" width="376" height="59"/>
+  <object x="3300" y="2727" width="309" height="56"/>
+  <object x="3364" y="2791" width="245" height="55"/>
+  <object x="3430" y="2852" width="177" height="56"/>
+  <object x="3490" y="2918" width="117" height="52"/>
+  <object x="3556" y="2980" width="53" height="58"/>
+  <object x="1027" y="1285" width="219" height="29"/>
+  <object x="1603" y="1411" width="252" height="31"/>
+  <object x="1666" y="1380" width="189" height="30"/>
+  <object x="1728" y="1348" width="126" height="28"/>
+  <object x="1794" y="1318" width="60" height="28"/>
+  <object x="3428" y="1379" width="153" height="65"/>
+  <object x="3491" y="1349" width="27" height="29"/>
+  <object x="2021" y="1161" width="25" height="181"/>
+  <object x="2020" y="1347" width="277" height="25"/>
+  <object x="2116" y="1252" width="156" height="25"/>
+  <object x="2244" y="1163" width="27" height="87"/>
+  <object x="2404" y="1349" width="184" height="92"/>
+  <object x="2468" y="1255" width="57" height="89"/>
+  <object x="673" y="647" width="3133" height="24"/>
  </objectgroup>
- <objectgroup name="Game" width="100" height="84">
-  <object name="Death1" x="1008" y="391" width="23" height="23">
+ <objectgroup name="Game" width="140" height="124">
+  <object name="Death1" x="1656" y="1043" width="23" height="23">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="3036" y="422" width="27" height="25">
+  <object name="Girl1" x="3685" y="1071" width="27" height="25">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="1603" y="422" width="29" height="24">
+  <object name="Girl1" x="2247" y="1074" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="167" y="295" width="29" height="24">
+  <object name="Girl3" x="807" y="943" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="575" y="615" width="29" height="24">
+  <object name="Girl3" x="1218" y="1264" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="48" y="776" width="29" height="24">
+  <object name="Girl3" x="690" y="1428" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1609" y="2277" width="29" height="24">
+  <object name="Girl3" x="2259" y="2930" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="2882" y="2571" width="29" height="24">
+  <object name="Girl3" x="3534" y="3219" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1813" y="2504" width="29" height="24">
+  <object name="Girl3" x="2464" y="3156" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="999" y="2121" width="29" height="24">
+  <object name="Girl3" x="1650" y="2773" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="423" y="2572" width="29" height="24">
+  <object name="Girl3" x="1075" y="3221" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Trigger" x="3020" y="382" width="59" height="58">
+  <object name="Trigger" x="3660" y="1022" width="59" height="58">
    <properties>
     <property name="Class" value="Trigger"/>
     <property name="Target" value="Counter"/>
    </properties>
   </object>
-  <object name="Player" x="2789" y="404" width="29" height="26">
+  <object name="Player" x="3429" y="1044" width="29" height="26">
    <properties>
     <property name="Class" value="Player"/>
    </properties>
   </object>
-  <object name="Girl1" x="1563" y="585" width="29" height="24">
+  <object name="Girl1" x="2213" y="1234" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="2087" y="774" width="29" height="24">
+  <object name="Girl1" x="2736" y="1426" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="1844" y="2896" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="1525" y="3189" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="729" y="3194" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="836" y="2297" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="2394" y="2255" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="3681" y="2419" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="3732" y="3181" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="2988" y="2929" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Morte" x="3759" y="1714" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+   </properties>
+  </object>
+  <object name="Morte" x="3027" y="1392" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
+   </properties>
+  </object>
+  <object name="Morte" x="1618" y="1359" width="28" height="30">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Sleep" value="99999"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
