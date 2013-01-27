@@ -85,6 +85,12 @@
     <ClCompile Include="..\..\..\source\game\TriggerCounter.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\CollisionSensor.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\TeleportEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -159,6 +165,12 @@
       <Filter>states</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\TriggerCounter.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\TeleportEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\CollisionSensor.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

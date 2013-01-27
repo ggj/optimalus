@@ -1,14 +1,14 @@
-#ifndef _HOSTAGE_H
-#define _HOSTAGE_H
+#ifndef _TELEPORT_ENTITY_H
+#define _TELEPORT_ENTITY_H
 
-#include "SpriteEntity.h"
+#include "entity.h"
 
 #include "CollisionSensor.h"
 
-class HostageEntity: public SpriteEntity
+class TeleportEntity: public Entity
 {
 	public:
-		HostageEntity();			
+		TeleportEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
@@ -16,6 +16,9 @@ class HostageEntity: public SpriteEntity
 
 	private:
 		CollisionSensor clSensor;
+
+		bool fDestination;
+
 };
 
 #endif

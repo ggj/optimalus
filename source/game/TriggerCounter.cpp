@@ -23,9 +23,7 @@ void TriggerCounter::Load(IMetadataObject &metadata, SceneNode *sprites)
 		Log("Counter property not found for TriggerCounter");
 	}
 
-	sscanf(counter.c_str(), "%d", &iCounter);
-
-	strTarget = metadata.GetProperty("Target");
+	sscanf(counter.c_str(), "%d", &iCounter);	
 }
 
 void TriggerCounter::Activate()
@@ -34,6 +32,6 @@ void TriggerCounter::Activate()
 
 	if(iCounter == 0)
 	{
-		gWorldManager->ActivateAllEntites(strTarget.c_str());
+		this->DoActivateAll();
 	}
 }

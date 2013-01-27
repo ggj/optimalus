@@ -4,6 +4,8 @@
 #include "SpriteEntity.h"
 #include "../defines.h"
 
+#include "CollisionSensor.h"
+
 class PlayerEntity;
 
 #include <Box2D/Box2D.h>
@@ -11,8 +13,7 @@ class PlayerEntity;
 class DeathEntity: public SpriteEntity
 {
 	public:
-		DeathEntity();
-		virtual ~DeathEntity();
+		DeathEntity();		
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
@@ -26,7 +27,7 @@ class DeathEntity: public SpriteEntity
 		virtual void Activate();
 
 	private:
-		b2Body		*pBody;
+		CollisionSensor clSensor;
 
 		f32			fpSleepConfig;
 		f32			fpSleep;	

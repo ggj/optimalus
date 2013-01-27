@@ -27,13 +27,10 @@ div#hostages_div
 	float: left;
 	width: 155px;
 	font-size: 30;
-}
 
-div#time_div
-{
-	float: left;
-	width: 205px;
-	font-size: 30;
+	outline-font-effect: outline;
+	outline-width: 2px;
+	outline-color: black;
 }
 
 div#lifes_div
@@ -41,6 +38,10 @@ div#lifes_div
 	float: right;
 	width: 80px;
 	font-size: 30;
+
+	outline-font-effect: outline;
+	outline-width: 2px;
+	outline-color: black;
 }
 
 icon
@@ -51,30 +52,19 @@ icon
 
 div#hostages_div icon
 {
-	left: 14px;
-	top: 3px;
+	left: 20px;
+	top: 15px;
 	width: 45px;
-	height: 45px;
+	height: 40px;
 
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 140px 153px 185px 198px;
-}
-
-div#time_div icon
-{
-	left: 14px;
-	top: 13px;
-	width: 45px;
-	height: 45px;
-
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 432px 160px 477px 205px;
+	background-image: /textures/rocket_invader.png 140px 153px 185px 193px;
 }
 
 div#lifes_div icon
 {
-	left: 14px;
-	top: 3px;
+	left: 20px;
+	top: 15px;
 	width: 45px;
 	height: 45px;
 

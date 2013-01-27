@@ -12,17 +12,12 @@ HostageEntity::HostageEntity():
 	//empty
 }
 
-HostageEntity::~HostageEntity()
-{
-	gPhysics->DestroyBody(pBody);
-}
 
 void HostageEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 
-	pBody = gPhysics->CreateStaticBody(&metadata, BodyType::SENSOR);
-	pBody->GetFixtureList()->SetUserData(this);	
+	clSensor.Load(metadata, this);	
 }
 
 void HostageEntity::OnCollision(const CollisionEvent &event)
@@ -39,7 +34,7 @@ void HostageEntity::OnCollision(const CollisionEvent &event)
 			if(player->GetItem() == ItemTypes::NONE)
 			{
 				gSoundManager->Play(SND_HOSTAGE_KILL);		
-				pBody->GetFixtureList()->SetUserData(NULL);	
+				clSensor.Disable();				
 
 				player->SetItem(ItemTypes::HEART);
 

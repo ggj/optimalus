@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\..\source\data\game_data.cpp" />
     <ClCompile Include="..\..\..\source\gameflow.cpp" />
     <ClCompile Include="..\..\..\source\game\cameracontroller.cpp" />
+    <ClCompile Include="..\..\..\source\game\CollisionSensor.cpp" />
     <ClCompile Include="..\..\..\source\game\DeathEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\SoundManager.cpp" />
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\TeleportEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\TriggerCounter.cpp" />
     <ClCompile Include="..\..\..\source\game\TriggerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
@@ -115,6 +117,7 @@
     <ClInclude Include="..\..\..\source\defines.h" />
     <ClInclude Include="..\..\..\source\gameflow.h" />
     <ClInclude Include="..\..\..\source\game\cameracontroller.h" />
+    <ClInclude Include="..\..\..\source\game\CollisionSensor.h" />
     <ClInclude Include="..\..\..\source\game\DeathEntity.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />
@@ -127,6 +130,7 @@
     <ClInclude Include="..\..\..\source\game\SoundManager.h" />
     <ClInclude Include="..\..\..\source\game\Sounds.h" />
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h" />
+    <ClInclude Include="..\..\..\source\game\TeleportEntity.h" />
     <ClInclude Include="..\..\..\source\game\TriggerCounter.h" />
     <ClInclude Include="..\..\..\source\game\TriggerEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />

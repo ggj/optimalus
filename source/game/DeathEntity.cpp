@@ -22,20 +22,13 @@ DeathEntity::DeathEntity():
 	//empty
 }
 
-DeathEntity::~DeathEntity()
-{
-	gPhysics->DestroyBody(pBody);
-}
-
 void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 
 	b2Vec2 customSize(50, 40);
 
-	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::SENSOR, true, &customSize);
-
-	pBody->GetFixtureList()->SetUserData(this);
+	clSensor.Load(*pSprite, true, &customSize, this);	
 
 	String sleep = metadata.GetProperty("Sleep");
 	if(!sleep.empty())
@@ -79,7 +72,7 @@ void DeathEntity::Update(f32 dt)
 		if(pTarget == NULL)
 			Log("No player to track");
 
-		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
+		b2Vec2 dir = pTarget->GetBodyPosition() - clSensor.GetBodyPosition();
 
 		f32 distance = dir.Normalize();
 		if(distance > 0.03f)
@@ -104,9 +97,9 @@ void DeathEntity::Update(f32 dt)
 
 			dir *= fpSpeedFactor;
 
-			dir += pBody->GetPosition();
+			dir += clSensor.GetBodyPosition();
 
-			pBody->SetTransform(dir, pBody->GetAngle());
+			clSensor.SetBodyPosition(dir);			
 		}
 	}
 }
