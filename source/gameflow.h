@@ -42,6 +42,10 @@ class GameFlow : public IGameApp,
 		bool InitializeGUI();
 		void ReleaseGUI();
 
+		void SetGUIElementLife(const Rocket::Core::String life);
+		void SetGUIElementTime(const Rocket::Core::String time);
+		void SetGUIElementHostage(const Rocket::Core::String hostage);
+
 		// IEventSystemListener
 		virtual void OnSystemShutdown(const EventSystem *ev);
 
@@ -96,6 +100,11 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
 		ISceneObject *pImage;
+
+		// GUI Elements
+		Rocket::Core::Element	*pElementLife;
+		Rocket::Core::Element	*pElementTime;
+		Rocket::Core::Element	*pElementHostage;
 };
 
 inline Camera *GameFlow::GetCamera() const

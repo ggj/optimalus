@@ -26,7 +26,8 @@ SOURCES += source/main.cpp \
 	source/game/TriggerEntity.cpp \
 	source/game/GameScene.cpp \
 	source/game/DeathEntity.cpp \
-	source/game/SoundManager.cpp
+	source/game/SoundManager.cpp \
+	source/game/HostageEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -50,7 +51,8 @@ HEADERS += \
 	source/game/TriggerEntity.h \
 	source/game/GameScene.h \
 	source/game/DeathEntity.h \
-	source/game/SoundManager.h
+	source/game/SoundManager.h \
+	source/game/HostageEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -113,7 +115,8 @@ OTHER_FILES_GUI_VIEW = \
 OTHER_FILES_SOUND = \
 #Sounds
 	resources/sounds/sfx.ogg \
-	resources/sounds/theme.ogg
+	resources/sounds/theme.ogg \
+	resources/sounds/Pickup_Coin3.ogg
 #Maps
 OTHER_FILES_MAPS = \
 	resources/level1.json
@@ -201,6 +204,8 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
 
 
 
