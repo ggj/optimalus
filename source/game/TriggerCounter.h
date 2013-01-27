@@ -14,8 +14,6 @@ class TriggerCounter: public Entity
 
 	private:
 		int iCounter;
-
-		String strTarget;
 };
 
 #endif
