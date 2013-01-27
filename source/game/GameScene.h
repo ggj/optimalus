@@ -4,17 +4,19 @@
 #include <api/rocket/RocketInterface.h>
 
 #include "../defines.h"
-#include "../game/physicsmanager.h"
-#include "../game/WorldManager.h"
+#include "physicsmanager.h"
+#include "WorldManager.h"
 #include "../states/game_pause_state.h"
 #include "../states/game_run_state.h"
-#include "../game/PlayerEntity.h"
-#include "../game/cameracontroller.h"
+#include "PlayerEntity.h"
+#include "cameracontroller.h"
+#include "SoundManager.h"
 
 using namespace Seed::RocketGui;
 
 extern SceneNode *gScene;
 extern PhysicsManager *gPhysics;
+extern SoundManager *gSoundManager;
 
 class GameScene : public IEventInputKeyboardListener,
 				  public IEventJobListener,
@@ -58,6 +60,7 @@ class GameScene : public IEventInputKeyboardListener,
 
 		WorldManager	clWorldManager;
 		PhysicsManager	clPhysicsManager;
+		SoundManager	clSoundManager;
 
 		// State Machine
 		StateMachine		cFlow;
