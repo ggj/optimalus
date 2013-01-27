@@ -44,28 +44,37 @@ icon
 {
 	display: block;
 	position: absolute;
-	left: 14px;
-	top: 3px;
-
-	width: 51px;
-	height: 39px;
-
-	icon-decorator: image;
-	icon-image-src: /textures/rocket_invader.png;
-	icon-image-t: 50px 50px;
 }
 
 div#hostages_div icon
 {
-	icon-image-s: 100px 100px;
+	left: 14px;
+	top: 3px;
+	width: 45px;
+	height: 45px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 140px 153px 185px 198px;
 }
 
 div#time_div icon
 {
-	icon-image-s: 100 100px;
+	left: 14px;
+	top: 13px;
+	width: 45px;
+	height: 45px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 432px 160px 477px 205px;
 }
 
 div#lifes_div icon
 {
-	icon-image-s: 150px 150px;
+	left: 14px;
+	top: 3px;
+	width: 45px;
+	height: 45px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 388px 155px 433px 200px;
 }
