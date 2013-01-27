@@ -29,7 +29,8 @@ SOURCES += source/main.cpp \
 	source/game/SoundManager.cpp \
 	source/game/HostageEntity.cpp \
 	source/states/gameover_state.cpp \
-	source/game/TriggerCounter.cpp
+	source/game/TriggerCounter.cpp \
+	source/game/CollisionSensor.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -57,7 +58,8 @@ HEADERS += \
 	source/game/Sounds.h \
 	source/game/HostageEntity.h \
 	source/states/gameover_state.h \
-	source/game/TriggerCounter.h
+	source/game/TriggerCounter.h \
+	source/game/CollisionSensor.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -74,7 +76,7 @@ OTHER_FILES_FONT = \
 OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
-	resources/scenes/game.scene \
+	resources/scenes/game_level1.scene \
 	resources/scenes/game_level4.scene \
 	resources/scenes/game_level2.scene \
 	resources/scenes/game_level3.scene \
@@ -147,8 +149,7 @@ OTHER_FILES_MAPS = \
 	resources/level4.json \
 	resources/level3.json \
 	resources/level2.json \
-	resources/level1.json \
-	resources/level_bcs.json
+	resources/level1.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \

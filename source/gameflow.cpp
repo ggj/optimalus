@@ -278,7 +278,7 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 				cFlow.OnEvent(&cOnOptions);
 			else if (values[1] == "game")
 			{
-				sSceneFile = "game.scene";
+				sSceneFile = "game_level1.scene";
 				this->DoLoad();
 			}
 		}
