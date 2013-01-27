@@ -1,0 +1,71 @@
+body
+{
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+game
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+div
+{
+	height: 47px;
+	padding: 9px 0px 0px 65px;
+	margin: 0px 20px;
+	font-size: 20;
+}
+
+div#hostages_div
+{
+	float: left;
+	width: 155px;
+}
+
+div#time_div
+{
+	float: left;
+	width: 205px;
+}
+
+div#lifes_div
+{
+	float: right;
+	width: 80px;
+}
+
+icon
+{
+	display: block;
+	position: absolute;
+	left: 14px;
+	top: 3px;
+
+	width: 51px;
+	height: 39px;
+
+	icon-decorator: image;
+	icon-image-src: /textures/rocket_invader.png;
+	icon-image-t: 50px 50px;
+}
+
+div#hostages_div icon
+{
+	icon-image-s: 100px 100px;
+}
+
+div#time_div icon
+{
+	icon-image-s: 100 100px;
+}
+
+div#lifes_div icon
+{
+	icon-image-s: 150px 150px;
+}

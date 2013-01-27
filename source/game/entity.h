@@ -6,6 +6,8 @@
 
 #include "../defines.h"
 
+class CollisionEvent;
+
 class Entity
 {
 	public:
@@ -15,6 +17,8 @@ class Entity
         inline const String &GetName() const;
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites) = 0;
+
+		virtual void OnCollision(const CollisionEvent &event) {};
 
     protected:
         String strName;
