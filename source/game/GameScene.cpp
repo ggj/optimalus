@@ -24,7 +24,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
 	, fpTimeToNextLevel(3)
-	, fChangeLevel(false)	
+	, fChangeLevel(false)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -105,6 +105,7 @@ TEST: Bug de raster/texel.
 	}
 	if(gGameData->GetLife() == 0)
 	{
+		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
@@ -209,6 +210,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			sprites->SetVisible(false);
 
 			pGameOverImg = (Image *)cScene.GetChildByName("GameOverImage");
+			pGameOverImg->SetVisible(false);
 
 			bInitialized = true;
 		}

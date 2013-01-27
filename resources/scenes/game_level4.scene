@@ -255,15 +255,6 @@
 			cPosition: {z: 200}
 		}
 		{
-			sType: SoundSource
-			sName: audio
-			cPosition: {x: 0, y: 0, z: 0}
-			bAutoPlay: false
-			bLoop: true
-			fVolume: 0.5
-			sResource: sounds/sfx.ogg
-		}
-		{
 			sType: Image
 			sName: GameOverImage
 			sResource: textures/background_gameover.png

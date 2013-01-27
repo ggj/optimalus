@@ -4,7 +4,7 @@
   <property name="NextLevel" value="game_level5.scene"/>
  </properties>
  <tileset firstgid="1" name="Background" tilewidth="32" tileheight="32">
-  <image source="textures/village_tileset.bmp" width="640" height="480"/>
+  <image source="textures/village_tileset.png" width="640" height="480"/>
  </tileset>
  <layer name="Background" width="124" height="100">
   <data encoding="base64" compression="zlib">
@@ -152,6 +152,9 @@
     <property name="Type" value="Entity"/>
    </properties>
   </object>
+  <object x="1027" y="921" width="2401" height="25"/>
+  <object x="743" y="951" width="25" height="387"/>
+  <object x="992" y="932" width="29" height="287"/>
  </objectgroup>
  <objectgroup name="Game" width="124" height="100">
   <object name="Player" x="640" y="896">
