@@ -16,6 +16,6 @@ class DeathEntity: public SpriteEntity
 
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
-}
+};
 
 #endif

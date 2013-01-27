@@ -1,4 +1,12 @@
 #include "DeathEntity.h"
+#include "EntityFactory.h"
+
+#include <SceneNode.h>
+#include <LeakReport.h>
+#include <Sprite.h>
+#include "GameScene.h"
+
+ENTITY_CREATOR("Death", DeathEntity)
 
 DeathEntity::DeathEntity():
 	SpriteEntity("Death")
@@ -8,7 +16,6 @@ DeathEntity::DeathEntity():
 
 DeathEntity::~DeathEntity()
 {
-	pInput->RemoveKeyboardListener(this);
 }
 
 void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
