@@ -150,6 +150,30 @@
 								}
 							]
 						}
+						{
+							sName: "death"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/hostage_death_frame1.png
+								}
+								{
+									sResource: textures/hostage_death_frame2.png
+								}
+								{
+									sResource: textures/hostage_death_frame3.png
+								}
+								{
+									sResource: textures/hostage_death_frame4.png
+								}
+								{
+									sResource: textures/hostage_death_frame5.png
+								}
+							]
+						}
 					]
 				}
 				{

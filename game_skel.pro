@@ -99,7 +99,12 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/death_idle_frame2.png \
 	resources/textures/death_idle_frame1.png \
 	resources/textures/hostage_idle_frame1.png \
-	resources/textures/menu_background.png
+	resources/textures/menu_background.png \
+	resources/textures/hostage_death_frame5.png \
+	resources/textures/hostage_death_frame4.png \
+	resources/textures/hostage_death_frame3.png \
+	resources/textures/hostage_death_frame2.png \
+	resources/textures/hostage_death_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
