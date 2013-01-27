@@ -5,10 +5,13 @@
 		<style>
 			body
 			{
-				width: 300px;
-				height: 225px;
-
+				width: 380px;
+				height: 280px;
 				margin: auto;
+			}
+			p
+			{
+				text-align: center;
 			}
 
 			div#title_bar div#icon
@@ -18,11 +21,19 @@
 
 			div#content
 			{
+				font-size: 20;
 				text-align: center;
 			}
 		</style>
 	</head>
 	<body template="window">
+		<p>
+			<h1 style="font-size: 30;">Programming:</h1><br/>
+			Bruno C. Sanches<br/>
+			Danny Angelo Carminati Grein<br/>
+			Marlus Cadanus da Costa<br/>
+			Murilo Cadanus da Costa
+		</p>
 		<button onClick="goto menu">Back</button>
 	</body>
 </rml>
