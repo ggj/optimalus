@@ -508,19 +508,6 @@
                  "y":896
                 }, 
                 {
-                 "height":0,
-                 "name":"Girl1",
-                 "properties":
-                    {
-                     "Class":"Hostage",
-                     "Type":"Entity"
-                    },
-                 "type":"",
-                 "width":0,
-                 "x":1888,
-                 "y":896
-                }, 
-                {
                  "height":96,
                  "name":"",
                  "properties":
@@ -629,6 +616,19 @@
                  "type":"",
                  "width":0,
                  "x":2240,
+                 "y":896
+                }, 
+                {
+                 "height":0,
+                 "name":"Girl1",
+                 "properties":
+                    {
+                     "Class":"Hostage",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":1888,
                  "y":896
                 }],
          "opacity":1,
