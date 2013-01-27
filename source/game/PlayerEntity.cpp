@@ -67,6 +67,8 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 		// Play the animation
 		pSprite->SetAnimation("Run");
+
+		bIsRunning = true;
 	}
 
 	if (k == Seed::KeyRight || k == Seed::KeyD)
@@ -80,6 +82,8 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 		// Play the animation
 		pSprite->SetAnimation("Run");
+
+		bIsRunning = true;
 	}
 
 	if (k == Seed::KeyDown || k == Seed::KeyS)
@@ -101,19 +105,28 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	// Remove the directions
 	if (k == Seed::KeyUp|| k == Seed::KeyW)
 	{
-		vPlayerVectorDirection -= VECTOR_UP;
+		if (!bIsRunning)
+			pSprite->SetAnimation("Idle");
+		else
+			pSprite->SetAnimation("Run");
 	}
 
 	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
-		pSprite->SetAnimation("Idle");
+		//pSprite->SetAnimation("Idle");
 		pBody->SetLinearVelocity(vel);
+		bIsRunning = false;
+
+		pSprite->SetAnimation("Idle");
 	}
 
 	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
-		pSprite->SetAnimation("Idle");
+		//pSprite->SetAnimation("Idle");
 		pBody->SetLinearVelocity(vel);
+		bIsRunning = false;
+
+		pSprite->SetAnimation("Idle");
 	}
 
 	if (k == Seed::KeyDown|| k == Seed::KeyS)

@@ -33,7 +33,7 @@
 						{
 							sName: "Jump"
 							bAnimated: true
-							bLoop: true
+							bLoop: false
 							iFps: 5
 							aFrames:
 							[
@@ -55,7 +55,7 @@
 							sName: "Run"
 							bAnimated: true
 							bLoop: true
-							iFps: 15
+							iFps: 10
 							aFrames:
 							[
 								{
