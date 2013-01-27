@@ -25,7 +25,8 @@ SOURCES += source/main.cpp \
 	source/game/cameracontroller.cpp \
 	source/game/TriggerEntity.cpp \
 	source/game/GameScene.cpp \
-    source/game/DeathEntity.cpp
+	source/game/DeathEntity.cpp \
+	source/game/SoundManager.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -48,7 +49,8 @@ HEADERS += \
 	source/game/cameracontroller.h \
 	source/game/TriggerEntity.h \
 	source/game/GameScene.h \
-    source/game/DeathEntity.h
+	source/game/DeathEntity.h \
+	source/game/SoundManager.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -199,4 +201,6 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
 
