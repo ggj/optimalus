@@ -15,6 +15,7 @@ GameFlow::GameFlow()
 	, pRocket(NULL)
 	, pContext(NULL)
 	, pDoc(NULL)
+	, sSceneFile("")
 {
 	gFlow = this;
 }
@@ -41,6 +42,8 @@ bool GameFlow::Initialize()
 	cOptionsToMenu.Initialize(&cOptions, &cOnMenu, &cMenu);
 	cCreditsToMenu.Initialize(&cCredits, &cOnMenu, &cMenu);
 	cGameToMenu.Initialize(&cGame, &cOnMenu, &cMenu);
+	cGameToLoad.Initialize(&cGame, &cOnLoad, &cLoad);
+	cLoadToGame.Initialize(&cLoad, &cOnGame, &cGame);
 
 	// Create the State Machine.
 	cFlow.RegisterTransition(&cMenuToGame);
@@ -49,6 +52,8 @@ bool GameFlow::Initialize()
 	cFlow.RegisterTransition(&cOptionsToMenu);
 	cFlow.RegisterTransition(&cCreditsToMenu);
 	cFlow.RegisterTransition(&cGameToMenu);
+	cFlow.RegisterTransition(&cGameToLoad);
+	cFlow.RegisterTransition(&cLoadToGame);
 
 	IGameApp::Initialize();
 
@@ -261,7 +266,10 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			else if (values[1] == "options")
 				cFlow.OnEvent(&cOnOptions);
 			else if (values[1] == "game")
-				cFlow.OnEvent(&cOnGame);
+			{
+				sSceneFile = "game.scene";
+				this->DoLoad();
+			}
 		}
 		else if (values[0] == "exit")
 		{
@@ -314,11 +322,30 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 					pSystem->Shutdown();
 				}
 
-
 				//this->InitializeGUI();
 				//this->ReloadGUI();
 			}
 		}
+	}
+}
+
+void GameFlow::LoadSceneFile(const String &file)
+{
+	sSceneFile = file;
+	cFlow.OnEvent(&cOnLoad);
+}
+
+const String &GameFlow::GetSceneFile() const
+{
+	return sSceneFile;
+}
+
+void GameFlow::DoLoad()
+{
+	if (sSceneFile != "")
+	{
+		cFlow.OnEvent(&cOnGame);
+		sSceneFile = "";
 	}
 }
 

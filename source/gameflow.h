@@ -54,6 +54,10 @@ class GameFlow : public IGameApp,
 		inline Camera *GetCamera() const;
 		inline SceneNode *GetScene() const;
 
+		void LoadSceneFile(const String &file);
+		const String &GetSceneFile() const;
+		void DoLoad();
+
 		void Menu();
 
 	private:
@@ -75,12 +79,14 @@ class GameFlow : public IGameApp,
 		OptionsState		cOptions;
 		CreditsState		cCredits;
 		GameState			cGame;
+		StateMachineState	cLoad;
 
 		// State Machine Events
 		StateMachineEvent	cOnMenu;
 		StateMachineEvent	cOnOptions;
 		StateMachineEvent	cOnCredits;
 		StateMachineEvent	cOnGame;
+		StateMachineEvent	cOnLoad;
 
 		// State Machine transitions
 		StateMachineTransition cMenuToGame;
@@ -89,11 +95,15 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cOptionsToMenu;
 		StateMachineTransition cCreditsToMenu;
 		StateMachineTransition cGameToMenu;
+		StateMachineTransition cGameToLoad;
+		StateMachineTransition cLoadToGame;
 
 		// GUI
 		RocketInterface			*pRocket;
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
+
+		String	sSceneFile;
 };
 
 inline Camera *GameFlow::GetCamera() const

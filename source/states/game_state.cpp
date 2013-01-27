@@ -19,7 +19,7 @@ void GameState::OnStart(void *data)
 	bDoStop = false;
 
 	gFlow->LoadGUI("gui/views/game.rml");
-	pGame = New(GameScene(gFlow->GetScene(), gFlow->GetCamera()));
+	pGame = New(GameScene(gFlow->GetScene(), gFlow->GetCamera(), gFlow->GetSceneFile()));
 	pGame->Initialize();
 }
 
@@ -50,5 +50,6 @@ void GameState::LateStop()
 		// Reset da posicao da camera quando sai do jogo...
 		// salvar a posicao original?
 		gFlow->GetCamera()->SetPosition(-400.0f, -300.0f);
+		gFlow->DoLoad();
 	}
 }
