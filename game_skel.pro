@@ -108,8 +108,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/hostage_death_frame3.png \
 	resources/textures/hostage_death_frame2.png \
 	resources/textures/hostage_death_frame1.png \
-	resources/textures/village_tileset.bmp \
-	resources/textures/background_gameover.png
+	resources/textures/background_gameover.png \
+	resources/textures/village_tileset.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -143,7 +143,7 @@ OTHER_FILES_SOUND = \
 OTHER_FILES_MAPS = \
 	resources/level2.json \
 	resources/level1.json \
-	resources/level0.json
+	resources/level_bcs.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -152,7 +152,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS} \
+	$${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
