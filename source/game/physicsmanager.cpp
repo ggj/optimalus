@@ -190,6 +190,7 @@ void PhysicsManager::RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *
 	if(counterIt == it->second.end())
 	{
 		Log("[PhysicsManager::RemoveContact] Warning: Other already removed");
+		return;
 	}
 
 	counterIt->second--;

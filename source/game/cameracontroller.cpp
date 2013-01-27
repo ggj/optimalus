@@ -30,14 +30,25 @@ void CameraController::LookAt(const Vector3f &pos)
 	s32 x = static_cast<s32>(p.getX());
 	s32 y = static_cast<s32>(p.getY());
 	f32 z = p.getZ();
-
+	
 	Rect4f r(x, y, pScreen->GetWidth(), pScreen->GetHeight());
-	Rect4f overlap;
-	cArea.GetOverlappedRect(r, overlap);
 
-	f32 h = pScreen->GetHeight() - overlap.Height();
-	f32 w = pScreen->GetWidth() - overlap.Width();
-	Vector3f np(static_cast<f32>(x) + w, static_cast<f32>(y) + h, z);
+	s32 halfScreenWidth = pScreen->GetWidth() / 2;
+	s32 halfScreenHeight = pScreen->GetHeight() / 2;
+	
+	if(x < cArea.x1)
+		x = cArea.x1;
+
+	if(y < cArea.y1)
+		y = cArea.y1;
+
+	if(y > cArea.y2 - 32 - halfScreenHeight * 2)
+		y = cArea.y2 - 32 - halfScreenHeight * 2;
+
+	if(x > (cArea.x2 - 32 - halfScreenWidth * 2))
+		x = cArea.x2 - 32 - halfScreenWidth * 2;
+
+	Vector3f np(static_cast<f32>(x), static_cast<f32>(y), z);
 
 	pCamera->SetPosition(np);	
 }
