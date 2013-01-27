@@ -1,6 +1,6 @@
 #include "WorldManager.h"
 #include "EntityFactory.h"
-#include "Entity.h"
+#include "entity.h"
 
 WorldManager::~WorldManager()
 {
