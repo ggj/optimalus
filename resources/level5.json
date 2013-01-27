@@ -1447,7 +1447,8 @@
                  "properties":
                     {
                      "Class":"TriggerCounter",
-                     "Counter":"13"
+                     "Counter":"13",
+                     "Target":"Morte"
                     },
                  "type":"",
                  "width":47,
