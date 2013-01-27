@@ -27,11 +27,7 @@ SOURCES += source/main.cpp \
 	source/game/GameScene.cpp \
 	source/game/DeathEntity.cpp \
 	source/game/SoundManager.cpp \
-<<<<<<< HEAD
 	source/game/HostageEntity.cpp
-=======
-	source/game/HostageEntity.cpp
->>>>>>> bg main menu
 
 HEADERS += \
 	source/gameflow.h \
@@ -56,12 +52,8 @@ HEADERS += \
 	source/game/GameScene.h \
 	source/game/DeathEntity.h \
 	source/game/SoundManager.h \
-<<<<<<< HEAD
-	source/game/HostageEntity.h
-=======
 	source/game/Sounds.h \
 	source/game/HostageEntity.h
->>>>>>> bg main menu
 
 OTHER_FILES_CONFIG = \
 #Configs
