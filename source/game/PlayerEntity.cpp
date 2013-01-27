@@ -6,6 +6,7 @@
 #include <LeakReport.h>
 #include <Sprite.h>
 #include "GameScene.h"
+#include "Sounds.h"
 
 #include <Box2D/Common/b2Math.h>
 
@@ -72,6 +73,8 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 
 	fpMove= 0;
 	this->SetState(IDLE);
+
+	gSoundManager->Play(SND_TELEPORT);
 }
 
 void PlayerEntity::Update(f32 dt)
@@ -144,6 +147,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(JUMP);
 		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());
+		gSoundManager->Play(SND_JUMP);
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)

@@ -246,6 +246,24 @@
 					fVolume: 1.0
 					sResource: sounds/wakeup.ogg
 				}
+				{
+					sType: SoundSource
+					sName: Jump
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/jump.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Teleport
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/teleport.ogg
+				}
 			]
 		}
 		{
