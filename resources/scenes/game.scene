@@ -154,7 +154,7 @@
 							sName: "Death"
 							bAnimated: true
 							bLoop: false
-							iFps: 10
+							iFps: 15
 							aFrames:
 							[
 								{
@@ -251,7 +251,7 @@
 		{
 			sType: GameMap
 			sName: Map
-			sResource: level_bcs.json
+			sResource: level2.json
 			cPosition: {z: 200}
 		}
 		{

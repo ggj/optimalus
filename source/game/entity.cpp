@@ -11,7 +11,8 @@ Entity::~Entity()
 	//empty
 }
 
-void Entity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+void Entity::Load(IMetadataObject &metadata, SceneNode *sprites)
 {
+	UNUSED(sprites)
 	strName = metadata.sName;
 }
