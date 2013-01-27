@@ -564,8 +564,8 @@
                     },
                  "type":"",
                  "width":0,
-                 "x":640,
-                 "y":896
+                 "x":224,
+                 "y":864
                 }, 
                 {
                  "height":0,
@@ -590,8 +590,8 @@
                     },
                  "type":"",
                  "width":23,
-                 "x":100,
-                 "y":838
+                 "x":64,
+                 "y":608
                 }, 
                 {
                  "height":0,
@@ -635,7 +635,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"textures\/village_tileset.bmp",
+         "image":"textures\/village_tileset.png",
          "imageheight":480,
          "imagewidth":640,
          "margin":0,
