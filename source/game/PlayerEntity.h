@@ -56,6 +56,8 @@ class PlayerEntity: public SpriteEntity,
 
 		f32			fpMove;
 		f32			fpLandTime;
+
+		Seed::Sprite	*pIcon;
 };
 
 #endif

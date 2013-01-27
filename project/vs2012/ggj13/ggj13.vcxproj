@@ -102,6 +102,7 @@
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
     <ClCompile Include="..\..\..\source\main.cpp" />
     <ClCompile Include="..\..\..\source\states\credits_state.cpp" />
+    <ClCompile Include="..\..\..\source\states\gameover_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_pause_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_run_state.cpp" />
     <ClCompile Include="..\..\..\source\states\game_state.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="..\..\..\source\game\TriggerEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />
     <ClInclude Include="..\..\..\source\states\credits_state.h" />
+    <ClInclude Include="..\..\..\source\states\gameover_state.h" />
     <ClInclude Include="..\..\..\source\states\game_pause_state.h" />
     <ClInclude Include="..\..\..\source\states\game_run_state.h" />
     <ClInclude Include="..\..\..\source\states\game_state.h" />

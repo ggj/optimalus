@@ -7,6 +7,7 @@ SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
 SoundManager *gSoundManager =NULL;
 WorldManager *gWorldManager = NULL;
+GameScene *gGameScene = NULL;
 
 enum
 {
@@ -22,11 +23,14 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
+	, fpTimeToNextLevel(3)
+	, fChangeLevel(false)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
 	gSoundManager = &clSoundManager;
 	gWorldManager = &clWorldManager;
+	gGameScene = this;
 }
 
 GameScene::~GameScene()
@@ -62,8 +66,6 @@ bool GameScene::Initialize()
 
 	// Get the initial value from game data
 	gFlow->SetLife(gGameData->GetLife());
-	gFlow->SetTime(gGameData->GetTime());
-	gFlow->SetHostage(gGameData->GetHostage());
 	gFlow->SetHostage(gGameData->GetHostage());
 
 	return true;
@@ -93,6 +95,14 @@ TEST: Bug de raster/texel.
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
 
+	if(fChangeLevel)
+	{
+		fpTimeToNextLevel -= dt;
+		if(fpTimeToNextLevel <= 0)
+		{
+			gFlow->LoadSceneFile(strNextLevel);
+		}
+	}
 	if(gGameData->GetLife() == 0)
 	{
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
@@ -157,6 +167,10 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
 			pGameMap = (GameMap *)cScene.GetChildByName("Map");
 
+			int hostageNum = 0;
+
+			strNextLevel = pGameMap->GetProperty("NextLevel");
+
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
 			for (unsigned i = 0, len = game->Size(); i < len; ++i)
 			{
@@ -170,8 +184,14 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 					{
 						pPlayer = static_cast<PlayerEntity*>(entity);
 					}
+					else if(entity->GetClassName() == "Hostage")
+					{
+						++hostageNum;
+					}
 				}
 			}
+
+			gFlow->SetHostage(hostageNum);
 
 			this->LoadMapColliders();
 
@@ -232,5 +252,15 @@ void GameScene::LoadMapColliders()
 		IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
+	}
+}
+
+void GameScene::RemoveHostage()
+{
+	gFlow->RemoveHostage();
+
+	if((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
+	{
+		fChangeLevel = true;
 	}
 }

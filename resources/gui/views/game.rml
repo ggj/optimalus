@@ -9,9 +9,6 @@
 				<icon />
 				x <span id="hostages" />
 			</div>
-			<div id="time_div">
-				<span id="time"></span>
-			</div>
 			<div id="lifes_div">
 				<icon />
 				x <span id="lifes">0</span>

@@ -6,6 +6,7 @@
 #include <Sprite.h>
 #include "GameScene.h"
 #include "Sounds.h"
+#include "GameScene.h"
 
 ENTITY_CREATOR("Death", DeathEntity)
 
@@ -64,7 +65,8 @@ void DeathEntity::Update(f32 dt)
 
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 		
-		if(dir.Normalize() > 0.03f)
+		f32 distance = dir.Normalize();
+		if(distance > 0.03f)
 		{
 			//Go faster down to help player jump
 			if(dir.y > 0)
@@ -78,6 +80,11 @@ void DeathEntity::Update(f32 dt)
 				dir *= dt;
 				dir.y /= 2;
 			}
+			
+			distance = distance / 1.5f;
+			if(distance < 1)
+				distance = 1;
+			dir *= distance;
 
 			dir += pBody->GetPosition();
 
@@ -109,6 +116,8 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::NONE);
 				fpSleep = SLEEP_TIME;
+
+				gGameScene->RemoveHostage();
 			}			
 			else if(fpSleep <= 0)
 			{

@@ -17,6 +17,7 @@ class GameData
 
 		u32 GetHostage() const;
 		void SetHostage(u32);
+		void RemoveHostage();
 
 		bool IsGameOver() const;
 		void SetGameOver(bool);

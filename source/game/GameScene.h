@@ -15,10 +15,13 @@
 
 using namespace Seed::RocketGui;
 
+class GameScene;
+
 extern SceneNode *gScene;
 extern PhysicsManager *gPhysics;
 extern SoundManager *gSoundManager;
 extern WorldManager *gWorldManager;
+extern GameScene *gGameScene;
 
 class GameScene : public IEventInputKeyboardListener,
 				  public IEventJobListener,
@@ -47,6 +50,8 @@ class GameScene : public IEventInputKeyboardListener,
 
 		// Load
 		virtual void LoadMapColliders();
+
+		void RemoveHostage();
 
 	private:
 		SEED_DISABLE_COPY(GameScene);
@@ -88,7 +93,13 @@ class GameScene : public IEventInputKeyboardListener,
 		StateMachineTransition cGameOverToMenu;
 
 		String sSceneFile;
+		String strNextLevel;
+
+		f32		fpTimeToNextLevel;
+		bool	fChangeLevel;
+		
 		Image *pGameOverImg;
+
 };
 
 #endif // _GAMEFLOW_H_

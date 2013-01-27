@@ -43,6 +43,8 @@ class GameFlow : public IGameApp,
 		void SetTime(u32 time);
 		void SetHostage(u32 hostage);
 
+		void RemoveHostage();
+
 		// IEventSystemListener
 		virtual void OnSystemShutdown(const EventSystem *ev);
 
@@ -66,6 +68,8 @@ class GameFlow : public IGameApp,
 
 	private:
 		bool SaveSystemFlow() const;
+
+		void PrintHostage(u32 hostage);
 
 	private:
 		SEED_DISABLE_COPY(GameFlow);
