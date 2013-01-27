@@ -96,8 +96,9 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_land_frame3.png \
 	resources/textures/player_land_frame2.png \
 	resources/textures/player_land_frame1.png \
-	resources/textures/menu_background.png \
-	resources/textures/player_jump_frame1.png
+	resources/textures/death_idle_frame2.png \
+	resources/textures/death_idle_frame1.png \
+	resources/textures/menu_background.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -132,7 +133,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_MAPS} \
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin

@@ -170,7 +170,10 @@
 							aFrames:
 							[
 								{
-									sResource: textures/game_ui_time.png
+									sResource: textures/death_idle_frame1.png
+								}
+								{
+									sResource: textures/death_idle_frame2.png
 								}
 							]
 						}
@@ -183,42 +186,42 @@
 			sType: SceneNode
 			aObjects:
 			[
-        		{
-        			sType: SoundSource
-        			sName: HostageKill
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/Pickup_Coin3.ogg
-        		}
-        		{
-        			sType: SoundSource
-        			sName: Powerup
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/powerup.ogg
-        		}
-        		{
-        			sType: SoundSource
-        			sName: Damage
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/damage.ogg
-        		}
-        		{
-        			sType: SoundSource
-        			sName: Wakeup
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/wakeup.ogg
-        		}
+				{
+					sType: SoundSource
+					sName: HostageKill
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/Pickup_Coin3.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Powerup
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/powerup.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Damage
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/damage.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Wakeup
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/wakeup.ogg
+				}
 			]
 		}
 		{
