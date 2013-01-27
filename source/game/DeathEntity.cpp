@@ -9,7 +9,7 @@
 
 ENTITY_CREATOR("Death", DeathEntity)
 
-#define SLEEP_TIME 1
+#define SLEEP_TIME 10
 
 DeathEntity::DeathEntity():
 	SpriteEntity("Death", "Death"),
@@ -21,6 +21,7 @@ DeathEntity::DeathEntity():
 
 DeathEntity::~DeathEntity()
 {
+	gPhysics->DestroyBody(pBody);
 }
 
 void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
@@ -62,12 +63,14 @@ void DeathEntity::Update(f32 dt)
 			Log("No player to track");
 
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
-		dir.Normalize();		
-		dir *= dt;
+		if(dir.Normalize() > 0.03f)
+		{
+			dir *= dt;
 
-		dir += pBody->GetPosition();
+			dir += pBody->GetPosition();
 
-		pBody->SetTransform(dir, pBody->GetAngle());
+			pBody->SetTransform(dir, pBody->GetAngle());
+		}
 	}
 }
 
