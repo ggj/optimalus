@@ -7,6 +7,7 @@
 #include "physicsmanager.h"
 #include "WorldManager.h"
 #include "../states/game_pause_state.h"
+#include "../states/gameover_state.h"
 #include "../states/game_run_state.h"
 #include "PlayerEntity.h"
 #include "cameracontroller.h"
@@ -66,15 +67,25 @@ class GameScene : public IEventInputKeyboardListener,
 
 		// State Machine
 		StateMachine		cFlow;
+
+		// State Machine State
 		GameRunState		cRun;
 		GamePauseState		cPause;
+		GameOverState		cGameOver;
 		StateMachineState	cMenu;
+
+		// State Machine Event
 		StateMachineEvent	cOnPause;
 		StateMachineEvent	cOnRun;
 		StateMachineEvent	cOnMenu;
+		StateMachineEvent	cOnGameOver;
+
+		// State Machine Transition
 		StateMachineTransition cRunToPause;
 		StateMachineTransition cPauseToRun;
 		StateMachineTransition cPauseToMenu;
+		StateMachineTransition cRunToGameOver;
+		StateMachineTransition cGameOverToMenu;
 };
 
 #endif // _GAMEFLOW_H_
