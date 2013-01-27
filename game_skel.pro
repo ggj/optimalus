@@ -74,6 +74,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
+	resources/textures/tiles1.png \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
 	resources/textures/ui_icons_game.png \
@@ -89,9 +90,13 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_jump_frame4.png \
 	resources/textures/player_jump_frame3.png \
 	resources/textures/player_jump_frame2.png \
+<<<<<<< HEAD
 	resources/textures/player_jump_frame1.png \
 	resources/textures/heart.png \
 	resources/textures/menu_background.png \
+=======
+	resources/textures/player_jump_frame1.png
+>>>>>>> tileset 1
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -116,7 +121,8 @@ OTHER_FILES_SOUND = \
 	resources/sounds/theme.ogg
 #Maps
 OTHER_FILES_MAPS = \
-	resources/level1.json
+	resources/level1.json \
+	resources/level0.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
