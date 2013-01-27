@@ -47,4 +47,9 @@ const String &Entity::GetName() const
 	return strName;
 }
 
+inline const String &Entity::GetTarget() const
+{
+	return strTarget;
+}
+
 #endif

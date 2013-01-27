@@ -88,6 +88,9 @@
     <ClCompile Include="..\..\..\source\game\CollisionSensor.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\TeleportEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
