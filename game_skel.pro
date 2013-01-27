@@ -98,6 +98,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_land_frame1.png \
 	resources/textures/death_idle_frame2.png \
 	resources/textures/death_idle_frame1.png \
+	resources/textures/hostage_idle_frame1.png \
 	resources/textures/menu_background.png
 
 #Gui
@@ -120,7 +121,11 @@ OTHER_FILES_GUI_VIEW = \
 OTHER_FILES_SOUND = \
 #Sounds
 	resources/sounds/sfx.ogg \
-	resources/sounds/theme.ogg
+	resources/sounds/theme.ogg \
+	resources/sounds/wakeup.ogg \
+	resources/sounds/powerup.ogg \
+	resources/sounds/Pickup_Coin3.ogg \
+	resources/sounds/damage.ogg
 #Maps
 OTHER_FILES_MAPS = \
 	resources/level1.json \
@@ -133,7 +138,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS} \
+	$${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin

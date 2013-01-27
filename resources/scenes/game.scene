@@ -146,7 +146,7 @@
 							aFrames:
 							[
 								{
-									sResource: textures/frame03.png
+									sResource: textures/hostage_idle_frame1.png
 								}
 							]
 						}
