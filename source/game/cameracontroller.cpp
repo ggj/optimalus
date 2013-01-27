@@ -39,5 +39,5 @@ void CameraController::LookAt(const Vector3f &pos)
 	f32 w = pScreen->GetWidth() - overlap.Width();
 	Vector3f np(static_cast<f32>(x) + w, static_cast<f32>(y) + h, z);
 
-	pCamera->SetPosition(np);
+	pCamera->SetPosition(np);	
 }

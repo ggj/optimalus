@@ -161,7 +161,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 bool PlayerEntity::CheckGround()
 {
-	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32));
+	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32f));
 }
 
 void PlayerEntity::SetState(int newState)
