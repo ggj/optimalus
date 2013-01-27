@@ -39,9 +39,9 @@ class GameFlow : public IGameApp,
 		bool InitializeGUI();
 		void ReleaseGUI();
 
-		void SetGUIElementLife(const Rocket::Core::String life);
-		void SetGUIElementTime(const Rocket::Core::String time);
-		void SetGUIElementHostage(const Rocket::Core::String hostage);
+		void SetLife(u32 life);
+		void SetTime(u32 time);
+		void SetHostage(u32 hostage);
 
 		// IEventSystemListener
 		virtual void OnSystemShutdown(const EventSystem *ev);
