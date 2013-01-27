@@ -5,6 +5,15 @@
 #include "../defines.h"
 #include <Box2D/Box2D.h>
 
+namespace ItemTypes
+{
+	enum Enum
+	{
+		NONE,
+		HEART
+	};
+}
+
 class PlayerEntity: public SpriteEntity,
 					public IEventInputKeyboardListener
 {
@@ -25,15 +34,20 @@ class PlayerEntity: public SpriteEntity,
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
 
+		b2Vec2 GetBodyPosition() const;
+
 		bool CheckGround();
 
-	private:
+		void SetItem(ItemTypes::Enum item);
+		ItemTypes::Enum GetItem() const;
 
 	protected:
 		b2Body		*pBody;
 		float		fVelocity;
 		Vector3f	vPlayerVectorDirection;
 		bool		bIsRunning;
+
+		ItemTypes::Enum eItem;
 };
 
 #endif

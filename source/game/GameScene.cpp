@@ -6,6 +6,7 @@
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
 SoundManager *gSoundManager =NULL;
+WorldManager *gWorldManager = NULL;
 
 enum
 {
@@ -24,6 +25,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	gScene = this->pScene;
 	gPhysics = &clPhysicsManager;
 	gSoundManager = &clSoundManager;
+	gWorldManager = &clWorldManager;
 }
 
 GameScene::~GameScene()
@@ -145,7 +147,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				{
 					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
 					//Log("%s", entity->GetName().c_str());
-					if (entity->GetName() == "Player")
+					if (entity->GetClassName() == "Player")
 					{
 						pPlayer = static_cast<PlayerEntity*>(entity);
 					}

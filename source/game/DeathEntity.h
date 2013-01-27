@@ -4,6 +4,10 @@
 #include "SpriteEntity.h"
 #include "../defines.h"
 
+class PlayerEntity;
+
+#include <Box2D/Box2D.h>
+
 class DeathEntity: public SpriteEntity
 {
 	public:
@@ -16,6 +20,14 @@ class DeathEntity: public SpriteEntity
 
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
+
+		virtual void OnCollision(const CollisionEvent &event);
+
+	private:
+		b2Body		*pBody;
+
+		f32			fpSleep;		
+		PlayerEntity *pTarget;
 };
 
 #endif

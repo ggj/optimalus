@@ -209,6 +209,19 @@
                  "width":0,
                  "x":1118,
                  "y":244
+                }, 
+                {
+                 "height":23,
+                 "name":"",
+                 "properties":
+                    {
+                     "Class":"Death",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":23,
+                 "x":94,
+                 "y":229
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -12,7 +12,8 @@
 ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
-	SpriteEntity("Player")
+	SpriteEntity("Player", "Player"),
+	eItem(ItemTypes::NONE)
 {
 	//empty
 }
@@ -29,6 +30,7 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 
 	pBody = gPhysics->CreateBody(pSprite);
 	pBody->SetFixedRotation(true);
+	pBody->GetFixtureList()->SetUserData(this);
 
 	pInput->AddKeyboardListener(this);
 	fVelocity = 5.0f;
@@ -38,6 +40,11 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 Vector3f PlayerEntity::GetPosition()
 {
 	return pSprite->GetPosition();
+}
+
+b2Vec2 PlayerEntity::GetBodyPosition() const
+{
+	return pBody->GetPosition();
 }
 
 Sprite *PlayerEntity::GetSprite() const
@@ -147,4 +154,13 @@ bool PlayerEntity::CheckGround()
 	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32f));
 }
 
+void PlayerEntity::SetItem(ItemTypes::Enum item)
+{
+	eItem = item;
+}
+
+ItemTypes::Enum PlayerEntity::GetItem() const
+{
+	return eItem;
+}
 

@@ -5,7 +5,7 @@
 ENTITY_CREATOR("Heart", HeartEntity)
 
 HeartEntity::HeartEntity():
-	ItemEntity("Heart")
+	ItemEntity("Heart", "Heart")
 {
 	//empty
 }

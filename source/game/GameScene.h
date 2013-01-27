@@ -17,6 +17,7 @@ using namespace Seed::RocketGui;
 extern SceneNode *gScene;
 extern PhysicsManager *gPhysics;
 extern SoundManager *gSoundManager;
+extern WorldManager *gWorldManager;
 
 class GameScene : public IEventInputKeyboardListener,
 				  public IEventJobListener,

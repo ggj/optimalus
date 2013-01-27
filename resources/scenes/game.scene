@@ -134,6 +134,30 @@
 						}
 					]
 				}
+				{
+					cScale: {x: 1, y: 1, z: 1}
+					cPosition: {z: 100}
+					sType: Sprite
+					sBlending: none
+					sName: Death
+					cColor: {r: 255, g: 255, b: 255, a: 255}
+					bVisible: false
+					aAnimations:
+					[
+						{
+							sName: "Idle"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/game_ui_time.png
+								}
+							]
+						}
+					]
+				}
 			]
 		}
 		{
@@ -149,6 +173,33 @@
         			bLoop: false
         			fVolume: 1.0
         			sResource: sounds/Pickup_Coin3.ogg
+        		}
+        		{
+        			sType: SoundSource
+        			sName: Powerup
+        			cPosition: {x: 0, y: 0, z: 0}
+        			bAutoPlay: false
+        			bLoop: false
+        			fVolume: 1.0
+        			sResource: sounds/powerup.ogg
+        		}
+        		{
+        			sType: SoundSource
+        			sName: Damage
+        			cPosition: {x: 0, y: 0, z: 0}
+        			bAutoPlay: false
+        			bLoop: false
+        			fVolume: 1.0
+        			sResource: sounds/damage.ogg
+        		}
+        		{
+        			sType: SoundSource
+        			sName: Wakeup
+        			cPosition: {x: 0, y: 0, z: 0}
+        			bAutoPlay: false
+        			bLoop: false
+        			fVolume: 1.0
+        			sResource: sounds/wakeup.ogg
         		}
 			]
 		}

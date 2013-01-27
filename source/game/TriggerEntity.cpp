@@ -7,6 +7,7 @@
 ENTITY_CREATOR("Trigger", TriggerEntity)
 
 TriggerEntity::TriggerEntity():
+	Entity("Trigger"),
 	pBody(NULL)
 {
 	//empty
@@ -19,6 +20,8 @@ TriggerEntity::~TriggerEntity()
 
 void TriggerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
+	Entity::Load(metadata, sprites);
+
 	pBody = gPhysics->CreateStaticBody(&metadata, BodyType::SENSOR);
 	pBody->GetFixtureList()->SetUserData(this);	
 }
