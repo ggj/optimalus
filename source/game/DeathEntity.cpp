@@ -69,12 +69,14 @@ void DeathEntity::Update(f32 dt)
 			//Go faster down to help player jump
 			if(dir.y > 0)
 			{
-				dir.y *= dt*4;
+				f32 dy = dt * 2;				
+				dir.y = std::min(dy, dir.y);
 				dir.x *= dt;
 			}
 			else
 			{
 				dir *= dt;
+				dir.y /= 2;
 			}
 
 			dir += pBody->GetPosition();
