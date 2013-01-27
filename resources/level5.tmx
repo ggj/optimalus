@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Background" width="140" height="124">
   <data encoding="base64" compression="zlib">
-   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
+   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Rfo1EBERERERERERERERERERERERERERERH1mv8BcPeOZw==
   </data>
  </layer>
  <objectgroup name="Colliders" width="140" height="124">
@@ -72,7 +72,7 @@
   <object x="2244" y="1163" width="27" height="87"/>
   <object x="2404" y="1349" width="184" height="92"/>
   <object x="2468" y="1255" width="57" height="89"/>
-  <object x="673" y="647" width="3133" height="24"/>
+  <object x="303" y="304" width="4012" height="337"/>
   <object x="1156" y="1253" width="61" height="29"/>
   <object x="1956" y="995" width="88" height="27"/>
   <object x="2019" y="900" width="219" height="28"/>
@@ -107,7 +107,7 @@
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1218" y="1264" width="29" height="24">
+  <object name="Girl3" x="1217" y="1268" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
@@ -149,7 +149,7 @@
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Trigger" x="3660" y="1022" width="59" height="58">
+  <object name="Trigger" x="3670" y="1035" width="59" height="58">
    <properties>
     <property name="Class" value="Trigger"/>
     <property name="Target" value="Counter"/>
@@ -234,17 +234,102 @@
     <property name="Sleep" value="99999"/>
    </properties>
   </object>
-  <object name="Morte" x="3027" y="1392" width="28" height="30">
+  <object name="Morte" x="2574" y="1391" width="28" height="30">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Sleep" value="99999"/>
    </properties>
   </object>
-  <object name="Morte" x="1618" y="1359" width="28" height="30">
+  <object name="Morte" x="1812" y="1267" width="28" height="30">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Sleep" value="99999"/>
     <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="2960" y="818" width="27" height="25">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2952" y="790" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2238" y="1052" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="794" y="916" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="1219" y="1240" width="38" height="50">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="679" y="1398" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2204" y="1210" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2726" y="1400" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="3524" y="3195" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2455" y="3131" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="2248" y="2910" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="1640" y="2751" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Trigger" x="1064" y="3203" width="52" height="55">
+   <properties>
+    <property name="Class" value="Trigger"/>
+    <property name="Target" value="Counter"/>
+   </properties>
+  </object>
+  <object name="Counter" x="2180" y="48" width="284" height="188">
+   <properties>
+    <property name="Class" value="TriggerCounter"/>
+    <property name="Count" value="13"/>
+    <property name="Target" value="Morte"/>
    </properties>
   </object>
  </objectgroup>
