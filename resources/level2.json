@@ -591,7 +591,7 @@
                  "type":"",
                  "width":23,
                  "x":64,
-                 "y":608
+                 "y":832
                 }, 
                 {
                  "height":0,
@@ -689,7 +689,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "NextLevel":"game_level3.scene"
     },
  "tileheight":32,
  "tilesets":[
