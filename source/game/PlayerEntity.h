@@ -32,6 +32,7 @@ class PlayerEntity: public SpriteEntity,
 		b2Body		*pBody;
 		float		fVelocity;
 		Vector3f	vPlayerVectorDirection;
+		bool		bIsRunning;
 };
 
 #endif

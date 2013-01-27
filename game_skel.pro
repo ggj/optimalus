@@ -72,6 +72,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/tile_map.png \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
+	resources/textures/ui_icons_game.png \
 	resources/textures/player_run_frame8.png \
 	resources/textures/player_run_frame7.png \
 	resources/textures/player_run_frame6.png \
@@ -80,6 +81,11 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
+	resources/textures/heart.png \
+	resources/textures/player_jump_frame4.png \
+	resources/textures/player_jump_frame3.png \
+	resources/textures/player_jump_frame2.png \
+	resources/textures/player_jump_frame1.png \
 	resources/textures/heart.png
 
 #Gui
@@ -87,6 +93,7 @@ OTHER_FILES_GUI_STYLE = \
 	#Styles
 	resources/gui/styles/common.rcss \
 	resources/gui/styles/window.rcss \
+	resources/gui/styles/game.rcss
 
 OTHER_FILES_GUI_VIEW = \
 	#Views
@@ -104,7 +111,7 @@ OTHER_FILES_SOUND = \
 	resources/sounds/theme.ogg
 #Maps
 OTHER_FILES_MAPS = \
-resources/level1.json
+	resources/level1.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -112,8 +119,8 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_TEXTURE} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
-		$${OTHER_FILES_SOUND} \
-		$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_SOUND} \
+	$${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
@@ -164,13 +171,13 @@ macx {
 	#Sounds
 	APP_SOUND_FILES.files = $$OTHER_FILES_SOUND
 	APP_SOUND_FILES.path = Contents/Resources/sounds
-
-	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
-			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
-						APP_SOUND_FILES APP_MAPS_FILES
 	#Maps
 	APP_MAPS_FILES.files = $$OTHER_FILES_MAPS
 	APP_MAPS_FILES.path = Contents/Resources/
+
+	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
+			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
+			APP_SOUND_FILES APP_MAPS_FILES
 }
 
 win32 {
@@ -189,27 +196,4 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

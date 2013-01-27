@@ -3,7 +3,7 @@
 CameraController::CameraController()
 	: pCamera(NULL)
 	, cOffset(-400.0f, -300.0f, 0.0f)
-	, cArea(0.0f, 0.0f, pScreen->GetWidth(), pScreen->GetHeight())
+	, cArea(-400.0f, -300.0f, 800.0f, 600.0f)
 {
 }
 
@@ -31,5 +31,13 @@ void CameraController::LookAt(const Vector3f &pos)
 	s32 y = static_cast<s32>(p.getY());
 	f32 z = p.getZ();
 
-	pCamera->SetPosition(static_cast<f32>(x), static_cast<f32>(y), z);
+	Rect4f r(x, y, pScreen->GetWidth(), pScreen->GetHeight());
+	Rect4f overlap;
+	cArea.GetOverlappedRect(r, overlap);
+
+	f32 h = pScreen->GetHeight() - overlap.Height();
+	f32 w = pScreen->GetWidth() - overlap.Width();
+	Vector3f np(static_cast<f32>(x) + w, static_cast<f32>(y) + h, z);
+
+	pCamera->SetPosition(np);
 }
