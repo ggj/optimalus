@@ -24,7 +24,8 @@ SOURCES += source/main.cpp \
 	source/game/HeartEntity.cpp \
 	source/game/cameracontroller.cpp \
 	source/game/TriggerEntity.cpp \
-	source/game/GameScene.cpp
+	source/game/GameScene.cpp \
+    source/game/DeathEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -46,7 +47,8 @@ HEADERS += \
 	source/game/HeartEntity.h \
 	source/game/cameracontroller.h \
 	source/game/TriggerEntity.h \
-	source/game/GameScene.h
+	source/game/GameScene.h \
+    source/game/DeathEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs

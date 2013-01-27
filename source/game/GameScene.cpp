@@ -5,6 +5,7 @@
 
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
+SoundManager *gSoundManager =NULL;
 
 enum
 {
@@ -22,6 +23,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 {
 	gScene = this->pScene;
 	gPhysics = &clPhysicsManager;
+	gSoundManager = &clSoundManager;
 }
 
 GameScene::~GameScene()
@@ -126,6 +128,9 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				musTheme.SetVolume(1.0f);
 				pSoundSystem->PlayMusic(&musTheme);
 			}
+
+			SceneNode *sounds = (SceneNode *)pScene->GetChildByName("Sounds");
+			clSoundManager.Init(*sounds);
 
 			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
 			pGameMap = (GameMap *)pScene->GetChildByName("Map");

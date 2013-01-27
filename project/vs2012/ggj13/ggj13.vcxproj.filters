@@ -72,6 +72,10 @@
     <ClCompile Include="..\..\..\source\game\GameScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\HostageEntity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\game\SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -128,6 +132,15 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\game\GameScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\HostageEntity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\SoundManager.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\Sounds.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
