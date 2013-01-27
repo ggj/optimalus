@@ -14,6 +14,7 @@ class PlayerEntity: public SpriteEntity,
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
+		virtual void Update(f32 dt);
 
 		// IEventInputKeyboardListener
 		virtual void OnInputKeyboardPress(const EventInputKeyboard *ev);
@@ -26,7 +27,7 @@ class PlayerEntity: public SpriteEntity,
 
 		bool CheckGround();
 
-	private:		
+	private:
 
 	protected:
 		b2Body		*pBody;

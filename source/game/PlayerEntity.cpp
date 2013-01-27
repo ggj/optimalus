@@ -45,6 +45,11 @@ Sprite *PlayerEntity::GetSprite() const
 	return pSprite;
 }
 
+void PlayerEntity::Update(f32 dt)
+{
+
+}
+
 void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
@@ -139,5 +144,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 bool PlayerEntity::CheckGround()
 {
-	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32));	
+	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32));
 }
+
+
