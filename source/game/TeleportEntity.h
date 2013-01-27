@@ -3,6 +3,22 @@
 
 #include "entity.h"
 
-class TeleportEntity
+#include "CollisionSensor.h"
+
+class TeleportEntity: public Entity
+{
+	public:
+		TeleportEntity();
+
+		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
+
+		virtual void OnCollision(const CollisionEvent &event);
+
+	private:
+		CollisionSensor clSensor;
+
+		bool fDestination;
+
+};
 
 #endif

@@ -99,6 +99,7 @@
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\SoundManager.cpp" />
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\TeleportEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\TriggerCounter.cpp" />
     <ClCompile Include="..\..\..\source\game\TriggerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />

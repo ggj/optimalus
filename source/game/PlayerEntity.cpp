@@ -66,6 +66,14 @@ Sprite *PlayerEntity::GetSprite() const
 	return pSprite;
 }
 
+void PlayerEntity::Teleport(const b2Vec2 &position)
+{
+	pBody->SetTransform(position, pBody->GetAngle());
+
+	fpMove= 0;
+	this->SetState(IDLE);
+}
+
 void PlayerEntity::Update(f32 dt)
 {
 	pIcon->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));

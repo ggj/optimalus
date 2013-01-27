@@ -34,13 +34,16 @@ class PlayerEntity: public SpriteEntity,
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
 
-		b2Vec2 GetBodyPosition() const;
-
-		bool CheckGround();
-		void SetState(int newState);
+		b2Vec2 GetBodyPosition() const;		
 
 		void SetItem(ItemTypes::Enum item);
 		ItemTypes::Enum GetItem() const;
+
+		void Teleport(const b2Vec2 &position);
+
+	private:
+		bool CheckGround();
+		void SetState(int newState);
 
 	protected:
 		b2Body		*pBody;

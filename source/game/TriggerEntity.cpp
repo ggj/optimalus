@@ -20,7 +20,8 @@ void TriggerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprit
 
 	clSensor.Load(metadata, this);	
 
-	fOnce = metadata.GetProperty("Once").compare("true") == 0;	
+	if(!metadata.GetProperty("Once").empty())
+		fOnce = metadata.GetProperty("Once").compare("true") == 0;	
 }
 
 void TriggerEntity::OnCollision(const CollisionEvent &event)
