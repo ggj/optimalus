@@ -28,7 +28,8 @@ SOURCES += source/main.cpp \
 	source/game/DeathEntity.cpp \
 	source/game/SoundManager.cpp \
 	source/game/HostageEntity.cpp \
-	source/states/gameover_state.cpp
+	source/states/gameover_state.cpp \
+	source/game/TriggerCounter.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -55,7 +56,8 @@ HEADERS += \
 	source/game/SoundManager.h \
 	source/game/Sounds.h \
 	source/game/HostageEntity.h \
-	source/states/gameover_state.h
+	source/states/gameover_state.h \
+	source/game/TriggerCounter.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -75,17 +77,14 @@ OTHER_FILES_SCENE = \
 	resources/scenes/game.scene \
 	resources/scenes/game_level4.scene \
 	resources/scenes/game_level2.scene \
-	resources/scenes/game_level3.scene
+	resources/scenes/game_level3.scene \
+	resources/scenes/game_level5.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
 	resources/textures/rocket_invader.png \
-	resources/textures/frame03.png \
-	resources/textures/tile_map.png \
-	resources/textures/tiles1.png \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
-	resources/textures/ui_icons_game.png \
 	resources/textures/player_run_frame8.png \
 	resources/textures/player_run_frame7.png \
 	resources/textures/player_run_frame6.png \
@@ -144,6 +143,7 @@ OTHER_FILES_SOUND = \
 	resources/sounds/metal_game_over.ogg
 #Maps
 OTHER_FILES_MAPS = \
+	resources/level5.json \
 	resources/level4.json \
 	resources/level3.json \
 	resources/level2.json \

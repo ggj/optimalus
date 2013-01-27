@@ -29,7 +29,7 @@
   <object x="227" y="678" width="24" height="55"/>
   <object x="166" y="742" width="150" height="55"/>
   <object x="28" y="804" width="2977" height="953"/>
-  <object name="Morte" x="979" y="711" width="28" height="30">
+  <object name="Morte" x="979" y="734" width="28" height="30">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Sleep" value="99999"/>
@@ -40,14 +40,12 @@
    <properties>
     <property name="Class" value="Death"/>
     <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
    </properties>
   </object>
   <object name="Morte" x="3071" y="930" width="28" height="30">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Sleep" value="99999"/>
-    <property name="Type" value="Entity"/>
    </properties>
   </object>
   <object name="Morte" x="3095" y="2523" width="28" height="30">
@@ -152,73 +150,73 @@
   <object x="1828" y="615" width="57" height="89"/>
  </objectgroup>
  <objectgroup name="Game" width="100" height="84">
-  <object name="Death1" x="1004" y="403" width="23" height="23">
+  <object name="Death1" x="1008" y="391" width="23" height="23">
    <properties>
     <property name="Class" value="Death"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="2977" y="411" width="27" height="25">
+  <object name="Girl1" x="3036" y="422" width="27" height="25">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="1604" y="405" width="29" height="24">
+  <object name="Girl1" x="1603" y="422" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="168" y="278" width="29" height="24">
+  <object name="Girl3" x="167" y="295" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="570" y="608" width="29" height="24">
+  <object name="Girl3" x="575" y="615" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="69" y="764" width="29" height="24">
+  <object name="Girl3" x="48" y="776" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1638" y="2266" width="29" height="24">
+  <object name="Girl3" x="1609" y="2277" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="2894" y="2523" width="29" height="24">
+  <object name="Girl3" x="2882" y="2571" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1812" y="2489" width="29" height="24">
+  <object name="Girl3" x="1813" y="2504" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="1022" y="2107" width="29" height="24">
+  <object name="Girl3" x="999" y="2121" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl3" x="450" y="2557" width="29" height="24">
+  <object name="Girl3" x="423" y="2572" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Trigger" x="2959" y="379" width="59" height="58">
+  <object name="Trigger" x="3020" y="382" width="59" height="58">
    <properties>
     <property name="Class" value="Trigger"/>
     <property name="Target" value="Counter"/>
@@ -229,13 +227,13 @@
     <property name="Class" value="Player"/>
    </properties>
   </object>
-  <object name="Girl1" x="1548" y="568" width="29" height="24">
+  <object name="Girl1" x="1563" y="585" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
    </properties>
   </object>
-  <object name="Girl1" x="2109" y="749" width="29" height="24">
+  <object name="Girl1" x="2087" y="774" width="29" height="24">
    <properties>
     <property name="Class" value="Hostage"/>
     <property name="Type" value="Entity"/>
