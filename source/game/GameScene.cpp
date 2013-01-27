@@ -60,6 +60,12 @@ bool GameScene::Initialize()
 	String f("scenes/");
 	pJobManager->Add(New(FileLoader(f + sSceneFile, kJobLoadScene, this)));
 
+	// Get the initial value from game data
+	gFlow->SetLife(gGameData->GetLife());
+	gFlow->SetTime(gGameData->GetTime());
+	gFlow->SetHostage(gGameData->GetHostage());
+	gFlow->SetHostage(gGameData->GetHostage());
+
 	return true;
 }
 

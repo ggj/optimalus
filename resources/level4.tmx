@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="125" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="game_level" value="5.scene"/>
+ </properties>
+ <tileset firstgid="1" name="Background" tilewidth="32" tileheight="32">
+  <image source="textures/village_tileset.bmp" width="640" height="480"/>
+ </tileset>
+ <layer name="Background" width="125" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnLmOFDEQhpsAIgJSiHkU7ifgTkm40wWJ+w04nwAJCTJAJOQLSCOR7yIBIgdCAmrEtDDGLpfP8pQr+DS9a3e327/rd7U9u4tpmj4oXfAm8POSBfA9g8UK7mdVVPNRUc3HQ6rmbyLg1kA1L6v5AYfGR4FjqrlYzTXOVXPVXKbmTxM0j6m/7uNEouYUDZ949JOs9eiau3R8DrwQrrtvnI+q+Si+rpq3mcex3CHlWrl900rzWjooeeNXNR8DjfMxUc3HQ1oOJ5WQVrH5m2q+HthxWnIcqeZj0IPmy/3Pg8Ah4DBwZPq7/8ndPxLpQfPjwAngJHAKOA2cAc520D8S6UHz88AF4CJwCbgMXAGuMvfNYpI5T1E1XzgIlVPbcAO4CdwCbgN3gLvAvU705ta9dBsomrs0Lp3D3QceAA+BR8Dj6c/+J/X8z8AX4Ovq08Ssh5Vheof095VTroX1Vep5OZr74rpW3v4s8byesDXnbgulDbO+mJf7/Dx3DL5l6htfzK+z5jFa+DRsEecfmfQuOV+W0Dy3LbHxV0rz6wl8I9YLaWjWNedv+zqz3qbuKe02WXiO7TrY/ewyV13KtSnPhHn1FrANfAocz/V/VWQTeAe8dxzXvO9omLnxMp5/AD8dx8u6u3dM056KYGOu5n1HA4st83hZd39lzPFn37/2vUeC6u3cbeHuJ0lgfm7GHXdbuPtJElhsmbRoCza3cPeTJDDNzXc1jra09plRMPvV7vNNgxZtGcHbtxz97PNWDMq52DV9928dZyPkcLNv+sY2lVk77Fzf73vydqwvXgKvgNcFjin1aj3j7Ju+vIXKrAt2ru/3VN9ooXmoLyjrCKWOaz1jKW+f+yTF2zFPaD2fYrkFdR2h1HFNL+P2dswTWs/nI8R5iubYnBvrEb66qeOe4lk55RLiPJQ/7YI6O3f8/2n/zlev5PnUMRwavzHl1P2fGsc149y+5zqvQ1Dy0Zzy3rzdFbMhrwqNe24NS/qWRG9P1dyMa1PzdVxjLu3tdvny53Mrtq165wLn1/D20nHe6p24VZybeUQoz/CVX4PrbKxYHpvlG1M4J4nJe1Kel+JV0uZzLAejnL8X2Nfgk1KHqrm9zhHKy0Oxzq1hLKPthbrWOTDNzTVTW/PZY7ifKRaO911OXGvYofla2l4x9j7N3bYauLwd8zpJnm72wUhxbq+R/kC83YwHSf0T42uhd2/qe3RvZaEcTlqcm16G7ZFR+mlroulPeadvWRbK4UyvlzCfp66XucrM/cKYfqSu19YqS/UIbu1SCcVBjO9vTv/q3pN/p6yzmTEtydvN54rZz/B5u6l7aW9P1TV0zRHz9tLenuOXrcdK7PiUMJ/HrKmbx75+quntqXN2Tt4ucT5PpcR+Ww/eHronFhPcGrQmNAfWyLFTx0rO9z64+7kncuZIV5k5T/a0JsPdzz2Rmgfk+j51r73lnryCY6/1+ZC2lzUy9h6HC/VaWdh/i2H/b5LQuxV3+5V4MD/XnEomlBwag7v9SjzYfi1lruduvxJPaG01BHf7lbKaq7fLBHv3Vm+XSWyeXgt9L2ivOVVjSuyH1ndi4O4fiYS+b2RDyeswYscId/9IhPo37fbfmqQSO0a4+0ci6u3j4dpfTfkfTDH7obp32h8puTt3m5V8zWPe2VXz9Sf0XTZXLs7dZiWP0PeUtxzxz91mJQ9sLldvl8nOSDS/VhRFURRFURRFURRFURRFURRFURRFUWL5DQo3uac=
+  </data>
+ </layer>
+ <objectgroup name="Colliders" width="125" height="100">
+  <object x="2" y="3" width="27" height="925"/>
+  <object x="32" y="922" width="730" height="23"/>
+  <object x="896" y="768" width="224" height="32"/>
+  <object x="1216" y="768" width="128" height="32"/>
+  <object x="1120" y="896" width="96" height="32"/>
+  <object x="992" y="896" width="32" height="32"/>
+  <object x="1504" y="768" width="288" height="32"/>
+  <object x="1536" y="736" width="160" height="32"/>
+  <object x="1568" y="704" width="96" height="32"/>
+  <object x="1408" y="832" width="32" height="32"/>
+  <object x="1376" y="864" width="96" height="32"/>
+  <object x="1344" y="896" width="160" height="32"/>
+  <object x="1920" y="768" width="96" height="32"/>
+  <object x="2016" y="768" width="32" height="160"/>
+  <object x="2112" y="768" width="32" height="160"/>
+  <object x="2144" y="768" width="288" height="32"/>
+  <object x="2304" y="896" width="96" height="32"/>
+  <object x="2624" y="768" width="256" height="32"/>
+  <object x="2656" y="736" width="96" height="32"/>
+  <object x="2560" y="864" width="32" height="32"/>
+  <object x="2560" y="896" width="64" height="32"/>
+  <object x="2688" y="896" width="64" height="32"/>
+  <object x="2848" y="896" width="32" height="32"/>
+  <object x="3040" y="896" width="160" height="32"/>
+  <object x="3072" y="864" width="128" height="32"/>
+  <object x="3104" y="832" width="96" height="32"/>
+  <object x="3136" y="800" width="64" height="32"/>
+  <object x="3424" y="896" width="224" height="32"/>
+  <object x="3456" y="864" width="192" height="32"/>
+  <object x="3488" y="832" width="160" height="32"/>
+  <object x="3520" y="800" width="128" height="32"/>
+  <object x="3552" y="768" width="96" height="32"/>
+  <object x="3584" y="736" width="64" height="32"/>
+  <object x="3616" y="704" width="160" height="32"/>
+  <object x="3872" y="704" width="288" height="32"/>
+  <object x="3776" y="800" width="384" height="32"/>
+  <object x="1888" y="896"/>
+  <object name="Girl1" x="1888" y="896">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object x="3968" y="832" width="32" height="96"/>
+  <object x="3968" y="736" width="32" height="64"/>
+  <object x="3968" y="0" width="32" height="704"/>
+  <object x="3456" y="0" width="32" height="864"/>
+  <object x="772" y="995" width="91" height="26"/>
+  <object x="898" y="1121" width="92" height="30"/>
+  <object x="770" y="1283" width="92" height="28"/>
+  <object x="898" y="1378" width="95" height="29"/>
+  <object x="1058" y="1473" width="59" height="31"/>
+  <object x="1025" y="1505" width="29" height="30"/>
+  <object x="1119" y="1506" width="31" height="32"/>
+  <object x="387" y="1538" width="90" height="31"/>
+  <object x="254" y="1633" width="98" height="32"/>
+  <object x="353" y="1728" width="96" height="33"/>
+  <object x="258" y="1827" width="94" height="33"/>
+  <object x="484" y="1532" width="539" height="28"/>
+  <object x="1252" y="1474" width="31" height="64"/>
+  <object x="1153" y="1530" width="93" height="28"/>
+  <object x="1287" y="1530" width="602" height="29"/>
+  <object x="1891" y="1217" width="30" height="314"/>
+  <object x="219" y="1350" width="35" height="572"/>
+  <object x="259" y="1914" width="443" height="31"/>
+  <object x="682" y="1947" width="21" height="105"/>
+  <object x="707" y="2045" width="442" height="27"/>
+  <object x="1152" y="2049" width="93" height="29"/>
+  <object x="1347" y="1985" width="92" height="32"/>
+  <object x="1283" y="2114" width="93" height="29"/>
+  <object x="1153" y="2209" width="96" height="32"/>
+  <object x="1132" y="2077" width="17" height="460"/>
+  <object x="1153" y="2402" width="96" height="32"/>
+  <object x="1280" y="2303" width="96" height="34"/>
+  <object x="1155" y="2522" width="155" height="28"/>
+  <object x="1296" y="2554" width="14" height="165"/>
+  <object x="1314" y="2713" width="412" height="31"/>
+  <object x="1438" y="2559" width="96" height="31"/>
+  <object x="1635" y="2626" width="93" height="29"/>
+  <object x="1728" y="2521" width="28" height="225"/>
+  <object x="1759" y="2521" width="675" height="26"/>
+  <object x="2434" y="2337" width="25" height="182"/>
+  <object x="1573" y="2050" width="87" height="28"/>
+  <object x="1664" y="2042" width="28" height="293"/>
+  <object x="1697" y="2043" width="862" height="24"/>
+  <object x="2562" y="1950" width="26" height="116"/>
+  <object x="2592" y="1949" width="190" height="24"/>
+  <object x="2788" y="1633" width="22" height="341"/>
+  <object x="2689" y="1602" width="92" height="29"/>
+  <object x="2784" y="1595" width="71" height="32"/>
+  <object x="2530" y="1666" width="93" height="32"/>
+  <object x="2689" y="1729" width="97" height="29"/>
+  <object x="2529" y="1795" width="95" height="26"/>
+  <object x="2690" y="1858" width="91" height="26"/>
+  <object x="2753" y="1505" width="91" height="32"/>
+  <object x="2628" y="1441" width="90" height="29"/>
+  <object x="2756" y="1380" width="90" height="27"/>
+  <object x="2850" y="1413" width="28" height="182"/>
+  <object x="2848" y="1368" width="1117" height="31"/>
+  <object x="3651" y="931" width="93" height="31"/>
+  <object x="3647" y="1121" width="96" height="31"/>
+  <object x="3875" y="1025" width="89" height="32"/>
+  <object x="3875" y="1153" width="89" height="31"/>
+  <object x="3875" y="1283" width="89" height="32"/>
+  <object x="3969" y="933" width="43" height="469"/>
+  <object name="Girl1" x="1837" y="1505">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="996" y="1503">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="1395" y="1952">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="2384" y="2493">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="1353" y="2685">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="3712" y="672">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Game" width="125" height="100">
+  <object name="Player" x="640" y="896">
+   <properties>
+    <property name="Class" value="Player"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="1279" y="893">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Death_1" x="797" y="614" width="23" height="23">
+   <properties>
+    <property name="Class" value="Death"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+  <object name="Girl1" x="2240" y="896">
+   <properties>
+    <property name="Class" value="Hostage"/>
+    <property name="Type" value="Entity"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
