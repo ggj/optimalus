@@ -52,6 +52,24 @@
 							]
 						}
 						{
+							sName: "Land"
+							bAnimated: true
+							bLoop: false
+							iFps: 7
+							aFrames:
+							[
+								{
+									sResource: textures/player_land_frame1.png
+								}
+								{
+									sResource: textures/player_land_frame2.png
+								}
+								{
+									sResource: textures/player_land_frame3.png
+								}
+							]
+						}
+						{
 							sName: "Run"
 							bAnimated: true
 							bLoop: true

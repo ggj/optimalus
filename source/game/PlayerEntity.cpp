@@ -47,7 +47,32 @@ Sprite *PlayerEntity::GetSprite() const
 
 void PlayerEntity::Update(f32 dt)
 {
+	if (iPreviousState ==JUMP && CheckGround())
+	{
+		SetState(LAND);
+	}
 
+	if (iCurrentState == iPreviousState)
+		return;
+
+	if (iCurrentState == JUMP)
+	{
+		pSprite->SetAnimation("Jump");
+	}
+	else if (iCurrentState == LAND)
+	{
+		pSprite->SetAnimation("Land");
+	}
+	else if (iCurrentState == RUN)
+	{
+		pSprite->SetAnimation("Run");
+	}
+	else
+	{
+		pSprite->SetAnimation("Idle");
+	}
+
+	iPreviousState = iCurrentState;
 }
 
 void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
@@ -56,41 +81,34 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if (k == Seed::KeyUp || k == Seed::KeyW)
+	if ((k == Seed::KeyUp || k == Seed::KeyW) && iCurrentState != JUMP)
 	{
-		pSprite->SetAnimation("Jump");
-
+		SetState(JUMP);
 		pBody->ApplyForce(b2Vec2(0,300), pBody->GetWorldCenter());
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
 	{
+		SetState(RUN);
+
 		vel.x = -5;
 		pBody->SetLinearVelocity(vel);
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() > 0)
 			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
-
-		// Play the animation
-		pSprite->SetAnimation("Run");
-
-		bIsRunning = true;
 	}
 
 	if (k == Seed::KeyRight || k == Seed::KeyD)
 	{
+		SetState(RUN);
+
 		vel.x = 5;
 		pBody->SetLinearVelocity(vel);
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() < 0)
 			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
-
-		// Play the animation
-		pSprite->SetAnimation("Run");
-
-		bIsRunning = true;
 	}
 
 	if (k == Seed::KeyDown || k == Seed::KeyS)
@@ -112,28 +130,27 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	// Remove the directions
 	if (k == Seed::KeyUp|| k == Seed::KeyW)
 	{
-		if (!bIsRunning)
-			pSprite->SetAnimation("Idle");
-		else
-			pSprite->SetAnimation("Run");
+
 	}
 
 	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
-		//pSprite->SetAnimation("Idle");
 		pBody->SetLinearVelocity(vel);
-		bIsRunning = false;
 
-		pSprite->SetAnimation("Idle");
+		if (CheckGround())
+			SetState(IDLE);
+		else
+			SetState(JUMP);
 	}
 
 	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
-		//pSprite->SetAnimation("Idle");
 		pBody->SetLinearVelocity(vel);
-		bIsRunning = false;
 
-		pSprite->SetAnimation("Idle");
+		if (CheckGround())
+			SetState(IDLE);
+		else
+			SetState(JUMP);
 	}
 
 	if (k == Seed::KeyDown|| k == Seed::KeyS)
@@ -147,4 +164,8 @@ bool PlayerEntity::CheckGround()
 	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32));
 }
 
-
+void PlayerEntity::SetState(int newState)
+{
+	iPreviousState = iCurrentState;
+	iCurrentState = newState;
+}

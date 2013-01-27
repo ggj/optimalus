@@ -25,7 +25,7 @@ SOURCES += source/main.cpp \
 	source/game/cameracontroller.cpp \
 	source/game/TriggerEntity.cpp \
 	source/game/GameScene.cpp \
-    source/game/DeathEntity.cpp
+	source/game/DeathEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -48,7 +48,7 @@ HEADERS += \
 	source/game/cameracontroller.h \
 	source/game/TriggerEntity.h \
 	source/game/GameScene.h \
-    source/game/DeathEntity.h
+	source/game/DeathEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -83,12 +83,14 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
-	resources/textures/heart.png \
 	resources/textures/player_jump_frame4.png \
 	resources/textures/player_jump_frame3.png \
 	resources/textures/player_jump_frame2.png \
 	resources/textures/player_jump_frame1.png \
-	resources/textures/heart.png
+	resources/textures/heart.png \
+	resources/textures/player_land_frame3.png \
+	resources/textures/player_land_frame2.png \
+	resources/textures/player_land_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

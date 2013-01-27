@@ -26,6 +26,7 @@ class PlayerEntity: public SpriteEntity,
 		Sprite *GetSprite() const;
 
 		bool CheckGround();
+		void SetState(int newState);
 
 	private:
 
@@ -34,6 +35,10 @@ class PlayerEntity: public SpriteEntity,
 		float		fVelocity;
 		Vector3f	vPlayerVectorDirection;
 		bool		bIsRunning;
+		enum		eAnimationStates {IDLE = 0, RUN = 1, JUMP = 2, LAND = 3};
+		int			iPreviousState;
+		int			iCurrentState;
+
 };
 
 #endif
