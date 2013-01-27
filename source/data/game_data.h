@@ -11,6 +11,7 @@ class GameData
 
 		u32 GetLife() const;
 		void SetLife(u32);
+		void RemoveLife();
 
 		u32 GetTime() const;
 		void SetTime(u32);

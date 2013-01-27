@@ -264,3 +264,8 @@ void GameScene::RemoveHostage()
 		fChangeLevel = true;
 	}
 }
+
+void GameScene::RemoveLife()
+{
+	gFlow->RemoveLife();
+}

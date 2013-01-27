@@ -426,6 +426,12 @@ void GameFlow::SetLife(u32 life)
 	gGameData->SetLife(life);
 }
 
+void GameFlow::RemoveLife()
+{
+	gGameData->RemoveLife();
+	this->SetLife(gGameData->GetLife());
+}
+
 void GameFlow::SetTime(u32 time)
 {
 	char x[100];
@@ -443,13 +449,12 @@ void GameFlow::PrintHostage(u32 hostage)
 
 void GameFlow::SetHostage(u32 hostage)
 {
-	this->PrintHostage(hostage);	
+	this->PrintHostage(hostage);
 	gGameData->SetHostage(hostage);
 }
 
 void GameFlow::RemoveHostage()
 {
 	gGameData->RemoveHostage();
-
-	this->PrintHostage(gGameData->GetHostage());	
+	this->PrintHostage(gGameData->GetHostage());
 }

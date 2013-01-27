@@ -251,7 +251,7 @@
 		{
 			sType: GameMap
 			sName: Map
-			sResource: level_bcs.json
+			sResource: level4.json
 			cPosition: {z: 200}
 		}
 		{
