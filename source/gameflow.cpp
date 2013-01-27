@@ -139,6 +139,7 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 
 	this->InitializeGUI();
 	cFlow.Initialize(&cMenu);
+
 }
 
 

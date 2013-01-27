@@ -64,6 +64,10 @@ bool GameScene::Initialize()
 	String f("scenes/");
 	pJobManager->Add(New(FileLoader(f + sSceneFile, kJobLoadScene, this)));
 
+	// Get the initial value from game data
+	gFlow->SetLife(gGameData->GetLife());
+	gFlow->SetHostage(gGameData->GetHostage());
+
 	return true;
 }
 
@@ -253,7 +257,7 @@ void GameScene::LoadMapColliders()
 
 void GameScene::RemoveHostage()
 {
-	gFlow->RemoveHostage();		
+	gFlow->RemoveHostage();
 
 	if((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
 	{

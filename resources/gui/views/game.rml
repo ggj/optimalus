@@ -7,10 +7,7 @@
 		<game id="game">
 			<div id="hostages_div">
 				<icon />
-				<span id="hostages" />
-			</div>
-			<div id="time_div">
-				<span id="time">05:00</span>
+				x <span id="hostages" />
 			</div>
 			<div id="lifes_div">
 				<icon />

@@ -132,7 +132,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if ((k == Seed::KeyUp || k == Seed::KeyW) && iCurrentState != JUMP)
+	if ((k == Seed::KeyUp || k == Seed::KeyW || k == Seed::KeySpace) && iCurrentState != JUMP)
 	{
 		SetState(JUMP);
 		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());

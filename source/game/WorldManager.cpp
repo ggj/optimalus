@@ -68,5 +68,16 @@ Entity *WorldManager::FindEntityByName(const char *name)
 	return NULL;
 }
 
+void WorldManager::ActivateAllEntites(const char *name)
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		if((*it)->GetName().compare(name) == 0)
+		{
+			(*it)->Activate();
+		}
+	}
+}
+
 
 

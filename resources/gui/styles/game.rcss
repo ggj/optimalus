@@ -26,19 +26,21 @@ div#hostages_div
 {
 	float: left;
 	width: 155px;
+	font-size: 30;
 }
 
 div#time_div
 {
 	float: left;
 	width: 205px;
-	font-size: 50;
+	font-size: 30;
 }
 
 div#lifes_div
 {
 	float: right;
 	width: 80px;
+	font-size: 30;
 }
 
 icon
