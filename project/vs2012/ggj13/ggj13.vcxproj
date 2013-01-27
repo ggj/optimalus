@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\..\source\data\game_data.cpp" />
     <ClCompile Include="..\..\..\source\gameflow.cpp" />
     <ClCompile Include="..\..\..\source\game\cameracontroller.cpp" />
+    <ClCompile Include="..\..\..\source\game\DeathEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\Entity.cpp" />
     <ClCompile Include="..\..\..\source\game\EntityFactory.cpp" />
     <ClCompile Include="..\..\..\source\game\GameScene.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="..\..\..\source\defines.h" />
     <ClInclude Include="..\..\..\source\gameflow.h" />
     <ClInclude Include="..\..\..\source\game\cameracontroller.h" />
+    <ClInclude Include="..\..\..\source\game\DeathEntity.h" />
     <ClInclude Include="..\..\..\source\game\Entity.h" />
     <ClInclude Include="..\..\..\source\game\EntityFactory.h" />
     <ClInclude Include="..\..\..\source\game\GameScene.h" />

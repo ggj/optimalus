@@ -17,6 +17,7 @@ using namespace Seed::RocketGui;
 extern SceneNode *gScene;
 extern PhysicsManager *gPhysics;
 extern SoundManager *gSoundManager;
+extern WorldManager *gWorldManager;
 
 class GameScene : public IEventInputKeyboardListener,
 				  public IEventJobListener,
@@ -52,7 +53,8 @@ class GameScene : public IEventInputKeyboardListener,
 		PlayerEntity	 *pPlayer;
 		Camera			 *pCamera;
 		CameraController clCamera;
-		SceneNode		*pScene;
+		SceneNode		*pParentScene;
+		SceneNode		cScene;
 		Music			musTheme;
 		GameMap			*pGameMap;
 		bool			bPaused;

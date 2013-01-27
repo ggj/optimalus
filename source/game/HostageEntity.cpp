@@ -7,7 +7,7 @@
 ENTITY_CREATOR("Hostage", HostageEntity)
 
 HostageEntity::HostageEntity():
-	SpriteEntity("Hostage")
+	SpriteEntity("Hostage", "Hostage")
 {
 	//empty
 }
@@ -31,7 +31,16 @@ void HostageEntity::OnCollision(const CollisionEvent &event)
 	{
 		Log("HOSTAGE colidiu");
 
-		gSoundManager->Play(HOSTAGE_KILL);		
+		gSoundManager->Play(SND_HOSTAGE_KILL);		
 		pBody->GetFixtureList()->SetUserData(NULL);	
+
+		Entity *other = event.GetOtherEntity();
+		if(other != NULL && other->GetClassName() == "Player")
+		{
+			PlayerEntity *player = static_cast<PlayerEntity*>(other);
+			player->SetItem(ItemTypes::HEART);
+
+			pSprite->SetAnimation("Death");
+		}
 	}
 }

@@ -32,9 +32,6 @@ class GameFlow : public IGameApp,
 		virtual bool Update(f32 dt);
 		virtual bool Shutdown();
 
-		void AddScene(ISceneObject *node);
-		void RemoveScene(ISceneObject *node);
-
 		// GUI
 		bool LoadGUI(const String &doc);
 		bool ReloadGUI();
@@ -59,6 +56,8 @@ class GameFlow : public IGameApp,
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
 
 		inline Camera *GetCamera() const;
+		inline SceneNode *GetScene() const;
+
 		void Menu();
 
 	private:
@@ -110,6 +109,11 @@ class GameFlow : public IGameApp,
 inline Camera *GameFlow::GetCamera() const
 {
 	return pCamera;
+}
+
+inline SceneNode *GameFlow::GetScene() const
+{
+	return pScene;
 }
 
 #endif // _GAMEFLOW_H_

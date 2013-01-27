@@ -6,6 +6,7 @@
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
 SoundManager *gSoundManager =NULL;
+WorldManager *gWorldManager = NULL;
 
 enum
 {
@@ -16,14 +17,15 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	: pPlayer(NULL)
 	, pCamera(mainCamera)
 	, clCamera()
-	, pScene(parent)
+	, pParentScene(parent)
 	, musTheme()
 	, bPaused(false)
 	, bInitialized(false)
 {
-	gScene = this->pScene;
+	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
 	gSoundManager = &clSoundManager;
+	gWorldManager = &clWorldManager;
 }
 
 GameScene::~GameScene()
@@ -33,7 +35,7 @@ GameScene::~GameScene()
 
 bool GameScene::Initialize()
 {
-	gFlow->AddScene(pScene);
+	pParentScene->Add(&cScene);
 
 	// Create the transitions
 	cRunToPause.Initialize(&cRun, &cOnPause, &cPause);
@@ -77,7 +79,7 @@ TEST: Bug de raster/texel.
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
-	
+
 	return true;
 }
 
@@ -87,9 +89,9 @@ bool GameScene::Shutdown()
 
 	clWorldManager.Clear();
 
-	gFlow->RemoveScene(pScene);
-	pScene->Unload();
-	pScene = NULL;
+	pParentScene->Remove(&cScene);
+	cScene.Unload();
+	pParentScene = NULL;
 
 	pInput->RemoveKeyboardListener(this);
 	RocketEventManager::RemoveListener(this);
@@ -117,8 +119,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 		{
 			FileLoader *job = (FileLoader *)ev->GetJob();
 			Reader r(job->pFile);
-			pScene->Load(r);
-			Log("Scene Name: %s len %d", pScene->sName.c_str(), pScene->Size());
+			cScene.Load(r);
+			Log("Scene Name: %s len %d", cScene.sName.c_str(), cScene.Size());
 			Delete(job);
 
 			// Validate the music to play
@@ -129,23 +131,22 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				pSoundSystem->PlayMusic(&musTheme);
 			}
 
-			SceneNode *sounds = (SceneNode *)pScene->GetChildByName("Sounds");
+			SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
 			clSoundManager.Init(*sounds);
 
-			SceneNode *sprites = (SceneNode *)pScene->GetChildByName("Sprites");
-			pGameMap = (GameMap *)pScene->GetChildByName("Map");
+			SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
+			pGameMap = (GameMap *)cScene.GetChildByName("Map");
 
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
 			for (unsigned i = 0, len = game->Size(); i < len; ++i)
 			{
 				IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
-				const String &type = placeHolder->GetProperty("Type");
-
-				if (type == "Entity")
+				//const String &type = placeHolder->GetProperty("Type");
+				//if (type == "Entity")
 				{
 					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
 					//Log("%s", entity->GetName().c_str());
-					if (entity->GetName() == "Player")
+					if (entity->GetClassName() == "Player")
 					{
 						pPlayer = static_cast<PlayerEntity*>(entity);
 					}
@@ -153,7 +154,6 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			}
 
 			this->LoadMapColliders();
-
 
 			clCamera.SetCamera(pCamera);
 			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());

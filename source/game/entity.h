@@ -11,27 +11,37 @@ class CollisionEvent;
 class Entity
 {
 	public:
-		Entity();
+		Entity(const String &className);
 		virtual ~Entity();
 
-        inline const String &GetName() const;
-
-		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites) = 0;
+		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
 		virtual void OnCollision(const CollisionEvent &event) {};
 
 		virtual void Update(f32 dt) {};
 
-    protected:
-        String strName;
+		inline const String &GetClassName() const;
+		inline const String &GetName() const;
+
+		virtual void Activate() {};
+
+    protected:        
 
 	private:
 		SEED_DISABLE_COPY(Entity);
+
+		String strClassName;
+		String strName;
 };
+
+const String &Entity::GetClassName() const
+{
+    return strClassName;
+}
 
 const String &Entity::GetName() const
 {
-    return strName;
+	return strName;
 }
 
 #endif

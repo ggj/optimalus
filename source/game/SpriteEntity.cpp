@@ -2,8 +2,9 @@
 
 #include "GameScene.h"
 
-SpriteEntity::SpriteEntity(const char *spriteName)
+SpriteEntity::SpriteEntity(const char *className, const char *spriteName)
 	:	pSprite(NULL)
+	,	Entity(className)
 	,	pszSpriteName(spriteName)
 {
 	SEED_ASSERT(spriteName);
@@ -17,7 +18,7 @@ SpriteEntity::~SpriteEntity()
 
 void SpriteEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
-	strName = metadata.GetProperty("Class");
+	Entity::Load(metadata, sprites);
 
 	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName(pszSpriteName))));
 	pSprite->SetPosition(metadata.GetPosition());

@@ -52,6 +52,7 @@ HEADERS += \
 	source/game/GameScene.h \
 	source/game/DeathEntity.h \
 	source/game/SoundManager.h \
+	source/game/Sounds.h \
 	source/game/HostageEntity.h
 
 OTHER_FILES_CONFIG = \
@@ -76,6 +77,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
+	resources/textures/tiles1.png \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
 	resources/textures/ui_icons_game.png \
@@ -87,13 +89,23 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
-	resources/textures/heart.png \
 	resources/textures/player_jump_frame4.png \
 	resources/textures/player_jump_frame3.png \
 	resources/textures/player_jump_frame2.png \
 	resources/textures/player_jump_frame1.png \
 	resources/textures/heart.png \
+	resources/textures/player_land_frame3.png \
+	resources/textures/player_land_frame2.png \
+	resources/textures/player_land_frame1.png \
+	resources/textures/death_idle_frame2.png \
+	resources/textures/death_idle_frame1.png \
+	resources/textures/hostage_idle_frame1.png \
 	resources/textures/menu_background.png \
+	resources/textures/hostage_death_frame5.png \
+	resources/textures/hostage_death_frame4.png \
+	resources/textures/hostage_death_frame3.png \
+	resources/textures/hostage_death_frame2.png \
+	resources/textures/hostage_death_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -116,10 +128,14 @@ OTHER_FILES_SOUND = \
 #Sounds
 	resources/sounds/sfx.ogg \
 	resources/sounds/theme.ogg \
-	resources/sounds/Pickup_Coin3.ogg
+	resources/sounds/wakeup.ogg \
+	resources/sounds/powerup.ogg \
+	resources/sounds/Pickup_Coin3.ogg \
+	resources/sounds/damage.ogg
 #Maps
 OTHER_FILES_MAPS = \
-	resources/level1.json
+	resources/level1.json \
+	resources/level0.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \

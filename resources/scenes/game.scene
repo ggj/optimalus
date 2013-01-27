@@ -34,7 +34,7 @@
 							sName: "Jump"
 							bAnimated: true
 							bLoop: false
-							iFps: 5
+							iFps: 10
 							aFrames:
 							[
 								{
@@ -48,6 +48,24 @@
 								}
 								{
 									sResource: textures/player_jump_frame4.png
+								}
+							]
+						}
+						{
+							sName: "Land"
+							bAnimated: true
+							bLoop: false
+							iFps: 15
+							aFrames:
+							[
+								{
+									sResource: textures/player_land_frame1.png
+								}
+								{
+									sResource: textures/player_land_frame2.png
+								}
+								{
+									sResource: textures/player_land_frame3.png
 								}
 							]
 						}
@@ -128,7 +146,58 @@
 							aFrames:
 							[
 								{
-									sResource: textures/frame03.png
+									sResource: textures/hostage_idle_frame1.png
+								}
+							]
+						}
+						{
+							sName: "Death"
+							bAnimated: true
+							bLoop: false
+							iFps: 10
+							aFrames:
+							[
+								{
+									sResource: textures/hostage_death_frame1.png
+								}
+								{
+									sResource: textures/hostage_death_frame2.png
+								}
+								{
+									sResource: textures/hostage_death_frame3.png
+								}
+								{
+									sResource: textures/hostage_death_frame4.png
+								}
+								{
+									sResource: textures/hostage_death_frame5.png
+								}
+							]
+						}
+					]
+				}
+				{
+					cScale: {x: 1, y: 1, z: 1}
+					cPosition: {z: 100}
+					sType: Sprite
+					sBlending: none
+					sName: Death
+					cColor: {r: 255, g: 255, b: 255, a: 255}
+					bVisible: false
+					aAnimations:
+					[
+						{
+							sName: "Idle"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/death_idle_frame1.png
+								}
+								{
+									sResource: textures/death_idle_frame2.png
 								}
 							]
 						}
@@ -141,15 +210,42 @@
 			sType: SceneNode
 			aObjects:
 			[
-        		{
-        			sType: SoundSource
-        			sName: HostageKill
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/Pickup_Coin3.ogg
-        		}
+				{
+					sType: SoundSource
+					sName: HostageKill
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/Pickup_Coin3.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Powerup
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/powerup.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Damage
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/damage.ogg
+				}
+				{
+					sType: SoundSource
+					sName: Wakeup
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/wakeup.ogg
+				}
 			]
 		}
 		{

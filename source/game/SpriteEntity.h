@@ -6,7 +6,7 @@
 class SpriteEntity: public Entity
 {
 	public:
-		SpriteEntity(const char *spriteName);
+		SpriteEntity(const char *className, const char *spriteName);
 		virtual ~SpriteEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);

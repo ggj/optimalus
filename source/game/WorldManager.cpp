@@ -42,4 +42,31 @@ void WorldManager::Update(f32 dt)
 	}
 }
 
+Entity *WorldManager::FindEntityByClassName(const char *className)
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		if((*it)->GetClassName().compare(className) == 0)
+		{
+			return *it;
+		}
+	}
+
+	return NULL;
+}
+
+Entity *WorldManager::FindEntityByName(const char *name)
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		if((*it)->GetName().compare(name) == 0)
+		{
+			return *it;
+		}
+	}
+
+	return NULL;
+}
+
+
 
