@@ -25,7 +25,9 @@ SOURCES += source/main.cpp \
 	source/game/cameracontroller.cpp \
 	source/game/TriggerEntity.cpp \
 	source/game/GameScene.cpp \
-    source/game/DeathEntity.cpp
+	source/game/DeathEntity.cpp \
+	source/game/SoundManager.cpp \
+	source/game/HostageEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -48,7 +50,9 @@ HEADERS += \
 	source/game/cameracontroller.h \
 	source/game/TriggerEntity.h \
 	source/game/GameScene.h \
-    source/game/DeathEntity.h
+	source/game/DeathEntity.h \
+	source/game/SoundManager.h \
+	source/game/HostageEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -72,6 +76,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/rocket_invader.png \
 	resources/textures/frame03.png \
 	resources/textures/tile_map.png \
+	resources/textures/tiles1.png \
 	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
 	resources/textures/ui_icons_game.png \
@@ -83,12 +88,16 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
-	resources/textures/heart.png \
 	resources/textures/player_jump_frame4.png \
 	resources/textures/player_jump_frame3.png \
 	resources/textures/player_jump_frame2.png \
 	resources/textures/player_jump_frame1.png \
-	resources/textures/heart.png
+	resources/textures/heart.png \
+	resources/textures/player_land_frame3.png \
+	resources/textures/player_land_frame2.png \
+	resources/textures/player_land_frame1.png \
+	resources/textures/menu_background.png \
+	resources/textures/player_jump_frame1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -113,7 +122,8 @@ OTHER_FILES_SOUND = \
 	resources/sounds/theme.ogg
 #Maps
 OTHER_FILES_MAPS = \
-	resources/level1.json
+	resources/level1.json \
+	resources/level0.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -198,4 +208,6 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
 

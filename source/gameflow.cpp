@@ -125,6 +125,7 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 	Viewport *viewport = cPres.GetViewportByName("MainView");
 
 	pCamera = viewport->GetCamera();
+	pImage = (Image *)cPres.GetRendererByName("MainRenderer")->GetScene()->GetChildByName("Background");
 
 	this->InitializeGUI();
 	cFlow.Initialize(&cMenu);

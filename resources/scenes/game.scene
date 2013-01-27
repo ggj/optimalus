@@ -34,7 +34,7 @@
 							sName: "Jump"
 							bAnimated: true
 							bLoop: false
-							iFps: 5
+							iFps: 10
 							aFrames:
 							[
 								{
@@ -48,6 +48,24 @@
 								}
 								{
 									sResource: textures/player_jump_frame4.png
+								}
+							]
+						}
+						{
+							sName: "Land"
+							bAnimated: true
+							bLoop: false
+							iFps: 15
+							aFrames:
+							[
+								{
+									sResource: textures/player_land_frame1.png
+								}
+								{
+									sResource: textures/player_land_frame2.png
+								}
+								{
+									sResource: textures/player_land_frame3.png
 								}
 							]
 						}

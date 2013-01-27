@@ -37,6 +37,7 @@ class PlayerEntity: public SpriteEntity,
 		b2Vec2 GetBodyPosition() const;
 
 		bool CheckGround();
+		void SetState(int newState);
 
 		void SetItem(ItemTypes::Enum item);
 		ItemTypes::Enum GetItem() const;
@@ -48,6 +49,10 @@ class PlayerEntity: public SpriteEntity,
 		bool		bIsRunning;
 
 		ItemTypes::Enum eItem;
+
+		enum		eAnimationStates {IDLE = 0, RUN = 1, JUMP = 2, LAND = 3};
+		int			iPreviousState;
+		int			iCurrentState;
 };
 
 #endif

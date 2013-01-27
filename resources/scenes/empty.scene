@@ -3,6 +3,11 @@
 	sName: MainScene
 	aObjects: [
 		{
+			sType: Image
+			sName: Background
+			sResource: textures/menu_background.png
+		}
+		{
 			sType: Camera
 			sName: MainCamera
 			sProjection: Orthogonal
