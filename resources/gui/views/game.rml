@@ -3,7 +3,7 @@
 		<title>game</title>
 		<link type="text/template" href="gameplay.rml" />
 	</head>
-	<body id="game_window" onload="init hud">
+	<body id="game_window">
 		<game id="game">
 			<div id="hostages_div">
 				<icon />

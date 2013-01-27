@@ -14,18 +14,18 @@ class Entity
 		Entity(const String &className);
 		virtual ~Entity();
 
-		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
+		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
 
-		virtual void OnCollision(const CollisionEvent &event) {};
+		virtual void OnCollision(const CollisionEvent &event) { UNUSED(event) }
 
-		virtual void Update(f32 dt) {};
+		virtual void Update(f32 dt) { UNUSED(dt) }
 
 		inline const String &GetClassName() const;
 		inline const String &GetName() const;
 
-		virtual void Activate() {};
+		virtual void Activate() {}
 
-    protected:        
+	protected:
 
 	private:
 		SEED_DISABLE_COPY(Entity);
@@ -36,7 +36,7 @@ class Entity
 
 const String &Entity::GetClassName() const
 {
-    return strClassName;
+	return strClassName;
 }
 
 const String &Entity::GetName() const

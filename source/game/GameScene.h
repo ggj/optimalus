@@ -25,7 +25,7 @@ class GameScene : public IEventInputKeyboardListener,
 				  public IRocketEventListener
 {
 	public:
-		GameScene(SceneNode *parent, Camera *mainCamera);
+		GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile);
 		virtual ~GameScene();
 
 		virtual bool Initialize();
@@ -86,6 +86,8 @@ class GameScene : public IEventInputKeyboardListener,
 		StateMachineTransition cPauseToMenu;
 		StateMachineTransition cRunToGameOver;
 		StateMachineTransition cGameOverToMenu;
+
+		String sSceneFile;
 };
 
 #endif // _GAMEFLOW_H_

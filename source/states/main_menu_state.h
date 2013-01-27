@@ -12,6 +12,9 @@ class MainMenuState : public StateMachineState
 		virtual void OnStart(void *);
 		virtual void OnUpdate(f32);
 		virtual void OnStop(void *);
+
+	protected:
+		Music	musTheme;
 };
 
 #endif // _MAIN_MENU_H

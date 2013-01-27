@@ -22,7 +22,7 @@
 			}
 		</style>
 	</head>
-	<body template="window" onload="load">
+	<body template="window">
 		<button onCLick="resume">Resume</button>
 		<button onClick="quit">Return to menu</button>
 	</body>

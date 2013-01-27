@@ -13,7 +13,7 @@ enum
 	kJobLoadScene
 };
 
-GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
+GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile)
 	: pPlayer(NULL)
 	, pCamera(mainCamera)
 	, clCamera()
@@ -21,6 +21,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera)
 	, musTheme()
 	, bPaused(false)
 	, bInitialized(false)
+	, sSceneFile(sceneFile)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -56,7 +57,9 @@ bool GameScene::Initialize()
 	RocketEventManager::AddListener(this);
 	pInput->AddKeyboardListener(this);
 
-	pJobManager->Add(New(FileLoader("scenes/game.scene", kJobLoadScene, this)));
+	String f("scenes/");
+	pJobManager->Add(New(FileLoader(f + sSceneFile, kJobLoadScene, this)));
+
 	return true;
 }
 
@@ -188,6 +191,7 @@ void GameScene::OnJobAborted(const EventJob *ev)
 
 void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
 {
+	UNUSED(ev)
 	if (script == "resume")
 	{
 		cFlow.OnEvent(&cOnRun, this);
