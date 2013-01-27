@@ -28,7 +28,9 @@ void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites
 {
 	SpriteEntity::Load(metadata, sprites);
 
-	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::SENSOR, true);
+	b2Vec2 customSize(50, 40);
+
+	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::SENSOR, true, &customSize);
 	pBody->GetFixtureList()->SetUserData(this);	
 }
 

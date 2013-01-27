@@ -52,6 +52,7 @@ HEADERS += \
 	source/game/GameScene.h \
 	source/game/DeathEntity.h \
 	source/game/SoundManager.h \
+	source/game/Sounds.h \
 	source/game/HostageEntity.h
 
 OTHER_FILES_CONFIG = \

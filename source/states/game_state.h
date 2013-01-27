@@ -15,7 +15,6 @@ class GameState : public StateMachineState
 		virtual void OnStop(void *);
 		void LateStop();
 
-		SceneNode cScene;
 		GameScene *pGame;
 		bool bDoStop;
 };

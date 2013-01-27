@@ -63,7 +63,7 @@ void PhysicsManager::ClearWorld()
 	}
 }
 
-b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
+b2Body* PhysicsManager::CreateBody(ISceneObject *obj, b2Vec2 *customSize)
 {
 	if (!obj)
 		return NULL;
@@ -76,7 +76,15 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj)
 	b2Body *b = pWorld->CreateBody(&bodyDef);
 
 	b2PolygonShape boxShape;
-	boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
+
+	if(customSize)
+	{
+		boxShape.SetAsBox(customSize->x * 0.5f * PIX2M, customSize->y * 0.5f * PIX2M);
+	}
+	else
+	{
+		boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
+	}	
 
 	b2FixtureDef fixDef;
 	fixDef.shape = &boxShape;
@@ -97,7 +105,7 @@ void PhysicsManager::DestroyBody(b2Body *body)
 	pWorld->DestroyBody(body);
 }
 
-b2Body* PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type, bool track)
+b2Body* PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type, bool track, b2Vec2 *customSize)
 {
 	if (!obj)
 		return NULL;
@@ -113,7 +121,14 @@ b2Body* PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type,
 	b2Body *b = pWorld->CreateBody(&bodyDef);
 
 	b2PolygonShape boxShape;
-	boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
+	if(customSize)
+	{
+		boxShape.SetAsBox(customSize->x * 0.5f * PIX2M, customSize->y * 0.5f * PIX2M);
+	}
+	else
+	{
+		boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
+	}
 
 	b2FixtureDef fixDef;
 	fixDef.shape = &boxShape;
