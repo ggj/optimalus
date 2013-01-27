@@ -3,6 +3,7 @@
 
 MainMenuState::MainMenuState()
 {
+	musTheme.Load("sounds/scottwills_time.ogg");
 }
 
 MainMenuState::~MainMenuState()
@@ -19,8 +20,6 @@ void MainMenuState::OnStart(void *data)
 
 	if (gGameData->IsBgmEnabled() == true)
 	{
-//		musTheme.Load("sounds/scottwills_time.ogg");
-//		musTheme.SetVolume(1.0f);
 //		pSoundSystem->PlayMusic(&musTheme);
 	}
 }
