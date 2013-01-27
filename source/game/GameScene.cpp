@@ -72,6 +72,7 @@ TEST: Bug de raster/texel.
 	if (!bPaused)
 	{
 		clPhysicsManager.Update(dt);
+		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
 	

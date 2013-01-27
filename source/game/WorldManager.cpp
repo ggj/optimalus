@@ -34,4 +34,12 @@ void WorldManager::Clear()
 	vEntities.clear();
 }
 
+void WorldManager::Update(f32 dt)
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		(*it)->Update(dt);
+	}
+}
+
 

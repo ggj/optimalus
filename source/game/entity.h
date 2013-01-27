@@ -20,6 +20,8 @@ class Entity
 
 		virtual void OnCollision(const CollisionEvent &event) {};
 
+		virtual void Update(f32 dt) {};
+
     protected:
         String strName;
 
