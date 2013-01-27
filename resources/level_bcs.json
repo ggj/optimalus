@@ -434,7 +434,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "NextLevel":"game_level0.scene"
+     "NextLevel":"game_level2.scene"
     },
  "tileheight":32,
  "tilesets":[

@@ -212,7 +212,14 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 bool PlayerEntity::CheckGround()
 {
-	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32f));
+	if(gPhysics->RayCast(pBody, b2Vec2(0, 0.32f)))
+		return true;
+	if(gPhysics->RayCast(pBody, b2Vec2(16, 0.32f)))
+		return true;
+	if(gPhysics->RayCast(pBody, b2Vec2(-16, 0.32f)))
+		return true;
+
+	return false;
 }
 
 
