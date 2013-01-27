@@ -98,6 +98,7 @@
     <ClCompile Include="..\..\..\source\game\PlayerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\SoundManager.cpp" />
     <ClCompile Include="..\..\..\source\game\SpriteEntity.cpp" />
+    <ClCompile Include="..\..\..\source\game\TriggerCounter.cpp" />
     <ClCompile Include="..\..\..\source\game\TriggerEntity.cpp" />
     <ClCompile Include="..\..\..\source\game\WorldManager.cpp" />
     <ClCompile Include="..\..\..\source\main.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="..\..\..\source\game\SoundManager.h" />
     <ClInclude Include="..\..\..\source\game\Sounds.h" />
     <ClInclude Include="..\..\..\source\game\SpriteEntity.h" />
+    <ClInclude Include="..\..\..\source\game\TriggerCounter.h" />
     <ClInclude Include="..\..\..\source\game\TriggerEntity.h" />
     <ClInclude Include="..\..\..\source\game\WorldManager.h" />
     <ClInclude Include="..\..\..\source\states\credits_state.h" />

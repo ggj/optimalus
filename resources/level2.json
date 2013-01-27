@@ -618,8 +618,68 @@
                  "width":0,
                  "x":1888,
                  "y":896
+                }, 
+                {
+                 "height":96,
+                 "name":"MainCounter",
+                 "properties":
+                    {
+                     "Class":"TriggerCounter",
+                     "Counter":"2",
+                     "Target":"AnotherDeath"
+                    },
+                 "type":"",
+                 "width":64,
+                 "x":1152,
+                 "y":576
+                }, 
+                {
+                 "height":0,
+                 "name":"AnotherDeath",
+                 "properties":
+                    {
+                     "Class":"Death",
+                     "Sleep":"99999",
+                     "SpeedFactor":"0.5"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":1408,
+                 "y":480
+                }, 
+                {
+                 "height":64,
+                 "name":"",
+                 "properties":
+                    {
+                     "Class":"Trigger",
+                     "Once":"true",
+                     "Target":"MainCounter"
+                    },
+                 "type":"",
+                 "width":96,
+                 "x":1216,
+                 "y":864
+                }, 
+                {
+                 "height":96,
+                 "name":"",
+                 "properties":
+                    {
+                     "Class":"Trigger",
+                     "Once":"true",
+                     "Target":"MainCounter"
+                    },
+                 "type":"",
+                 "width":96,
+                 "x":1856,
+                 "y":832
                 }],
          "opacity":1,
+         "properties":
+            {
+             "NextLevel":"game_level3.scene"
+            },
          "type":"objectgroup",
          "visible":true,
          "width":125,

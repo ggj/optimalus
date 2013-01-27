@@ -15,7 +15,9 @@ ENTITY_CREATOR("Death", DeathEntity)
 DeathEntity::DeathEntity():
 	SpriteEntity("Death", "Death"),
 	fpSleep(SLEEP_TIME),
-	pTarget(NULL)
+	fpSleepConfig(SLEEP_TIME),
+	pTarget(NULL),
+	fpSpeedFactor(1)
 {
 	//empty
 }
@@ -33,6 +35,19 @@ void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites
 
 	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::SENSOR, true, &customSize);
 	pBody->GetFixtureList()->SetUserData(this);	
+
+	String sleep = metadata.GetProperty("Sleep");
+	if(!sleep.empty())
+	{
+		sscanf(sleep.c_str(), "%f", &fpSleep );
+		fpSleepConfig = fpSleep;
+	}
+
+	String speedFactor = metadata.GetProperty("SpeedFactor");
+	if(!speedFactor.empty())
+	{
+		sscanf(speedFactor.c_str(), "%f", &fpSpeedFactor);			
+	}
 }
 
 Vector3f DeathEntity::GetPosition()
@@ -79,12 +94,14 @@ void DeathEntity::Update(f32 dt)
 			{
 				dir *= dt;
 				dir.y /= 2;
-			}
+			}			
 			
 			distance = distance / 1.5f;
 			if(distance < 1)
 				distance = 1;
 			dir *= distance;
+
+			dir *= fpSpeedFactor;
 
 			dir += pBody->GetPosition();
 
@@ -115,7 +132,7 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 			{
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::NONE);
-				fpSleep = SLEEP_TIME;
+				fpSleep = fpSleepConfig;
 
 				gGameScene->RemoveHostage();
 			}			

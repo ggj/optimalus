@@ -19,6 +19,8 @@ class WorldManager
 		Entity *FindEntityByClassName(const char *className);
 		Entity *FindEntityByName(const char *name);
 
+		void ActivateAllEntites(const char *name);
+
 	private:
 		typedef std::vector<Entity *> EntitiesVector_t;
 		EntitiesVector_t vEntities;
