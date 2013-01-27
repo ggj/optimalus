@@ -3,20 +3,19 @@
 
 #include "SpriteEntity.h"
 
-#include <Box2D/Box2D.h>
+#include "CollisionSensor.h"
 
 class HostageEntity: public SpriteEntity
 {
 	public:
-		HostageEntity();	
-		~HostageEntity();
+		HostageEntity();			
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
-		b2Body		*pBody;
+		CollisionSensor clSensor;
 };
 
 #endif

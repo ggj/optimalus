@@ -3,23 +3,22 @@
 
 #include "entity.h"
 
-#include <Box2D/Box2D.h>
+#include "CollisionSensor.h"
 
 class TriggerEntity: public Entity
 {
 	public:  
-		TriggerEntity();
-		~TriggerEntity();
+		TriggerEntity();		
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
 		virtual void OnCollision(const CollisionEvent &event);
 
-	private:
-		b2Body		*pBody;
-		String		strActivateTarget;
+	private:		
 		bool		fOnce;
 		unsigned	iCount;
+
+		CollisionSensor clSensor;
 };
 
 #endif

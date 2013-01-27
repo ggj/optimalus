@@ -22,16 +22,19 @@ class Entity
 
 		inline const String &GetClassName() const;
 		inline const String &GetName() const;
+		inline const String &GetTarget() const;
 
 		virtual void Activate() {}
 
 	protected:
+		void DoActivateAll();
 
 	private:
 		SEED_DISABLE_COPY(Entity);
 
 		String strClassName;
-		String strName;
+		String strName;		
+		String strTarget;
 };
 
 const String &Entity::GetClassName() const
