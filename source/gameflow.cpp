@@ -417,24 +417,27 @@ bool GameFlow::SaveSystemFlow() const
 }
 
 // GUI Elements
-void GameFlow::SetGUIElementLife(const Rocket::Core::String life)
+void GameFlow::SetLife(u32 life)
 {
-	pElementLife->SetInnerRML(life);
-// FIX: cast from Rocket::Core::String to u32
-//	gGameData->SetLife(life);
+	char x[100];
+	snprintf(x, 100, "%d", life);
+	pElementLife->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetLife(life);
 }
 
-void GameFlow::SetGUIElementTime(const Rocket::Core::String time)
+void GameFlow::SetTime(u32 time)
 {
-	pElementTime->SetInnerRML(time);
-// FIX: cast from Rocket::Core::String to u32
-//	gGameData->SetTime(time);
+	char x[100];
+	snprintf(x, 100, "%d", time);
+	pElementTime->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetTime(time);
 }
 
-void GameFlow::SetGUIElementHostage(const Rocket::Core::String hostage)
+void GameFlow::SetHostage(u32 hostage)
 {
-	pElementLife->SetInnerRML(hostage);
-// FIX: cast from Rocket::Core::String to u32
-//	gGameData->SetHostage(hostage);
+	char x[100];
+	snprintf(x, 100, "%d", hostage);
+	pElementHostage->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetHostage(hostage);
 }
 
