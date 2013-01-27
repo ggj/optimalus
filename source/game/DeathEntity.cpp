@@ -61,9 +61,19 @@ void DeathEntity::Update(f32 dt)
 			Log("No player to track");
 
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
+		
 		if(dir.Normalize() > 0.03f)
 		{
-			dir *= dt;
+			//Go faster down to help player jump
+			if(dir.y > 0)
+			{
+				dir.y *= dt*4;
+				dir.x *= dt;
+			}
+			else
+			{
+				dir *= dt;
+			}
 
 			dir += pBody->GetPosition();
 

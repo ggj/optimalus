@@ -39,6 +39,8 @@ void HostageEntity::OnCollision(const CollisionEvent &event)
 		{
 			PlayerEntity *player = static_cast<PlayerEntity*>(other);
 			player->SetItem(ItemTypes::HEART);
+
+			pSprite->SetAnimation("Death");
 		}
 	}
 }
