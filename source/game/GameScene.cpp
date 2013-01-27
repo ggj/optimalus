@@ -108,6 +108,8 @@ TEST: Bug de raster/texel.
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
+
+		gGameData->SetLife(3);
 	}
 
 	return true;

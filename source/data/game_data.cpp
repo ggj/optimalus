@@ -7,7 +7,6 @@ GameData::GameData()
 	sPlayer.iLife = 3;
 	sPlayer.iTime = 59;
 	sPlayer.iHostage = 5;
-	sPlayer.bGameOver = false;
 
 	sOptions.bSfxEnabled = true;
 	sOptions.bBgmEnabled = true;
@@ -57,16 +56,6 @@ void GameData::SetHostage(const u32 hostage)
 void GameData::RemoveHostage()
 {
 	sPlayer.iHostage --;
-}
-
-bool GameData::IsGameOver() const
-{
-	return sPlayer.bGameOver;
-}
-
-void GameData::SetGameOver(bool b)
-{
-	sPlayer.bGameOver = b;
 }
 
 bool GameData::IsSfxEnabled() const

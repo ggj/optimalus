@@ -20,9 +20,6 @@ class GameData
 		void SetHostage(u32);
 		void RemoveHostage();
 
-		bool IsGameOver() const;
-		void SetGameOver(bool);
-
 		bool IsSfxEnabled() const;
 		void SetSfxEnabled(bool);
 
