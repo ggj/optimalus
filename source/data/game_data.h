@@ -9,8 +9,14 @@ class GameData
 		GameData();
 		~GameData();
 
-		u32 GetScore() const;
-		void SetScore(u32);
+		u32 GetLife() const;
+		void SetLife(u32);
+
+		u32 GetTime() const;
+		void SetTime(u32);
+
+		u32 GetHostage() const;
+		void SetHostage(u32);
 
 		bool IsGameOver() const;
 		void SetGameOver(bool);
@@ -31,7 +37,9 @@ class GameData
 		void SetSfxVolume(f32 v);
 
 		struct PlayerData {
-			u32 iScore;
+			u32 iLife;
+			u32 iTime;
+			u32 iHostage;
 			bool bGameOver;
 		} sPlayer;
 

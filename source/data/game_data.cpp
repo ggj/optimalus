@@ -4,7 +4,9 @@ GameData::GameData()
 	: sPlayer()
 	, sOptions()
 {
-	sPlayer.iScore = 0;
+	sPlayer.iLife = 3;
+	sPlayer.iTime = 59;
+	sPlayer.iHostage = 5;
 	sPlayer.bGameOver = false;
 
 	sOptions.bSfxEnabled = true;
@@ -17,14 +19,34 @@ GameData::~GameData()
 {
 }
 
-u32 GameData::GetScore() const
+u32 GameData::GetLife() const
 {
-	return sPlayer.iScore;
+	return sPlayer.iLife;
 }
 
-void GameData::SetScore(const u32 score)
+void GameData::SetLife(const u32 life)
 {
-	sPlayer.iScore = score;
+	sPlayer.iLife = life;
+}
+
+u32 GameData::GetTime() const
+{
+	return sPlayer.iTime;
+}
+
+void GameData::SetTime(const u32 time)
+{
+	sPlayer.iTime = time;
+}
+
+u32 GameData::GetHostage() const
+{
+	return sPlayer.iHostage;
+}
+
+void GameData::SetHostage(const u32 hostage)
+{
+	sPlayer.iHostage = hostage;
 }
 
 bool GameData::IsGameOver() const

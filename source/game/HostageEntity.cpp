@@ -30,17 +30,21 @@ void HostageEntity::OnCollision(const CollisionEvent &event)
 	if(event.GetType() == CollisionEventType::ON_ENTER)
 	{
 		Log("HOSTAGE colidiu");
-
-		gSoundManager->Play(SND_HOSTAGE_KILL);		
-		pBody->GetFixtureList()->SetUserData(NULL);	
-
+		
 		Entity *other = event.GetOtherEntity();
 		if(other != NULL && other->GetClassName() == "Player")
 		{
 			PlayerEntity *player = static_cast<PlayerEntity*>(other);
-			player->SetItem(ItemTypes::HEART);
 
-			pSprite->SetAnimation("Death");
+			if(player->GetItem() == ItemTypes::NONE)
+			{
+				gSoundManager->Play(SND_HOSTAGE_KILL);		
+				pBody->GetFixtureList()->SetUserData(NULL);	
+
+				player->SetItem(ItemTypes::HEART);
+
+				pSprite->SetAnimation("Death");
+			}
 		}
 	}
 }

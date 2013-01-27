@@ -3,8 +3,8 @@
 #include "GameScene.h"
 
 SpriteEntity::SpriteEntity(const char *className, const char *spriteName)
-	:	pSprite(NULL)
-	,	Entity(className)
+	:	Entity(className)
+	,	pSprite(NULL)
 	,	pszSpriteName(spriteName)
 {
 	SEED_ASSERT(spriteName);

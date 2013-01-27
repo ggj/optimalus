@@ -171,6 +171,15 @@ bool GameFlow::LoadGUI(const String &doc)
 
 			pDoc->Focus();
 			pDoc->Show();
+
+			if(pDoc->GetElementById("lifes") != NULL)
+				pElementLife = pDoc->GetElementById("lifes");
+
+			if(pDoc->GetElementById("time") != NULL)
+				pElementTime = pDoc->GetElementById("time");
+
+			if(pDoc->GetElementById("hostages") != NULL)
+				pElementHostage = pDoc->GetElementById("hostages");
 		}
 
 		sDocument = doc;
@@ -256,6 +265,9 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
 				//pDoc->GetElementById("bgm");
 			}
+			//else if(values[1] == "hud")
+			//{
+			//}
 		}
 		else if (values[0] == "goto" && values.size() > 1)
 		{
@@ -404,5 +416,27 @@ bool GameFlow::SaveSystemFlow() const
 	}
 
 	return false;
+}
+
+// GUI Elements
+void GameFlow::SetGUIElementLife(const Rocket::Core::String life)
+{
+	pElementLife->SetInnerRML(life);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetLife(life);
+}
+
+void GameFlow::SetGUIElementTime(const Rocket::Core::String time)
+{
+	pElementTime->SetInnerRML(time);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetTime(time);
+}
+
+void GameFlow::SetGUIElementHostage(const Rocket::Core::String hostage)
+{
+	pElementLife->SetInnerRML(hostage);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetHostage(hostage);
 }
 

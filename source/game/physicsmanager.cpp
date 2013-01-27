@@ -203,9 +203,6 @@ void PhysicsManager::RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *
 			reinterpret_cast<Entity*>(otherFixture->GetUserData())
 		));
 
-
-		Log("OnLeave");
-
 		it->second.erase(counterIt);
 		if(it->second.empty())
 		{
