@@ -15,6 +15,13 @@ void MainMenuState::OnStart(void *data)
 	Log("Entering MainMenu State");
 
 	gFlow->LoadGUI("gui/views/mainmenu.rml");
+
+	if (gGameData->IsBgmEnabled() == true)
+	{
+		musTheme.Load("sounds/scottwills_time.ogg");
+		musTheme.SetVolume(1.0f);
+		pSoundSystem->PlayMusic(&musTheme);
+	}
 }
 
 void MainMenuState::OnUpdate(f32 dt)
