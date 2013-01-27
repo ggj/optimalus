@@ -15,6 +15,7 @@ GameFlow::GameFlow()
 	, pRocket(NULL)
 	, pContext(NULL)
 	, pDoc(NULL)
+	, sSceneFile("")
 {
 	gFlow = this;
 }
@@ -26,6 +27,10 @@ GameFlow::~GameFlow()
 
 bool GameFlow::Initialize()
 {
+	pScreen->EnableCursor(true);
+	pSoundSystem->SetMusicVolume(0.6f);
+	pSoundSystem->SetSfxVolume(0.5f);
+
 	bool init = cPres.Load("configs/game.config", this);
 
 	// Create the State Machine Data
@@ -41,6 +46,8 @@ bool GameFlow::Initialize()
 	cOptionsToMenu.Initialize(&cOptions, &cOnMenu, &cMenu);
 	cCreditsToMenu.Initialize(&cCredits, &cOnMenu, &cMenu);
 	cGameToMenu.Initialize(&cGame, &cOnMenu, &cMenu);
+	cGameToLoad.Initialize(&cGame, &cOnLoad, &cLoad);
+	cLoadToGame.Initialize(&cLoad, &cOnGame, &cGame);
 
 	// Create the State Machine.
 	cFlow.RegisterTransition(&cMenuToGame);
@@ -49,6 +56,8 @@ bool GameFlow::Initialize()
 	cFlow.RegisterTransition(&cOptionsToMenu);
 	cFlow.RegisterTransition(&cCreditsToMenu);
 	cFlow.RegisterTransition(&cGameToMenu);
+	cFlow.RegisterTransition(&cGameToLoad);
+	cFlow.RegisterTransition(&cLoadToGame);
 
 	IGameApp::Initialize();
 
@@ -166,6 +175,21 @@ bool GameFlow::LoadGUI(const String &doc)
 
 			pDoc->Focus();
 			pDoc->Show();
+
+			if (pDoc->GetElementById("lifes") != NULL)
+				pElementLife = pDoc->GetElementById("lifes");
+
+			if (pDoc->GetElementById("time") != NULL)
+				pElementTime = pDoc->GetElementById("time");
+
+			if (pDoc->GetElementById("hostages") != NULL)
+				pElementHostage = pDoc->GetElementById("hostages");
+
+			if (pDoc->GetElementById("sfx") != NULL && gGameData->IsSfxEnabled())
+				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
+
+			if (pDoc->GetElementById("bgm") != NULL && gGameData->IsBgmEnabled())
+				pDoc->GetElementById("bgm")->SetAttribute("checked", "");
 		}
 
 		sDocument = doc;
@@ -243,16 +267,7 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 		if (values.empty())
 			return;
 
-		if (values[0] == "init" && values.size() > 1)
-		{
-			if (values[1] == "options")
-			{
-				// Atualizar os checkboxes de acordo com o pGameData...
-				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
-				//pDoc->GetElementById("bgm");
-			}
-		}
-		else if (values[0] == "goto" && values.size() > 1)
+		if (values[0] == "goto" && values.size() > 1)
 		{
 			if (values[1] == "credits")
 				cFlow.OnEvent(&cOnCredits);
@@ -261,7 +276,10 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			else if (values[1] == "options")
 				cFlow.OnEvent(&cOnOptions);
 			else if (values[1] == "game")
-				cFlow.OnEvent(&cOnGame);
+			{
+				sSceneFile = "game.scene";
+				this->DoLoad();
+			}
 		}
 		else if (values[0] == "exit")
 		{
@@ -314,11 +332,30 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 					pSystem->Shutdown();
 				}
 
-
 				//this->InitializeGUI();
 				//this->ReloadGUI();
 			}
 		}
+	}
+}
+
+void GameFlow::LoadSceneFile(const String &file)
+{
+	sSceneFile = file;
+	cFlow.OnEvent(&cOnLoad);
+}
+
+const String &GameFlow::GetSceneFile() const
+{
+	return sSceneFile;
+}
+
+void GameFlow::DoLoad()
+{
+	if (sSceneFile != "")
+	{
+		cFlow.OnEvent(&cOnGame);
+		sSceneFile = "";
 	}
 }
 
@@ -377,5 +414,27 @@ bool GameFlow::SaveSystemFlow() const
 	}
 
 	return false;
+}
+
+// GUI Elements
+void GameFlow::SetGUIElementLife(const Rocket::Core::String life)
+{
+	pElementLife->SetInnerRML(life);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetLife(life);
+}
+
+void GameFlow::SetGUIElementTime(const Rocket::Core::String time)
+{
+	pElementTime->SetInnerRML(time);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetTime(time);
+}
+
+void GameFlow::SetGUIElementHostage(const Rocket::Core::String hostage)
+{
+	pElementLife->SetInnerRML(hostage);
+// FIX: cast from Rocket::Core::String to u32
+//	gGameData->SetHostage(hostage);
 }
 

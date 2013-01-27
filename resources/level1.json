@@ -260,6 +260,19 @@
                  "width":23,
                  "x":94,
                  "y":229
+                }, 
+                {
+                 "height":0,
+                 "name":"Girl1",
+                 "properties":
+                    {
+                     "Class":"Hostage",
+                     "Type":"Entity"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":1307,
+                 "y":244
                 }],
          "opacity":1,
          "type":"objectgroup",

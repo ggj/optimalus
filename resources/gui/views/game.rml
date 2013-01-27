@@ -3,19 +3,18 @@
 		<title>game</title>
 		<link type="text/template" href="gameplay.rml" />
 	</head>
-	<body id="game_window" onload="load">
+	<body id="game_window">
 		<game id="game">
 			<div id="hostages_div">
 				<icon />
-				Hostages: <span id="score" />
+				<span id="hostages" />
 			</div>
 			<div id="time_div">
-				<icon />
-				Time: <span id="hiscore" />
+				<span id="time">05:00</span>
 			</div>
 			<div id="lifes_div">
 				<icon />
-				Lives: <span id="lifes" /> x 3
+				x <span id="lifes">0</span>
 			</div>
 		</game>
 	</body>

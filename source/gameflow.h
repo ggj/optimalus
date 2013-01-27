@@ -39,6 +39,10 @@ class GameFlow : public IGameApp,
 		bool InitializeGUI();
 		void ReleaseGUI();
 
+		void SetGUIElementLife(const Rocket::Core::String life);
+		void SetGUIElementTime(const Rocket::Core::String time);
+		void SetGUIElementHostage(const Rocket::Core::String hostage);
+
 		// IEventSystemListener
 		virtual void OnSystemShutdown(const EventSystem *ev);
 
@@ -53,6 +57,10 @@ class GameFlow : public IGameApp,
 
 		inline Camera *GetCamera() const;
 		inline SceneNode *GetScene() const;
+
+		void LoadSceneFile(const String &file);
+		const String &GetSceneFile() const;
+		void DoLoad();
 
 		void Menu();
 
@@ -75,12 +83,14 @@ class GameFlow : public IGameApp,
 		OptionsState		cOptions;
 		CreditsState		cCredits;
 		GameState			cGame;
+		StateMachineState	cLoad;
 
 		// State Machine Events
 		StateMachineEvent	cOnMenu;
 		StateMachineEvent	cOnOptions;
 		StateMachineEvent	cOnCredits;
 		StateMachineEvent	cOnGame;
+		StateMachineEvent	cOnLoad;
 
 		// State Machine transitions
 		StateMachineTransition cMenuToGame;
@@ -89,11 +99,22 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cOptionsToMenu;
 		StateMachineTransition cCreditsToMenu;
 		StateMachineTransition cGameToMenu;
+		StateMachineTransition cGameToLoad;
+		StateMachineTransition cLoadToGame;
 
 		// GUI
 		RocketInterface			*pRocket;
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
+
+		// GUI Elements
+		Rocket::Core::Element	*pElementLife;
+		Rocket::Core::Element	*pElementTime;
+		Rocket::Core::Element	*pElementHostage;
+		Rocket::Core::Element	*pElementSfx;
+		Rocket::Core::Element	*pElementBgm;
+
+		String	sSceneFile;
 };
 
 inline Camera *GameFlow::GetCamera() const

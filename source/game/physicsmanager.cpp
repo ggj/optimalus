@@ -14,7 +14,7 @@ PhysicsManager::PhysicsManager()
 {
 	pWorld = New(b2World(b2Vec2(0.0f, 10.0f)));
 
-	pWorld->SetContactListener(this);	
+	pWorld->SetContactListener(this);
 }
 
 PhysicsManager::~PhysicsManager()
@@ -84,7 +84,7 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj, b2Vec2 *customSize)
 	else
 	{
 		boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
-	}	
+	}
 
 	b2FixtureDef fixDef;
 	fixDef.shape = &boxShape;
@@ -98,9 +98,9 @@ b2Body* PhysicsManager::CreateBody(ISceneObject *obj, b2Vec2 *customSize)
 
 void PhysicsManager::DestroyBody(b2Body *body)
 {
-    if (!body)
-        return;
-    
+	if (!body)
+		return;
+
 	this->ClearContacts(body);
 	pWorld->DestroyBody(body);
 }
@@ -133,7 +133,7 @@ b2Body* PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type,
 	b2FixtureDef fixDef;
 	fixDef.shape = &boxShape;
 	fixDef.density = 1.0f;
-	fixDef.isSensor = type == BodyType::SENSOR;	
+	fixDef.isSensor = type == BodyType::SENSOR;
 	b->CreateFixture(&fixDef);
 
 	return b;
@@ -142,9 +142,9 @@ b2Body* PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type,
 void PhysicsManager::AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other)
 {
 	CollisionCache_t::iterator it = mapCollisions.lower_bound(body);
-	if((it != mapCollisions.end()) && !(mapCollisions.key_comp()(body, it->first)))	
+	if((it != mapCollisions.end()) && !(mapCollisions.key_comp()(body, it->first)))
 	{
-		//found		
+		//found
 	}
 	else
 	{
@@ -156,7 +156,7 @@ void PhysicsManager::AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *oth
 
 	//Now check if the body in the cache is colliding with the other body
 	CollisionCounterMap_t::iterator counterIt = counter.lower_bound(other);
-	if((counterIt != counter.end()) && !(counter.key_comp()(body, counterIt->first)))	
+	if((counterIt != counter.end()) && !(counter.key_comp()(body, counterIt->first)))
 	{
 		//Already exists, increment counter
 		counterIt->second++;
@@ -167,8 +167,8 @@ void PhysicsManager::AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *oth
 		counter.insert(counterIt, std::make_pair(other, 1));
 
 		lstEvents.push_back(CollisionEvent(
-			CollisionEventType::ON_ENTER, 
-			*body, 
+			CollisionEventType::ON_ENTER,
+			*body,
 			*reinterpret_cast<Entity*>(fixture->GetUserData()),
 			*other,
 			reinterpret_cast<Entity*>(otherFixture->GetUserData())
@@ -196,15 +196,12 @@ void PhysicsManager::RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *
 	if(counterIt->second == 0)
 	{
 		lstEvents.push_back(CollisionEvent(
-			CollisionEventType::ON_LEAVE, 
-			*body, 
+			CollisionEventType::ON_LEAVE,
+			*body,
 			*reinterpret_cast<Entity*>(fixture->GetUserData()),
 			*other,
 			reinterpret_cast<Entity*>(otherFixture->GetUserData())
 		));
-
-
-		Log("OnLeave");
 
 		it->second.erase(counterIt);
 		if(it->second.empty())
@@ -217,7 +214,7 @@ void PhysicsManager::RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *
 void PhysicsManager::ClearContacts(b2Body *body)
 {
 	mapCollisions.erase(body);
-	
+
 	for(CollisionCache_t::iterator it = mapCollisions.begin(), end = mapCollisions.end(); it != end; )
 	{
 		CollisionCache_t::iterator original = it++;
@@ -236,8 +233,8 @@ void PhysicsManager::ClearContacts(b2Body *body)
 
 		if(&it->GetTargetBody() == body || &it->GetOtherBody() == body)
 		{
-			lstEvents.erase(it);			
-		}				
+			lstEvents.erase(it);
+		}
 	}
 }
 
@@ -292,6 +289,10 @@ class MyRayCastCallback: public b2RayCastCallback
 
 		virtual float32 ReportFixture(	b2Fixture* fixture, const b2Vec2& point, const b2Vec2& normal, float32 fraction)
 		{
+			UNUSED(point)
+			UNUSED(normal)
+			UNUSED(fraction)
+
 			if(fixture->GetBody() == pIgnoreBody)
 				return -1;
 
@@ -321,12 +322,12 @@ bool PhysicsManager::RayCast(b2Body *startingBody, b2Vec2 relativeDest)
 	return callback.Found();
 }
 
-CollisionEvent::CollisionEvent(CollisionEventType::Enum type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity):
-	eType(type),
-	rTargetBody(targetBody),
-	rTarget(target),
-	rOtherBody(otherBody),
-	pOtherEntity(otherEntity)
+CollisionEvent::CollisionEvent(CollisionEventType::Enum type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity)
+	: eType(type)
+	, rOtherBody(otherBody)
+	, rTargetBody(targetBody)
+	, pOtherEntity(otherEntity)
+	, rTarget(target)
 {
 	//
 }
