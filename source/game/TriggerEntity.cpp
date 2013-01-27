@@ -9,7 +9,7 @@ ENTITY_CREATOR("Trigger", TriggerEntity)
 TriggerEntity::TriggerEntity():
 	Entity("Trigger"),
 	pBody(NULL),
-	fOnce(false),
+	fOnce(true),
 	iCount(0)
 {
 	//empty

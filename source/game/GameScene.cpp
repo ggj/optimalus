@@ -24,7 +24,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
 	, fpTimeToNextLevel(3)
-	, fChangeLevel(false)
+	, fChangeLevel(false)	
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;

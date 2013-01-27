@@ -591,7 +591,7 @@
                  "type":"",
                  "width":23,
                  "x":64,
-                 "y":832
+                 "y":608
                 }, 
                 {
                  "height":0,
@@ -640,12 +640,12 @@
                     {
                      "Class":"Death",
                      "Sleep":"99999",
-                     "SpeedFactor":"0.5"
+                     "SpeedFactor":"0.3"
                     },
                  "type":"",
                  "width":0,
-                 "x":1408,
-                 "y":480
+                 "x":1504,
+                 "y":416
                 }, 
                 {
                  "height":64,
@@ -689,7 +689,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "NextLevel":"game_level3.scene"
+
     },
  "tileheight":32,
  "tilesets":[
