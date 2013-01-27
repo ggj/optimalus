@@ -14,6 +14,8 @@ class WorldManager
 
 		void Clear();
 
+		void Update(f32 dt);
+
 	private:
 		typedef std::vector<Entity *> EntitiesVector_t;
 		EntitiesVector_t vEntities;
