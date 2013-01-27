@@ -91,7 +91,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	if ((k == Seed::KeyUp || k == Seed::KeyW) && iCurrentState != JUMP)
 	{
 		SetState(JUMP);
-		pBody->ApplyForce(b2Vec2(0,300), pBody->GetWorldCenter());
+		pBody->ApplyForce(b2Vec2(0,650), pBody->GetWorldCenter());
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
