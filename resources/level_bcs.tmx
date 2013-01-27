@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
-  <property name="NextLevel" value="game_level0.scene"/>
+  <property name="NextLevel" value="game_level2.scene"/>
  </properties>
  <tileset firstgid="1" name="tiles1" tilewidth="32" tileheight="32">
   <image source="textures/tiles1.png" width="640" height="480"/>
