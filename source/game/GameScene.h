@@ -97,6 +97,9 @@ class GameScene : public IEventInputKeyboardListener,
 
 		f32		fpTimeToNextLevel;
 		bool	fChangeLevel;
+		
+		Image *pGameOverImg;
+
 };
 
 #endif // _GAMEFLOW_H_

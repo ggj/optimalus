@@ -99,6 +99,12 @@ TEST: Bug de raster/texel.
 			gFlow->LoadSceneFile(strNextLevel);
 		}
 	}
+	if(gGameData->GetLife() == 0)
+	{
+		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
+		pPlayer->GetSprite()->SetVisible(false);
+		cFlow.OnEvent(&cOnGameOver, this);
+	}
 
 	return true;
 }
@@ -128,11 +134,6 @@ void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 			cFlow.OnEvent(&cOnRun, this);
 		else
 			cFlow.OnEvent(&cOnPause, this);
-	}
-
-	if (k == Seed::Key0)
-	{
-		cFlow.OnEvent(&cOnGameOver, this);
 	}
 }
 
@@ -194,11 +195,14 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
 			MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
+
 			f32 hw = bg->GetWidth() * 0.5f;
 			f32 hh = bg->GetHeight() * 0.5f;
 			clCamera.SetArea(Rect4f(-hw, -hh, bg->GetWidth(), bg->GetHeight()));
 
 			sprites->SetVisible(false);
+
+			pGameOverImg = (Image *)cScene.GetChildByName("GameOverImage");
 
 			bInitialized = true;
 		}

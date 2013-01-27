@@ -108,7 +108,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/hostage_death_frame3.png \
 	resources/textures/hostage_death_frame2.png \
 	resources/textures/hostage_death_frame1.png \
-	resources/textures/village_tileset.bmp
+	resources/textures/village_tileset.bmp \
+	resources/textures/background_gameover.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -136,7 +137,8 @@ OTHER_FILES_SOUND = \
 	resources/sounds/powerup.ogg \
 	resources/sounds/Pickup_Coin3.ogg \
 	resources/sounds/damage.ogg \
-	resources/sounds/scottwills_time.ogg
+	resources/sounds/scottwills_time.ogg \
+	resources/sounds/metal_game_over.ogg
 #Maps
 OTHER_FILES_MAPS = \
 	resources/level2.json \
@@ -151,7 +153,6 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
 	$${OTHER_FILES_MAPS} \
-	resources/level2.json
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
