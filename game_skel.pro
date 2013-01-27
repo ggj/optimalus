@@ -73,6 +73,8 @@ OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
 	resources/scenes/game.scene \
+	resources/scenes/game_level2.scene \
+	resources/scenes/game_level3.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
@@ -141,6 +143,7 @@ OTHER_FILES_SOUND = \
 	resources/sounds/metal_game_over.ogg
 #Maps
 OTHER_FILES_MAPS = \
+	resources/level3.json
 	resources/level2.json \
 	resources/level1.json \
 	resources/level_bcs.json
