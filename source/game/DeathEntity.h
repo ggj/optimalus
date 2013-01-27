@@ -23,6 +23,8 @@ class DeathEntity: public SpriteEntity
 
 		virtual void OnCollision(const CollisionEvent &event);
 
+		virtual void Activate();
+
 	private:
 		b2Body		*pBody;
 

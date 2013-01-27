@@ -49,9 +49,7 @@ void DeathEntity::Update(f32 dt)
 		fpSleep -= dt;
 		if(fpSleep < 0)
 		{
-			fpSleep = 0;
-
-			gSoundManager->Play(SND_WAKEUP);
+			this->Activate();
 		}
 	}
 	else
@@ -72,6 +70,13 @@ void DeathEntity::Update(f32 dt)
 			pBody->SetTransform(dir, pBody->GetAngle());
 		}
 	}
+}
+
+void DeathEntity::Activate()
+{
+	fpSleep = 0;
+
+	gSoundManager->Play(SND_WAKEUP);
 }
 
 void DeathEntity::OnCollision(const CollisionEvent &event)

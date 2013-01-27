@@ -55,4 +55,18 @@ Entity *WorldManager::FindEntityByClassName(const char *className)
 	return NULL;
 }
 
+Entity *WorldManager::FindEntityByName(const char *name)
+{
+	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	{
+		if((*it)->GetName().compare(name) == 0)
+		{
+			return *it;
+		}
+	}
+
+	return NULL;
+}
+
+
 
