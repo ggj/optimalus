@@ -190,6 +190,8 @@
                  "properties":
                     {
                      "Class":"Trigger",
+                     "Once":"true",
+                     "Target":"Death_1",
                      "Type":"Entity"
                     },
                  "type":"",
@@ -212,7 +214,7 @@
                 }, 
                 {
                  "height":23,
-                 "name":"",
+                 "name":"Death_1",
                  "properties":
                     {
                      "Class":"Death",

@@ -17,6 +17,9 @@ class TriggerEntity: public Entity
 
 	private:
 		b2Body		*pBody;
+		String		strActivateTarget;
+		bool		fOnce;
+		unsigned	iCount;
 };
 
 #endif

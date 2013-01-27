@@ -21,6 +21,9 @@ class Entity
 		virtual void Update(f32 dt) {};
 
 		inline const String &GetClassName() const;
+		inline const String &GetName() const;
+
+		virtual void Activate() {};
 
     protected:        
 
@@ -28,11 +31,17 @@ class Entity
 		SEED_DISABLE_COPY(Entity);
 
 		String strClassName;
+		String strName;
 };
 
 const String &Entity::GetClassName() const
 {
     return strClassName;
+}
+
+const String &Entity::GetName() const
+{
+	return strName;
 }
 
 #endif

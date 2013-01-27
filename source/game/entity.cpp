@@ -13,5 +13,5 @@ Entity::~Entity()
 
 void Entity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
-	//empty
+	strName = metadata.sName;
 }

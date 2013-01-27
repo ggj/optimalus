@@ -17,6 +17,7 @@ class WorldManager
 		void Update(f32 dt);
 
 		Entity *FindEntityByClassName(const char *className);
+		Entity *FindEntityByName(const char *name);
 
 	private:
 		typedef std::vector<Entity *> EntitiesVector_t;
