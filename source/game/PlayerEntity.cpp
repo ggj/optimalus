@@ -29,6 +29,7 @@ PlayerEntity::~PlayerEntity()
 void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
+	pSprite->SetZ(-10);
 
 	b2Vec2 customSize(40, 46);
 
@@ -66,7 +67,7 @@ void PlayerEntity::Update(f32 dt)
 	{
 		vel.x = 5 * fpMove;
 		pBody->SetLinearVelocity(vel);
-	}		
+	}
 
 	if (iPreviousState ==JUMP && ground)
 	{
@@ -130,7 +131,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(RUN);
 
-		fpMove = -1;		
+		fpMove = -1;
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() > 0)
@@ -141,7 +142,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(RUN);
 
-		fpMove = 1;		
+		fpMove = 1;
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() < 0)

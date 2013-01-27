@@ -22,7 +22,7 @@
 			}
 		</style>
 	</head>
-	<body template="window" onload="load">
+	<body template="window">
 		<button onClick="goto menu">Back</button>
 	</body>
 </rml>

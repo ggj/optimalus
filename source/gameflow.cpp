@@ -27,6 +27,10 @@ GameFlow::~GameFlow()
 
 bool GameFlow::Initialize()
 {
+	pScreen->EnableCursor(true);
+	pSoundSystem->SetMusicVolume(0.6f);
+	pSoundSystem->SetSfxVolume(0.5f);
+
 	bool init = cPres.Load("configs/game.config", this);
 
 	// Create the State Machine Data
@@ -172,14 +176,20 @@ bool GameFlow::LoadGUI(const String &doc)
 			pDoc->Focus();
 			pDoc->Show();
 
-			if(pDoc->GetElementById("lifes") != NULL)
+			if (pDoc->GetElementById("lifes") != NULL)
 				pElementLife = pDoc->GetElementById("lifes");
 
-			if(pDoc->GetElementById("time") != NULL)
+			if (pDoc->GetElementById("time") != NULL)
 				pElementTime = pDoc->GetElementById("time");
 
-			if(pDoc->GetElementById("hostages") != NULL)
+			if (pDoc->GetElementById("hostages") != NULL)
 				pElementHostage = pDoc->GetElementById("hostages");
+
+			if (pDoc->GetElementById("sfx") != NULL && gGameData->IsSfxEnabled())
+				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
+
+			if (pDoc->GetElementById("bgm") != NULL && gGameData->IsBgmEnabled())
+				pDoc->GetElementById("bgm")->SetAttribute("checked", "");
 		}
 
 		sDocument = doc;
@@ -257,19 +267,7 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 		if (values.empty())
 			return;
 
-		if (values[0] == "init" && values.size() > 1)
-		{
-			if (values[1] == "options")
-			{
-				// Atualizar os checkboxes de acordo com o pGameData...
-				//pDoc->GetElementById("sfx") ->Checked(pGameData->IsSfxEnabled());
-				//pDoc->GetElementById("bgm");
-			}
-			//else if(values[1] == "hud")
-			//{
-			//}
-		}
-		else if (values[0] == "goto" && values.size() > 1)
+		if (values[0] == "goto" && values.size() > 1)
 		{
 			if (values[1] == "credits")
 				cFlow.OnEvent(&cOnCredits);

@@ -185,8 +185,7 @@ void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &
 	UNUSED(ev)
 	if (script == "resume")
 	{
-		//cFlow.OnEvent(&cOnRun, this);
-		gFlow->LoadSceneFile("game.scene");
+		cFlow.OnEvent(&cOnRun, this);
 	}
 	if (script == "quit")
 	{

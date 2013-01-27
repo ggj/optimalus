@@ -111,6 +111,8 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Element	*pElementLife;
 		Rocket::Core::Element	*pElementTime;
 		Rocket::Core::Element	*pElementHostage;
+		Rocket::Core::Element	*pElementSfx;
+		Rocket::Core::Element	*pElementBgm;
 
 		String	sSceneFile;
 };

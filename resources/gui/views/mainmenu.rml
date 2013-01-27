@@ -22,7 +22,7 @@
 			}
 		</style>
 	</head>
-	<body template="window" onload="load">
+	<body template="window">
 		<button onClick="goto game">Start Game</button><br />
 		<button onClick="goto options">Options</button><br />
 		<button onClick="goto credits">Credits</button><br />
