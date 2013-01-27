@@ -17,7 +17,8 @@ PlayerEntity::PlayerEntity():
 	eItem(ItemTypes::NONE),
 	fpMove(0),
 	fpLandTime(0),
-	pIcon(NULL)
+	pIcon(NULL),
+	fpInvicibleTime(0)
 {
 	//empty
 }
@@ -84,6 +85,18 @@ void PlayerEntity::Update(f32 dt)
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
 	bool ground = this->CheckGround();
+
+	if(fpInvicibleTime > 0)
+	{
+		pSprite->SetVisible(!pSprite->IsVisible());
+
+		fpInvicibleTime -= dt;
+		if(fpInvicibleTime <= 0)
+		{
+			pSprite->SetVisible(true);
+			fpInvicibleTime = 0;
+		}
+	}	
 
 	if(fpMove != 0)
 	{
@@ -253,3 +266,11 @@ void PlayerEntity::SetState(int newState)
 	iCurrentState = newState;
 }
 
+bool PlayerEntity::OnDamage()
+{
+	if(fpInvicibleTime > 0)
+		return false;
+
+	fpInvicibleTime = 3;
+	return true;
+}

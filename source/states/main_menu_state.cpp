@@ -12,6 +12,8 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::OnStart(void *data)
 {
+	pSoundSystem->Unmute();
+
 	UNUSED(data)
 	Log("Entering MainMenu State");
 

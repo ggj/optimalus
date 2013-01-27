@@ -41,6 +41,8 @@ class PlayerEntity: public SpriteEntity,
 
 		void Teleport(const b2Vec2 &position);
 
+		bool OnDamage();
+
 	private:
 		bool CheckGround();
 		void SetState(int newState);
@@ -59,6 +61,8 @@ class PlayerEntity: public SpriteEntity,
 
 		f32			fpMove;
 		f32			fpLandTime;
+
+		f32			fpInvicibleTime;
 
 		Seed::Sprite	*pIcon;
 };
