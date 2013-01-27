@@ -140,6 +140,8 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
 			pGameMap = (GameMap *)cScene.GetChildByName("Map");
 
+			int hostageNum = 0;
+
 			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
 			for (unsigned i = 0, len = game->Size(); i < len; ++i)
 			{
@@ -153,8 +155,14 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 					{
 						pPlayer = static_cast<PlayerEntity*>(entity);
 					}
+					else if(entity->GetClassName() == "Hostage")
+					{
+						++hostageNum;
+					}
 				}
 			}
+
+			gFlow->SetHostageNum(hostageNum);
 
 			this->LoadMapColliders();
 

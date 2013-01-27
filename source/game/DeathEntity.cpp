@@ -6,6 +6,7 @@
 #include <Sprite.h>
 #include "GameScene.h"
 #include "Sounds.h"
+#include "../gameflow.h"
 
 ENTITY_CREATOR("Death", DeathEntity)
 
@@ -109,6 +110,8 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::NONE);
 				fpSleep = SLEEP_TIME;
+
+				gFlow->RemoveHostate();
 			}			
 			else if(fpSleep <= 0)
 			{
