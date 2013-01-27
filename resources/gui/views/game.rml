@@ -15,7 +15,7 @@
 			</div>
 			<div id="lifes_div">
 				<icon />
-				Lives: <span id="lifes" />
+				Lives: <span id="lifes" /> x 3
 			</div>
 		</game>
 	</body>

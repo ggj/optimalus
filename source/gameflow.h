@@ -95,6 +95,7 @@ class GameFlow : public IGameApp,
 		RocketInterface			*pRocket;
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
+		ISceneObject *pImage;
 };
 
 inline Camera *GameFlow::GetCamera() const
