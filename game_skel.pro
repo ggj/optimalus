@@ -142,7 +142,9 @@ OTHER_FILES_SOUND = \
 	resources/sounds/Pickup_Coin3.ogg \
 	resources/sounds/damage.ogg \
 	resources/sounds/scottwills_time.ogg \
-	resources/sounds/metal_game_over.ogg
+	resources/sounds/metal_game_over.ogg \
+	resources/sounds/jump.ogg \
+	resources/sounds/teleport.ogg
 #Maps
 OTHER_FILES_MAPS = \
 	resources/level5.json \
