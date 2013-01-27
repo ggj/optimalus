@@ -43,6 +43,7 @@ class GameFlow : public IGameApp,
 		void SetTime(u32 time);
 		void SetHostage(u32 hostage);
 
+		void RemoveLife();
 		void RemoveHostage();
 
 		// IEventSystemListener

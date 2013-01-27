@@ -29,6 +29,11 @@ void GameData::SetLife(const u32 life)
 	sPlayer.iLife = life;
 }
 
+void GameData::RemoveLife()
+{
+	sPlayer.iLife--;
+}
+
 u32 GameData::GetTime() const
 {
 	return sPlayer.iTime;

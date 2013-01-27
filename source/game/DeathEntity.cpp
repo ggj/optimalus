@@ -34,7 +34,8 @@ void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites
 	b2Vec2 customSize(50, 40);
 
 	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::SENSOR, true, &customSize);
-	pBody->GetFixtureList()->SetUserData(this);	
+
+	pBody->GetFixtureList()->SetUserData(this);
 
 	String sleep = metadata.GetProperty("Sleep");
 	if(!sleep.empty())
@@ -46,7 +47,7 @@ void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites
 	String speedFactor = metadata.GetProperty("SpeedFactor");
 	if(!speedFactor.empty())
 	{
-		sscanf(speedFactor.c_str(), "%f", &fpSpeedFactor);			
+		sscanf(speedFactor.c_str(), "%f", &fpSpeedFactor);
 	}
 }
 
@@ -79,14 +80,14 @@ void DeathEntity::Update(f32 dt)
 			Log("No player to track");
 
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
-		
+
 		f32 distance = dir.Normalize();
 		if(distance > 0.03f)
 		{
 			//Go faster down to help player jump
 			if(dir.y > 0)
 			{
-				f32 dy = dt * 2;				
+				f32 dy = dt * 2;
 				dir.y = std::min(dy, dir.y);
 				dir.x *= dt;
 			}
@@ -94,8 +95,8 @@ void DeathEntity::Update(f32 dt)
 			{
 				dir *= dt;
 				dir.y /= 2;
-			}			
-			
+			}
+
 			distance = distance / 1.5f;
 			if(distance < 1)
 				distance = 1;
@@ -122,7 +123,7 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 	if(event.GetType() == CollisionEventType::ON_ENTER)
 	{
 		Log("DeathEntity colidiu");
-		
+
 		Entity *other = event.GetOtherEntity();
 		if(other != NULL && other->GetClassName() == "Player")
 		{
@@ -135,11 +136,12 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 				fpSleep = fpSleepConfig;
 
 				gGameScene->RemoveHostage();
-			}			
+			}
 			else if(fpSleep <= 0)
 			{
 				gSoundManager->Play(SND_DAMAGE);
-			}				
+				gGameScene->RemoveLife();
+			}
 		}
 	}
 }

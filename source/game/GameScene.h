@@ -53,6 +53,8 @@ class GameScene : public IEventInputKeyboardListener,
 
 		void RemoveHostage();
 
+		void RemoveLife();
+
 	private:
 		SEED_DISABLE_COPY(GameScene);
 
@@ -97,7 +99,7 @@ class GameScene : public IEventInputKeyboardListener,
 
 		f32		fpTimeToNextLevel;
 		bool	fChangeLevel;
-		
+
 		Image *pGameOverImg;
 
 };
