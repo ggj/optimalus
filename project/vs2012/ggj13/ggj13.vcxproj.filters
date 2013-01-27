@@ -82,6 +82,9 @@
     <ClCompile Include="..\..\..\source\states\gameover_state.cpp">
       <Filter>states</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\game\TriggerCounter.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\gameflow.h" />
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\states\gameover_state.h">
       <Filter>states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\game\TriggerCounter.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

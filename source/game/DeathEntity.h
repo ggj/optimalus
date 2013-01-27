@@ -28,7 +28,9 @@ class DeathEntity: public SpriteEntity
 	private:
 		b2Body		*pBody;
 
-		f32			fpSleep;		
+		f32			fpSleepConfig;
+		f32			fpSleep;	
+		f32			fpSpeedFactor;
 		PlayerEntity *pTarget;
 };
 
