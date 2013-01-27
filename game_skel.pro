@@ -143,7 +143,7 @@ OTHER_FILES_SOUND = \
 	resources/sounds/metal_game_over.ogg
 #Maps
 OTHER_FILES_MAPS = \
-	resources/level3.json
+	resources/level3.json \
 	resources/level2.json \
 	resources/level1.json \
 	resources/level_bcs.json
