@@ -13,7 +13,9 @@ ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
 	SpriteEntity("Player", "Player"),
-	eItem(ItemTypes::NONE)
+	eItem(ItemTypes::NONE),
+	fpMove(0),
+	fpLandTime(0)
 {
 	//empty
 }
@@ -28,7 +30,9 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 {
 	SpriteEntity::Load(metadata, sprites);
 
-	pBody = gPhysics->CreateBody(pSprite);
+	b2Vec2 customSize(40, 46);
+
+	pBody = gPhysics->CreateBody(pSprite, &customSize);
 	pBody->SetFixedRotation(true);
 	pBody->GetFixtureList()->SetUserData(this);
 
@@ -54,9 +58,37 @@ Sprite *PlayerEntity::GetSprite() const
 
 void PlayerEntity::Update(f32 dt)
 {
-	if (iPreviousState ==JUMP && CheckGround())
+	b2Vec2 vel = pBody->GetLinearVelocity();
+
+	bool ground = this->CheckGround();
+
+	if(fpMove != 0)
+	{
+		vel.x = 5 * fpMove;
+		pBody->SetLinearVelocity(vel);
+	}		
+
+	if (iPreviousState ==JUMP && ground)
 	{
 		SetState(LAND);
+		fpLandTime = 0.3f;
+	}
+
+	if(iCurrentState != JUMP && !ground)
+	{
+		this->SetState(JUMP);
+	}
+
+	if(fpLandTime > 0 && iCurrentState == LAND)
+	{
+		fpLandTime -= dt;
+		if(fpLandTime <= 0)
+		{
+			if(fpMove != 0)
+				this->SetState(RUN);
+			else
+				this->SetState(IDLE);
+		}
 	}
 
 	if (iCurrentState == iPreviousState)
@@ -91,15 +123,14 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	if ((k == Seed::KeyUp || k == Seed::KeyW) && iCurrentState != JUMP)
 	{
 		SetState(JUMP);
-		pBody->ApplyForce(b2Vec2(0,650), pBody->GetWorldCenter());
+		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
 	{
 		SetState(RUN);
 
-		vel.x = -5;
-		pBody->SetLinearVelocity(vel);
+		fpMove = -1;		
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() > 0)
@@ -110,8 +141,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(RUN);
 
-		vel.x = 5;
-		pBody->SetLinearVelocity(vel);
+		fpMove = 1;		
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() < 0)
@@ -124,7 +154,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 		// Maybe later, maybe if the player can duck
 	}
 
-	pSprite->AddPosition(vPlayerVectorDirection * fVelocity);
+	//pSprite->AddPosition(vPlayerVectorDirection * fVelocity);
 }
 
 void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
@@ -143,6 +173,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
 		pBody->SetLinearVelocity(vel);
+		fpMove = 0;
 
 		if (CheckGround())
 			SetState(IDLE);
@@ -153,6 +184,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
 		pBody->SetLinearVelocity(vel);
+		fpMove = 0;
 
 		if (CheckGround())
 			SetState(IDLE);

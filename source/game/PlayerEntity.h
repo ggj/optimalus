@@ -53,6 +53,9 @@ class PlayerEntity: public SpriteEntity,
 		enum		eAnimationStates {IDLE = 0, RUN = 1, JUMP = 2, LAND = 3};
 		int			iPreviousState;
 		int			iCurrentState;
+
+		f32			fpMove;
+		f32			fpLandTime;
 };
 
 #endif
