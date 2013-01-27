@@ -73,7 +73,7 @@ OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
 	resources/scenes/game.scene \
-	resources/scenes/level4.scene \
+	resources/scenes/game_level4.scene \
 	resources/scenes/game_level2.scene \
 	resources/scenes/game_level3.scene
 
