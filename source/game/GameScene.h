@@ -88,6 +88,7 @@ class GameScene : public IEventInputKeyboardListener,
 		StateMachineTransition cGameOverToMenu;
 
 		String sSceneFile;
+		Image *pGameOverImg;
 };
 
 #endif // _GAMEFLOW_H_

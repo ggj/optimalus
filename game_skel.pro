@@ -108,7 +108,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/hostage_death_frame3.png \
 	resources/textures/hostage_death_frame2.png \
 	resources/textures/hostage_death_frame1.png \
-	resources/textures/village_tileset.bmp
+	resources/textures/village_tileset.bmp \
+	resources/textures/background_gameover.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

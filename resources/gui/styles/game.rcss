@@ -32,6 +32,7 @@ div#time_div
 {
 	float: left;
 	width: 205px;
+	font-size: 50;
 }
 
 div#lifes_div
