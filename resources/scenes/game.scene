@@ -251,17 +251,8 @@
 		{
 			sType: GameMap
 			sName: Map
-			sResource: level_bcs.json
+			sResource: level5.json
 			cPosition: {z: 200}
-		}
-		{
-			sType: SoundSource
-			sName: audio
-			cPosition: {x: 0, y: 0, z: 0}
-			bAutoPlay: false
-			bLoop: true
-			fVolume: 0.5
-			sResource: sounds/sfx.ogg
 		}
 		{
 			sType: Image
