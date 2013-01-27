@@ -34,7 +34,7 @@
 							sName: "Jump"
 							bAnimated: true
 							bLoop: false
-							iFps: 5
+							iFps: 10
 							aFrames:
 							[
 								{
@@ -55,7 +55,7 @@
 							sName: "Land"
 							bAnimated: true
 							bLoop: false
-							iFps: 7
+							iFps: 15
 							aFrames:
 							[
 								{
@@ -159,15 +159,15 @@
 			sType: SceneNode
 			aObjects:
 			[
-        		{
-        			sType: SoundSource
-        			sName: HostageKill
-        			cPosition: {x: 0, y: 0, z: 0}
-        			bAutoPlay: false
-        			bLoop: false
-        			fVolume: 1.0
-        			sResource: sounds/Pickup_Coin3.ogg
-        		}
+				{
+					sType: SoundSource
+					sName: HostageKill
+					cPosition: {x: 0, y: 0, z: 0}
+					bAutoPlay: false
+					bLoop: false
+					fVolume: 1.0
+					sResource: sounds/Pickup_Coin3.ogg
+				}
 			]
 		}
 		{
