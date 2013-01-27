@@ -31,24 +31,21 @@ void CameraController::LookAt(const Vector3f &pos)
 	s32 y = static_cast<s32>(p.getY());
 	f32 z = p.getZ();
 
-//	Rect4f r(x, y, pScreen->GetWidth(), pScreen->GetHeight());
+	s32 halfScreenWidth = pScreen->GetWidth() / 2;
+	s32 halfScreenHeight = pScreen->GetHeight() / 2;
 
-//	s32 halfScreenWidth = pScreen->GetWidth() / 2;
-//	s32 halfScreenHeight = pScreen->GetHeight() / 2;
+	if (x < cArea.x1 - 16)
+		x = cArea.x1 - 16;
 
-//	if(x < cArea.x1)
-//		x = cArea.x1;
+	if (y < cArea.y1 - 16)
+		y = cArea.y1 - 16;
 
-//	if(y < cArea.y1)
-//		y = cArea.y1;
+	if (y > cArea.y2 - 16 - halfScreenHeight * 2)
+		y = cArea.y2 - 16 - halfScreenHeight * 2;
 
-//	if(y > cArea.y2 - 32 - halfScreenHeight * 2)
-//		y = cArea.y2 - 32 - halfScreenHeight * 2;
-
-//	if(x > (cArea.x2 - 32 - halfScreenWidth * 2))
-//		x = cArea.x2 - 32 - halfScreenWidth * 2;
+	if (x > (cArea.x2 - 16 - halfScreenWidth * 2))
+		x = cArea.x2 - 16 - halfScreenWidth * 2;
 
 	Vector3f np(static_cast<f32>(x), static_cast<f32>(y), z);
-
 	pCamera->SetPosition(np);
 }
