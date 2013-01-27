@@ -81,6 +81,11 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
+	resources/textures/heart.png \
+	resources/textures/player_jump_frame4.png \
+	resources/textures/player_jump_frame3.png \
+	resources/textures/player_jump_frame2.png \
+	resources/textures/player_jump_frame1.png \
 	resources/textures/heart.png
 
 #Gui

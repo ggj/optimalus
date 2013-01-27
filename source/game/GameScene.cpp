@@ -147,8 +147,15 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 			}
 
 			this->LoadMapColliders();
+
+
 			clCamera.SetCamera(pCamera);
 			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+
+			MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
+			f32 hw = bg->GetWidth() * 0.5f;
+			f32 hh = bg->GetHeight() * 0.5f;
+			clCamera.SetArea(Rect4f(-hw, -hh, bg->GetWidth(), bg->GetHeight()));
 
 			sprites->SetVisible(false);
 
