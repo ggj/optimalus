@@ -42,11 +42,15 @@ bool GameScene::Initialize()
 	cRunToPause.Initialize(&cRun, &cOnPause, &cPause);
 	cPauseToRun.Initialize(&cPause, &cOnRun, &cRun);
 	cPauseToMenu.Initialize(&cPause, &cOnMenu, &cMenu);
+	cRunToGameOver.Initialize(&cRun, &cOnGameOver, &cGameOver);
+	cGameOverToMenu.Initialize(&cGameOver, &cOnMenu, &cMenu);
 
 	// Create the State Machine.
 	cFlow.RegisterTransition(&cRunToPause);
 	cFlow.RegisterTransition(&cPauseToRun);
 	cFlow.RegisterTransition(&cPauseToMenu);
+	cFlow.RegisterTransition(&cRunToGameOver);
+	cFlow.RegisterTransition(&cGameOverToMenu);
 
 	cFlow.Initialize(&cRun);
 
@@ -111,6 +115,11 @@ void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 			cFlow.OnEvent(&cOnRun, this);
 		else
 			cFlow.OnEvent(&cOnPause, this);
+	}
+
+	if (k == Seed::Key0)
+	{
+		cFlow.OnEvent(&cOnGameOver, this);
 	}
 }
 

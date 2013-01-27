@@ -7,6 +7,7 @@ MainMenuState::MainMenuState()
 
 MainMenuState::~MainMenuState()
 {
+	musTheme.Unload();
 }
 
 void MainMenuState::OnStart(void *data)
@@ -18,9 +19,9 @@ void MainMenuState::OnStart(void *data)
 
 	if (gGameData->IsBgmEnabled() == true)
 	{
-		musTheme.Load("sounds/scottwills_time.ogg");
-		musTheme.SetVolume(1.0f);
-		pSoundSystem->PlayMusic(&musTheme);
+//		musTheme.Load("sounds/scottwills_time.ogg");
+//		musTheme.SetVolume(1.0f);
+//		pSoundSystem->PlayMusic(&musTheme);
 	}
 }
 
@@ -33,4 +34,6 @@ void MainMenuState::OnStop(void *data)
 {
 	UNUSED(data)
 	Log("Exiting MainMenu State");
+
+	musTheme.Unload();
 }

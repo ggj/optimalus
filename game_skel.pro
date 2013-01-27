@@ -27,7 +27,8 @@ SOURCES += source/main.cpp \
 	source/game/GameScene.cpp \
 	source/game/DeathEntity.cpp \
 	source/game/SoundManager.cpp \
-	source/game/HostageEntity.cpp
+	source/game/HostageEntity.cpp \
+	source/states/gameover_state.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -53,7 +54,8 @@ HEADERS += \
 	source/game/DeathEntity.h \
 	source/game/SoundManager.h \
 	source/game/Sounds.h \
-	source/game/HostageEntity.h
+	source/game/HostageEntity.h \
+	source/states/gameover_state.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -123,7 +125,8 @@ OTHER_FILES_GUI_VIEW = \
 	resources/gui/views/credits.rml \
 	resources/gui/views/options.rml \
 	resources/gui/views/game.rml \
-	resources/gui/views/gamepause.rml
+	resources/gui/views/gamepause.rml \
+	resources/gui/views/gameover.rml
 
 OTHER_FILES_SOUND = \
 #Sounds
@@ -224,6 +227,9 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
+
+
+
 
 
 
