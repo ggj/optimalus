@@ -28,8 +28,26 @@
 								{
 									sResource: textures/player_idle_frame1.png
 								}
+							]
+						}
+						{
+							sName: "Jump"
+							bAnimated: true
+							bLoop: true
+							iFps: 5
+							aFrames:
+							[
 								{
-									sResource: textures/player_idle_frame2.png
+									sResource: textures/player_jump_frame1.png
+								}
+								{
+									sResource: textures/player_jump_frame2.png
+								}
+								{
+									sResource: textures/player_jump_frame3.png
+								}
+								{
+									sResource: textures/player_jump_frame4.png
 								}
 							]
 						}
@@ -37,7 +55,7 @@
 							sName: "Run"
 							bAnimated: true
 							bLoop: true
-							iFps: 20
+							iFps: 15
 							aFrames:
 							[
 								{
