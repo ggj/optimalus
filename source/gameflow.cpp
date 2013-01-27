@@ -433,11 +433,22 @@ void GameFlow::SetTime(u32 time)
 	gGameData->SetTime(time);
 }
 
-void GameFlow::SetHostage(u32 hostage)
+void GameFlow::PrintHostage(u32 hostage)
 {
 	char x[100];
 	snprintf(x, 100, "%d", hostage);
 	pElementHostage->SetInnerRML(Rocket::Core::String(x));
+}
+
+void GameFlow::SetHostage(u32 hostage)
+{
+	this->PrintHostage(hostage);	
 	gGameData->SetHostage(hostage);
 }
 
+void GameFlow::RemoveHostage()
+{
+	gGameData->RemoveHostage();
+
+	this->PrintHostage(gGameData->GetHostage());	
+}

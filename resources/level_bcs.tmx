@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="NextLevel" value="game_level0.scene"/>
+ </properties>
  <tileset firstgid="1" name="tiles1" tilewidth="32" tileheight="32">
   <image source="textures/tiles1.png" width="640" height="480"/>
  </tileset>
  <layer name="Background" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1Edv1EAYxvHJAc7hMxDqd4ATnROc6BCaONB7legQIJGi0HsoEh1CuVFChyu9HhBSCL2cE4nHWlvrDGs77Nq7XuV/+MnyaOx3PI/nbTbGNANAGThmKfV6ACAfdi+jnwEoV/QzID+5zg5nCEC5oY8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6CoGyWAZIkNlmAyXESlYW1c0RsbKOBkvE2SiTErB2qL0d5V6HXGaLXNkrsyT+bJAFqZgbVEGyMAUrCNOa2WdrJcNslE2yeYUrC3KKBmdgnXEaafskt2yR/bKPtmfgrVFmSEzZZXMsiRVc6RMlilSLVNlmkyXfq5C3n9KTssZOSvn5LxciHiuziepb8/lo88KWWkyeay2rEmovpPHIlksS2SpLJPlJp7+eV1uyE255Y7dNpns/fPqLI0+SXx3EH8ejSHqE6rv5LFFtkqNbJPtssPE0z+rXU/kqTyT5yabh7f/J0K+PYnvDuLkUO+6FuJkQvWdPn5ADsohOSxH5KjJ9s9C3u/l0SKfpFU+u9dcZyENeRw3mf/jcYik6jt9/KJckia5LFfkqsn2z5o83ttqqXV5+99monMoVR7env8JkVT9O3JX7sl9eSAP5ZHJ5OPxz+vMe2stnd37NOTx3lWKPF7IS3klr+WNvJV3Jntemqx5Ue8sdP9LncdvV1x52L0izBf5Kt/ku/yQn/LLdDwf/nl2vTjPQhry6FaRkW8eH1wNLqc3t1vXtoD7IIU+H6T2P2oXS6567b5cuvuuHu9/bjH//uMNlkrN71HR8VoZcB+k0OcLUYwaUfWcsXzz7alnq6SX9JY+0jfHfdC8oHFvrMrHvk9CMWpE1XPG/gKi68ng
+   eJzt1DdvFEEYxvG5Ahoa8xkw8TtARaaCigwmiYKco0QGA7ZkmZxNkMhgQkcwGVpyLBCSybG2JZ7R7erWywZzd+vbk//FT6sdzdw7O8/N22SMaQKAMnDUp9T7AYB8+HsZ/QxAuaKfAfkJujvcIQDlhj4GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoLMYKINksAyRoTJMhqdgb53RaBkjY2WcjJcJMjEFe4vTz1HqfRTTLJktc2SuzJP5siAFe4vTXwakYB/FtEbWyjpZLxtko2xKwd7ijJRRKdhHMe2QnbJLdsse2Sv7UrC3ONNlhqyUmT5J1Rwhk2SyVMkUmSrTpK8jaF23TPt+/6ScktNyRs7KOTkfs67WI6lvD/LBY7msMNk8VvmsTqi+zWOhLJLFskSWyjIT3T9tHu3J5Jpclxty0xm7ZbLZe+fV+jR4JPHdYbx5NESoS6i+zWOzbJFq2SrbZLuJ7p9uHl5B86ocj+WJPJVnJpeHe/7HI749ie8OY3Ooc1yNcCKh+raP75cDclAOyWE5YnL9M2hdUB5Bmbh5NMtH+SSfnWfQXUhDHsdM9v/xKEJS9W0fvyAXpVEuyWW5YnL9szpgXVgeLnveXjUO9/xbTHwOpcrDPfM/EZKqf1vuyF25J/flgTw02Xxc3nl2XVwe7vm72nv2acjjnaMUeTyXF/JSXslreSNvTe6+NPrm2XVxWRRy/qXO47ejWHn4e0WUL/JVvsl3+SE/5Zdpez+882yNqPtQzCxKkUeXTFa+ebx31Dtsb271PVtC3sMUuj5MzX/U7ihB9Vo9uXT1PF3u/7nZ/Psfr/ep0PzumbbPipD3MIWuL0RH1IirZ8fyzbeH1lZKT+klvaVPwHvYvLBxd6zSw/+ehI6oEVfPjv0FuGetPw==
   </data>
  </layer>
  <objectgroup name="Game" width="100" height="100">
-  <object x="32" y="3104">
-   <properties>
-    <property name="Class" value="Death"/>
-   </properties>
-  </object>
   <object x="352" y="3104">
    <properties>
     <property name="Class" value="Player"/>
    </properties>
   </object>
-  <object x="1088" y="3072">
+  <object x="1060" y="3090">
    <properties>
     <property name="Class" value="Hostage"/>
    </properties>
@@ -31,7 +29,11 @@
     <property name="Target" value="Death1"/>
    </properties>
   </object>
-  <object name="Death1" x="32" y="3104"/>
+  <object name="Death1" x="160" y="3104">
+   <properties>
+    <property name="Class" value="Death"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Colliders" width="100" height="100">
   <object x="0" y="3168" width="576" height="32"/>
@@ -56,5 +58,12 @@
   <object x="1760" y="2976" width="32" height="32"/>
   <object x="1600" y="3040" width="192" height="32"/>
   <object x="1472" y="3072" width="160" height="32"/>
+  <object x="0" y="2976" width="32" height="192"/>
+  <object x="1344" y="3104" width="64"/>
+  <object x="1376" y="2848" width="32" height="256"/>
+  <object x="1408" y="2880" width="32" height="32"/>
+  <object x="1408" y="2912" width="128" height="32"/>
+  <object x="1504" y="2944" width="64" height="32"/>
+  <object x="1536" y="2976" width="96" height="32"/>
  </objectgroup>
 </map>

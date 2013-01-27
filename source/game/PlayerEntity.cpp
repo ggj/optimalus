@@ -15,13 +15,17 @@ PlayerEntity::PlayerEntity():
 	SpriteEntity("Player", "Player"),
 	eItem(ItemTypes::NONE),
 	fpMove(0),
-	fpLandTime(0)
+	fpLandTime(0),
+	pIcon(NULL)
 {
 	//empty
 }
 
 PlayerEntity::~PlayerEntity()
 {
+	gScene->Remove(pIcon);
+	Delete(pIcon);	
+
 	pInput->RemoveKeyboardListener(this);
 	gPhysics->DestroyBody(pBody);
 }
@@ -30,6 +34,11 @@ void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 {
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
+
+	pIcon = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
+	pIcon->SetPosition(0, 0);
+	pIcon->SetVisible(false);
+	gScene->Add(pIcon);
 
 	b2Vec2 customSize(40, 46);
 
@@ -59,6 +68,8 @@ Sprite *PlayerEntity::GetSprite() const
 
 void PlayerEntity::Update(f32 dt)
 {
+	pIcon->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
+
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
 	bool ground = this->CheckGround();
@@ -208,6 +219,7 @@ bool PlayerEntity::CheckGround()
 void PlayerEntity::SetItem(ItemTypes::Enum item)
 {
 	eItem = item;
+	pIcon->SetVisible(eItem == ItemTypes::HEART);
 }
 
 ItemTypes::Enum PlayerEntity::GetItem() const

@@ -49,6 +49,11 @@ void GameData::SetHostage(const u32 hostage)
 	sPlayer.iHostage = hostage;
 }
 
+void GameData::RemoveHostage()
+{
+	sPlayer.iHostage --;
+}
+
 bool GameData::IsGameOver() const
 {
 	return sPlayer.bGameOver;
