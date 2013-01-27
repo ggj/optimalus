@@ -30,7 +30,8 @@ SOURCES += source/main.cpp \
 	source/game/HostageEntity.cpp \
 	source/states/gameover_state.cpp \
 	source/game/TriggerCounter.cpp \
-	source/game/CollisionSensor.cpp
+	source/game/CollisionSensor.cpp \
+	source/game/TeleportEntity.cpp
 
 HEADERS += \
 	source/gameflow.h \
@@ -59,7 +60,8 @@ HEADERS += \
 	source/game/HostageEntity.h \
 	source/states/gameover_state.h \
 	source/game/TriggerCounter.h \
-	source/game/CollisionSensor.h
+	source/game/CollisionSensor.h \
+	source/game/TeleportEntity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -145,6 +147,7 @@ OTHER_FILES_SOUND = \
 	resources/sounds/metal_game_over.ogg \
 	resources/sounds/jump.ogg \
 	resources/sounds/teleport.ogg
+
 #Maps
 OTHER_FILES_MAPS = \
 	resources/level5.json \
@@ -160,9 +163,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS} \
-    resources/sounds/teleport.ogg \
-    resources/sounds/jump.ogg
+	$${OTHER_FILES_MAPS}
 
 CONFIG(debug, debug|release) {
 	DESTDIR = bin
