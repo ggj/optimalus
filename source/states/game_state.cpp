@@ -3,8 +3,7 @@
 #include "../game/GameScene.h"
 
 GameState::GameState()
-	: cScene()
-	, pGame(NULL)
+	: pGame(NULL)
 	, bDoStop(false)
 {
 }
@@ -20,9 +19,8 @@ void GameState::OnStart(void *data)
 	bDoStop = false;
 
 	gFlow->LoadGUI("gui/views/game.rml");
-	pGame = New(GameScene(&cScene, gFlow->GetCamera()));
+	pGame = New(GameScene(gFlow->GetScene(), gFlow->GetCamera()));
 	pGame->Initialize();
-	cScene.SetVisible(true);
 }
 
 void GameState::OnUpdate(f32 dt)
@@ -35,7 +33,6 @@ void GameState::OnStop(void *data)
 	UNUSED(data)
 	Log("Exiting Game State");
 	bDoStop = true;
-	cScene.SetVisible(false);
 }
 
 /*
@@ -49,5 +46,9 @@ void GameState::LateStop()
 	{
 		pGame->Shutdown();
 		Delete(pGame);
+
+		// Reset da posicao da camera quando sai do jogo...
+		// salvar a posicao original?
+		gFlow->GetCamera()->SetPosition(-400.0f, -300.0f);
 	}
 }

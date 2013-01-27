@@ -4,8 +4,9 @@
 	aObjects: [
 		{
 			sType: Image
-			sName: Background
+			sName: TitleImage
 			sResource: textures/menu_background.png
+			cPosition: {z: 1000}
 		}
 		{
 			sType: Camera

@@ -107,6 +107,8 @@ void GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		pResourceManager->Print();
 	else if (k == Seed::KeyF2)
 		pResourceManager->GarbageCollect();
+	else if (k == Seed::KeyF4)
+		pScene->Dump();
 	else if (k == Seed::KeyF5)
 		this->ReloadGUI();
 	else if (k == Seed::KeyF10)
@@ -125,7 +127,6 @@ void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
 	Viewport *viewport = cPres.GetViewportByName("MainView");
 
 	pCamera = viewport->GetCamera();
-	pImage = (Image *)cPres.GetRendererByName("MainRenderer")->GetScene()->GetChildByName("Background");
 
 	this->InitializeGUI();
 	cFlow.Initialize(&cMenu);
@@ -319,16 +320,6 @@ void GameFlow::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &s
 			}
 		}
 	}
-}
-
-void GameFlow::AddScene(ISceneObject *node)
-{
-	pScene->Add(node);
-}
-
-void GameFlow::RemoveScene(ISceneObject *node)
-{
-	pScene->Remove(node);
 }
 
 bool GameFlow::SaveSystemFlow() const
