@@ -14,7 +14,7 @@ PhysicsManager::PhysicsManager()
 {
 	pWorld = New(b2World(b2Vec2(0.0f, 10.0f)));
 
-	pWorld->SetContactListener(this);
+	pWorld->SetContactListener(this);	
 }
 
 PhysicsManager::~PhysicsManager()
@@ -263,6 +263,47 @@ void PhysicsManager::EndContact(b2Contact *contact)
 	}
 }
 
+class MyRayCastCallback: public b2RayCastCallback
+{
+	public:
+		MyRayCastCallback(b2Body *bodyToIgnore):
+			pIgnoreBody(bodyToIgnore),
+			fFound(false)
+		{
+			//empty
+		}
+
+
+		virtual float32 ReportFixture(	b2Fixture* fixture, const b2Vec2& point, const b2Vec2& normal, float32 fraction)
+		{
+			if(fixture->GetBody() == pIgnoreBody)
+				return -1;
+
+			fFound = true;
+			return 0;
+		}
+
+		bool Found() const
+		{
+			return fFound;
+		}
+
+	private:
+		b2Body *pIgnoreBody;
+
+		bool	fFound;
+};
+
+
+bool PhysicsManager::RayCast(b2Body *startingBody, b2Vec2 relativeDest)
+{
+	MyRayCastCallback callback(startingBody);
+
+	relativeDest += startingBody->GetPosition();
+	pWorld->RayCast(&callback, startingBody->GetPosition(), relativeDest);
+
+	return callback.Found();
+}
 
 CollisionEvent::CollisionEvent(CollisionEventType::Enum type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity):
 	eType(type),

@@ -7,6 +7,8 @@
 #include <Sprite.h>
 #include "GameScene.h"
 
+#include <Box2D/Common/b2Math.h>
+
 ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity():
@@ -110,4 +112,9 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}
+}
+
+bool PlayerEntity::CheckGround()
+{
+	return gPhysics->RayCast(pBody, b2Vec2(0, 0.32));	
 }

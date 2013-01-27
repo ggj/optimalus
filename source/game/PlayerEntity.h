@@ -24,6 +24,10 @@ class PlayerEntity: public SpriteEntity,
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
 
+		bool CheckGround();
+
+	private:		
+
 	protected:
 		b2Body		*pBody;
 		float		fVelocity;

@@ -80,11 +80,8 @@ class PhysicsManager: public b2ContactListener
 		b2Body* CreateBody(ISceneObject *obj);
 		void DestroyBody(b2Body *body);
 		b2Body* CreateStaticBody(ISceneObject *obj, BodyType::Enum type = BodyType::NORMAL);
-		
-		//Contact listener
-		virtual void BeginContact(b2Contact *contact);
 
-		virtual void EndContact(b2Contact *contact);
+		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);
 
 	private:
 		void ClearWorld();
@@ -92,7 +89,12 @@ class PhysicsManager: public b2ContactListener
 		void AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
 		void RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
 
-		void ClearContacts(b2Body *body);
+		void ClearContacts(b2Body *body);		
+					
+		//Contact listener
+		virtual void BeginContact(b2Contact *contact);
+
+		virtual void EndContact(b2Contact *contact);
 
 	private:
 		b2World *pWorld;
