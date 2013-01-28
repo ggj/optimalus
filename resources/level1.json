@@ -64,6 +64,19 @@
                  "width":0,
                  "x":160,
                  "y":1152
+                }, 
+                {
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "Class":"Sprite",
+                     "Sprite":"Instructions"
+                    },
+                 "type":"",
+                 "width":0,
+                 "x":576,
+                 "y":992
                 }],
          "opacity":1,
          "type":"objectgroup",
