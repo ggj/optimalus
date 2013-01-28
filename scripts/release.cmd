@@ -7,5 +7,11 @@ copy %SDL_IMAGE_HOME%\lib\x86\*.dll c:\temp\ggj13\
 
 xcopy /s ..\resources\*.* c:\temp\ggj13\
 
-copy ..\project\vs2012\ggj13\Release\ggj13.exe c:\temp\ggj13\ 
+copy ..\project\vs2012\ggj13\Release\reapers.exe c:\temp\ggj13\ 
 
+copy %WINDIR%\system32\msvcp110.dll c:\temp\ggj13\
+copy %WINDIR%\system32\msvcr110.dll c:\temp\ggj13\
+
+copy ..\install\*.exe c:\temp\ggj13\
+copy ..\README c:\temp\ggj13\
+copy ..\README c:\temp\ggj13\readme.txt
