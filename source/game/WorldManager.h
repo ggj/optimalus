@@ -2,29 +2,26 @@
 #define _WORLD_MANAGER_H
 
 #include "../defines.h"
-#include <vector>
 
 class Entity;
+typedef std::vector<Entity *> EntitiesVector;
 
 class WorldManager
 {
 	public:
-        Entity* BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
-		~WorldManager();
+		virtual ~WorldManager();
+
+		Entity *BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
 
 		void Clear();
-
 		void Update(f32 dt);
 
-		Entity *FindEntityByClassName(const char *className);
-		Entity *FindEntityByName(const char *name);
-
-		void ActivateAllEntites(const char *name);
+		Entity *FindEntityByClassName(const String &className);
+		Entity *FindEntityByName(const String &name);
+		void ActivateAllEntites(const String &name);
 
 	private:
-		typedef std::vector<Entity *> EntitiesVector_t;
-		EntitiesVector_t vEntities;
+		EntitiesVector vEntities;
 };
-
 
 #endif

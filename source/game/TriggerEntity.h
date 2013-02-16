@@ -2,19 +2,18 @@
 #define _TRIGGER_ENTITY_H
 
 #include "entity.h"
-
-#include "CollisionSensor.h"
+#include "collisionsensor.h"
 
 class TriggerEntity: public Entity
 {
-	public:  
-		TriggerEntity();		
+	public:
+		TriggerEntity();
+		virtual ~TriggerEntity();
 
-		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
-
+		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
 		virtual void OnCollision(const CollisionEvent &event);
 
-	private:		
+	private:
 		bool		fOnce;
 		unsigned	iCount;
 

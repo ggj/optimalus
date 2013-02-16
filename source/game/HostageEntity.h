@@ -1,17 +1,16 @@
 #ifndef _HOSTAGE_H
 #define _HOSTAGE_H
 
-#include "SpriteEntity.h"
-
-#include "CollisionSensor.h"
+#include "spriteentity.h"
+#include "collisionsensor.h"
 
 class HostageEntity: public SpriteEntity
 {
 	public:
-		HostageEntity();			
+		HostageEntity();
+		virtual ~HostageEntity();
 
-		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
-
+		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:

@@ -1,15 +1,15 @@
 #ifndef _GAMEFLOW_H_
 #define _GAMEFLOW_H_
 
+#include "defines.h"
 #include <api/rocket/RocketInterface.h>
 #include <Rocket/Core.h>
-#include <Seed.h>
 
-#include "states/main_menu_state.h"
+#include "states/mainmenu_state.h"
 #include "states/options_state.h"
 #include "states/credits_state.h"
 #include "states/game_state.h"
-#include "data/game_data.h"
+#include "game/game_data.h"
 
 using namespace Seed;
 using namespace Seed::RocketGui;
@@ -69,7 +69,6 @@ class GameFlow : public IGameApp,
 
 	private:
 		bool SaveSystemFlow() const;
-
 		void PrintHostage(u32 hostage);
 
 	private:
@@ -119,7 +118,7 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Element	*pElementSfx;
 		Rocket::Core::Element	*pElementBgm;
 
-		String	sSceneFile;
+		String sSceneFile;
 };
 
 inline Camera *GameFlow::GetCamera() const

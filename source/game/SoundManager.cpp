@@ -1,4 +1,4 @@
-#include "SoundManager.h"
+#include "soundmanager.h"
 
 SoundManager::SoundManager()
 	: pSounds(NULL)
@@ -13,8 +13,7 @@ void SoundManager::Init(SceneNode &sounds)
 void SoundManager::Play(const String &name)
 {
 	ISoundSource *source = static_cast<ISoundSource *>(pSounds->GetChildByName(name));
-
-	if(source == NULL)
+	if (source == NULL)
 		return;
 
 	source->Play();

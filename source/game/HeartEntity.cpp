@@ -1,12 +1,10 @@
-#include "HeartEntity.h"
-
-#include "EntityFactory.h"
+#include "heartentity.h"
+#include "entityfactory.h"
 
 ENTITY_CREATOR("Heart", HeartEntity)
 
-HeartEntity::HeartEntity():
-	ItemEntity("Heart", "Heart")
+HeartEntity::HeartEntity()
+	: ItemEntity("Heart", "Heart")
 {
-	//empty
 }
 

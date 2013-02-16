@@ -1,7 +1,5 @@
-#include "GameScene.h"
+#include "gamescene.h"
 #include "../gameflow.h"
-
-#include <SceneNode.h>
 
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
@@ -73,17 +71,6 @@ bool GameScene::Initialize()
 
 bool GameScene::Update(f32 dt)
 {
-/*
-TEST: Bug de raster/texel.
-*/
-//	if (pPlayer)
-//	{
-//		//pPlayer->GetSprite()->AddY(0.5f);
-//		pPlayer->GetSprite()->AddX(0.05f);
-//		clCamera.LookAt(pPlayer->GetPosition());
-//	}
-//	return true;
-
 	if (!bInitialized)
 		return true;
 
@@ -95,15 +82,15 @@ TEST: Bug de raster/texel.
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
 
-	if(fChangeLevel)
+	if (fChangeLevel)
 	{
 		fpTimeToNextLevel -= dt;
-		if(fpTimeToNextLevel <= 0)
+		if (fpTimeToNextLevel <= 0)
 		{
 			gFlow->LoadSceneFile(strNextLevel);
 		}
 	}
-	if(gGameData->GetLife() == 0)
+	if (gGameData->GetLife() == 0)
 	{
 		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
@@ -188,7 +175,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 					{
 						pPlayer = static_cast<PlayerEntity*>(entity);
 					}
-					else if(entity->GetClassName() == "Hostage")
+					else if (entity->GetClassName() == "Hostage")
 					{
 						++hostageNum;
 					}
@@ -265,7 +252,7 @@ void GameScene::RemoveHostage()
 {
 	gFlow->RemoveHostage();
 
-	if((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
+	if ((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
 	{
 		fChangeLevel = true;
 	}

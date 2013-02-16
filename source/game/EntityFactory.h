@@ -7,17 +7,17 @@ class Entity;
 
 namespace EntityFactory
 {
-	typedef Entity *(*CreateEntityProc_t)();
+	typedef Entity *(*CreateEntityProc)();
 
-    Entity *CreateEntity(const String &name);
-    Entity *CreateEntity(const char *name);
+	Entity *CreateEntity(const String &name);
+	Entity *CreateEntity(const char *name);
 
-	void AddCreator(const char *name, CreateEntityProc_t proc);
+	void AddCreator(const char *name, CreateEntityProc proc);
 
 	class AutoCreator
 	{
 		public:
-			inline AutoCreator(const char *name, CreateEntityProc_t proc)
+			inline AutoCreator(const char *name, CreateEntityProc proc)
 			{
 				AddCreator(name, proc);
 			}
@@ -32,6 +32,6 @@ namespace EntityFactory
 			return New(CLASS());												\
 		}																		\
 		EntityFactory::AutoCreator clAutoCreator##CLASS_g(NAME, Create##CLASS);	\
-    }
+	}
 
 #endif

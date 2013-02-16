@@ -7,9 +7,9 @@ class TriggerCounter: public Entity
 {
 	public:
 		TriggerCounter();
+		virtual ~TriggerCounter();
 
 		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
-
 		virtual void Activate();
 
 	private:

@@ -1,43 +1,42 @@
-#include "HostageEntity.h"
-
-#include "EntityFactory.h"
-#include "GameScene.h"
-#include "Sounds.h"
+#include "hostageentity.h"
+#include "entityfactory.h"
+#include "gamescene.h"
+#include "sounds.h"
 
 ENTITY_CREATOR("Hostage", HostageEntity)
 
-HostageEntity::HostageEntity():
-	SpriteEntity("Hostage", "Hostage")
+HostageEntity::HostageEntity()
+	: SpriteEntity("Hostage", "Hostage")
 {
-	//empty
 }
 
+HostageEntity::~HostageEntity()
+{
+}
 
-void HostageEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+void HostageEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
-
-	clSensor.Load(metadata, this);	
+	clSensor.Load(metadata, this);
 }
 
 void HostageEntity::OnCollision(const CollisionEvent &event)
 {
-	if(event.GetType() == CollisionEventType::ON_ENTER)
+	if (event.GetType() == CollisionEventType::OnEnter)
 	{
 		Log("HOSTAGE colidiu");
-		
+
 		Entity *other = event.GetOtherEntity();
-		if(other != NULL && other->GetClassName() == "Player")
+		if (other != NULL && other->GetClassName() == "Player")
 		{
-			PlayerEntity *player = static_cast<PlayerEntity*>(other);
+			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
-			if(player->GetItem() == ItemTypes::NONE)
+			if (player->GetItem() == ItemTypes::None)
 			{
-				gSoundManager->Play(SND_HOSTAGE_KILL);		
-				clSensor.Disable();				
+				gSoundManager->Play(SND_HOSTAGE_KILL);
+				clSensor.Disable();
 
-				player->SetItem(ItemTypes::HEART);
-
+				player->SetItem(ItemTypes::Heart);
 				pSprite->SetAnimation("Death");
 			}
 		}

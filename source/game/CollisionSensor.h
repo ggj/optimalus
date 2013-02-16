@@ -1,8 +1,7 @@
 #ifndef _COLLISION_SENSOR_H
 #define _COLLISION_SENSOR_H
 
-#include <Seed.h>
-
+#include "../defines.h"
 #include <Box2D/Box2D.h>
 
 class CollisionSensor
@@ -11,8 +10,8 @@ class CollisionSensor
 		CollisionSensor();
 		~CollisionSensor();
 
-		void Load(Seed::ISceneObject &metadata, void *userData);
-		void Load(Seed::ISceneObject &metadata, bool track, b2Vec2 *customSize, void *userData);
+		void Load(ISceneObject &metadata, void *userData);
+		void Load(ISceneObject &metadata, bool track, b2Vec2 *customSize, void *userData);
 
 		void Disable();
 
@@ -26,8 +25,8 @@ class CollisionSensor
 			pBody->SetTransform(position, pBody->GetAngle());
 		}
 
-	private:	
-		b2Body		*pBody;
+	private:
+		b2Body *pBody;
 };
 
 #endif

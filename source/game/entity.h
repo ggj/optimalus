@@ -1,9 +1,6 @@
 #ifndef _ENTITY_H_
 #define _ENTITY_H_
 
-#include <Seed.h>
-#include <string>
-
 #include "../defines.h"
 
 class CollisionEvent;
@@ -15,9 +12,7 @@ class Entity
 		virtual ~Entity();
 
 		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
-
 		virtual void OnCollision(const CollisionEvent &event) { UNUSED(event) }
-
 		virtual void Update(f32 dt) { UNUSED(dt) }
 
 		inline const String &GetClassName() const;
@@ -33,7 +28,7 @@ class Entity
 		SEED_DISABLE_COPY(Entity);
 
 		String strClassName;
-		String strName;		
+		String strName;
 		String strTarget;
 };
 

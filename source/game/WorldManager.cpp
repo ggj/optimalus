@@ -1,13 +1,13 @@
-#include "WorldManager.h"
-#include "EntityFactory.h"
-#include "Entity.h"
+#include "worldmanager.h"
+#include "entityfactory.h"
+#include "entity.h"
 
 WorldManager::~WorldManager()
 {
 	this->Clear();
 }
 
-Entity* WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
+Entity *WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
 {
 	const String &className = metadata.GetProperty("Class");
 
@@ -18,7 +18,6 @@ Entity* WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
 		return NULL;
 
 	ent->Load(metadata, sprites);
-
 	vEntities.push_back(ent);
 
 	return ent;
@@ -26,7 +25,7 @@ Entity* WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
 
 void WorldManager::Clear()
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
 		Delete(*it);
 	}
@@ -36,17 +35,17 @@ void WorldManager::Clear()
 
 void WorldManager::Update(f32 dt)
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
 		(*it)->Update(dt);
 	}
 }
 
-Entity *WorldManager::FindEntityByClassName(const char *className)
+Entity *WorldManager::FindEntityByClassName(const String &className)
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
-		if((*it)->GetClassName().compare(className) == 0)
+		if ((*it)->GetClassName().compare(className) == 0)
 		{
 			return *it;
 		}
@@ -55,11 +54,11 @@ Entity *WorldManager::FindEntityByClassName(const char *className)
 	return NULL;
 }
 
-Entity *WorldManager::FindEntityByName(const char *name)
+Entity *WorldManager::FindEntityByName(const String &name)
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
-		if((*it)->GetName().compare(name) == 0)
+		if ((*it)->GetName().compare(name) == 0)
 		{
 			return *it;
 		}
@@ -68,16 +67,13 @@ Entity *WorldManager::FindEntityByName(const char *name)
 	return NULL;
 }
 
-void WorldManager::ActivateAllEntites(const char *name)
+void WorldManager::ActivateAllEntites(const String &name)
 {
-	for (EntitiesVector_t::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
+	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
-		if((*it)->GetName().compare(name) == 0)
+		if ((*it)->GetName().compare(name) == 0)
 		{
 			(*it)->Activate();
 		}
 	}
 }
-
-
-

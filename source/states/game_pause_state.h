@@ -1,8 +1,7 @@
 #ifndef _GAME_PAUSE_STATE_H
 #define _GAME_PAUSE_STATE_H
 
-#include <Seed.h>
-using namespace Seed;
+#include "../defines.h"
 
 class GamePauseState : public StateMachineState
 {

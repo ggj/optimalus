@@ -10,9 +10,4 @@ using namespace Seed;
 #define VECTOR_RIGHT		Vector3f(1, 0, 0);
 #define VECTOR_ZERO		Vector3f(0, 0, 0);
 
-enum eUserType
-{
-	nGameData = Seed::TypeUser + 1
-};
-
 #endif // DEFINES_H

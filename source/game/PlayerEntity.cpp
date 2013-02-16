@@ -1,27 +1,19 @@
-#include "PlayerEntity.h"
-
-#include "EntityFactory.h"
-
-#include <SceneNode.h>
-#include <LeakReport.h>
-#include <Sprite.h>
-#include "GameScene.h"
-#include "Sounds.h"
-
 #include <Box2D/Common/b2Math.h>
+#include "playerentity.h"
+#include "entityfactory.h"
+#include "gamescene.h"
+#include "sounds.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity()
 	: SpriteEntity("Player", "Player")
-	, eItem(ItemTypes::NONE)
+	, eItem(ItemTypes::None)
 	, fpMove(0)
 	, fpLandTime(0)
 	, fpInvicibleTime(0)
 	, pIcon(NULL)
-
 {
-	//empty
 }
 
 PlayerEntity::~PlayerEntity()
@@ -33,7 +25,7 @@ PlayerEntity::~PlayerEntity()
 	gPhysics->DestroyBody(pBody);
 }
 
-void PlayerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+void PlayerEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
@@ -74,7 +66,7 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 	pBody->SetTransform(position, pBody->GetAngle());
 
 	fpMove= 0;
-	this->SetState(IDLE);
+	this->SetState(Idle);
 
 	gSoundManager->Play(SND_TELEPORT);
 }
@@ -87,59 +79,59 @@ void PlayerEntity::Update(f32 dt)
 
 	bool ground = this->CheckGround();
 
-	if(fpInvicibleTime > 0)
+	if (fpInvicibleTime > 0)
 	{
 		pSprite->SetVisible(!pSprite->IsVisible());
 
 		fpInvicibleTime -= dt;
-		if(fpInvicibleTime <= 0)
+		if (fpInvicibleTime <= 0)
 		{
 			pSprite->SetVisible(true);
 			fpInvicibleTime = 0;
 		}
 	}
 
-	if(fpMove != 0)
+	if (fpMove != 0)
 	{
 		vel.x = 5 * fpMove;
 		pBody->SetLinearVelocity(vel);
 	}
 
-	if (iPreviousState ==JUMP && ground)
+	if (iPreviousState ==Jump && ground)
 	{
-		SetState(LAND);
+		SetState(Land);
 		fpLandTime = 0.3f;
 	}
 
-	if(iCurrentState != JUMP && !ground)
+	if (iCurrentState != Jump && !ground)
 	{
-		this->SetState(JUMP);
+		this->SetState(Jump);
 	}
 
-	if(fpLandTime > 0 && iCurrentState == LAND)
+	if (fpLandTime > 0 && iCurrentState == Land)
 	{
 		fpLandTime -= dt;
-		if(fpLandTime <= 0)
+		if (fpLandTime <= 0)
 		{
-			if(fpMove != 0)
-				this->SetState(RUN);
+			if (fpMove != 0)
+				this->SetState(Run);
 			else
-				this->SetState(IDLE);
+				this->SetState(Idle);
 		}
 	}
 
 	if (iCurrentState == iPreviousState)
 		return;
 
-	if (iCurrentState == JUMP)
+	if (iCurrentState == Jump)
 	{
 		pSprite->SetAnimation("Jump");
 	}
-	else if (iCurrentState == LAND)
+	else if (iCurrentState == Land)
 	{
 		pSprite->SetAnimation("Land");
 	}
-	else if (iCurrentState == RUN)
+	else if (iCurrentState == Run)
 	{
 		pSprite->SetAnimation("Run");
 	}
@@ -157,16 +149,16 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if ((k == Seed::KeyUp || k == Seed::KeyW || k == Seed::KeySpace) && iCurrentState != JUMP)
+	if ((k == Seed::KeyUp || k == Seed::KeyW || k == Seed::KeySpace) && iCurrentState != Jump)
 	{
-		SetState(JUMP);
+		SetState(Jump);
 		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());
 		gSoundManager->Play(SND_JUMP);
 	}
 
 	if (k == Seed::KeyLeft || k == Seed::KeyA)
 	{
-		SetState(RUN);
+		SetState(Run);
 
 		fpMove = -1;
 
@@ -177,7 +169,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	if (k == Seed::KeyRight || k == Seed::KeyD)
 	{
-		SetState(RUN);
+		SetState(Run);
 
 		fpMove = 1;
 
@@ -214,9 +206,9 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		fpMove = 0;
 
 		if (CheckGround())
-			SetState(IDLE);
+			SetState(Idle);
 		else
-			SetState(JUMP);
+			SetState(Jump);
 	}
 
 	if (k == Seed::KeyRight|| k == Seed::KeyD)
@@ -225,9 +217,9 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		fpMove = 0;
 
 		if (CheckGround())
-			SetState(IDLE);
+			SetState(Idle);
 		else
-			SetState(JUMP);
+			SetState(Jump);
 	}
 
 	if (k == Seed::KeyDown|| k == Seed::KeyS)
@@ -238,28 +230,26 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 bool PlayerEntity::CheckGround()
 {
-	if(gPhysics->RayCast(pBody, b2Vec2(0, 0.32f)))
+	if (gPhysics->RayCast(pBody, b2Vec2(0, 0.32f)))
 		return true;
-	if(gPhysics->RayCast(pBody, b2Vec2(0.16f, 0.32f)))
+	if (gPhysics->RayCast(pBody, b2Vec2(0.16f, 0.32f)))
 		return true;
-	if(gPhysics->RayCast(pBody, b2Vec2(-0.16f, 0.32f)))
+	if (gPhysics->RayCast(pBody, b2Vec2(-0.16f, 0.32f)))
 		return true;
 
 	return false;
 }
 
-
 void PlayerEntity::SetItem(ItemTypes::Enum item)
 {
 	eItem = item;
-	pIcon->SetVisible(eItem == ItemTypes::HEART);
+	pIcon->SetVisible(eItem == ItemTypes::Heart);
 }
 
 ItemTypes::Enum PlayerEntity::GetItem() const
 {
 	return eItem;
 }
-
 
 void PlayerEntity::SetState(int newState)
 {
@@ -269,7 +259,7 @@ void PlayerEntity::SetState(int newState)
 
 bool PlayerEntity::OnDamage()
 {
-	if(fpInvicibleTime > 0)
+	if (fpInvicibleTime > 0)
 		return false;
 
 	fpInvicibleTime = 3;

@@ -1,8 +1,7 @@
 #ifndef _GAMEOVER_STATE_H
 #define _GAMEOVER_STATE_H
 
-#include <Seed.h>
-using namespace Seed;
+#include "../defines.h"
 
 class GameOverState : public StateMachineState
 {

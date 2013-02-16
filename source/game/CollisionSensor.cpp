@@ -1,11 +1,9 @@
-#include "CollisionSensor.h"
+#include "collisionsensor.h"
+#include "gamescene.h"
 
-#include "GameScene.h"
-
-CollisionSensor::CollisionSensor():
-	pBody(NULL)
+CollisionSensor::CollisionSensor()
+	: pBody(NULL)
 {
-	//empty
 }
 
 CollisionSensor::~CollisionSensor()
@@ -13,18 +11,18 @@ CollisionSensor::~CollisionSensor()
 	gPhysics->DestroyBody(pBody);
 }
 
-void CollisionSensor::Load(Seed::ISceneObject &metadata, void *userData)
+void CollisionSensor::Load(ISceneObject &metadata, void *userData)
 {
 	this->Load(metadata, false, NULL, userData);
 }
 
-void CollisionSensor::Load(Seed::ISceneObject &metadata, bool track, b2Vec2 *customSize, void *userData)
+void CollisionSensor::Load(ISceneObject &metadata, bool track, b2Vec2 *customSize, void *userData)
 {
-	pBody = gPhysics->CreateStaticBody(&metadata, BodyType::SENSOR, track, customSize);
-	pBody->GetFixtureList()->SetUserData(userData);	
+	pBody = gPhysics->CreateStaticBody(&metadata, BodyType::Sensor, track, customSize);
+	pBody->GetFixtureList()->SetUserData(userData);
 }
 
 void CollisionSensor::Disable()
 {
-	pBody->GetFixtureList()->SetUserData(NULL);	
+	pBody->GetFixtureList()->SetUserData(NULL);
 }

@@ -4,16 +4,15 @@
 #include "../defines.h"
 #include <Box2D/Box2D.h>
 
-#include <map>
-
 class Entity;
+class CollisionEvent;
 
 namespace BodyType
 {
 	enum Enum
 	{
-		NORMAL,
-		SENSOR
+		Normal,
+		Sensor
 	};
 }
 
@@ -21,10 +20,14 @@ namespace CollisionEventType
 {
 	enum Enum
 	{
-		ON_ENTER,
-		ON_LEAVE
+		OnEnter,
+		OnLeave
 	};
 }
+
+typedef std::map<b2Body *, int> CollisionCounterMap;
+typedef std::map<b2Body *, CollisionCounterMap>  CollisionCacheMap;
+typedef std::list<CollisionEvent> CollisionEventList;
 
 class CollisionEvent
 {
@@ -39,10 +42,10 @@ class CollisionEvent
 
 	private:
 		CollisionEventType::Enum eType;
-		b2Body	&rOtherBody;
-		b2Body  &rTargetBody;
-		Entity	*pOtherEntity;
-		Entity  &rTarget;
+		b2Body &rOtherBody;
+		b2Body &rTargetBody;
+		Entity *pOtherEntity;
+		Entity &rTarget;
 };
 
 inline CollisionEventType::Enum CollisionEvent::GetType() const
@@ -74,41 +77,32 @@ class PhysicsManager: public b2ContactListener
 {
 	public:
 		PhysicsManager();
-		~PhysicsManager();
+		virtual ~PhysicsManager();
 
 		void Update(f32 dt);
-		b2Body* CreateBody(ISceneObject *obj, b2Vec2 *customSize = NULL);
+
+		b2Body *CreateBody(ISceneObject *obj, b2Vec2 *customSize = NULL);
+		b2Body *CreateStaticBody(ISceneObject *obj, BodyType::Enum type = BodyType::Normal, bool track = false, b2Vec2 *customSize = NULL);
 		void DestroyBody(b2Body *body);
-		b2Body* CreateStaticBody(ISceneObject *obj, BodyType::Enum type = BodyType::NORMAL, bool track = false, b2Vec2 *customSize = NULL);
 
 		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);
 
-	private:
-		void ClearWorld();
-
-		void AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
-		void RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
-
-		void ClearContacts(b2Body *body);		
-					
+	protected:
 		//Contact listener
 		virtual void BeginContact(b2Contact *contact);
-
 		virtual void EndContact(b2Contact *contact);
 
 	private:
+		void ClearWorld();
+		void AddContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
+		void RemoveContact(b2Fixture *fixture, b2Body *body, b2Fixture *otherFixture, b2Body *other);
+		void ClearContacts(b2Body *body);
+
+	private:
 		b2World *pWorld;
-
-		typedef std::map<b2Body*, int> CollisionCounterMap_t;
-
-		typedef std::map<b2Body*, CollisionCounterMap_t>  CollisionCache_t;
-		CollisionCache_t mapCollisions;
-
-		typedef std::list<CollisionEvent> CollisionEventList_t;
-		CollisionEventList_t lstEvents;
-
-		f32		fpTimeLeft;
-
+		CollisionCacheMap mapCollisions;
+		CollisionEventList lstEvents;
+		f32 fpTimeLeft;
 };
 
 #endif // PHYSICSMANAGER_H

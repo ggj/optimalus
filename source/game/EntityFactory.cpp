@@ -1,36 +1,29 @@
-#include "EntityFactory.h"
-
-#include <map>
-#include <string>
-
-#include <Log.h>
+#include "entityfactory.h"
 
 namespace
 {
-	typedef std::map<std::string, EntityFactory::CreateEntityProc_t> EntityCreatorMap_t;
+	typedef std::map<std::string, EntityFactory::CreateEntityProc> EntityCreatorMap;
 
-	static EntityCreatorMap_t &GetCreatorMap()
+	static EntityCreatorMap &GetCreatorMap()
 	{
-		static EntityCreatorMap_t mapCreators;
-
+		static EntityCreatorMap mapCreators;
 		return mapCreators;
 	}
 }
 
-void EntityFactory::AddCreator(const char *name, CreateEntityProc_t proc)
+void EntityFactory::AddCreator(const char *name, CreateEntityProc proc)
 {
 	GetCreatorMap().insert(std::make_pair(name, proc));
 }
 
 Entity *EntityFactory::CreateEntity(const String &name)
 {
-	EntityCreatorMap_t &mapCreators = GetCreatorMap();
+	EntityCreatorMap &mapCreators = GetCreatorMap();
 
-	EntityCreatorMap_t::iterator it = mapCreators.find(name);
-	if(it == mapCreators.end())
+	EntityCreatorMap::iterator it = mapCreators.find(name);
+	if (it == mapCreators.end())
 	{
 		Log("Entity %s not found.", name.c_str());
-
 		return NULL;
 	}
 
@@ -39,5 +32,5 @@ Entity *EntityFactory::CreateEntity(const String &name)
 
 Entity *EntityFactory::CreateEntity(const char *name)
 {
-    return CreateEntity(String(name));
+	return CreateEntity(String(name));
 }

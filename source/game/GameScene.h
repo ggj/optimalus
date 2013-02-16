@@ -5,13 +5,13 @@
 
 #include "../defines.h"
 #include "physicsmanager.h"
-#include "WorldManager.h"
+#include "worldmanager.h"
 #include "../states/game_pause_state.h"
 #include "../states/gameover_state.h"
 #include "../states/game_run_state.h"
-#include "PlayerEntity.h"
+#include "playerentity.h"
 #include "cameracontroller.h"
-#include "SoundManager.h"
+#include "soundmanager.h"
 
 using namespace Seed::RocketGui;
 

@@ -1,6 +1,6 @@
 #include "gameover_state.h"
 #include "../gameflow.h"
-#include "../game/GameScene.h"
+#include "../game/gamescene.h"
 
 GameOverState::GameOverState()
 	:	iBeginStateTime(0)
@@ -26,7 +26,7 @@ void GameOverState::OnStart(void *data)
 void GameOverState::OnUpdate(f32 dt)
 {
 	UNUSED(dt);
-	if(iBeginStateTime + 3000 < pTimer->GetMilliseconds())
+	if (iBeginStateTime + 3000 < pTimer->GetMilliseconds())
 		gFlow->Menu();
 }
 

@@ -1,15 +1,12 @@
 #ifndef _HEART_ENTITY_H
 #define _HEART_ENTITY_H
 
-#include "ItemEntity.h"
+#include "itementity.h"
 
 class HeartEntity: public ItemEntity
 {
 	public:
 		HeartEntity();
-
-	private:
-
 };
 
 #endif

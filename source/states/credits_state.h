@@ -1,8 +1,7 @@
 #ifndef _CREDITS_STATE_H
 #define _CREDITS_STATE_H
 
-#include <Seed.h>
-using namespace Seed;
+#include "../defines.h"
 
 class CreditsState : public StateMachineState
 {

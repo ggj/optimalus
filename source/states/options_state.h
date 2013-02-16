@@ -1,8 +1,7 @@
 #ifndef _OPTIONS_STATE_H
 #define _OPTIONS_STATE_H
 
-#include <Seed.h>
-using namespace Seed;
+#include "../defines.h"
 
 class OptionsState : public StateMachineState
 {

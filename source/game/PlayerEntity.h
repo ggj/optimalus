@@ -1,16 +1,16 @@
 #ifndef _PLAYER_ENTITY_H
 #define _PLAYER_ENTITY_H
 
-#include "SpriteEntity.h"
-#include "../defines.h"
 #include <Box2D/Box2D.h>
+#include "../defines.h"
+#include "spriteentity.h"
 
 namespace ItemTypes
 {
 	enum Enum
 	{
-		NONE,
-		HEART
+		None,
+		Heart
 	};
 }
 
@@ -21,8 +21,7 @@ class PlayerEntity: public SpriteEntity,
 		PlayerEntity();
 		virtual ~PlayerEntity();
 
-		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
-
+		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
 		virtual void Update(f32 dt);
 
 		// IEventInputKeyboardListener
@@ -33,14 +32,12 @@ class PlayerEntity: public SpriteEntity,
 
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
-
-		b2Vec2 GetBodyPosition() const;		
+		b2Vec2 GetBodyPosition() const;
 
 		void SetItem(ItemTypes::Enum item);
 		ItemTypes::Enum GetItem() const;
 
 		void Teleport(const b2Vec2 &position);
-
 		bool OnDamage();
 
 	private:
@@ -55,16 +52,15 @@ class PlayerEntity: public SpriteEntity,
 
 		ItemTypes::Enum eItem;
 
-		enum		eAnimationStates {IDLE = 0, RUN = 1, JUMP = 2, LAND = 3};
+		enum		eAnimationStates {Idle = 0, Run = 1, Jump = 2, Land = 3};
 		int			iPreviousState;
 		int			iCurrentState;
 
 		f32			fpMove;
 		f32			fpLandTime;
-
 		f32			fpInvicibleTime;
 
-		Seed::Sprite	*pIcon;
+		Sprite		*pIcon;
 };
 
 #endif

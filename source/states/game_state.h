@@ -1,8 +1,7 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
-#include <Seed.h>
-using namespace Seed;
+#include "../defines.h"
 
 class GameScene;
 class GameState : public StateMachineState

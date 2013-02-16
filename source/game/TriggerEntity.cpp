@@ -1,38 +1,38 @@
-#include "TriggerEntity.h"
-
-#include "EntityFactory.h"
-
-#include "GameScene.h"
+#include "triggerentity.h"
+#include "entityfactory.h"
+#include "gamescene.h"
 
 ENTITY_CREATOR("Trigger", TriggerEntity)
 
-TriggerEntity::TriggerEntity():
-	Entity("Trigger"),	
-	fOnce(true),
-	iCount(0)
+TriggerEntity::TriggerEntity()
+	: Entity("Trigger")
+	, fOnce(true)
+	, iCount(0)
 {
-	//empty
 }
 
-void TriggerEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+TriggerEntity::~TriggerEntity()
+{
+}
+
+void TriggerEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
+	clSensor.Load(metadata, this);
 
-	clSensor.Load(metadata, this);	
-
-	if(!metadata.GetProperty("Once").empty())
-		fOnce = metadata.GetProperty("Once").compare("true") == 0;	
+	if (!metadata.GetProperty("Once").empty())
+		fOnce = metadata.GetProperty("Once").compare("true") == 0;
 }
 
 void TriggerEntity::OnCollision(const CollisionEvent &event)
 {
-	if(event.GetType() == CollisionEventType::ON_ENTER)
+	if (event.GetType() == CollisionEventType::OnEnter)
 	{
-		if(event.GetOtherEntity() && event.GetOtherEntity()->GetClassName().compare("Player") == 0)
+		if (event.GetOtherEntity() && event.GetOtherEntity()->GetClassName().compare("Player") == 0)
 		{
 			Log("Trigger colidiu");
 
-			if(fOnce && iCount > 0)
+			if (fOnce && iCount > 0)
 			{
 				Log("Ignoring, once");
 				return;
@@ -40,7 +40,7 @@ void TriggerEntity::OnCollision(const CollisionEvent &event)
 
 			++iCount;
 
-			this->DoActivateAll();			
+			this->DoActivateAll();
 		}
-	}		
+	}
 }

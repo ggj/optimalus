@@ -1,11 +1,10 @@
-#include "SpriteEntity.h"
-
-#include "GameScene.h"
+#include "spriteentity.h"
+#include "gamescene.h"
 
 SpriteEntity::SpriteEntity(const char *className, const char *spriteName)
-	:	Entity(className)
-	,	pSprite(NULL)
-	,	pszSpriteName(spriteName)
+	: Entity(className)
+	, pSprite(NULL)
+	, pszSpriteName(spriteName)
 {
 	SEED_ASSERT(spriteName);
 }
@@ -16,7 +15,7 @@ SpriteEntity::~SpriteEntity()
 	Delete(pSprite);
 }
 
-void SpriteEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites)
+void SpriteEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
 
@@ -25,5 +24,3 @@ void SpriteEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprite
 
 	gScene->Add(pSprite);
 }
-
-
