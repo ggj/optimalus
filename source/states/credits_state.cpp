@@ -1,5 +1,5 @@
 #include "credits_state.h"
-#include "../gameflow.h"
+#include "../guimanager.h"
 
 CreditsState::CreditsState()
 {
@@ -14,7 +14,7 @@ void CreditsState::OnStart(void *data)
 	UNUSED(data)
 	Log("Entering Credits State");
 
-	gFlow->LoadGUI("gui/views/credits.rml");
+	gGui->LoadGUI("gui/views/credits.rml");
 }
 
 void CreditsState::OnUpdate(f32 dt)

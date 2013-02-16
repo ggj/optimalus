@@ -1,5 +1,5 @@
 #include "game_pause_state.h"
-#include "../gameflow.h"
+#include "../guimanager.h"
 #include "../game/gamescene.h"
 
 GamePauseState::GamePauseState()
@@ -13,7 +13,7 @@ GamePauseState::~GamePauseState()
 void GamePauseState::OnStart(void *data)
 {
 	Log("Entering GamePause State");
-	gFlow->LoadGUI("gui/views/gamepause.rml");
+	gGui->LoadGUI("gui/views/gamepause.rml");
 	pSoundSystem->Mute();
 	GameScene *g = static_cast<GameScene *>(data);
 	g->Pause();

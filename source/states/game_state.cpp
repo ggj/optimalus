@@ -1,4 +1,5 @@
 #include "game_state.h"
+#include "../guimanager.h"
 #include "../gameflow.h"
 #include "../game/gamescene.h"
 
@@ -18,7 +19,7 @@ void GameState::OnStart(void *data)
 	Log("Entering Game State");
 	bDoStop = false;
 
-	gFlow->LoadGUI("gui/views/game.rml");
+	gGui->LoadGUI("gui/views/game.rml");
 	pGame = New(GameScene(gFlow->GetScene(), gFlow->GetCamera(), gFlow->GetSceneFile()));
 	pGame->Initialize();
 }

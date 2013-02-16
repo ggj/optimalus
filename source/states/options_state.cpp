@@ -1,5 +1,5 @@
 #include "options_state.h"
-#include "../gameflow.h"
+#include "../guimanager.h"
 
 OptionsState::OptionsState()
 {
@@ -14,7 +14,7 @@ void OptionsState::OnStart(void *data)
 	UNUSED(data)
 	Log("Entering Options State");
 
-	gFlow->LoadGUI("gui/views/options.rml");
+	gGui->LoadGUI("gui/views/options.rml");
 }
 
 void OptionsState::OnUpdate(f32 dt)

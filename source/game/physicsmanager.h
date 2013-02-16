@@ -102,7 +102,7 @@ class PhysicsManager: public b2ContactListener
 		b2World *pWorld;
 		CollisionCacheMap mapCollisions;
 		CollisionEventList lstEvents;
-		f32 fpTimeLeft;
+		f32 fTimeLeft;
 };
 
 #endif // PHYSICSMANAGER_H

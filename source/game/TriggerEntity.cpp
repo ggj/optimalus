@@ -6,7 +6,7 @@ ENTITY_CREATOR("Trigger", TriggerEntity)
 
 TriggerEntity::TriggerEntity()
 	: Entity("Trigger")
-	, fOnce(true)
+	, bOnce(true)
 	, iCount(0)
 {
 }
@@ -21,7 +21,7 @@ void TriggerEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 	clSensor.Load(metadata, this);
 
 	if (!metadata.GetProperty("Once").empty())
-		fOnce = metadata.GetProperty("Once").compare("true") == 0;
+		bOnce = metadata.GetProperty("Once").compare("true") == 0;
 }
 
 void TriggerEntity::OnCollision(const CollisionEvent &event)
@@ -32,7 +32,7 @@ void TriggerEntity::OnCollision(const CollisionEvent &event)
 		{
 			Log("Trigger colidiu");
 
-			if (fOnce && iCount > 0)
+			if (bOnce && iCount > 0)
 			{
 				Log("Ignoring, once");
 				return;

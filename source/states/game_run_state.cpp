@@ -1,5 +1,5 @@
 #include "game_run_state.h"
-#include "../gameflow.h"
+#include "../guimanager.h"
 #include "../game/gamescene.h"
 
 GameRunState::GameRunState()
@@ -13,7 +13,7 @@ GameRunState::~GameRunState()
 void GameRunState::OnStart(void *data)
 {
 	Log("Entering GameRun State");
-	gFlow->LoadGUI("gui/views/game.rml");
+	gGui->LoadGUI("gui/views/game.rml");
 
 	if (data)
 	{

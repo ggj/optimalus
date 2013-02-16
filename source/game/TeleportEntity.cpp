@@ -6,7 +6,7 @@ ENTITY_CREATOR("Teleport", TeleportEntity)
 
 TeleportEntity::TeleportEntity()
 	: Entity("Teleport")
-	, fDestination(false)
+	, bDestination(false)
 {
 }
 
@@ -21,11 +21,11 @@ void TeleportEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 	String destination = metadata.GetProperty("Destination");
 	if (!destination.empty())
 	{
-		fDestination = destination.compare("true") == 0;
+		bDestination = destination.compare("true") == 0;
 	}
 
 	clSensor.Load(metadata, this);
-	if (fDestination)
+	if (bDestination)
 		clSensor.Disable();
 }
 

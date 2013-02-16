@@ -24,9 +24,9 @@ class DeathEntity: public SpriteEntity
 	private:
 		PlayerEntity *pTarget;
 		CollisionSensor clSensor;
-		f32 fpSleepConfig;
-		f32 fpSleep;
-		f32 fpSpeedFactor;
+		f32 fSleepConfig;
+		f32 fSleep;
+		f32 fSpeedFactor;
 
 };
 

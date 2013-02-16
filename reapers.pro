@@ -7,6 +7,7 @@ INCLUDEPATH += ../seed/include ../seed/contrib
 
 SOURCES += source/main.cpp \
 	source/gameflow.cpp \
+	source/guimanager.cpp \
 	source/states/credits_state.cpp \
 	source/states/mainmenu_state.cpp \
 	source/states/options_state.cpp \
@@ -35,6 +36,7 @@ SOURCES += source/main.cpp \
 
 HEADERS += \
 	source/gameflow.h \
+	source/guimanager.h \
 	source/states/mainmenu_state.h \
 	source/states/credits_state.h \
 	source/states/options_state.h \
@@ -239,11 +241,3 @@ glfw {
 } else:sdl {
 	DEFINES += BUILD_SDL
 }
-
-
-
-
-
-
-
-

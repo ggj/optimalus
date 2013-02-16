@@ -15,7 +15,7 @@ class TeleportEntity: public Entity
 
 	private:
 		CollisionSensor clSensor;
-		bool fDestination;
+		bool bDestination;
 };
 
 #endif

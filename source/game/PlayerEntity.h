@@ -45,22 +45,22 @@ class PlayerEntity: public SpriteEntity,
 		void SetState(int newState);
 
 	protected:
-		b2Body		*pBody;
-		float		fVelocity;
-		Vector3f	vPlayerVectorDirection;
-		bool		bIsRunning;
+		b2Body *pBody;
+		Sprite *pIcon;
+		Vector3f vPlayerVectorDirection;
 
 		ItemTypes::Enum eItem;
 
-		enum		eAnimationStates {Idle = 0, Run = 1, Jump = 2, Land = 3};
-		int			iPreviousState;
-		int			iCurrentState;
+		enum eAnimationStates {Idle = 0, Run = 1, Jump = 2, Land = 3};
+		s32 iPreviousState;
+		s32 iCurrentState;
 
-		f32			fpMove;
-		f32			fpLandTime;
-		f32			fpInvicibleTime;
+		f32 fVelocity;
+		f32 fMove;
+		f32 fLandTime;
+		f32 fInvicibleTime;
 
-		Sprite		*pIcon;
+		bool bIsRunning;
 };
 
 #endif

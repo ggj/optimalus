@@ -1,9 +1,10 @@
 #include "gameover_state.h"
 #include "../gameflow.h"
+#include "../guimanager.h"
 #include "../game/gamescene.h"
 
 GameOverState::GameOverState()
-	:	iBeginStateTime(0)
+	: iBeginStateTime(0)
 {
 }
 
@@ -14,7 +15,7 @@ GameOverState::~GameOverState()
 void GameOverState::OnStart(void *data)
 {
 	Log("Entering GameOver State");
-	gFlow->LoadGUI("gui/views/gameover.rml");
+	gGui->LoadGUI("gui/views/gameover.rml");
 	pSoundSystem->Mute();
 
 	iBeginStateTime = pTimer->GetMilliseconds();

@@ -8,11 +8,17 @@ ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity()
 	: SpriteEntity("Player", "Player")
-	, eItem(ItemTypes::None)
-	, fpMove(0)
-	, fpLandTime(0)
-	, fpInvicibleTime(0)
+	, pBody(NULL)
 	, pIcon(NULL)
+	, vPlayerVectorDirection()
+	, eItem(ItemTypes::None)
+	, iPreviousState(Idle)
+	, iCurrentState(Idle)
+	, fVelocity(0.0f)
+	, fMove(0.0f)
+	, fLandTime(0.0f)
+	, fInvicibleTime(0.0f)
+	, bIsRunning(false)
 {
 }
 
@@ -65,7 +71,7 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 {
 	pBody->SetTransform(position, pBody->GetAngle());
 
-	fpMove= 0;
+	fMove= 0;
 	this->SetState(Idle);
 
 	gSoundManager->Play(SND_TELEPORT);
@@ -79,28 +85,28 @@ void PlayerEntity::Update(f32 dt)
 
 	bool ground = this->CheckGround();
 
-	if (fpInvicibleTime > 0)
+	if (fInvicibleTime > 0)
 	{
 		pSprite->SetVisible(!pSprite->IsVisible());
 
-		fpInvicibleTime -= dt;
-		if (fpInvicibleTime <= 0)
+		fInvicibleTime -= dt;
+		if (fInvicibleTime <= 0)
 		{
 			pSprite->SetVisible(true);
-			fpInvicibleTime = 0;
+			fInvicibleTime = 0;
 		}
 	}
 
-	if (fpMove != 0)
+	if (fMove != 0)
 	{
-		vel.x = 5 * fpMove;
+		vel.x = 5 * fMove;
 		pBody->SetLinearVelocity(vel);
 	}
 
 	if (iPreviousState ==Jump && ground)
 	{
 		SetState(Land);
-		fpLandTime = 0.3f;
+		fLandTime = 0.3f;
 	}
 
 	if (iCurrentState != Jump && !ground)
@@ -108,12 +114,12 @@ void PlayerEntity::Update(f32 dt)
 		this->SetState(Jump);
 	}
 
-	if (fpLandTime > 0 && iCurrentState == Land)
+	if (fLandTime > 0 && iCurrentState == Land)
 	{
-		fpLandTime -= dt;
-		if (fpLandTime <= 0)
+		fLandTime -= dt;
+		if (fLandTime <= 0)
 		{
-			if (fpMove != 0)
+			if (fMove != 0)
 				this->SetState(Run);
 			else
 				this->SetState(Idle);
@@ -160,7 +166,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(Run);
 
-		fpMove = -1;
+		fMove = -1;
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() > 0)
@@ -171,7 +177,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		SetState(Run);
 
-		fpMove = 1;
+		fMove = 1;
 
 		// Change the scale to turn the player sprite
 		if (pSprite->GetScaleX() < 0)
@@ -203,7 +209,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	if (k == Seed::KeyLeft|| k == Seed::KeyA)
 	{
 		pBody->SetLinearVelocity(vel);
-		fpMove = 0;
+		fMove = 0;
 
 		if (CheckGround())
 			SetState(Idle);
@@ -214,7 +220,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	if (k == Seed::KeyRight|| k == Seed::KeyD)
 	{
 		pBody->SetLinearVelocity(vel);
-		fpMove = 0;
+		fMove = 0;
 
 		if (CheckGround())
 			SetState(Idle);
@@ -259,9 +265,9 @@ void PlayerEntity::SetState(int newState)
 
 bool PlayerEntity::OnDamage()
 {
-	if (fpInvicibleTime > 0)
+	if (fInvicibleTime > 0)
 		return false;
 
-	fpInvicibleTime = 3;
+	fInvicibleTime = 3;
 	return true;
 }

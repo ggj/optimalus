@@ -1,5 +1,6 @@
 #include "gamescene.h"
 #include "../gameflow.h"
+#include "../guimanager.h"
 
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;
@@ -17,12 +18,15 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, pCamera(mainCamera)
 	, clCamera()
 	, pParentScene(parent)
+	, cScene()
 	, musTheme()
+	, pGameMap(NULL)
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
-	, fpTimeToNextLevel(3)
-	, fChangeLevel(false)
+	, fTimeToNextLevel(3.0f)
+	, bChangeLevel(false)
+	, pGameOverImg(NULL)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -63,8 +67,8 @@ bool GameScene::Initialize()
 	pJobManager->Add(New(FileLoader(f + sSceneFile, kJobLoadScene, this)));
 
 	// Get the initial value from game data
-	gFlow->SetLife(gGameData->GetLife());
-	gFlow->SetHostage(gGameData->GetHostage());
+	gGui->SetLife(gGameData->GetLife());
+	gGui->SetHostage(gGameData->GetHostage());
 
 	return true;
 }
@@ -82,10 +86,10 @@ bool GameScene::Update(f32 dt)
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
 
-	if (fChangeLevel)
+	if (bChangeLevel)
 	{
-		fpTimeToNextLevel -= dt;
-		if (fpTimeToNextLevel <= 0)
+		fTimeToNextLevel -= dt;
+		if (fTimeToNextLevel <= 0)
 		{
 			gFlow->LoadSceneFile(strNextLevel);
 		}
@@ -182,7 +186,7 @@ void GameScene::OnJobCompleted(const EventJob *ev)
 				}
 			}
 
-			gFlow->SetHostage(hostageNum);
+			gGui->SetHostage(hostageNum);
 
 			this->LoadMapColliders();
 
@@ -250,15 +254,15 @@ void GameScene::LoadMapColliders()
 
 void GameScene::RemoveHostage()
 {
-	gFlow->RemoveHostage();
+	gGui->RemoveHostage();
 
 	if ((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
 	{
-		fChangeLevel = true;
+		bChangeLevel = true;
 	}
 }
 
 void GameScene::RemoveLife()
 {
-	gFlow->RemoveLife();
+	gGui->RemoveLife();
 }

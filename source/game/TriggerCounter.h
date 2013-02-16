@@ -13,7 +13,7 @@ class TriggerCounter: public Entity
 		virtual void Activate();
 
 	private:
-		int iCounter;
+		s32 iCounter;
 };
 
 #endif

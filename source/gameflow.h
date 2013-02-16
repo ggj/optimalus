@@ -2,9 +2,6 @@
 #define _GAMEFLOW_H_
 
 #include "defines.h"
-#include <api/rocket/RocketInterface.h>
-#include <Rocket/Core.h>
-
 #include "states/mainmenu_state.h"
 #include "states/options_state.h"
 #include "states/credits_state.h"
@@ -12,7 +9,6 @@
 #include "game/game_data.h"
 
 using namespace Seed;
-using namespace Seed::RocketGui;
 
 class GameFlow;
 extern GameFlow *gFlow;
@@ -21,30 +17,26 @@ extern GameData *gGameData;
 class GameFlow : public IGameApp,
 			public IEventSystemListener,
 			public IEventInputKeyboardListener,
-			public IEventPresentationListener,
-			public IRocketEventListener
+			public IEventPresentationListener
 {
 	public:
 		GameFlow();
 		virtual ~GameFlow();
 
+		inline Camera *GetCamera() const;
+		inline SceneNode *GetScene() const;
+
+		void LoadSceneFile(const String &file);
+		const String &GetSceneFile() const;
+
+		void DoLoad(const String &scene = "");
+		void Menu();
+		void Credits();
+		void Options();
+
 		virtual bool Initialize();
 		virtual bool Update(f32 dt);
 		virtual bool Shutdown();
-
-		// GUI
-		bool LoadGUI(const String &doc);
-		bool ReloadGUI();
-		bool UnloadGUI();
-		bool InitializeGUI();
-		void ReleaseGUI();
-
-		void SetLife(u32 life);
-		void SetTime(u32 time);
-		void SetHostage(u32 hostage);
-
-		void RemoveLife();
-		void RemoveHostage();
 
 		// IEventSystemListener
 		virtual void OnSystemShutdown(const EventSystem *ev);
@@ -55,21 +47,8 @@ class GameFlow : public IGameApp,
 		// IEventPresentationListener
 		virtual void OnPresentationLoaded(const EventPresentation *ev);
 
-		// IRocketEventListener
-		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
-
-		inline Camera *GetCamera() const;
-		inline SceneNode *GetScene() const;
-
-		void LoadSceneFile(const String &file);
-		const String &GetSceneFile() const;
-		void DoLoad();
-
-		void Menu();
-
 	private:
 		bool SaveSystemFlow() const;
-		void PrintHostage(u32 hostage);
 
 	private:
 		SEED_DISABLE_COPY(GameFlow);
@@ -105,11 +84,6 @@ class GameFlow : public IGameApp,
 		StateMachineTransition cGameToMenu;
 		StateMachineTransition cGameToLoad;
 		StateMachineTransition cLoadToGame;
-
-		// GUI
-		RocketInterface			*pRocket;
-		Rocket::Core::Context	*pContext;
-		Rocket::Core::ElementDocument *pDoc;
 
 		// GUI Elements
 		Rocket::Core::Element	*pElementLife;

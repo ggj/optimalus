@@ -11,9 +11,9 @@ ENTITY_CREATOR("Death", DeathEntity)
 DeathEntity::DeathEntity()
 	: SpriteEntity("Death", "Death")
 	, pTarget(NULL)
-	, fpSleepConfig(SLEEP_TIME)
-	, fpSleep(SLEEP_TIME)
-	, fpSpeedFactor(1)
+	, fSleepConfig(SLEEP_TIME)
+	, fSleep(SLEEP_TIME)
+	, fSpeedFactor(1.0f)
 {
 }
 
@@ -31,14 +31,14 @@ void DeathEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 	String sleep = metadata.GetProperty("Sleep");
 	if (!sleep.empty())
 	{
-		sscanf(sleep.c_str(), "%f", &fpSleep);
-		fpSleepConfig = fpSleep;
+		sscanf(sleep.c_str(), "%f", &fSleep);
+		fSleepConfig = fSleep;
 	}
 
 	String speedFactor = metadata.GetProperty("SpeedFactor");
 	if (!speedFactor.empty())
 	{
-		sscanf(speedFactor.c_str(), "%f", &fpSpeedFactor);
+		sscanf(speedFactor.c_str(), "%f", &fSpeedFactor);
 	}
 }
 
@@ -54,10 +54,10 @@ Sprite *DeathEntity::GetSprite() const
 
 void DeathEntity::Update(f32 dt)
 {
-	if (fpSleep > 0)
+	if (fSleep > 0)
 	{
-		fpSleep -= dt;
-		if (fpSleep < 0)
+		fSleep -= dt;
+		if (fSleep < 0)
 		{
 			this->Activate();
 		}
@@ -93,7 +93,7 @@ void DeathEntity::Update(f32 dt)
 				distance = 1;
 
 			dir *= distance;
-			dir *= fpSpeedFactor;
+			dir *= fSpeedFactor;
 			dir += clSensor.GetBodyPosition();
 
 			clSensor.SetBodyPosition(dir);
@@ -103,7 +103,7 @@ void DeathEntity::Update(f32 dt)
 
 void DeathEntity::Activate()
 {
-	fpSleep = 0;
+	fSleep = 0;
 	gSoundManager->Play(SND_WAKEUP);
 }
 
@@ -121,11 +121,11 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 			{
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::None);
-				fpSleep = fpSleepConfig;
+				fSleep = fSleepConfig;
 
 				gGameScene->RemoveHostage();
 			}
-			else if (fpSleep <= 0)
+			else if (fSleep <= 0)
 			{
 				if (player->OnDamage())
 				{

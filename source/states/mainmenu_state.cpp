@@ -1,5 +1,5 @@
 #include "mainmenu_state.h"
-#include "../gameflow.h"
+#include "../guimanager.h"
 
 MainMenuState::MainMenuState()
 {
@@ -17,7 +17,7 @@ void MainMenuState::OnStart(void *data)
 	UNUSED(data)
 	Log("Entering MainMenu State");
 
-	gFlow->LoadGUI("gui/views/mainmenu.rml");
+	gGui->LoadGUI("gui/views/mainmenu.rml");
 
 	musTheme.Load("sounds/scottwills_time.ogg");
 	musTheme.SetVolume(1.0f);

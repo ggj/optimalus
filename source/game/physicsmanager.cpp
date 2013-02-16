@@ -10,7 +10,7 @@
 
 PhysicsManager::PhysicsManager()
 	: pWorld(NULL)
-	, fpTimeLeft(0)
+	, fTimeLeft(0.0f)
 {
 	pWorld = New(b2World(b2Vec2(0.0f, 10.0f)));
 	pWorld->SetContactListener(this);
@@ -25,11 +25,11 @@ PhysicsManager::~PhysicsManager()
 void PhysicsManager::Update(f32 dt)
 {
 	const f32 timeStep = 1/60.0f;
-	fpTimeLeft += dt;
+	fTimeLeft += dt;
 
-	while (fpTimeLeft >= timeStep)
+	while (fTimeLeft >= timeStep)
 	{
-		fpTimeLeft -= timeStep;
+		fTimeLeft -= timeStep;
 		pWorld->Step(timeStep, 8, 3);
 		pWorld->ClearForces();
 	}

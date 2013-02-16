@@ -14,8 +14,8 @@ class TriggerEntity: public Entity
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
-		bool		fOnce;
-		unsigned	iCount;
+		bool bOnce;
+		s32 iCount;
 
 		CollisionSensor clSensor;
 };
