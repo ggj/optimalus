@@ -13,7 +13,7 @@ class PlayerEntity;
 class DeathEntity: public SpriteEntity
 {
 	public:
-		DeathEntity();		
+		DeathEntity();
 
 		virtual void Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites);
 
@@ -30,7 +30,7 @@ class DeathEntity: public SpriteEntity
 		CollisionSensor clSensor;
 
 		f32			fpSleepConfig;
-		f32			fpSleep;	
+		f32			fpSleep;
 		f32			fpSpeedFactor;
 		PlayerEntity *pTarget;
 };

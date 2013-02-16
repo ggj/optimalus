@@ -12,13 +12,14 @@
 
 ENTITY_CREATOR("Player", PlayerEntity)
 
-PlayerEntity::PlayerEntity():
-	SpriteEntity("Player", "Player"),
-	eItem(ItemTypes::NONE),
-	fpMove(0),
-	fpLandTime(0),
-	pIcon(NULL),
-	fpInvicibleTime(0)
+PlayerEntity::PlayerEntity()
+	: SpriteEntity("Player", "Player")
+	, eItem(ItemTypes::NONE)
+	, fpMove(0)
+	, fpLandTime(0)
+	, fpInvicibleTime(0)
+	, pIcon(NULL)
+
 {
 	//empty
 }
@@ -26,7 +27,7 @@ PlayerEntity::PlayerEntity():
 PlayerEntity::~PlayerEntity()
 {
 	gScene->Remove(pIcon);
-	Delete(pIcon);	
+	Delete(pIcon);
 
 	pInput->RemoveKeyboardListener(this);
 	gPhysics->DestroyBody(pBody);
@@ -96,7 +97,7 @@ void PlayerEntity::Update(f32 dt)
 			pSprite->SetVisible(true);
 			fpInvicibleTime = 0;
 		}
-	}	
+	}
 
 	if(fpMove != 0)
 	{

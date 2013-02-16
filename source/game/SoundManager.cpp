@@ -1,14 +1,13 @@
 #include "SoundManager.h"
 
-SoundManager::SoundManager():
-	pSounds(NULL)
+SoundManager::SoundManager()
+	: pSounds(NULL)
 {
-	//empty
 }
 
 void SoundManager::Init(SceneNode &sounds)
 {
-	pSounds = &sounds;	
+	pSounds = &sounds;
 }
 
 void SoundManager::Play(const String &name)
@@ -23,5 +22,5 @@ void SoundManager::Play(const String &name)
 
 void SoundManager::Update(f32 dt)
 {
-
+	UNUSED(dt)
 }

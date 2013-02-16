@@ -12,12 +12,12 @@ ENTITY_CREATOR("Death", DeathEntity)
 
 #define SLEEP_TIME 10
 
-DeathEntity::DeathEntity():
-	SpriteEntity("Death", "Death"),
-	fpSleep(SLEEP_TIME),
-	fpSleepConfig(SLEEP_TIME),
-	pTarget(NULL),
-	fpSpeedFactor(1)
+DeathEntity::DeathEntity()
+	: SpriteEntity("Death", "Death")
+	, fpSleepConfig(SLEEP_TIME)
+	, fpSleep(SLEEP_TIME)
+	, fpSpeedFactor(1)
+	, pTarget(NULL)
 {
 	//empty
 }
@@ -28,7 +28,7 @@ void DeathEntity::Load(Seed::IMetadataObject &metadata, Seed::SceneNode *sprites
 
 	b2Vec2 customSize(50, 40);
 
-	clSensor.Load(*pSprite, true, &customSize, this);	
+	clSensor.Load(*pSprite, true, &customSize, this);
 
 	String sleep = metadata.GetProperty("Sleep");
 	if(!sleep.empty())
@@ -99,7 +99,7 @@ void DeathEntity::Update(f32 dt)
 
 			dir += clSensor.GetBodyPosition();
 
-			clSensor.SetBodyPosition(dir);			
+			clSensor.SetBodyPosition(dir);
 		}
 	}
 }

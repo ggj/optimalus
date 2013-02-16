@@ -9,10 +9,8 @@ class SoundManager
 		SoundManager();
 
 		void Init(SceneNode &sounds);
-
 		void Play(const String &name);
-
-		void Update(f32 dt);	
+		void Update(f32 dt);
 
 	private:
 		SceneNode *pSounds;
