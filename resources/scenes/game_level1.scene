@@ -279,5 +279,11 @@
 			cPosition: {z: -1000}
 			bVisible: false
 		}
+		{
+			sType: Image
+			sName: Instructions
+			sResource: textures/instructions.png
+			cPosition: {x: -450, y: 220, z: 150}
+		}
 	]
 }
