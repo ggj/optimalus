@@ -2,7 +2,7 @@
 #define _TRIGGER_ENTITY_H
 
 #include "entity.h"
-#include "collisionsensor.h"
+#include "../util/collisionsensor.h"
 
 class TriggerEntity: public Entity
 {

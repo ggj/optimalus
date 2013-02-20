@@ -2,7 +2,7 @@
 #define _HOSTAGE_H
 
 #include "spriteentity.h"
-#include "collisionsensor.h"
+#include "../util/collisionsensor.h"
 
 class HostageEntity: public SpriteEntity
 {

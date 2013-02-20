@@ -6,7 +6,7 @@
 #include "states/options_state.h"
 #include "states/credits_state.h"
 #include "states/game_state.h"
-#include "game/game_data.h"
+#include "data/gamedata.h"
 
 using namespace Seed;
 

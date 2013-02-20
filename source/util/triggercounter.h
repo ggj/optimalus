@@ -1,7 +1,7 @@
 #ifndef _TRIGGER_COUNTER_H
 #define _TRIGGER_COUNTER_H
 
-#include "entity.h"
+#include "../entity/entity.h"
 
 class TriggerCounter: public Entity
 {

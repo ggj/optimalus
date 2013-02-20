@@ -1,5 +1,5 @@
 #include "collisionsensor.h"
-#include "gamescene.h"
+#include "../scene/gamescene.h"
 
 CollisionSensor::CollisionSensor()
 	: pBody(NULL)

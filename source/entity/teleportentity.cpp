@@ -1,5 +1,5 @@
 #include "teleportentity.h"
-#include "gamescene.h"
+#include "../scene/gamescene.h"
 #include "entityfactory.h"
 
 ENTITY_CREATOR("Teleport", TeleportEntity)

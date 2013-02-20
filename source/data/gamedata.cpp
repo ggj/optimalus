@@ -1,4 +1,4 @@
-#include "game_data.h"
+#include "gamedata.h"
 
 GameData::GameData()
 	: sPlayer()

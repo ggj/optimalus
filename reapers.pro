@@ -7,63 +7,63 @@ INCLUDEPATH += ../seed/include ../seed/contrib
 
 SOURCES += source/main.cpp \
 	source/gameflow.cpp \
-	source/guimanager.cpp \
+	source/controller/cameracontroller.cpp \
+	source/data/gamedata.cpp \
+	source/entity/playerentity.cpp \
+	source/entity/entityfactory.cpp \
+	source/entity/entity.cpp \
+	source/entity/spriteentity.cpp \
+	source/entity/itementity.cpp \
+	source/entity/heartentity.cpp \
+	source/entity/triggerentity.cpp \
+	source/entity/deathentity.cpp \
+	source/entity/hostageentity.cpp \
+	source/entity/teleportentity.cpp \
+	source/manager/guimanager.cpp \
+	source/manager/worldmanager.cpp \
+	source/manager/physicsmanager.cpp \
+	source/manager/soundmanager.cpp \
+	source/scene/gamescene.cpp \
 	source/states/credits_state.cpp \
 	source/states/mainmenu_state.cpp \
 	source/states/options_state.cpp \
-	source/states/game_pause_state.cpp \
 	source/states/game_state.cpp \
-	source/game/game_data.cpp \
-	source/game/worldmanager.cpp \
-	source/game/playerentity.cpp \
-	source/game/entityfactory.cpp \
-	source/game/entity.cpp \
-	source/states/game_run_state.cpp \
-	source/game/physicsmanager.cpp \
-	source/game/spriteentity.cpp \
-	source/game/itementity.cpp \
-	source/game/heartentity.cpp \
-	source/game/cameracontroller.cpp \
-	source/game/triggerentity.cpp \
-	source/game/gamescene.cpp \
-	source/game/deathentity.cpp \
-	source/game/soundmanager.cpp \
-	source/game/hostageentity.cpp \
 	source/states/gameover_state.cpp \
-	source/game/triggercounter.cpp \
-	source/game/collisionsensor.cpp \
-	source/game/teleportentity.cpp
+	source/states/game/run_state.cpp \
+	source/states/game/pause_state.cpp \
+	source/util/triggercounter.cpp \
+	source/util/collisionsensor.cpp
 
 HEADERS += \
+	source/defines.h \
 	source/gameflow.h \
-	source/guimanager.h \
+	source/controller/cameracontroller.h \
+	source/data/gamedata.h \
+	source/entity/playerentity.h \
+	source/entity/entityfactory.h \
+	source/entity/entity.h \
+	source/entity/spriteentity.h \
+	source/entity/itementity.h \
+	source/entity/heartentity.h \
+	source/entity/triggerentity.h \
+	source/entity/deathentity.h \
+	source/entity/hostageentity.h \
+	source/entity/teleportentity.h \
+	source/manager/guimanager.h \
+	source/manager/worldmanager.h \
+	source/manager/physicsmanager.h \
+	source/manager/soundmanager.h \
+	source/scene/gamescene.h \
 	source/states/mainmenu_state.h \
 	source/states/credits_state.h \
 	source/states/options_state.h \
-	source/states/game_pause_state.h \
 	source/states/game_state.h \
-	source/game/game_data.h \
-	source/defines.h \
-	source/game/worldmanager.h \
-	source/game/playerentity.h \
-	source/game/entityfactory.h \
-	source/game/entity.h \
-	source/states/game_run_state.h \
-	source/game/physicsmanager.h \
-	source/game/spriteentity.h \
-	source/game/itementity.h \
-	source/game/heartentity.h \
-	source/game/cameracontroller.h \
-	source/game/triggerentity.h \
-	source/game/gamescene.h \
-	source/game/deathentity.h \
-	source/game/soundmanager.h \
-	source/game/sounds.h \
-	source/game/hostageentity.h \
 	source/states/gameover_state.h \
-	source/game/triggercounter.h \
-	source/game/collisionsensor.h \
-	source/game/teleportentity.h
+	source/states/game/run_state.h \
+	source/states/game/pause_state.h \
+	source/util/sounds.h \
+	source/util/triggercounter.h \
+	source/util/collisionsensor.h
 
 OTHER_FILES_CONFIG = \
 #Configs

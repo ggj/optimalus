@@ -1,7 +1,7 @@
 #include "hostageentity.h"
 #include "entityfactory.h"
-#include "gamescene.h"
-#include "sounds.h"
+#include "../scene/gamescene.h"
+#include "../util/sounds.h"
 
 ENTITY_CREATOR("Hostage", HostageEntity)
 

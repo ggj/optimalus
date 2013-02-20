@@ -1,5 +1,5 @@
 #include "options_state.h"
-#include "../guimanager.h"
+#include "../manager/guimanager.h"
 
 OptionsState::OptionsState()
 {

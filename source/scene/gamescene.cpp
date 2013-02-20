@@ -1,6 +1,6 @@
 #include "gamescene.h"
 #include "../gameflow.h"
-#include "../guimanager.h"
+#include "../manager/guimanager.h"
 
 SceneNode *gScene = NULL;
 PhysicsManager *gPhysics = NULL;

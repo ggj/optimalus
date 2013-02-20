@@ -1,8 +1,8 @@
 #include <Box2D/Common/b2Math.h>
 #include "playerentity.h"
 #include "entityfactory.h"
-#include "gamescene.h"
-#include "sounds.h"
+#include "../scene/gamescene.h"
+#include "../util/sounds.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 

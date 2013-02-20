@@ -2,7 +2,7 @@
 #define _TELEPORT_ENTITY_H
 
 #include "entity.h"
-#include "collisionsensor.h"
+#include "../util/collisionsensor.h"
 
 class TeleportEntity: public Entity
 {

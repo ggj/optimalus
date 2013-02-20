@@ -1,7 +1,7 @@
 #include "gameover_state.h"
 #include "../gameflow.h"
-#include "../guimanager.h"
-#include "../game/gamescene.h"
+#include "../manager/guimanager.h"
+#include "../scene/gamescene.h"
 
 GameOverState::GameOverState()
 	: iBeginStateTime(0)

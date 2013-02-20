@@ -1,5 +1,5 @@
 #include "credits_state.h"
-#include "../guimanager.h"
+#include "../manager/guimanager.h"
 
 CreditsState::CreditsState()
 {

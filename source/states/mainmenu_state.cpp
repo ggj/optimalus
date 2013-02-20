@@ -1,5 +1,5 @@
 #include "mainmenu_state.h"
-#include "../guimanager.h"
+#include "../manager/guimanager.h"
 
 MainMenuState::MainMenuState()
 {

@@ -1,6 +1,6 @@
 #include "gameflow.h"
-#include "game/gamescene.h"
-#include "guimanager.h"
+#include "scene/gamescene.h"
+#include "manager/guimanager.h"
 
 #include <Rocket/Debugger.h>
 #include <Rocket/Controls.h>

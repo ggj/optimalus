@@ -1,8 +1,8 @@
 #include "deathentity.h"
 #include "entityfactory.h"
-#include "gamescene.h"
-#include "sounds.h"
-#include "gamescene.h"
+#include "../scene/gamescene.h"
+#include "../util/sounds.h"
+#include "../scene/gamescene.h"
 
 ENTITY_CREATOR("Death", DeathEntity)
 

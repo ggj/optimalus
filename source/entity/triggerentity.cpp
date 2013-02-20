@@ -1,6 +1,6 @@
 #include "triggerentity.h"
 #include "entityfactory.h"
-#include "gamescene.h"
+#include "../scene/gamescene.h"
 
 ENTITY_CREATOR("Trigger", TriggerEntity)
 

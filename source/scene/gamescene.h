@@ -4,14 +4,14 @@
 #include <api/rocket/RocketInterface.h>
 
 #include "../defines.h"
-#include "physicsmanager.h"
-#include "worldmanager.h"
-#include "../states/game_pause_state.h"
+#include "../manager/physicsmanager.h"
+#include "../manager/worldmanager.h"
+#include "../states/game/pause_state.h"
 #include "../states/gameover_state.h"
-#include "../states/game_run_state.h"
-#include "playerentity.h"
-#include "cameracontroller.h"
-#include "soundmanager.h"
+#include "../states/game/run_state.h"
+#include "../entity/playerentity.h"
+#include "../controller/cameracontroller.h"
+#include "../manager/soundmanager.h"
 
 using namespace Seed::RocketGui;
 
@@ -76,8 +76,8 @@ class GameScene : public IEventInputKeyboardListener,
 		StateMachine		cFlow;
 
 		// State Machine State
-		GameRunState		cRun;
-		GamePauseState		cPause;
+		RunState			cRun;
+		PauseState			cPause;
 		GameOverState		cGameOver;
 		StateMachineState	cMenu;
 

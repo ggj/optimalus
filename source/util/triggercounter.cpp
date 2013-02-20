@@ -1,6 +1,6 @@
 #include "triggercounter.h"
-#include "gamescene.h"
-#include "entityfactory.h"
+#include "../scene/gamescene.h"
+#include "../entity/entityfactory.h"
 
 ENTITY_CREATOR("TriggerCounter", TriggerCounter)
 

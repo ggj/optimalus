@@ -2,7 +2,7 @@
 #define _DEATHENTITY_H
 
 #include "spriteentity.h"
-#include "collisionsensor.h"
+#include "../util/collisionsensor.h"
 
 class PlayerEntity;
 

@@ -1,6 +1,6 @@
 #include "physicsmanager.h"
 #include "../defines.h"
-#include "entity.h"
+#include "../entity/entity.h"
 
 #define DEG2RAD		0.0174532925199432957f
 #define RAD2DEG		57.295779513082320876f

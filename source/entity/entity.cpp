@@ -1,5 +1,5 @@
 #include "entity.h"
-#include "gamescene.h"
+#include "../scene/gamescene.h"
 
 Entity::Entity(const String &className)
 	: strClassName(className)

@@ -1,7 +1,7 @@
 #include "game_state.h"
-#include "../guimanager.h"
+#include "../manager/guimanager.h"
 #include "../gameflow.h"
-#include "../game/gamescene.h"
+#include "../scene/gamescene.h"
 
 GameState::GameState()
 	: pGame(NULL)
