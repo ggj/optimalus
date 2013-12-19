@@ -12,14 +12,14 @@ PhysicsManager::PhysicsManager()
 	: pWorld(NULL)
 	, fTimeLeft(0.0f)
 {
-	pWorld = New(b2World(b2Vec2(0.0f, 10.0f)));
+	pWorld = sdNew(b2World(b2Vec2(0.0f, 10.0f)));
 	pWorld->SetContactListener(this);
 }
 
 PhysicsManager::~PhysicsManager()
 {
 	this->ClearWorld();
-	Delete(pWorld);
+	sdDelete(pWorld);
 }
 
 void PhysicsManager::Update(f32 dt)

@@ -10,7 +10,7 @@ Entity::~Entity()
 {
 }
 
-void Entity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void Entity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	UNUSED(sprites)
 	strName = metadata.sName;

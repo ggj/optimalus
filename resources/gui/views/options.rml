@@ -29,6 +29,10 @@
 				<input type="checkbox" id="sfx" onClick="toggle sfx" />Sound<br/>
 				<input type="checkbox" id="bgm" onClick="toggle bgm"/ >Music<br/>
 			</p>
+			<p>
+				<strong>Video:</strong><br/>
+				<input type="checkbox" id="fullscreen" onClick="toggle fullscreen" />Fullscreen<br/>
+			</p>
 			<button onClick="goto menu">Back</button>
 		</div>
 	</body>

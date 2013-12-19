@@ -11,7 +11,7 @@ class WorldManager
 	public:
 		virtual ~WorldManager();
 
-		Entity *BuildEntity(IMetadataObject &metadata, SceneNode *sprites);
+		Entity *BuildEntity(MetadataObject &metadata, SceneNode *sprites);
 
 		void Clear();
 		void Update(f32 dt);

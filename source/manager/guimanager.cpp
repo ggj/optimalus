@@ -90,7 +90,7 @@ bool GuiManager::LoadGUI(const String &doc)
 
 bool GuiManager::InitializeGUI()
 {
-	pRocket = New(RocketInterface());
+	pRocket = sdNew(RocketInterface());
 	pRocket->sName = "GUI";
 	Rocket::Core::SetRenderInterface(pRocket);
 	Rocket::Core::SetFileInterface(pRocket);
@@ -142,7 +142,7 @@ void GuiManager::ReleaseGUI()
 	pContext->RemoveReference();
 
 	Rocket::Core::Shutdown();
-	Delete(pRocket);
+	sdDelete(pRocket);
 }
 
 void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
@@ -209,14 +209,14 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 				if (gGameData->IsFullScreenEnabled())
 				{
 					gGameData->SetFullScreenEnabled(false);
-					//pScreen->ToggleFullscreen();
-					pSystem->Shutdown();
+					pScreen->ToggleFullscreen();
+					//pSystem->Shutdown();
 				}
 				else
 				{
 					gGameData->SetFullScreenEnabled(true);
-					//pScreen->ToggleFullscreen();
-					pSystem->Shutdown();
+					pScreen->ToggleFullscreen();
+					//pSystem->Shutdown();
 				}
 
 				//this->InitializeGUI();

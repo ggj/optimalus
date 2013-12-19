@@ -10,7 +10,7 @@ class SpriteEntity: public Entity
 		SpriteEntity();
 		virtual ~SpriteEntity();
 
-		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 
 	protected:
 		Sprite *pSprite;

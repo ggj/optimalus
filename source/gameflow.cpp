@@ -25,40 +25,52 @@ GameFlow::~GameFlow()
 
 bool GameFlow::Initialize()
 {
-	pSoundSystem->SetMusicVolume(0.6f);
-	pSoundSystem->SetSfxVolume(0.5f);
-
-	bool init = cPres.Load("configs/game.config", this);
-
-	// Create the State Machine Data
-	gGameData = New(GameData());
-
-	if (this->SaveSystemFlow())
-		pSaveSystem->Load(0, &gGameData->sPlayer, &gGameData->sOptions);
-
-	// Create the transitions
-	cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
-	cMenuToOptions.Initialize(&cMenu, &cOnOptions, &cOptions);
-	cMenuToCredits.Initialize(&cMenu, &cOnCredits, &cCredits);
-	cOptionsToMenu.Initialize(&cOptions, &cOnMenu, &cMenu);
-	cCreditsToMenu.Initialize(&cCredits, &cOnMenu, &cMenu);
-	cGameToMenu.Initialize(&cGame, &cOnMenu, &cMenu);
-	cGameToLoad.Initialize(&cGame, &cOnLoad, &cLoad);
-	cLoadToGame.Initialize(&cLoad, &cOnGame, &cGame);
-
-	// Create the State Machine.
-	cFlow.RegisterTransition(&cMenuToGame);
-	cFlow.RegisterTransition(&cMenuToOptions);
-	cFlow.RegisterTransition(&cMenuToCredits);
-	cFlow.RegisterTransition(&cOptionsToMenu);
-	cFlow.RegisterTransition(&cCreditsToMenu);
-	cFlow.RegisterTransition(&cGameToMenu);
-	cFlow.RegisterTransition(&cGameToLoad);
-	cFlow.RegisterTransition(&cLoadToGame);
-
 	IGameApp::Initialize();
+	return cPres.Load("configs/game.config", [&](Presentation *, Renderer *)
+	{
+		pSoundSystem->SetMusicVolume(0.6f);
+		pSoundSystem->SetSfxVolume(0.5f);
 
-	return init;
+		// Create the State Machine Data
+		gGameData = sdNew(GameData());
+
+		if (this->SaveSystemFlow())
+			pSaveSystem->Load(0, &gGameData->sPlayer, &gGameData->sOptions);
+
+		// Create the transitions
+		cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
+		cMenuToOptions.Initialize(&cMenu, &cOnOptions, &cOptions);
+		cMenuToCredits.Initialize(&cMenu, &cOnCredits, &cCredits);
+		cOptionsToMenu.Initialize(&cOptions, &cOnMenu, &cMenu);
+		cCreditsToMenu.Initialize(&cCredits, &cOnMenu, &cMenu);
+		cGameToMenu.Initialize(&cGame, &cOnMenu, &cMenu);
+		cGameToLoad.Initialize(&cGame, &cOnLoad, &cLoad);
+		cLoadToGame.Initialize(&cLoad, &cOnGame, &cGame);
+
+		// Create the State Machine.
+		cFlow.RegisterTransition(&cMenuToGame);
+		cFlow.RegisterTransition(&cMenuToOptions);
+		cFlow.RegisterTransition(&cMenuToCredits);
+		cFlow.RegisterTransition(&cOptionsToMenu);
+		cFlow.RegisterTransition(&cCreditsToMenu);
+		cFlow.RegisterTransition(&cGameToMenu);
+		cFlow.RegisterTransition(&cGameToLoad);
+		cFlow.RegisterTransition(&cLoadToGame);
+
+		pSystem->AddListener(this);
+		pInput->AddKeyboardListener(this);
+
+		pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
+		Viewport *viewport = cPres.GetViewportByName("MainView");
+
+		pCamera = viewport->GetCamera();
+
+		sdNew(GuiManager());
+		gGui->Initialize();
+		pScene->Add(gGui->GetSceneObject());
+
+		cFlow.Initialize(&cMenu);
+	});
 }
 
 bool GameFlow::Update(f32 dt)
@@ -84,11 +96,11 @@ bool GameFlow::Shutdown()
 
 	pScene->Remove(gGui->GetSceneObject());
 	gGui->Shutdown();
-	Delete(gGui);
+	sdDelete(gGui);
 
 	cPres.Unload();
 
-	Delete(gGameData);
+	sdDelete(gGameData);
 
 	return IGameApp::Shutdown();
 }
@@ -118,37 +130,18 @@ void GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
-	if (k == Seed::KeyEscape && cFlow.GetCurrentState() == &cMenu)
+	if (k == eKey::Escape && cFlow.GetCurrentState() == &cMenu)
 		pSystem->Shutdown();
-	else if (k == Seed::KeyF1)
+	else if (k == eKey::F1)
 		pResourceManager->Print();
-	else if (k == Seed::KeyF2)
+	else if (k == eKey::F2)
 		pResourceManager->GarbageCollect();
-	else if (k == Seed::KeyF4)
+	else if (k == eKey::F4)
 		pScene->Dump();
-	else if (k == Seed::KeyF5)
+	else if (k == eKey::F5)
 		gGui->ReloadGUI();
-	else if (k == Seed::KeyF10)
+	else if (k == eKey::F10)
 		Rocket::Debugger::SetVisible(!Rocket::Debugger::IsVisible());
-}
-
-void GameFlow::OnPresentationLoaded(const EventPresentation *ev)
-{
-	UNUSED(ev)
-
-	pSystem->AddListener(this);
-	pInput->AddKeyboardListener(this);
-
-	pScene = cPres.GetRendererByName("MainRenderer")->GetScene();
-	Viewport *viewport = cPres.GetViewportByName("MainView");
-
-	pCamera = viewport->GetCamera();
-
-	New(GuiManager());
-	gGui->Initialize();
-	pScene->Add(gGui->GetSceneObject());
-
-	cFlow.Initialize(&cMenu);
 }
 
 void GameFlow::LoadSceneFile(const String &file)
@@ -179,49 +172,49 @@ bool GameFlow::SaveSystemFlow() const
 	GameData data;
 	pSaveSystem->SetTotalSlots(4);
 
-	eCartridgeError error = pSaveSystem->Initialize(Seed::Cartridge262144b);
-	if (error == Seed::ErrorNone)
+	eCartridgeError error = pSaveSystem->Initialize(eCartridgeSize::Small);
+	if (error == eCartridgeError::None)
 		error = pSaveSystem->Prepare(GAME_ID, &data.sPlayer, sizeof(data.sPlayer), &data.sOptions, sizeof(data.sOptions));
 
-	if (error == Seed::ErrorDeviceFull)
+	if (error == eCartridgeError::DeviceFull)
 	{
 		Log("Not enough space available on device.");
 		return false;
 	}
 
-	if (error == Seed::ErrorInodeFull)
+	if (error == eCartridgeError::InodeFull)
 	{
 		Log("Not enough inodes available on device.");
 		return false;
 	}
 
-	if (error == Seed::ErrorNoCard || error == Seed::ErrorAccessDenied)
+	if (error == eCartridgeError::NoCard || error == eCartridgeError::AccessDenied)
 	{
 		Log("Unknown file system error - no card or access denied - system hungup");
 		pSystem->HangUp();
 		return false;
 	}
 
-	if (error == Seed::ErrorNotFormatted)
+	if (error == eCartridgeError::NotFormatted)
 	{
 		Log("Save file doesn't exist or corrupted, creating one now.");
 		error = pSaveSystem->FormatCard(&data.sPlayer, &data.sOptions);
 	}
 
-	if (error == Seed::ErrorDataCorrupt)
+	if (error == eCartridgeError::DataCorrupt)
 	{
 		Log("One or more saved games were corrupted and had to be reset");
-		error = Seed::ErrorNone;
+		error = eCartridgeError::None;
 	}
 
-	if (error == Seed::ErrorFilesystemCorrupt)
+	if (error == eCartridgeError::FilesystemCorrupt)
 	{
 		Log("File system became corrupted - system hungup");
 		pSystem->HangUp();
 		return false;
 	}
 
-	if (error == Seed::ErrorNone)
+	if (error == eCartridgeError::None)
 	{
 		Log("Save data CRC ok.");
 		// Do your initial loading here.

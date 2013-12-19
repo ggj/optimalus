@@ -21,7 +21,7 @@ DeathEntity::~DeathEntity()
 {
 }
 
-void DeathEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void DeathEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 	b2Vec2 customSize(50, 40);

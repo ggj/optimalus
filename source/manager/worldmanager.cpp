@@ -7,7 +7,7 @@ WorldManager::~WorldManager()
 	this->Clear();
 }
 
-Entity *WorldManager::BuildEntity(IMetadataObject &metadata, SceneNode *sprites)
+Entity *WorldManager::BuildEntity(MetadataObject &metadata, SceneNode *sprites)
 {
 	const String &className = metadata.GetProperty("Class");
 
@@ -27,7 +27,7 @@ void WorldManager::Clear()
 {
 	for (EntitiesVector::iterator it = vEntities.begin(), end = vEntities.end(); it != end; ++it)
 	{
-		Delete(*it);
+		sdDelete(*it);
 	}
 
 	vEntities.clear();

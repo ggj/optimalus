@@ -14,7 +14,7 @@ HostageEntity::~HostageEntity()
 {
 }
 
-void HostageEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void HostageEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 	clSensor.Load(metadata, this);

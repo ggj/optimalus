@@ -29,7 +29,7 @@ namespace EntityFactory
 	{																			\
 		Entity *Create##CLASS()													\
 		{																		\
-			return New(CLASS());												\
+			return sdNew(CLASS());												\
 		}																		\
 		EntityFactory::AutoCreator clAutoCreator##CLASS_g(NAME, Create##CLASS);	\
 	}

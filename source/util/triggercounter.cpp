@@ -14,7 +14,7 @@ TriggerCounter::~TriggerCounter()
 {
 }
 
-void TriggerCounter::Load(IMetadataObject &metadata, SceneNode *sprites)
+void TriggerCounter::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
 

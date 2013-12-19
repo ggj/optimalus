@@ -14,7 +14,7 @@ TeleportEntity::~TeleportEntity()
 {
 }
 
-void TeleportEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void TeleportEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
 

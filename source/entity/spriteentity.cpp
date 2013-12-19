@@ -22,10 +22,10 @@ SpriteEntity::SpriteEntity(const char *className, const char *spriteName)
 SpriteEntity::~SpriteEntity()
 {
 	gScene->Remove(pSprite);
-	Delete(pSprite);
+	sdDelete(pSprite);
 }
 
-void SpriteEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void SpriteEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
 
@@ -43,7 +43,7 @@ void SpriteEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
 		spriteObject = temp.c_str();
 	}
 
-	pSprite = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName(spriteObject))));
+	pSprite = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName(spriteObject))));
 	pSprite->SetPosition(metadata.GetPosition());
 
 	gScene->Add(pSprite);

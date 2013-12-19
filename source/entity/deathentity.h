@@ -12,7 +12,7 @@ class DeathEntity: public SpriteEntity
 		DeathEntity();
 		virtual ~DeathEntity();
 
-		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 		virtual void Update(f32 dt);
 
 		Vector3f GetPosition();

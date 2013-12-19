@@ -21,7 +21,7 @@ class PlayerEntity: public SpriteEntity,
 		PlayerEntity();
 		virtual ~PlayerEntity();
 
-		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 		virtual void Update(f32 dt);
 
 		// IEventInputKeyboardListener

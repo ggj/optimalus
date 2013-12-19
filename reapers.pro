@@ -1,10 +1,3 @@
-TEMPLATE = app
-CONFIG += console
-CONFIG -= qt
-CONFIG += glfw
-
-INCLUDEPATH += ../seed/include ../seed/contrib
-
 SOURCES += source/main.cpp \
 	source/gameflow.cpp \
 	source/controller/cameracontroller.cpp \
@@ -168,77 +161,4 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_SOUND} \
 	$${OTHER_FILES_MAPS}
 
-CONFIG(debug, debug|release) {
-	DESTDIR = bin
-	DEFINES += DEBUG
-	LIBS += -L../seed/lib/debug
-} else {
-	DESTDIR = bin
-	DEFINES += RELEASE
-	LIBS += -L../seed/lib/release
-}
-
-unix:!macx {
-	DEFINES += LINUX
-	LIBS += -lseed -lseedcontrib -lGL -lopenal
-	QMAKE_CXXFLAGS += -std=c++0x
-
-	sdl {
-		LIBS += -lSDL -lSDL_image
-	}
-}
-
-macx {
-	DEFINES += LINUX
-	INCLUDEPATH += ../seed/contrib/osx/
-	LIBS += -lseed -lseedcontrib -framework OpenAL -framework OpenGL -framework Cocoa -framework IOKit
-	CONFIG -= sdl
-	CONFIG += glfw
-
-	#Configs
-	APP_CONFIG_FILES.files = $$OTHER_FILES_CONFIG
-	APP_CONFIG_FILES.path = Contents/Resources/configs
-	#Fonts
-	APP_FONT_FILES.files = $$OTHER_FILES_FONT
-	APP_FONT_FILES.path = Contents/Resources/fonts
-	#Scenes
-	APP_SCENE_FILES.files = $$OTHER_FILES_SCENE
-	APP_SCENE_FILES.path = Contents/Resources/scenes
-	#Textures
-	APP_TEXTURE_FILES.files = $$OTHER_FILES_TEXTURE
-	APP_TEXTURE_FILES.path = Contents/Resources/textures
-	#Gui
-		#Styles
-		APP_GUI_STYLE_FILES.files = $$OTHER_FILES_GUI_STYLE
-		APP_GUI_STYLE_FILES.path = Contents/Resources/gui/styles
-		#Views
-		APP_GUI_VIEW_FILES.files = $$OTHER_FILES_GUI_VIEW
-		APP_GUI_VIEW_FILES.path = Contents/Resources/gui/views
-	#Sounds
-	APP_SOUND_FILES.files = $$OTHER_FILES_SOUND
-	APP_SOUND_FILES.path = Contents/Resources/sounds
-	#Maps
-	APP_MAPS_FILES.files = $$OTHER_FILES_MAPS
-	APP_MAPS_FILES.path = Contents/Resources/
-
-	QMAKE_BUNDLE_DATA += APP_CONFIG_FILES APP_FONT_FILES APP_SCENE_FILES \
-			APP_TEXTURE_FILES APP_GUI_STYLE_FILES APP_GUI_VIEW_FILES \
-			APP_SOUND_FILES APP_MAPS_FILES
-}
-
-win32 {
-	LIBS += -L../seed/contrib/windows/ -lseed -lseedcontrib -mwindows -lmingw32 -lopengl32 -lopenal32
-	INCLUDEPATH += ../seed/contrib/windows/
-	CONFIG -= glfw
-	CONFIG += sdl
-	sdl {
-		DEFINES += WIN32 main=SDL_main
-		LIBS += -lSDLmain -lSDL -lSDL_image -lgdi32
-	}
-}
-
-glfw {
-	DEFINES += BUILD_GLFW
-} else:sdl {
-	DEFINES += BUILD_SDL
-}
+include("app.pri")

@@ -15,7 +15,7 @@ TriggerEntity::~TriggerEntity()
 {
 }
 
-void TriggerEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void TriggerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	Entity::Load(metadata, sprites);
 	clSensor.Load(metadata, this);

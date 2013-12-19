@@ -1,7 +1,7 @@
 #ifndef _GAMEFLOW_H_
 #define _GAMEFLOW_H_
 
-#include "defines.h"
+#include "Defines.h"
 #include "states/mainmenu_state.h"
 #include "states/options_state.h"
 #include "states/credits_state.h"
@@ -16,9 +16,10 @@ extern GameData *gGameData;
 
 class GameFlow : public IGameApp,
 			public IEventSystemListener,
-			public IEventInputKeyboardListener,
-			public IEventPresentationListener
+			public IEventInputKeyboardListener
 {
+	SEED_DISABLE_COPY(GameFlow)
+
 	public:
 		GameFlow();
 		virtual ~GameFlow();
@@ -44,15 +45,10 @@ class GameFlow : public IGameApp,
 		// IEventInputKeyboardListener
 		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
 
-		// IEventPresentationListener
-		virtual void OnPresentationLoaded(const EventPresentation *ev);
-
 	private:
 		bool SaveSystemFlow() const;
 
 	private:
-		SEED_DISABLE_COPY(GameFlow);
-
 		SceneNode			*pScene;
 		Camera				*pCamera;
 		Presentation		cPres;

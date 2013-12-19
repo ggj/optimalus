@@ -8,11 +8,6 @@ SoundManager *gSoundManager =NULL;
 WorldManager *gWorldManager = NULL;
 GameScene *gGameScene = NULL;
 
-enum
-{
-	kJobLoadScene
-};
-
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile)
 	: pPlayer(NULL)
 	, pCamera(mainCamera)
@@ -60,11 +55,26 @@ bool GameScene::Initialize()
 
 	cFlow.Initialize(&cRun);
 
+	auto cb = [&](Job *self)
+	{
+		auto job = static_cast<FileLoader *>(self);
+
+		if(job->GetState() == eJobState::Completed)
+		{
+			OnJobCompleted(job);
+		}
+		else if(job->GetState() == eJobState::Aborted)
+		{
+			OnJobAborted();
+		}
+		sdDelete(self);
+	};
+
+	String f{"scenes/"};
+	pJobManager->Add(sdNew(FileLoader(f + sSceneFile, cb)));
+
 	RocketEventManager::AddListener(this);
 	pInput->AddKeyboardListener(this);
-
-	String f("scenes/");
-	pJobManager->Add(New(FileLoader(f + sSceneFile, kJobLoadScene, this)));
 
 	// Get the initial value from game data
 	gGui->SetLife(gGameData->GetLife());
@@ -126,94 +136,13 @@ bool GameScene::Shutdown()
 void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
-	if (k == Seed::KeyEscape)
+	if (k == eKey::Escape)
 	{
 		if (bPaused)
 			cFlow.OnEvent(&cOnRun, this);
 		else
 			cFlow.OnEvent(&cOnPause, this);
 	}
-}
-
-void GameScene::OnJobCompleted(const EventJob *ev)
-{
-	switch (ev->GetName())
-	{
-		case kJobLoadScene:
-		{
-			FileLoader *job = (FileLoader *)ev->GetJob();
-			Reader r(job->pFile);
-			cScene.Load(r);
-			Log("Scene Name: %s len %d", cScene.sName.c_str(), cScene.Size());
-			Delete(job);
-
-			// Validate the music to play
-			if (gGameData->IsBgmEnabled() == true)
-			{
-				musTheme.Load("sounds/theme.ogg");
-				musTheme.SetVolume(1.0f);
-				pSoundSystem->PlayMusic(&musTheme);
-			}
-
-			SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
-			clSoundManager.Init(*sounds);
-
-			SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
-			pGameMap = (GameMap *)cScene.GetChildByName("Map");
-
-			int hostageNum = 0;
-
-			strNextLevel = pGameMap->GetProperty("NextLevel");
-
-			MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
-			game->SetVisible(false);
-			for (unsigned i = 0, len = game->Size(); i < len; ++i)
-			{
-				IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
-				//const String &type = placeHolder->GetProperty("Type");
-				//if (type == "Entity")
-				{
-					Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
-					//Log("%s", entity->GetName().c_str());
-					if (entity->GetClassName() == "Player")
-					{
-						pPlayer = static_cast<PlayerEntity*>(entity);
-					}
-					else if (entity->GetClassName() == "Hostage")
-					{
-						++hostageNum;
-					}
-				}
-			}
-
-			gGui->SetHostage(hostageNum);
-
-			this->LoadMapColliders();
-
-			clCamera.SetCamera(pCamera);
-			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
-
-			MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
-
-			f32 hw = bg->GetWidth() * 0.5f;
-			f32 hh = bg->GetHeight() * 0.5f;
-			clCamera.SetArea(Rect4f(-hw, -hh, bg->GetWidth(), bg->GetHeight()));
-
-			sprites->SetVisible(false);
-
-			pGameOverImg = (Image *)cScene.GetChildByName("GameOverImage");
-			pGameOverImg->SetVisible(false);
-
-			bInitialized = true;
-		}
-		break;
-	}
-}
-
-void GameScene::OnJobAborted(const EventJob *ev)
-{
-	Job *job = ev->GetJob();
-	Delete(job);
 }
 
 void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
@@ -240,13 +169,83 @@ void GameScene::Resume()
 	bPaused = false;
 }
 
+void GameScene::OnJobCompleted(FileLoader *job)
+{
+	Reader r(job->pFile);
+	cScene.Load(r);
+	Log("Scene Name: %s len %d", cScene.sName.c_str(), cScene.Size());
+
+	// Validate the music to play
+	if (gGameData->IsBgmEnabled() == true)
+	{
+		musTheme.Load("sounds/theme.ogg");
+		musTheme.SetVolume(1.0f);
+		pSoundSystem->PlayMusic(&musTheme);
+	}
+
+	SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
+	clSoundManager.Init(*sounds);
+
+	SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
+	pGameMap = (GameMap *)cScene.GetChildByName("Map");
+
+	int hostageNum = 0;
+
+	strNextLevel = pGameMap->GetProperty("NextLevel");
+
+	MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
+	game->SetVisible(false);
+	for (unsigned i = 0, len = game->Size(); i < len; ++i)
+	{
+		MetadataObject *placeHolder = static_cast<MetadataObject *>( game->GetChildAt(i));
+		//const String &type = placeHolder->GetProperty("Type");
+		//if (type == "Entity")
+		{
+			Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
+			//Log("%s", entity->GetName().c_str());
+			if (entity->GetClassName() == "Player")
+			{
+				pPlayer = static_cast<PlayerEntity*>(entity);
+			}
+			else if (entity->GetClassName() == "Hostage")
+			{
+				++hostageNum;
+			}
+		}
+	}
+
+	gGui->SetHostage(hostageNum);
+
+	this->LoadMapColliders();
+
+	clCamera.SetCamera(pCamera);
+	clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+
+	MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
+
+	f32 hw = bg->GetWidth() * 0.5f;
+	f32 hh = bg->GetHeight() * 0.5f;
+	clCamera.SetArea(Rect4f(-hw, -hh, bg->GetWidth(), bg->GetHeight()));
+
+	sprites->SetVisible(false);
+
+	pGameOverImg = (Image *)cScene.GetChildByName("GameOverImage");
+	pGameOverImg->SetVisible(false);
+
+	bInitialized = true;
+}
+
+void GameScene::OnJobAborted()
+{
+}
+
 void GameScene::LoadMapColliders()
 {
 	MapLayerMetadata *game = pGameMap->GetLayerByName("Colliders")->AsMetadata();
 	game->SetVisible(false);
 	for (unsigned i = 0, len = game->Size(); i < len; ++i)
 	{
-		IMetadataObject *placeHolder = static_cast<IMetadataObject *>( game->GetChildAt(i));
+		MetadataObject *placeHolder = static_cast<MetadataObject *>( game->GetChildAt(i));
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
 	}

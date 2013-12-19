@@ -1,7 +1,7 @@
 #ifndef _GUIMANAGER_H_
 #define _GUIMANAGER_H_
 
-#include "defines.h"
+#include "Defines.h"
 #include <api/rocket/RocketInterface.h>
 #include <Rocket/Core.h>
 

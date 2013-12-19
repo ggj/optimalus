@@ -11,7 +11,7 @@ class Entity
 		Entity(const String &className);
 		virtual ~Entity();
 
-		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 		virtual void OnCollision(const CollisionEvent &event) { UNUSED(event) }
 		virtual void Update(f32 dt) { UNUSED(dt) }
 

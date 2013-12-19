@@ -24,9 +24,10 @@ extern WorldManager *gWorldManager;
 extern GameScene *gGameScene;
 
 class GameScene : public IEventInputKeyboardListener,
-				  public IEventJobListener,
 				  public IRocketEventListener
 {
+	SEED_DISABLE_COPY(GameScene)
+
 	public:
 		GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile);
 		virtual ~GameScene();
@@ -38,12 +39,11 @@ class GameScene : public IEventInputKeyboardListener,
 		void Pause();
 		void Resume();
 
+		virtual void OnJobCompleted(FileLoader *job);
+		virtual void OnJobAborted();
+
 		// IEventInputKeyboardListener
 		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
-
-		// IEventJobListener
-		virtual void OnJobCompleted(const EventJob *ev);
-		virtual void OnJobAborted(const EventJob *ev);
 
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
@@ -56,8 +56,6 @@ class GameScene : public IEventInputKeyboardListener,
 		void RemoveLife();
 
 	private:
-		SEED_DISABLE_COPY(GameScene);
-
 		PlayerEntity	 *pPlayer;
 		Camera			 *pCamera;
 		CameraController clCamera;

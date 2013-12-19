@@ -25,18 +25,18 @@ PlayerEntity::PlayerEntity()
 PlayerEntity::~PlayerEntity()
 {
 	gScene->Remove(pIcon);
-	Delete(pIcon);
+	sdDelete(pIcon);
 
 	pInput->RemoveKeyboardListener(this);
 	gPhysics->DestroyBody(pBody);
 }
 
-void PlayerEntity::Load(IMetadataObject &metadata, SceneNode *sprites)
+void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 
-	pIcon = New(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
+	pIcon = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
 	pIcon->SetPosition(0, 0);
 	pIcon->SetVisible(false);
 	gScene->Add(pIcon);
@@ -155,14 +155,14 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if ((k == Seed::KeyUp || k == Seed::KeyW || k == Seed::KeySpace) && iCurrentState != Jump)
+	if ((k == eKey::Up || k == eKey::W || k == eKey::Space) && iCurrentState != Jump)
 	{
 		SetState(Jump);
 		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());
 		gSoundManager->Play(SND_JUMP);
 	}
 
-	if (k == Seed::KeyLeft || k == Seed::KeyA)
+	if (k == eKey::Left || k == eKey::A)
 	{
 		SetState(Run);
 
@@ -173,7 +173,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
 	}
 
-	if (k == Seed::KeyRight || k == Seed::KeyD)
+	if (k == eKey::Right || k == eKey::D)
 	{
 		SetState(Run);
 
@@ -184,7 +184,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
 	}
 
-	if (k == Seed::KeyDown || k == Seed::KeyS)
+	if (k == eKey::Down || k == eKey::S)
 	{
 		// Sum the normalized vector down with the current vector
 		// Maybe later, maybe if the player can duck
@@ -201,23 +201,12 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	vel.x = 0;
 
 	// Remove the directions
-	if (k == Seed::KeyUp|| k == Seed::KeyW)
+	if (k == eKey::Up|| k == eKey::W)
 	{
 
 	}
 
-	if (k == Seed::KeyLeft|| k == Seed::KeyA)
-	{
-		pBody->SetLinearVelocity(vel);
-		fMove = 0;
-
-		if (CheckGround())
-			SetState(Idle);
-		else
-			SetState(Jump);
-	}
-
-	if (k == Seed::KeyRight|| k == Seed::KeyD)
+	if (k == eKey::Left|| k == eKey::A)
 	{
 		pBody->SetLinearVelocity(vel);
 		fMove = 0;
@@ -228,7 +217,18 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 			SetState(Jump);
 	}
 
-	if (k == Seed::KeyDown|| k == Seed::KeyS)
+	if (k == eKey::Right|| k == eKey::D)
+	{
+		pBody->SetLinearVelocity(vel);
+		fMove = 0;
+
+		if (CheckGround())
+			SetState(Idle);
+		else
+			SetState(Jump);
+	}
+
+	if (k == eKey::Down|| k == eKey::S)
 	{
 		vPlayerVectorDirection -= VECTOR_DOWN;
 	}

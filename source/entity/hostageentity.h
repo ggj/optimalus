@@ -10,7 +10,7 @@ class HostageEntity: public SpriteEntity
 		HostageEntity();
 		virtual ~HostageEntity();
 
-		virtual void Load(IMetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
