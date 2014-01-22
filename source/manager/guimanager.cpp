@@ -166,7 +166,7 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 			else if (values[1] == "options")
 				gFlow->Options();
 			else if (values[1] == "game")
-				gFlow->DoLoad("game_level1.scene");
+				gFlow->DoLoad("dungeon.scene");
 		}
 		else if (values[0] == "exit")
 		{

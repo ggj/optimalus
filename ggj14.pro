@@ -77,7 +77,8 @@ OTHER_FILES_SCENE = \
 	resources/scenes/game_level4.scene \
 	resources/scenes/game_level2.scene \
 	resources/scenes/game_level3.scene \
-	resources/scenes/game_level5.scene
+	resources/scenes/game_level5.scene \
+	resources/scenes/dungeon.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
@@ -111,7 +112,9 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/hostage_death_frame1.png \
 	resources/textures/background_gameover.png \
 	resources/textures/village_tileset.png \
-	resources/textures/instructions.png
+	resources/textures/instructions.png \
+	resources/textures/tileset.png \
+	resources/textures/player.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -150,7 +153,8 @@ OTHER_FILES_MAPS = \
 	resources/level4.json \
 	resources/level3.json \
 	resources/level2.json \
-	resources/level1.json
+	resources/level1.json \
+	resources/dungeon.json \
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -159,6 +163,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_MAPS} \
+	resources/textures/player.png
 
 include("app.pri")

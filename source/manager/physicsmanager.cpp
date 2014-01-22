@@ -12,7 +12,7 @@ PhysicsManager::PhysicsManager()
 	: pWorld(NULL)
 	, fTimeLeft(0.0f)
 {
-	pWorld = sdNew(b2World(b2Vec2(0.0f, 10.0f)));
+	pWorld = sdNew(b2World(b2Vec2(0.0f, 0.0f)));
 	pWorld->SetContactListener(this);
 }
 

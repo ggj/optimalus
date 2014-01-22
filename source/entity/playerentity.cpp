@@ -16,6 +16,7 @@ PlayerEntity::PlayerEntity()
 	, iCurrentState(Idle)
 	, fVelocity(0.0f)
 	, fMove(0.0f)
+	, fUpDownMove(0.0f)
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsRunning(false)
@@ -41,14 +42,14 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	pIcon->SetVisible(false);
 	gScene->Add(pIcon);
 
-	b2Vec2 customSize(40, 46);
+	b2Vec2 customSize(32, 32);
 
 	pBody = gPhysics->CreateBody(pSprite, &customSize);
 	pBody->SetFixedRotation(true);
 	pBody->GetFixtureList()->SetUserData(this);
 
 	pInput->AddKeyboardListener(this);
-	fVelocity = 5.0f;
+	fVelocity = 2.0f;
 	vPlayerVectorDirection = VECTOR_ZERO;
 }
 
@@ -72,6 +73,7 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 	pBody->SetTransform(position, pBody->GetAngle());
 
 	fMove= 0;
+	fUpDownMove= 0;
 	this->SetState(Idle);
 
 	gSoundManager->Play(SND_TELEPORT);
@@ -82,8 +84,6 @@ void PlayerEntity::Update(f32 dt)
 	pIcon->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
-
-	bool ground = this->CheckGround();
 
 	if (fInvicibleTime > 0)
 	{
@@ -99,45 +99,20 @@ void PlayerEntity::Update(f32 dt)
 
 	if (fMove != 0)
 	{
-		vel.x = 5 * fMove;
+		vel.x = fVelocity * fMove;
 		pBody->SetLinearVelocity(vel);
 	}
 
-	if (iPreviousState ==Jump && ground)
+	if (fUpDownMove != 0)
 	{
-		SetState(Land);
-		fLandTime = 0.3f;
-	}
-
-	if (iCurrentState != Jump && !ground)
-	{
-		this->SetState(Jump);
-	}
-
-	if (fLandTime > 0 && iCurrentState == Land)
-	{
-		fLandTime -= dt;
-		if (fLandTime <= 0)
-		{
-			if (fMove != 0)
-				this->SetState(Run);
-			else
-				this->SetState(Idle);
-		}
+		vel.y = fVelocity * fUpDownMove;
+		pBody->SetLinearVelocity(vel);
 	}
 
 	if (iCurrentState == iPreviousState)
 		return;
 
-	if (iCurrentState == Jump)
-	{
-		pSprite->SetAnimation("Jump");
-	}
-	else if (iCurrentState == Land)
-	{
-		pSprite->SetAnimation("Land");
-	}
-	else if (iCurrentState == Run)
+	if (iCurrentState == Run)
 	{
 		pSprite->SetAnimation("Run");
 	}
@@ -155,11 +130,10 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if ((k == eKey::Up || k == eKey::W || k == eKey::Space) && iCurrentState != Jump)
+	if ((k == eKey::Up || k == eKey::W) && iCurrentState != Jump)
 	{
-		SetState(Jump);
-		pBody->ApplyForce(b2Vec2(0,500), pBody->GetWorldCenter());
-		gSoundManager->Play(SND_JUMP);
+		SetState(Run);
+		fUpDownMove = -1;
 	}
 
 	if (k == eKey::Left || k == eKey::A)
@@ -186,8 +160,7 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 	if (k == eKey::Down || k == eKey::S)
 	{
-		// Sum the normalized vector down with the current vector
-		// Maybe later, maybe if the player can duck
+		fUpDownMove = 1;
 	}
 
 	//pSprite->AddPosition(vPlayerVectorDirection * fVelocity);
@@ -199,38 +172,31 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 	vel.x = 0;
+	vel.y = 0;
 
 	// Remove the directions
 	if (k == eKey::Up|| k == eKey::W)
 	{
-
+		pBody->SetLinearVelocity(vel);
+		fUpDownMove = 0;
 	}
 
 	if (k == eKey::Left|| k == eKey::A)
 	{
 		pBody->SetLinearVelocity(vel);
 		fMove = 0;
-
-		if (CheckGround())
-			SetState(Idle);
-		else
-			SetState(Jump);
 	}
 
 	if (k == eKey::Right|| k == eKey::D)
 	{
 		pBody->SetLinearVelocity(vel);
 		fMove = 0;
-
-		if (CheckGround())
-			SetState(Idle);
-		else
-			SetState(Jump);
 	}
 
 	if (k == eKey::Down|| k == eKey::S)
 	{
-		vPlayerVectorDirection -= VECTOR_DOWN;
+		pBody->SetLinearVelocity(vel);
+		fUpDownMove = 0;
 	}
 }
 
