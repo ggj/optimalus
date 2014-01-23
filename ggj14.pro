@@ -84,6 +84,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/heart.png \
 	resources/textures/menu_background.png \
 	resources/textures/background_gameover.png \
+	resources/textures/death_idle_frame1.png \
 	resources/textures/tileset.png
 
 #Gui
