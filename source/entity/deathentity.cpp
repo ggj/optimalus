@@ -76,17 +76,8 @@ void DeathEntity::Update(f32 dt)
 		if (distance > 0.03f)
 		{
 			//Go faster down to help player jump
-			if (dir.y > 0)
-			{
-				f32 dy = dt * 2;
-				dir.y = std::min(dy, dir.y);
-				dir.x *= dt;
-			}
-			else
-			{
-				dir *= dt;
-				dir.y /= 2;
-			}
+			dir *= dt;
+			dir.y /= 2;
 
 			distance = distance / 1.5f;
 			if (distance < 1)

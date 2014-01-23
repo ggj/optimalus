@@ -350,6 +350,19 @@
                  "width":0,
                  "x":80,
                  "y":80
+                }, 
+                {
+                 "height":0,
+                 "name":"Death",
+                 "properties":
+                    {
+                     "Class":"Death"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":440,
+                 "y":360
                 }],
          "opacity":1,
          "type":"objectgroup",
