@@ -139,31 +139,20 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	if (k == eKey::Left || k == eKey::A)
 	{
 		SetState(Run);
-
 		fMove = -1;
-
-		// Change the scale to turn the player sprite
-		if (pSprite->GetScaleX() > 0)
-			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
 	}
 
 	if (k == eKey::Right || k == eKey::D)
 	{
 		SetState(Run);
-
 		fMove = 1;
-
-		// Change the scale to turn the player sprite
-		if (pSprite->GetScaleX() < 0)
-			pSprite->SetScaleX(pSprite->GetScaleX() * -1);
 	}
 
 	if (k == eKey::Down || k == eKey::S)
 	{
+		SetState(Run);
 		fUpDownMove = 1;
 	}
-
-	//pSprite->AddPosition(vPlayerVectorDirection * fVelocity);
 }
 
 void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
@@ -197,6 +186,11 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	{
 		pBody->SetLinearVelocity(vel);
 		fUpDownMove = 0;
+	}
+
+	if (fUpDownMove == 0 && fMove == 0)
+	{
+		SetState(Idle);
 	}
 }
 

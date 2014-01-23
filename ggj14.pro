@@ -73,48 +73,18 @@ OTHER_FILES_FONT = \
 OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
-	resources/scenes/game_level1.scene \
-	resources/scenes/game_level4.scene \
-	resources/scenes/game_level2.scene \
-	resources/scenes/game_level3.scene \
-	resources/scenes/game_level5.scene \
 	resources/scenes/dungeon.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
 	resources/textures/rocket_invader.png \
-	resources/textures/player_idle_frame2.png \
 	resources/textures/player_idle_frame1.png \
-	resources/textures/player_run_frame8.png \
-	resources/textures/player_run_frame7.png \
-	resources/textures/player_run_frame6.png \
-	resources/textures/player_run_frame5.png \
-	resources/textures/player_run_frame4.png \
-	resources/textures/player_run_frame3.png \
 	resources/textures/player_run_frame2.png \
 	resources/textures/player_run_frame1.png \
-	resources/textures/player_jump_frame4.png \
-	resources/textures/player_jump_frame3.png \
-	resources/textures/player_jump_frame2.png \
-	resources/textures/player_jump_frame1.png \
 	resources/textures/heart.png \
-	resources/textures/player_land_frame3.png \
-	resources/textures/player_land_frame2.png \
-	resources/textures/player_land_frame1.png \
-	resources/textures/death_idle_frame2.png \
-	resources/textures/death_idle_frame1.png \
-	resources/textures/hostage_idle_frame1.png \
 	resources/textures/menu_background.png \
-	resources/textures/hostage_death_frame5.png \
-	resources/textures/hostage_death_frame4.png \
-	resources/textures/hostage_death_frame3.png \
-	resources/textures/hostage_death_frame2.png \
-	resources/textures/hostage_death_frame1.png \
 	resources/textures/background_gameover.png \
-	resources/textures/village_tileset.png \
-	resources/textures/instructions.png \
-	resources/textures/tileset.png \
-	resources/textures/player.png
+	resources/textures/tileset.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -149,12 +119,7 @@ OTHER_FILES_SOUND = \
 
 #Maps
 OTHER_FILES_MAPS = \
-	resources/level5.json \
-	resources/level4.json \
-	resources/level3.json \
-	resources/level2.json \
-	resources/level1.json \
-	resources/dungeon.json \
+	resources/dungeon.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -163,7 +128,6 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS} \
-	resources/textures/player.png
+	$${OTHER_FILES_MAPS}
 
 include("app.pri")

@@ -49,25 +49,3 @@ icon
 	display: block;
 	position: absolute;
 }
-
-div#hostages_div icon
-{
-	left: 20px;
-	top: 15px;
-	width: 45px;
-	height: 40px;
-
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 140px 153px 185px 193px;
-}
-
-div#lifes_div icon
-{
-	left: 20px;
-	top: 15px;
-	width: 45px;
-	height: 45px;
-
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 388px 155px 433px 200px;
-}

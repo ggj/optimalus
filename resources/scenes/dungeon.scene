@@ -26,7 +26,22 @@
 							aFrames:
 							[
 								{
-									sResource: textures/player.png
+									sResource: textures/player_idle_frame1.png
+								}
+							]
+						}
+						{
+							sName: "Run"
+							bAnimated: true
+							bLoop: true
+							iFps: 6
+							aFrames:
+							[
+								{
+									sResource: textures/player_run_frame1.png
+								}
+								{
+									sResource: textures/player_run_frame2.png
 								}
 							]
 						}

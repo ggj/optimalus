@@ -229,9 +229,9 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 // GUI Elements
 void GuiManager::SetLife(u32 life)
 {
-	char x[100];
-	snprintf(x, 100, "%d", life);
-	pElementLife->SetInnerRML(Rocket::Core::String(x));
+	//char x[100];
+	//snprintf(x, 100, "%d", life);
+	//pElementLife->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetLife(life);
 }
 
@@ -243,17 +243,17 @@ void GuiManager::RemoveLife()
 
 void GuiManager::SetTime(u32 time)
 {
-	char x[100];
-	snprintf(x, 100, "%d", time);
-	pElementTime->SetInnerRML(Rocket::Core::String(x));
+	//char x[100];
+	//snprintf(x, 100, "%d", time);
+	//pElementTime->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetTime(time);
 }
 
 void GuiManager::PrintHostage(u32 hostage)
 {
-	char x[100];
-	snprintf(x, 100, "%d", hostage);
-	pElementHostage->SetInnerRML(Rocket::Core::String(x));
+	//char x[100];
+	//snprintf(x, 100, "%d", hostage);
+	//pElementHostage->SetInnerRML(Rocket::Core::String(x));
 }
 
 void GuiManager::SetHostage(u32 hostage)
