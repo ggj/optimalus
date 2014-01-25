@@ -10,7 +10,6 @@ SOURCES += source/main.cpp \
 	source/entity/heartentity.cpp \
 	source/entity/triggerentity.cpp \
 	source/entity/deathentity.cpp \
-	source/entity/hostageentity.cpp \
 	source/entity/teleportentity.cpp \
 	source/manager/guimanager.cpp \
 	source/manager/worldmanager.cpp \
@@ -28,7 +27,8 @@ SOURCES += source/main.cpp \
 	source/util/collisionsensor.cpp \
 	source/entity/optimistplayerentity.cpp \
 	source/entity/pessimistplayerentity.cpp \
-	source/entity/realistplayerentity.cpp
+	source/entity/realistplayerentity.cpp \
+	source/entity/enemyentity.cpp
 
 HEADERS += \
 	source/defines.h \
@@ -43,7 +43,6 @@ HEADERS += \
 	source/entity/heartentity.h \
 	source/entity/triggerentity.h \
 	source/entity/deathentity.h \
-	source/entity/hostageentity.h \
 	source/entity/teleportentity.h \
 	source/manager/guimanager.h \
 	source/manager/worldmanager.h \
@@ -62,7 +61,8 @@ HEADERS += \
 	source/util/collisionsensor.h \
 	source/entity/optimistplayerentity.h \
 	source/entity/pessimistplayerentity.h \
-	source/entity/realistplayerentity.h
+	source/entity/realistplayerentity.h \
+	source/entity/enemyentity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -100,6 +100,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/optimist_ground_tileset.png \
 	resources/textures/realist_ground_tileset.png \
 	resources/textures/pessimist_ground_tileset.png \
+	resources/textures/optimist_enemy1_idle_frame1.png \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

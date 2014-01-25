@@ -1,19 +1,20 @@
-#ifndef _HOSTAGE_H
-#define _HOSTAGE_H
+#ifndef _ENEMY_ENTITY_H
+#define _ENEMY_ENTITY_H
 
 #include "spriteentity.h"
 #include "../util/collisionsensor.h"
 
-class HostageEntity: public SpriteEntity
+class EnemyEntity: public SpriteEntity
 {
 	public:
-		HostageEntity();
-		virtual ~HostageEntity();
+		EnemyEntity();
+		virtual ~EnemyEntity();
 
 		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
+		b2Body *pBody;
 		CollisionSensor clSensor;
 };
 

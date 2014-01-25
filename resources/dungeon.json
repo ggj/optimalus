@@ -769,16 +769,16 @@
                 }, 
                 {
                  "height":0,
-                 "name":"Death",
+                 "name":"Enemy",
                  "properties":
                     {
-                     "Class":"Death"
+                     "Class":"Enemy"
                     },
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":440,
-                 "y":360
+                 "x":80,
+                 "y":600
                 }, 
                 {
                  "height":0,

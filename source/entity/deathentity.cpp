@@ -54,6 +54,7 @@ Sprite *DeathEntity::GetSprite() const
 
 void DeathEntity::Update(f32 dt)
 {
+	/*
 	if (fSleep > 0)
 	{
 		fSleep -= dt;
@@ -79,7 +80,6 @@ void DeathEntity::Update(f32 dt)
 		b2Vec2 dir = pTarget->GetBodyPosition() - clSensor.GetBodyPosition();
 
 		f32 distance = dir.Normalize();
-		/*
 		if (distance > 0.03f)
 		{
 			//Go faster down to help player jump
@@ -96,8 +96,8 @@ void DeathEntity::Update(f32 dt)
 
 			clSensor.SetBodyPosition(dir);
 		}
-		*/
 	}
+	*/
 }
 
 void DeathEntity::Activate()
@@ -116,7 +116,7 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 		if (other != NULL && other->GetClassName() == "Player")
 		{
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
-			if (player->GetItem() == ItemTypes::Heart)
+			if (player->GetItem() == ItemTypes::Text)
 			{
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::None);

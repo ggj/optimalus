@@ -8,8 +8,8 @@ ENTITY_CREATOR("Player", PlayerEntity)
 
 PlayerEntity::PlayerEntity()
 	: SpriteEntity("Player", "Player")
-	, pBody(NULL)
-	, pIcon(NULL)
+	, pBody(nullptr)
+	, pText(nullptr)
 	, vPlayerVectorDirection()
 	, eItem(ItemTypes::None)
 	, iPreviousState(Idle)
@@ -19,15 +19,14 @@ PlayerEntity::PlayerEntity()
 	, fUpDownMove(0.0f)
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
-	, bIsRunning(false)
 	, bIsActive(false)
 {
 }
 
 PlayerEntity::PlayerEntity(const char *className, const char *spriteName, bool bIsActive)
 	: SpriteEntity(className, spriteName)
-	, pBody(NULL)
-	, pIcon(NULL)
+	, pBody(nullptr)
+	, pText(nullptr)
 	, vPlayerVectorDirection()
 	, eItem(ItemTypes::None)
 	, iPreviousState(Idle)
@@ -37,15 +36,14 @@ PlayerEntity::PlayerEntity(const char *className, const char *spriteName, bool b
 	, fUpDownMove(0.0f)
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
-	, bIsRunning(false)
 	, bIsActive(bIsActive)
 {
 }
 
 PlayerEntity::~PlayerEntity()
 {
-	gScene->Remove(pIcon);
-	sdDelete(pIcon);
+	gScene->Remove(pText);
+	sdDelete(pText);
 
 	pInput->RemoveKeyboardListener(this);
 	gPhysics->DestroyBody(pBody);
@@ -56,10 +54,10 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 
-	pIcon = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
-	pIcon->SetPosition(0, 0);
-	pIcon->SetVisible(false);
-	gScene->Add(pIcon);
+	pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
+	pText->SetPosition(0, 0);
+	pText->SetVisible(false);
+	gScene->Add(pText);
 
 	b2Vec2 customSize(32, 32);
 
@@ -100,7 +98,7 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 
 void PlayerEntity::Update(f32 dt)
 {
-	pIcon->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
+	pText->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
@@ -244,7 +242,7 @@ bool PlayerEntity::CheckGround()
 void PlayerEntity::SetItem(ItemTypes::Enum item)
 {
 	eItem = item;
-	pIcon->SetVisible(eItem == ItemTypes::Heart);
+	pText->SetVisible(eItem == ItemTypes::Text);
 }
 
 void PlayerEntity::SetIsActive(bool isActive)

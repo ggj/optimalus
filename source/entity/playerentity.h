@@ -10,7 +10,7 @@ namespace ItemTypes
 	enum Enum
 	{
 		None,
-		Heart
+		Text
 	};
 }
 
@@ -51,7 +51,7 @@ class PlayerEntity: public SpriteEntity,
 
 	protected:
 		b2Body *pBody;
-		Sprite *pIcon;
+		Sprite *pText;
 		Vector3f vPlayerVectorDirection;
 
 		ItemTypes::Enum eItem;
@@ -67,7 +67,6 @@ class PlayerEntity: public SpriteEntity,
 		f32 fInvicibleTime;
 
 		bool bIsActive;
-		bool bIsRunning;
 		void SetState(int newState);
 };
 
