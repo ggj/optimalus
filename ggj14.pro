@@ -126,7 +126,6 @@ OTHER_FILES_SOUND = \
 	resources/sounds/pessimist_theme.ogg \
 	resources/sounds/realist_theme.ogg \
 	resources/sounds/sfx.ogg \
-	resources/sounds/theme.ogg \
 	resources/sounds/wakeup.ogg \
 	resources/sounds/powerup.ogg \
 	resources/sounds/Pickup_Coin3.ogg \
