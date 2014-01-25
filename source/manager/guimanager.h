@@ -29,6 +29,7 @@ class GuiManager : public IRocketEventListener
 		bool UnloadGUI();
 		void ReleaseGUI();
 
+		void SetPlayerName(String name);
 		void SetLevel(u32 level);
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
@@ -59,6 +60,7 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::ElementDocument *pDoc;
 
 		// GUI Elements
+		Rocket::Core::Element	*pElementPlayerName;
 		Rocket::Core::Element	*pElementLevel;
 		Rocket::Core::Element	*pElementXP;
 		Rocket::Core::Element	*pElementAttackPower;
