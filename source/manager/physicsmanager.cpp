@@ -98,6 +98,38 @@ b2Body *PhysicsManager::CreateBody(ISceneObject *obj, b2Vec2 *customSize)
 	return b;
 }
 
+b2Body *PhysicsManager::CreateKinematicBody(ISceneObject *obj, b2Vec2 *customSize)
+{
+	if (!obj)
+		return NULL;
+
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_kinematicBody;
+	bodyDef.position.Set(obj->GetX() * PIX2M, obj->GetY() * PIX2M);
+	bodyDef.angle = 0;
+	bodyDef.userData = obj;
+	b2Body *b = pWorld->CreateBody(&bodyDef);
+
+	b2PolygonShape boxShape;
+	if (customSize)
+	{
+		boxShape.SetAsBox(customSize->x * 0.5f * PIX2M, customSize->y * 0.5f * PIX2M);
+	}
+	else
+	{
+		boxShape.SetAsBox(obj->GetWidth() * 0.5f * PIX2M, obj->GetHeight() * 0.5f * PIX2M);
+	}
+
+	b2FixtureDef fixDef;
+	fixDef.shape = &boxShape;
+	fixDef.density = 1.0f;
+	fixDef.restitution = 0.10f;
+	fixDef.friction = 0.0f;
+	b->CreateFixture(&fixDef);
+
+	return b;
+}
+
 void PhysicsManager::DestroyBody(b2Body *body)
 {
 	if (!body)
