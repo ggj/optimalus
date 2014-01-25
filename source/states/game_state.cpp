@@ -49,8 +49,7 @@ void GameState::LateStop()
 		sdDelete(pGame);
 
 		// Reset da posicao da camera quando sai do jogo...
-		// salvar a posicao original?
-		gFlow->GetCamera()->SetPosition(-400.0f, -300.0f);
+		gFlow->ResetCamera();
 		gFlow->DoLoad();
 	}
 }

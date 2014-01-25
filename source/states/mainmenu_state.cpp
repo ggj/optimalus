@@ -1,5 +1,6 @@
 #include "mainmenu_state.h"
 #include "../manager/guimanager.h"
+#include "../gameflow.h"
 
 MainMenuState::MainMenuState()
 {
@@ -22,6 +23,8 @@ void MainMenuState::OnStart(void *data)
 	musTheme.Load("sounds/scottwills_time.ogg");
 	musTheme.SetVolume(1.0f);
 	pSoundSystem->PlayMusic(&musTheme);
+
+	gFlow->ResetCamera();
 }
 
 void MainMenuState::OnUpdate(f32 dt)

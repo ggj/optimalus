@@ -66,7 +66,10 @@ class GameScene : public IEventInputKeyboardListener,
 		CameraController clCamera;
 		SceneNode		*pParentScene;
 		SceneNode		cScene;
-		Music			musTheme;
+		Music			musThemeRealist;
+		Music			musThemePessimist;
+		Music			musThemeOptimist;
+		Music			*musCur;
 		GameMap			*pGameMap;
 		bool			bPaused;
 		bool			bInitialized;
@@ -104,6 +107,13 @@ class GameScene : public IEventInputKeyboardListener,
 		bool bChangeLevel;
 
 		Image *pGameOverImg;
+
+		// Lerp camera
+		Vector3f	vCameraFrom;
+		Vector3f	vCameraCurrent;
+		Vector3f	vCameraTo;
+		f32			fElapsed;
+		bool		bMoveCamera;
 
 };
 
