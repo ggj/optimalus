@@ -12,7 +12,11 @@
 					</div>
 				</p>
 				<p>
-					<div id="avatar_div"><avatar/></div>
+					<div id="avatar_div">
+						<div id="avatar_optimist_div"></div>
+						<div id="avatar_realist_div"></div>
+						<div id="avatar_pessimist_div"></div>
+					</div>
 				</p>
 				<p>
 					<h1>Level:</h1>

@@ -31,6 +31,7 @@ div#score_div
 	outline-font-effect: outline;
 	outline-width: 2px;
 	outline-color: black;
+	background:#000000;
 
 	background-decorator: tiled-box;
 	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
@@ -73,13 +74,9 @@ div#avatar_div
 	text-align: center;
 }
 
-avatar
+div#avatar_optimist_div
 {
 	display: block;
-}
-
-div#avatar_div avatar
-{
 	margin: 0 auto;
 	left: 0px;
 	top: 0px;
@@ -88,6 +85,32 @@ div#avatar_div avatar
 
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 7px 323px 87px 403px;
+}
+
+div#avatar_realist_div
+{
+	display: block;
+	margin: 0 auto;
+	left: 0px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 88px 323px 176px 403px;
+}
+
+div#avatar_pessimist_div
+{
+	display: block;
+	margin: 0 auto;
+	left: 0px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
 }
 
 div#score_div h1
