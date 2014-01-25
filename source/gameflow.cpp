@@ -126,7 +126,7 @@ void GameFlow::OnSystemShutdown(const EventSystem *ev)
 	pSystem->Shutdown();
 }
 
-void GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
+bool GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 
@@ -142,6 +142,8 @@ void GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		gGui->ReloadGUI();
 	else if (k == eKey::F10)
 		Rocket::Debugger::SetVisible(!Rocket::Debugger::IsVisible());
+
+	return true;
 }
 
 void GameFlow::LoadSceneFile(const String &file)

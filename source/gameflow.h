@@ -40,10 +40,10 @@ class GameFlow : public IGameApp,
 		virtual bool Shutdown();
 
 		// IEventSystemListener
-		virtual void OnSystemShutdown(const EventSystem *ev);
+		virtual void OnSystemShutdown(const EventSystem *ev) override;
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		virtual bool OnInputKeyboardRelease(const EventInputKeyboard *ev) override;
 
 	private:
 		bool SaveSystemFlow() const;

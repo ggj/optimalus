@@ -27,10 +27,10 @@ class PlayerEntity: public SpriteEntity,
 		void Update(f32 dt);
 
 		// IEventInputKeyboardListener
-		void OnInputKeyboardPress(const EventInputKeyboard *ev);
+		bool OnInputKeyboardPress(const EventInputKeyboard *ev) override;
 
 		// IEventInputKeyboardListener
-		void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		bool OnInputKeyboardRelease(const EventInputKeyboard *ev) override;
 
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
