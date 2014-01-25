@@ -8,6 +8,7 @@ ENTITY_CREATOR("Enemy", EnemyEntity)
 EnemyEntity::EnemyEntity()
 	: SpriteEntity("Enemy", "Enemy")
 	, pBody(nullptr)
+	, fInvicibleTime(0.0f)
 {
 }
 
@@ -32,6 +33,18 @@ void EnemyEntity::Update(f32 dt)
 {
 	b2Vec2 vel = pBody->GetLinearVelocity();
 	pBody->SetLinearVelocity(vel);
+
+	if (fInvicibleTime > 0)
+	{
+		pSprite->SetVisible(!pSprite->IsVisible());
+
+		fInvicibleTime -= dt;
+		if (fInvicibleTime <= 0)
+		{
+			pSprite->SetVisible(true);
+			fInvicibleTime = 0;
+		}
+	}
 }
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)
@@ -88,6 +101,19 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 			player->OnDamage(vecToPush);
 
 			//Receive damage
+			this->OnDamage();
 		}
 	}
+}
+
+bool EnemyEntity::OnDamage()
+{
+	// Play damage sound
+	gSoundManager->Play(SND_DAMAGE);
+
+	if (fInvicibleTime > 0)
+		return false;
+
+	fInvicibleTime = 3;
+	return true;
 }
