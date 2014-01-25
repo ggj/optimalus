@@ -107,7 +107,7 @@ void PhysicsManager::DestroyBody(b2Body *body)
 	pWorld->DestroyBody(body);
 }
 
-b2Body *PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType::Enum type, bool track, b2Vec2 *customSize)
+b2Body *PhysicsManager::CreateStaticBody(ISceneObject *obj, BodyType type, bool track, b2Vec2 *customSize)
 {
 	if (!obj)
 		return NULL;
@@ -316,7 +316,7 @@ bool PhysicsManager::RayCast(b2Body *startingBody, b2Vec2 relativeDest)
 	return callback.Found();
 }
 
-CollisionEvent::CollisionEvent(CollisionEventType::Enum type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity)
+CollisionEvent::CollisionEvent(CollisionEventType type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity)
 	: eType(type)
 	, rOtherBody(otherBody)
 	, rTargetBody(targetBody)

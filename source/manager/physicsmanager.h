@@ -7,23 +7,17 @@
 class Entity;
 class CollisionEvent;
 
-namespace BodyType
+enum class BodyType
 {
-	enum Enum
-	{
-		Normal,
-		Sensor
-	};
-}
+	Normal,
+	Sensor
+};
 
-namespace CollisionEventType
+enum class CollisionEventType
 {
-	enum Enum
-	{
-		OnEnter,
-		OnLeave
-	};
-}
+	OnEnter,
+	OnLeave
+};
 
 typedef std::map<b2Body *, int> CollisionCounterMap;
 typedef std::map<b2Body *, CollisionCounterMap>  CollisionCacheMap;
@@ -32,23 +26,23 @@ typedef std::list<CollisionEvent> CollisionEventList;
 class CollisionEvent
 {
 	public:
-		CollisionEvent(CollisionEventType::Enum type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity);
+		CollisionEvent(CollisionEventType type, b2Body &targetBody, Entity &target, b2Body &otherBody, Entity *otherEntity);
 
-		inline CollisionEventType::Enum GetType() const;
-		inline b2Body &GetOtherBody() const;
-		inline Entity *GetOtherEntity() const;
-		inline Entity &GetTarget() const;
-		inline b2Body &GetTargetBody() const;
+		CollisionEventType GetType() const;
+		b2Body &GetTargetBody() const;
+		Entity &GetTarget() const;
+		b2Body &GetOtherBody() const;
+		Entity *GetOtherEntity() const;
 
 	private:
-		CollisionEventType::Enum eType;
+		CollisionEventType eType;
 		b2Body &rOtherBody;
 		b2Body &rTargetBody;
 		Entity *pOtherEntity;
 		Entity &rTarget;
 };
 
-inline CollisionEventType::Enum CollisionEvent::GetType() const
+inline CollisionEventType CollisionEvent::GetType() const
 {
 	return eType;
 }
@@ -82,7 +76,7 @@ class PhysicsManager: public b2ContactListener
 		void Update(f32 dt);
 
 		b2Body *CreateBody(ISceneObject *obj, b2Vec2 *customSize = NULL);
-		b2Body *CreateStaticBody(ISceneObject *obj, BodyType::Enum type = BodyType::Normal, bool track = false, b2Vec2 *customSize = NULL);
+		b2Body *CreateStaticBody(ISceneObject *obj, BodyType type = BodyType::Normal, bool track = false, b2Vec2 *customSize = NULL);
 		void DestroyBody(b2Body *body);
 
 		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);

@@ -21,3 +21,14 @@ project/vs2012/ggj13/Debug/
 /project/vs2012/ggj13/ggj13.v11.suo
 /project/vs2012/ggj13/ggj13.vcxproj.user
 /project/vs2012/ggj13/Release/
+*.obj
+*.log
+*.sdf
+*.idb
+*.pdb
+*.tlog
+*.suo
+*.exe
+*.exp
+*.ilk
+*.lib
