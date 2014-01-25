@@ -77,9 +77,14 @@ bool GameScene::Initialize()
 	pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
+	gGui->SetLevel(gGameData->GetLevel());
+	gGui->SetXP(gGameData->GetXP());
 	gGui->SetAttackPower(gGameData->GetAttackPower());
 	gGui->SetGold(gGameData->GetGold());
 	gGui->SetLife(gGameData->GetLife());
+	gGui->SetLifePotion(gGameData->GetLifePotion());
+	gGui->SetMana(gGameData->GetMana());
+	gGui->SetManaPotion(gGameData->GetManaPotion());
 
 	return true;
 }

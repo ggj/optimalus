@@ -29,10 +29,19 @@ class GuiManager : public IRocketEventListener
 		bool UnloadGUI();
 		void ReleaseGUI();
 
+		void SetLevel(u32 level);
+		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
 		void SetGold(u32 gold);
+		void RemoveGold();
 		void SetLife(u32 life);
 		void RemoveLife();
+		void SetLifePotion(u32 lifePotion);
+		void RemoveLifePotion();
+		void SetMana(u32 mana);
+		void RemoveMana();
+		void SetManaPotion(u32 manaPotion);
+		void RemoveManaPotion();
 
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
@@ -50,9 +59,15 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::ElementDocument *pDoc;
 
 		// GUI Elements
+		Rocket::Core::Element	*pElementLevel;
+		Rocket::Core::Element	*pElementXP;
 		Rocket::Core::Element	*pElementAttackPower;
 		Rocket::Core::Element	*pElementGold;
 		Rocket::Core::Element	*pElementLife;
+		Rocket::Core::Element	*pElementLifePotion;
+		Rocket::Core::Element	*pElementMana;
+		Rocket::Core::Element	*pElementManaPotion;
+
 		Rocket::Core::Element	*pElementSfx;
 		Rocket::Core::Element	*pElementBgm;
 };

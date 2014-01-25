@@ -6,7 +6,7 @@ GameData::GameData()
 	//, sPessimistPlayer()
 	, sOptions()
 {
-	sPlayer.iLevel = 1;
+	sPlayer.iLevel = 10;
 	sPlayer.iXP = 1;
 	sPlayer.iAttackPower = 15;
 	sPlayer.iGold = 20;
