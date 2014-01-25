@@ -77,8 +77,9 @@ bool GameScene::Initialize()
 	pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
+	gGui->SetAttackPower(gGameData->GetAttackPower());
+	gGui->SetGold(gGameData->GetGold());
 	gGui->SetLife(gGameData->GetLife());
-	gGui->SetHostage(gGameData->GetHostage());
 
 	return true;
 }
@@ -215,10 +216,6 @@ void GameScene::OnJobCompleted(FileLoader *job)
 			{
 				pPlayerOptimist = static_cast<OptimistPlayerEntity*>(entity);
 			}
-			else if (entity->GetClassName() == "Hostage")
-			{
-				++hostageNum;
-			}
 		}
 	}
 
@@ -227,8 +224,6 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	{
 		pPlayer = pPlayerRealist;
 	}
-
-	gGui->SetHostage(hostageNum);
 
 	this->LoadMapColliders();
 
@@ -262,16 +257,6 @@ void GameScene::LoadMapColliders()
 		MetadataObject *placeHolder = static_cast<MetadataObject *>( game->GetChildAt(i));
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
-	}
-}
-
-void GameScene::RemoveHostage()
-{
-	gGui->RemoveHostage();
-
-	if ((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
-	{
-		bChangeLevel = true;
 	}
 }
 

@@ -54,8 +54,6 @@ class GameScene : public IEventInputKeyboardListener,
 		// Load
 		virtual void LoadMapColliders();
 
-		void RemoveHostage();
-
 		void RemoveLife();
 
 	private:

@@ -17,13 +17,13 @@
 				</p>
 				<p>
 					<h1><div id="attack_div"><icon/></div></h1>
-					<span>15</span>
+					<span id="attackPower">15</span>
 					<h1><div id="gold_div"><icon/></div></h1>
-					<span>45</span>
+					<span id="gold">45</span>
 				</p>
 				<p>
 					<h1><div id="life_div"><icon/></div></h1>
-					<span>22/22</span>
+					<span id="life"></span>
 					<h1><div id="life_potion_div"><icon/></div></h1>
 					<span>2</span>
 				</p>

@@ -66,14 +66,14 @@ bool GuiManager::LoadGUI(const String &doc)
 			pDoc->Focus();
 			pDoc->Show();
 
-			if (pDoc->GetElementById("lifes") != NULL)
-				pElementLife = pDoc->GetElementById("lifes");
+			if (pDoc->GetElementById("attackPower") != NULL)
+				pElementAttackPower = pDoc->GetElementById("attackPower");
 
-			if (pDoc->GetElementById("time") != NULL)
-				pElementTime = pDoc->GetElementById("time");
+			if (pDoc->GetElementById("gold") != NULL)
+				pElementGold = pDoc->GetElementById("gold");
 
-			if (pDoc->GetElementById("hostages") != NULL)
-				pElementHostage = pDoc->GetElementById("hostages");
+			if (pDoc->GetElementById("life") != NULL)
+				pElementLife = pDoc->GetElementById("life");
 
 			if (pDoc->GetElementById("sfx") != NULL && gGameData->IsSfxEnabled())
 				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
@@ -230,11 +230,27 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 }
 
 // GUI Elements
+void GuiManager::SetAttackPower(u32 attackPower)
+{
+	char x[100];
+	snprintf(x, 100, "%d", attackPower);
+	pElementAttackPower->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetAttackPower(attackPower);
+}
+
+void GuiManager::SetGold(u32 gold)
+{
+	char x[100];
+	snprintf(x, 100, "%d", gold);
+	pElementGold->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetGold(gold);
+}
+
 void GuiManager::SetLife(u32 life)
 {
-	//char x[100];
-	//snprintf(x, 100, "%d", life);
-	//pElementLife->SetInnerRML(Rocket::Core::String(x));
+	char x[100];
+	snprintf(x, 100, "%d", life);
+	pElementLife->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetLife(life);
 }
 
@@ -242,33 +258,6 @@ void GuiManager::RemoveLife()
 {
 	gGameData->RemoveLife();
 	this->SetLife(gGameData->GetLife());
-}
-
-void GuiManager::SetTime(u32 time)
-{
-	//char x[100];
-	//snprintf(x, 100, "%d", time);
-	//pElementTime->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetTime(time);
-}
-
-void GuiManager::PrintHostage(u32 hostage)
-{
-	//char x[100];
-	//snprintf(x, 100, "%d", hostage);
-	//pElementHostage->SetInnerRML(Rocket::Core::String(x));
-}
-
-void GuiManager::SetHostage(u32 hostage)
-{
-	this->PrintHostage(hostage);
-	gGameData->SetHostage(hostage);
-}
-
-void GuiManager::RemoveHostage()
-{
-	gGameData->RemoveHostage();
-	this->PrintHostage(gGameData->GetHostage());
 }
 
 ISceneObject *GuiManager::GetSceneObject() const
