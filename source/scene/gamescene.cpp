@@ -299,7 +299,6 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
 		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(true);
 	}
-
 }
 
 void GameScene::OnJobAborted()
@@ -315,16 +314,6 @@ void GameScene::LoadMapColliders()
 		MetadataObject *placeHolder = static_cast<MetadataObject *>( game->GetChildAt(i));
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
-	}
-}
-
-void GameScene::RemoveHostage()
-{
-	gGui->RemoveHostage();
-
-	if ((gGameData->GetHostage() <= 0) && (!strNextLevel.empty()))
-	{
-		bChangeLevel = true;
 	}
 }
 
