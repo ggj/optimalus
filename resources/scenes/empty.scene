@@ -6,7 +6,7 @@
 			sType: Image
 			sName: TitleImage
 			sResource: textures/menu_background.png
-			cPosition: {z: 1000}
+			cPosition: {x:115, y:85, z: 1000}
 		}
 		{
 			sType: Camera
