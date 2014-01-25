@@ -65,7 +65,6 @@ class PlayerEntity: public SpriteEntity,
 		f32 fVelocity;
 		f32 fMove;
 		f32 fUpDownMove;
-		f32 fLandTime;
 		f32 fInvicibleTime;
 
 		bool bIsActive;

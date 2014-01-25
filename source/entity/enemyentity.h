@@ -15,9 +15,13 @@ class EnemyEntity: public SpriteEntity
 
 		virtual void OnCollision(const CollisionEvent &event);
 
+		bool OnDamage();
+
 	private:
 		b2Body *pBody;
 		CollisionSensor clSensor;
+
+		f32 fInvicibleTime;
 };
 
 #endif
