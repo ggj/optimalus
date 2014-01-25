@@ -66,14 +66,29 @@ bool GuiManager::LoadGUI(const String &doc)
 			pDoc->Focus();
 			pDoc->Show();
 
-			if (pDoc->GetElementById("lifes") != NULL)
-				pElementLife = pDoc->GetElementById("lifes");
+			if (pDoc->GetElementById("level") != NULL)
+				pElementLevel = pDoc->GetElementById("level");
 
-			if (pDoc->GetElementById("time") != NULL)
-				pElementTime = pDoc->GetElementById("time");
+			if (pDoc->GetElementById("xp") != NULL)
+				pElementXP = pDoc->GetElementById("xp");
 
-			if (pDoc->GetElementById("hostages") != NULL)
-				pElementHostage = pDoc->GetElementById("hostages");
+			if (pDoc->GetElementById("attackPower") != NULL)
+				pElementAttackPower = pDoc->GetElementById("attackPower");
+
+			if (pDoc->GetElementById("gold") != NULL)
+				pElementGold = pDoc->GetElementById("gold");
+
+			if (pDoc->GetElementById("life") != NULL)
+				pElementLife = pDoc->GetElementById("life");
+
+			if (pDoc->GetElementById("lifePotion") != NULL)
+				pElementLifePotion = pDoc->GetElementById("lifePotion");
+
+			if (pDoc->GetElementById("mana") != NULL)
+				pElementMana = pDoc->GetElementById("mana");
+
+			if (pDoc->GetElementById("manaPotion") != NULL)
+				pElementManaPotion = pDoc->GetElementById("manaPotion");
 
 			if (pDoc->GetElementById("sfx") != NULL && gGameData->IsSfxEnabled())
 				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
@@ -230,11 +245,49 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 }
 
 // GUI Elements
+void GuiManager::SetLevel(u32 level)
+{
+	char x[100];
+	snprintf(x, 100, "%d", level);
+	pElementLevel->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetLevel(level);
+}
+
+void GuiManager::SetXP(u32 xp)
+{
+	char x[100];
+	snprintf(x, 100, "%d", xp);
+	pElementXP->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetXP(xp);
+}
+
+void GuiManager::SetAttackPower(u32 attackPower)
+{
+	char x[100];
+	snprintf(x, 100, "%d", attackPower);
+	pElementAttackPower->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetAttackPower(attackPower);
+}
+
+void GuiManager::SetGold(u32 gold)
+{
+	char x[100];
+	snprintf(x, 100, "%d", gold);
+	pElementGold->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetGold(gold);
+}
+
+void GuiManager::RemoveGold()
+{
+	gGameData->RemoveGold();
+	this->SetGold(gGameData->GetGold());
+}
+
 void GuiManager::SetLife(u32 life)
 {
-	//char x[100];
-	//snprintf(x, 100, "%d", life);
-	//pElementLife->SetInnerRML(Rocket::Core::String(x));
+	char x[100];
+	snprintf(x, 100, "%d", life);
+	pElementLife->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetLife(life);
 }
 
@@ -244,31 +297,46 @@ void GuiManager::RemoveLife()
 	this->SetLife(gGameData->GetLife());
 }
 
-void GuiManager::SetTime(u32 time)
+void GuiManager::SetLifePotion(u32 lifePotion)
 {
-	//char x[100];
-	//snprintf(x, 100, "%d", time);
-	//pElementTime->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetTime(time);
+	char x[100];
+	snprintf(x, 100, "%d", lifePotion);
+	pElementLifePotion->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetLifePotion(lifePotion);
 }
 
-void GuiManager::PrintHostage(u32 hostage)
+void GuiManager::RemoveLifePotion()
 {
-	//char x[100];
-	//snprintf(x, 100, "%d", hostage);
-	//pElementHostage->SetInnerRML(Rocket::Core::String(x));
+	gGameData->RemoveLifePotion();
+	this->SetLifePotion(gGameData->GetLifePotion());
 }
 
-void GuiManager::SetHostage(u32 hostage)
+void GuiManager::SetMana(u32 mana)
 {
-	this->PrintHostage(hostage);
-	gGameData->SetHostage(hostage);
+	char x[100];
+	snprintf(x, 100, "%d", mana);
+	pElementMana->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetMana(mana);
 }
 
-void GuiManager::RemoveHostage()
+void GuiManager::RemoveMana()
 {
-	gGameData->RemoveHostage();
-	this->PrintHostage(gGameData->GetHostage());
+	gGameData->RemoveMana();
+	this->SetMana(gGameData->GetMana());
+}
+
+void GuiManager::SetManaPotion(u32 manaPotion)
+{
+	char x[100];
+	snprintf(x, 100, "%d", manaPotion);
+	pElementManaPotion->SetInnerRML(Rocket::Core::String(x));
+	gGameData->SetManaPotion(manaPotion);
+}
+
+void GuiManager::RemoveManaPotion()
+{
+	gGameData->RemoveManaPotion();
+	this->SetManaPotion(gGameData->GetManaPotion());
 }
 
 ISceneObject *GuiManager::GetSceneObject() const

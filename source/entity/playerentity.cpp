@@ -143,7 +143,7 @@ void PlayerEntity::Update(f32 dt)
 	iPreviousState = iCurrentState;
 }
 
-void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
+bool PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
 	if (this->bIsActive)
 	{
@@ -175,9 +175,11 @@ void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 			fUpDownMove = 1;
 		}
 	}
+
+	return true;
 }
 
-void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
+bool PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	if (this->bIsActive)
 	{
@@ -215,6 +217,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		if (k == eKey::Space)
 		{
 			gGameScene->ChangePlayer(this->GetClassName());
+			return false;
 		}
 
 		if (fUpDownMove == 0 && fMove == 0)
@@ -222,6 +225,8 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 			SetState(Idle);
 		}
 	}
+
+	return true;
 }
 
 bool PlayerEntity::CheckGround()
