@@ -10,6 +10,7 @@ GameData::GameData()
 
 	sOptions.bSfxEnabled = true;
 	sOptions.bBgmEnabled = true;
+	sOptions.bFullScreenEnabled = false;
 	sOptions.fSfxVol = 1.0f;
 	sOptions.fBgmVol = 1.0f;
 }

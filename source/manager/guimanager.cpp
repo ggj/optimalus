@@ -80,6 +80,9 @@ bool GuiManager::LoadGUI(const String &doc)
 
 			if (pDoc->GetElementById("bgm") != NULL && gGameData->IsBgmEnabled())
 				pDoc->GetElementById("bgm")->SetAttribute("checked", "");
+
+			if (pDoc->GetElementById("fullscreen") != NULL && gGameData->IsFullScreenEnabled())
+				pDoc->GetElementById("fullscreen")->SetAttribute("checked", "");
 		}
 
 		sDocument = doc;

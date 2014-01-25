@@ -25,7 +25,10 @@ SOURCES += source/main.cpp \
 	source/states/game/run_state.cpp \
 	source/states/game/pause_state.cpp \
 	source/util/triggercounter.cpp \
-	source/util/collisionsensor.cpp
+	source/util/collisionsensor.cpp \
+	source/entity/optimistplayerentity.cpp \
+	source/entity/pessimistplayerentity.cpp \
+	source/entity/realistplayerentity.cpp
 
 HEADERS += \
 	source/defines.h \
@@ -56,7 +59,10 @@ HEADERS += \
 	source/states/game/pause_state.h \
 	source/util/sounds.h \
 	source/util/triggercounter.h \
-	source/util/collisionsensor.h
+	source/util/collisionsensor.h \
+	source/entity/optimistplayerentity.h \
+	source/entity/pessimistplayerentity.h \
+	source/entity/realistplayerentity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -78,9 +84,15 @@ OTHER_FILES_SCENE = \
 OTHER_FILES_TEXTURE = \
 #Textures
 	resources/textures/rocket_invader.png \
-	resources/textures/player_idle_frame1.png \
-	resources/textures/player_run_frame2.png \
-	resources/textures/player_run_frame1.png \
+	resources/textures/realist_player_idle_frame1.png \
+	resources/textures/realist_player_run_frame2.png \
+	resources/textures/realist_player_run_frame1.png \
+	resources/textures/pessimist_player_idle_frame1.png \
+	resources/textures/pessimist_player_run_frame2.png \
+	resources/textures/pessimist_player_run_frame1.png \
+	resources/textures/optimist_player_idle_frame1.png \
+	resources/textures/optimist_player_run_frame2.png \
+	resources/textures/optimist_player_run_frame1.png \
 	resources/textures/heart.png \
 	resources/textures/menu_background.png \
 	resources/textures/background_gameover.png \

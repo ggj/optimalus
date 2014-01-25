@@ -19,16 +19,18 @@ class PlayerEntity: public SpriteEntity,
 {
 	public:
 		PlayerEntity();
+		PlayerEntity(const char *className, const char *spriteName, bool bIsActive);
+
 		virtual ~PlayerEntity();
 
-		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
-		virtual void Update(f32 dt);
+		void Load(MetadataObject &metadata, SceneNode *sprites);
+		void Update(f32 dt);
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardPress(const EventInputKeyboard *ev);
+		void OnInputKeyboardPress(const EventInputKeyboard *ev);
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		void OnInputKeyboardRelease(const EventInputKeyboard *ev);
 
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
@@ -40,9 +42,12 @@ class PlayerEntity: public SpriteEntity,
 		void Teleport(const b2Vec2 &position);
 		bool OnDamage();
 
+		void ChangePlayer();
+		void SetIsActive(bool isActive);
+		bool GetIsActive();
+
 	private:
 		bool CheckGround();
-		void SetState(int newState);
 
 	protected:
 		b2Body *pBody;
@@ -61,7 +66,9 @@ class PlayerEntity: public SpriteEntity,
 		f32 fLandTime;
 		f32 fInvicibleTime;
 
+		bool bIsActive;
 		bool bIsRunning;
+		void SetState(int newState);
 };
 
 #endif

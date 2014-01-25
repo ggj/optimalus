@@ -24,7 +24,7 @@ DeathEntity::~DeathEntity()
 void DeathEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 {
 	SpriteEntity::Load(metadata, sprites);
-	b2Vec2 customSize(50, 40);
+	b2Vec2 customSize(32, 32);
 
 	clSensor.Load(*pSprite, true, &customSize, this);
 
@@ -65,7 +65,13 @@ void DeathEntity::Update(f32 dt)
 	else
 	{
 		if (pTarget == NULL)
-			pTarget = static_cast<PlayerEntity *>(gWorldManager->FindEntityByClassName("Player"));
+			pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
+
+		if (pTarget == NULL)
+			pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
+
+		if (pTarget == NULL)
+			pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
 
 		if (pTarget == NULL)
 			Log("No player to track");
@@ -73,6 +79,7 @@ void DeathEntity::Update(f32 dt)
 		b2Vec2 dir = pTarget->GetBodyPosition() - clSensor.GetBodyPosition();
 
 		f32 distance = dir.Normalize();
+		/*
 		if (distance > 0.03f)
 		{
 			//Go faster down to help player jump
@@ -89,6 +96,7 @@ void DeathEntity::Update(f32 dt)
 
 			clSensor.SetBodyPosition(dir);
 		}
+		*/
 	}
 }
 
@@ -113,15 +121,13 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 				gSoundManager->Play(SND_POWERUP);
 				player->SetItem(ItemTypes::None);
 				fSleep = fSleepConfig;
-
-				gGameScene->RemoveHostage();
 			}
 			else if (fSleep <= 0)
 			{
 				if (player->OnDamage())
 				{
 					gSoundManager->Play(SND_DAMAGE);
-					gGameScene->RemoveLife();
+					//gGameScene->RemoveLife();
 				}
 			}
 		}
