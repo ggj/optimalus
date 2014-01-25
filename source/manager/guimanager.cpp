@@ -66,6 +66,9 @@ bool GuiManager::LoadGUI(const String &doc)
 			pDoc->Focus();
 			pDoc->Show();
 
+			if (pDoc->GetElementById("playerName") != NULL)
+				pElementPlayerName = pDoc->GetElementById("playerName");
+
 			if (pDoc->GetElementById("level") != NULL)
 				pElementLevel = pDoc->GetElementById("level");
 
@@ -245,6 +248,11 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 }
 
 // GUI Elements
+void GuiManager::SetPlayerName(String name)
+{
+	pElementPlayerName->SetInnerRML(Rocket::Core::String("Player"));
+}
+
 void GuiManager::SetLevel(u32 level)
 {
 	char x[100];
