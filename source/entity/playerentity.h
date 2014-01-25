@@ -55,6 +55,8 @@ class PlayerEntity: public SpriteEntity,
 		void SetIsInputEnabled(bool isKeyboardEnabled);
 		bool GetIsInputEnabled() const;
 
+		String GetDisplayName() const;
+
 		u32 GetLevel() const;
 		void SetLevel(u32);
 
@@ -77,6 +79,7 @@ class PlayerEntity: public SpriteEntity,
 
 		struct PlayerData
 		{
+			String displayName;
 			u32 iLevel;
 			u32 iXP;
 			u32 iAttackPower;

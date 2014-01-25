@@ -283,6 +283,11 @@ void PlayerEntity::SetState(int newState)
 	iCurrentState = newState;
 }
 
+String PlayerEntity::GetDisplayName() const
+{
+	return sPlayer.displayName;
+}
+
 u32 PlayerEntity::GetLevel() const
 {
 	return sPlayer.iLevel;

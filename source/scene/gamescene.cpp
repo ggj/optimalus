@@ -83,14 +83,12 @@ bool GameScene::Initialize()
 
 	// Get the initial value from game data
 	gGui->SetPlayerName("OptimistPlayer");
-	gGui->SetLevel(1/*gGameData->GetLevel()*/);
-	gGui->SetXP(2/*gGameData->GetXP()*/);
-	gGui->SetAttackPower(3/*gGameData->GetAttackPower()*/);
-	gGui->SetGold(4/*gGameData->GetGold()*/);
-	gGui->SetLife(5/*gGameData->GetLife()*/);
-	gGui->SetLifePotion(6/*gGameData->GetLifePotion()*/);
-	gGui->SetMana(7/*gGameData->GetMana()*/);
-	gGui->SetManaPotion(8/*gGameData->GetManaPotion()*/);
+	gGui->SetLevel(1);
+	gGui->SetXP(100);
+	gGui->SetAttackPower(15);
+	gGui->SetGold(0);
+	gGui->SetLife(22);
+	gGui->SetMana(10);
 
 	return true;
 }
@@ -358,7 +356,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	}
 
 	// Set the name of the player to UI
-	gGui->SetPlayerName(pPlayer->GetName());
+	gGui->SetPlayerName(pPlayer->GetDisplayName());
 	gGui->SetLevel(pPlayer->GetLevel());
 	gGui->SetXP(pPlayer->GetXP());
 	gGui->SetLife(pPlayer->GetLife());
