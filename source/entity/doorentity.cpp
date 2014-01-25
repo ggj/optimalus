@@ -1,7 +1,7 @@
 #include "DoorEntity.h"
 
-DoorEntity::DoorEntity():
-	Sprite("Door", "Door")
+DoorEntity::DoorEntity()
+	: SpriteEntity("Door", "Door")
 {
 	//empty
 }

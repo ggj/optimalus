@@ -1,9 +1,14 @@
 #include "cameracontroller.h"
 
+const s32 kViewW = 784;
+const s32 kViewH = 768;
+const f32 kHalfViewW = kViewW / 2.0f;
+const f32 kHalfViewH = kViewH / 2.0f;
+
 CameraController::CameraController()
-	: pCamera(NULL)
-	, cOffset(-400.0f, -300.0f, 0.0f)
-	, cArea(-400.0f, -300.0f, 800.0f, 600.0f)
+	: pCamera(nullptr)
+	, cOffset(-kHalfViewW, -kHalfViewH, 0.0f)
+	, cArea(0.0f, 0.0f, 0.0f, 0.0f)
 {
 }
 
@@ -31,8 +36,8 @@ void CameraController::LookAt(const Vector3f &pos)
 	s32 y = static_cast<s32>(p.getY());
 	f32 z = p.getZ();
 
-	s32 halfScreenWidth = pScreen->GetWidth() / 2;
-	s32 halfScreenHeight = pScreen->GetHeight() / 2;
+	s32 halfScreenWidth = kHalfViewW;//pScreen->GetWidth() / 2;
+	s32 halfScreenHeight = kHalfViewH;//pScreen->GetHeight() / 2;
 
 	if (x < cArea.x1 - 16)
 		x = cArea.x1 - 16;

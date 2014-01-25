@@ -2,6 +2,7 @@
 #define _ENTITY_H_
 
 #include "../defines.h"
+#include "../manager/physicsmanager.h"
 
 class CollisionEvent;
 
@@ -42,7 +43,7 @@ const String &Entity::GetName() const
 	return strName;
 }
 
-inline const String &Entity::GetTarget() const
+const String &Entity::GetTarget() const
 {
 	return strTarget;
 }

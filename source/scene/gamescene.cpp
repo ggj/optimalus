@@ -233,6 +233,13 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	pGameOverImg->SetVisible(false);
 
 	bInitialized = true;
+
+/*
+	auto tex = static_cast<Texture *>(pResourceManager->Get("textures/tileset2.png", ITexture::GetTypeId()));
+	auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
+	auto set = tiles->GetTileSet();
+	set->SetTexture(tex);
+*/
 }
 
 void GameScene::OnJobAborted()

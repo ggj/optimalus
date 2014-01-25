@@ -13,7 +13,7 @@ class GameOverState : public StateMachineState
 		virtual void OnStop(void *);
 
 	private:
-		u64 iBeginStateTime;
+		Milliseconds iBeginStateTime;
 };
 
 #endif // _GAMEOVER_STATE_H
