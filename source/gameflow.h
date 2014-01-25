@@ -91,7 +91,7 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Element	*pElementBgm;
 
 		String sSceneFile;
-		Vector3f vScenePos;
+
 		Vector3f vCameraPos;
 };
 

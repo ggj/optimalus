@@ -66,7 +66,10 @@ class GameScene : public IEventInputKeyboardListener,
 		CameraController clCamera;
 		SceneNode		*pParentScene;
 		SceneNode		cScene;
-		Music			musTheme;
+		Music			musThemeRealist;
+		Music			musThemePessimist;
+		Music			musThemeOptimist;
+		Music			*musCur;
 		GameMap			*pGameMap;
 		bool			bPaused;
 		bool			bInitialized;
