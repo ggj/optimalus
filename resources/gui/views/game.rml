@@ -43,26 +43,25 @@
 						<strong id="enemyName">Reaper</strong>
 					</div>
 				</p>
-				<p>
-					<div id="avatar_div"></div>
+				<p id="avatar">
+					<h1><div id="enemy_div"/></h1>
 				</p>
-				<p>
-					<h1>Damage:</h1>
-					<span>18</span>
-					<h1>Health:</h1>
-					<span>29</span>
+				<p id="levelxp">
+					<h1>Level:</h1>
+					<span id="enemy_level">5</span>
+					<h1>HP:</h1>
+					<span id="enemy_life">100/100</span>
 				</p>
-				<p>
-					<h1>Family:</h1>
-					<span>Undead</span>
-					<h1>Type:</h1>
-					<span>Magical</span>
+				<p id="centered">
+					Description
 				</p>
-				<p>
-					<h1>Ability:</h1>
-					<span>Burn</span>
-					<h1>Resistence</h1>
-					<span>30%</span>
+				<p id="dialog">
+					<div id="dialog">
+						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
+						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
+						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
+						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
+					</div>
 				</p>
 			</div>
 		</game>

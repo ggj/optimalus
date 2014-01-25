@@ -33,7 +33,7 @@ div#score_div
 	outline-font-effect: outline;
 	outline-width: 2px;
 	outline-color: black;
-	background:#ff00ff;
+	background:black;
 
 	background-decorator: tiled-box;
 	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
@@ -47,7 +47,7 @@ div#score_div
 
 	z-index: 2;
 	height: 100%;
-	overflow: hidden auto;
+	//overflow: hidden auto;
 	text-align: center;
 }
 
@@ -56,6 +56,27 @@ p#levelxp
 	text-align: left;
 	margin: 0px;
 	padding: 0px;
+}
+
+p#centered
+{
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	font-size: 25;
+}
+
+div#dialog
+{
+	height: 220px;
+	text-align: center;
+	margin: 5px;
+	padding: 0px;
+	padding-top: 5px;
+	font-size: 15;
+	display: block;
+	overflow-y: auto;
 }
 
 p#contains_icon span
@@ -70,10 +91,21 @@ p#avatar
 	padding: 0px;
 }
 
+div#enemy_div
+{
+	width: 80px;
+	height: 80px;
+	margin-left: 70px;
+	
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
+}
+
 div#avatar_a_div
 {
 	width: 80px;
 	height: 80px;
+	margin-left: -5px;
 	
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
@@ -83,7 +115,7 @@ div#avatar_b_div
 {
 	width: 80px;
 	height: 80px;
-	margin-left: 22px;
+	margin-left: 17px;
 	
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 7px 323px 87px 403px;
@@ -93,7 +125,7 @@ div#avatar_c_div
 {
 	width: 80px;
 	height: 80px;
-	margin-left: 45px;
+	margin-left: 40px;
 	
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 88px 323px 176px 403px;
@@ -129,7 +161,8 @@ div#displayEnemyName
 	outline-width: 2px;
 	outline-color: black;
 	text-align: center;
-	margin: 10px 10px;
+	margin-top: 5px;
+	padding-bottom: 20px;
 }
 
 div#score_div span
