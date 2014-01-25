@@ -235,10 +235,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	clCamera.SetCamera(pCamera);
 	clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-	MapLayerTiled *bg = pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled();
-	pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
-	pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
-
+	MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
 
 	f32 hw = bg->GetWidth() * 0.5f;
 	f32 hh = bg->GetHeight() * 0.5f;
@@ -276,9 +273,10 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pPlayer = realistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(true);
+		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
+		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
+		auto set = tiles->GetTileSet();
+		set->SetTexture(tex);
 	}
 	else if (currentPlayer == "RealistPlayer")
 	{
@@ -289,9 +287,10 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pPlayer = pessimistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(true);
+		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
+		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
+		auto set = tiles->GetTileSet();
+		set->SetTexture(tex);
 	}
 	else if (currentPlayer == "PessimistPlayer")
 	{
@@ -302,9 +301,10 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pPlayer = optimistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(true);
+		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
+		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
+		auto set = tiles->GetTileSet();
+		set->SetTexture(tex);
 	}
 }
 
