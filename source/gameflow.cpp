@@ -7,12 +7,12 @@
 
 #define GAME_ID	0xF0000001
 
-GameFlow *gFlow = NULL;
-GameData *gGameData = NULL;
+GameFlow *gFlow = nullptr;
+GameData *gGameData = nullptr;
 
 GameFlow::GameFlow()
-	: pScene(NULL)
-	, pCamera(NULL)
+	: pScene(nullptr)
+	, pCamera(nullptr)
 	, sSceneFile("")
 {
 	gFlow = this;
@@ -20,7 +20,7 @@ GameFlow::GameFlow()
 
 GameFlow::~GameFlow()
 {
-	gFlow = NULL;
+	gFlow = nullptr;
 }
 
 bool GameFlow::Initialize()
@@ -64,6 +64,8 @@ bool GameFlow::Initialize()
 		Viewport *viewport = cPres.GetViewportByName("MainView");
 
 		pCamera = viewport->GetCamera();
+		vScenePos = pScene->GetPosition();
+		vCameraPos = pCamera->GetPosition();
 
 		sdNew(GuiManager());
 		gGui->Initialize();
@@ -71,6 +73,15 @@ bool GameFlow::Initialize()
 
 		cFlow.Initialize(&cMenu);
 	});
+}
+
+void GameFlow::ResetCamera()
+{
+	if (pScene)
+		pScene->SetPosition(vScenePos);
+
+	if (pCamera)
+		pCamera->SetPosition(vCameraPos);
 }
 
 bool GameFlow::Update(f32 dt)
@@ -82,12 +93,12 @@ bool GameFlow::Update(f32 dt)
 
 bool GameFlow::Shutdown()
 {
-	cMenu.OnStop(NULL);
+	cMenu.OnStop(nullptr);
 	pSaveSystem->Save(0, &gGameData->sPlayer, &gGameData->sOptions);
 
 	if (cFlow.GetCurrentState() == &cGame)
 	{
-		cGame.OnStop(NULL);
+		cGame.OnStop(nullptr);
 		cGame.LateStop();
 	}
 

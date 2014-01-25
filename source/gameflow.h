@@ -30,6 +30,8 @@ class GameFlow : public IGameApp,
 		void LoadSceneFile(const String &file);
 		const String &GetSceneFile() const;
 
+		void ResetCamera();
+
 		void DoLoad(const String &scene = "");
 		void Menu();
 		void Credits();
@@ -89,6 +91,8 @@ class GameFlow : public IGameApp,
 		Rocket::Core::Element	*pElementBgm;
 
 		String sSceneFile;
+		Vector3f vScenePos;
+		Vector3f vCameraPos;
 };
 
 inline Camera *GameFlow::GetCamera() const

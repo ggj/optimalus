@@ -29,6 +29,9 @@ class GuiManager : public IRocketEventListener
 		bool UnloadGUI();
 		void ReleaseGUI();
 
+		bool LoadStackedGUI(const String &doc);
+		bool UnloadStackedGUI();
+
 		void SetPlayerName(String name);
 		void SetLevel(u32 level);
 		void SetXP(u32 xp);
@@ -58,6 +61,7 @@ class GuiManager : public IRocketEventListener
 		RocketInterface			*pRocket;
 		Rocket::Core::Context	*pContext;
 		Rocket::Core::ElementDocument *pDoc;
+		Rocket::Core::ElementDocument *pStackedDoc;
 
 		// GUI Elements
 		Rocket::Core::Element	*pElementPlayerName;
