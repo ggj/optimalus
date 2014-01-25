@@ -36,7 +36,7 @@ bool GameFlow::Initialize()
 		gGameData = sdNew(GameData());
 
 		if (this->SaveSystemFlow())
-			pSaveSystem->Load(0, &gGameData->sPlayer, &gGameData->sOptions);
+			pSaveSystem->Load(0, &gGameData->sGamePlay, &gGameData->sOptions);
 
 		// Create the transitions
 		cMenuToGame.Initialize(&cMenu, &cOnGame, &cGame);
@@ -92,7 +92,7 @@ bool GameFlow::Update(f32 dt)
 bool GameFlow::Shutdown()
 {
 	cMenu.OnStop(nullptr);
-	pSaveSystem->Save(0, &gGameData->sPlayer, &gGameData->sOptions);
+	pSaveSystem->Save(0, &gGameData->sGamePlay, &gGameData->sOptions);
 
 	if (cFlow.GetCurrentState() == &cGame)
 	{
@@ -195,7 +195,7 @@ bool GameFlow::SaveSystemFlow() const
 
 	eCartridgeError error = pSaveSystem->Initialize(eCartridgeSize::Small);
 	if (error == eCartridgeError::None)
-		error = pSaveSystem->Prepare(GAME_ID, &data.sPlayer, sizeof(data.sPlayer), &data.sOptions, sizeof(data.sOptions));
+		error = pSaveSystem->Prepare(GAME_ID, &data.sGamePlay, sizeof(data.sGamePlay), &data.sOptions, sizeof(data.sOptions));
 
 	if (error == eCartridgeError::DeviceFull)
 	{
@@ -219,7 +219,7 @@ bool GameFlow::SaveSystemFlow() const
 	if (error == eCartridgeError::NotFormatted)
 	{
 		Log("Save file doesn't exist or corrupted, creating one now.");
-		error = pSaveSystem->FormatCard(&data.sPlayer, &data.sOptions);
+		error = pSaveSystem->FormatCard(&data.sGamePlay, &data.sOptions);
 	}
 
 	if (error == eCartridgeError::DataCorrupt)

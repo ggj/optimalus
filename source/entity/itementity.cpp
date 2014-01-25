@@ -33,20 +33,6 @@ void ItemEntity::Update(f32 dt)
 
 void ItemEntity::OnCollision(const CollisionEvent &event)
 {
-	if (event.GetType() == CollisionEventType::OnEnter)
-	{
-		Log("Player colidiu");
-
-		Entity *other = event.GetOtherEntity();
-		if ((other != nullptr && other->GetClassName() == "OptimistPlayer") ||
-			(other != nullptr && other->GetClassName() == "RealistPlayer") ||
-			(other != nullptr && other->GetClassName() == "PessimistPlayer"))
-		{
-			PlayerEntity *player = static_cast<PlayerEntity *>(other);
-
-			//Do damage to the player
-
-			//Receive damage
-		}
-	}
+	UNUSED(event);
 }
+
