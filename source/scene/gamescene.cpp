@@ -14,7 +14,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, clCamera()
 	, pParentScene(parent)
 	, cScene()
-	, musTheme()
+	, musCur(nullptr)
 	, pGameMap(nullptr)
 	, bPaused(false)
 	, bInitialized(false)
@@ -101,30 +101,34 @@ bool GameScene::Update(f32 dt)
 		return true;
 
 	cFlow.Update(dt);
-	if (!bPaused)
-	{
-		clPhysicsManager.Update(dt);
-		clWorldManager.Update(dt);
-		clCamera.LookAt(pPlayer->GetPosition());
-	}
+
+	if (bPaused)
+		return true;
 
 	if (bMoveCamera)
 	{
-		fElapsed += dt - 0.5f;
+		fElapsed += dt;
 		if (fElapsed > 1.0f)
 			fElapsed = 1.0f;
 
-		if ((pCamera->GetPosition().getX() != vCameraTo.getX()) &&
-			(pCamera->GetPosition().getY() != vCameraTo.getY()))
+		if (fElapsed < 1.0f)
 		{
-			vCameraCurrent = ((1.f - fElapsed) * vCameraFrom) + (fElapsed * vCameraTo);
-			pCamera->SetPosition(vCameraCurrent);
+			auto A = ((1.f - fElapsed) * vCameraFrom);
+			auto B = (fElapsed * vCameraTo);
+			vCameraCurrent = A + B;
+			clCamera.LookAt(vCameraCurrent);
 		}
 		else
 		{
 			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 			bMoveCamera = false;
 		}
+	}
+	else
+	{
+		clPhysicsManager.Update(dt);
+		clWorldManager.Update(dt);
+		clCamera.LookAt(pPlayer->GetPosition());
 	}
 
 	if (bChangeLevel)
@@ -135,6 +139,7 @@ bool GameScene::Update(f32 dt)
 			gFlow->LoadSceneFile(strNextLevel);
 		}
 	}
+
 	if (gGameData->GetLife() == 0)
 	{
 		pGameOverImg->SetVisible(true);
@@ -150,7 +155,8 @@ bool GameScene::Update(f32 dt)
 
 bool GameScene::Shutdown()
 {
-	musTheme.Unload();
+	if (musCur)
+		musCur->Unload();
 
 	clWorldManager.Clear();
 
@@ -211,9 +217,12 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	// Validate the music to play
 	if (gGameData->IsBgmEnabled() == true)
 	{
-		musTheme.Load("sounds/theme.ogg");
-		musTheme.SetVolume(1.0f);
-		pSoundSystem->PlayMusic(&musTheme);
+		musThemeOptimist.Load("sounds/scottwills_time.ogg");
+		musThemeOptimist.SetVolume(1.0f);
+		musThemeRealist.Load("sounds/real.ogg");
+		musThemeRealist.SetVolume(1.0f);
+		musThemePessimist.Load("sounds/theme.ogg");
+		musThemePessimist.SetVolume(1.0f);
 	}
 
 	SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
@@ -255,6 +264,8 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	if (pPlayer == nullptr)
 	{
 		pPlayer = pPlayerOptimist;
+		musCur = &musThemeOptimist;
+		pSoundSystem->PlayMusic(musCur);
 	}
 
 	this->LoadMapColliders();
@@ -278,6 +289,9 @@ void GameScene::OnJobCompleted(FileLoader *job)
 
 void GameScene::ChangePlayer(const String currentPlayer)
 {
+	pSoundSystem->StopMusic(10.0f);
+	bMoveCamera = true;
+
 	OptimistPlayerEntity *optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
 	RealistPlayerEntity *realistPlayer = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
 	PessimistPlayerEntity *pessimistPlayer = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
@@ -298,13 +312,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 
 		//Lerp camera
 		vCameraFrom = optimistPlayer->GetSprite()->GetPosition();
-
-		vCameraTo.setX(f32(realistPlayer->GetSprite()->GetPosition().getX()));
-		vCameraTo.setY(f32(realistPlayer->GetSprite()->GetPosition().getY()));
-		vCameraTo += pCamera->GetPosition();
+		vCameraTo = realistPlayer->GetSprite()->GetPosition();
 		fElapsed = 0.0f;
 
 		pPlayer = realistPlayer;
+		musCur = &musThemeRealist;
 	}
 	else if (pPlayer == realistPlayer)
 	{
@@ -319,13 +331,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 
 		//Lerp camera
 		vCameraFrom = realistPlayer->GetSprite()->GetPosition();
-
-		vCameraTo.setX(f32(pessimistPlayer->GetSprite()->GetPosition().getX()));
-		vCameraTo.setY(f32(pessimistPlayer->GetSprite()->GetPosition().getY()));
-		vCameraTo += pCamera->GetPosition();
+		vCameraTo = pessimistPlayer->GetSprite()->GetPosition();
 		fElapsed = 0.0f;
 
 		pPlayer = pessimistPlayer;
+		musCur = &musThemePessimist;
 	}
 	else if (pPlayer == pessimistPlayer)
 	{
@@ -340,14 +350,14 @@ void GameScene::ChangePlayer(const String currentPlayer)
 
 		//Lerp camera
 		vCameraFrom = pessimistPlayer->GetSprite()->GetPosition();
-
-		vCameraTo.setX(f32(optimistPlayer->GetSprite()->GetPosition().getX()));
-		vCameraTo.setY(f32(optimistPlayer->GetSprite()->GetPosition().getY()));
-		vCameraTo += pCamera->GetPosition();
+		vCameraTo = optimistPlayer->GetSprite()->GetPosition();
 		fElapsed = 0.0f;
 
 		pPlayer = optimistPlayer;
+		musCur = &musThemeOptimist;
 	}
+
+	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
 
 void GameScene::OnJobAborted()

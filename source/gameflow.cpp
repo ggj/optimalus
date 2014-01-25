@@ -14,6 +14,7 @@ GameFlow::GameFlow()
 	: pScene(nullptr)
 	, pCamera(nullptr)
 	, sSceneFile("")
+	, vCameraPos(0.0f, 0.0f, 0.0f)
 {
 	gFlow = this;
 }
@@ -64,7 +65,6 @@ bool GameFlow::Initialize()
 		Viewport *viewport = cPres.GetViewportByName("MainView");
 
 		pCamera = viewport->GetCamera();
-		vScenePos = pScene->GetPosition();
 		vCameraPos = pCamera->GetPosition();
 
 		sdNew(GuiManager());
@@ -77,9 +77,6 @@ bool GameFlow::Initialize()
 
 void GameFlow::ResetCamera()
 {
-	if (pScene)
-		pScene->SetPosition(vScenePos);
-
 	if (pCamera)
 		pCamera->SetPosition(vCameraPos);
 }
@@ -88,6 +85,7 @@ bool GameFlow::Update(f32 dt)
 {
 	cFlow.Update(dt);
 	cGame.LateStop();
+
 	return true;
 }
 
@@ -151,8 +149,18 @@ bool GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		pScene->Dump();
 	else if (k == eKey::F5)
 		gGui->ReloadGUI();
+	else if (k == eKey::F7)
+		gFlow->DoLoad("dungeon.scene");
+	else if (k == eKey::F8)
+		cFlow.OnEvent(&cOnMenu);
+	else if (k == eKey::F9)
+		cFlow.OnEvent(&cOnCredits);
 	else if (k == eKey::F10)
 		Rocket::Debugger::SetVisible(!Rocket::Debugger::IsVisible());
+	else if (k == eKey::F11)
+		pCamera->SetPosition(-512, -384);
+	else if (k == eKey::F12)
+		pScene->AddY(25.0f);
 
 	return true;
 }
