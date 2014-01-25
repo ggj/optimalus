@@ -227,18 +227,6 @@ bool PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 	return true;
 }
 
-bool PlayerEntity::CheckGround()
-{
-	if (gPhysics->RayCast(pBody, b2Vec2(0, 0.32f)))
-		return true;
-	if (gPhysics->RayCast(pBody, b2Vec2(0.16f, 0.32f)))
-		return true;
-	if (gPhysics->RayCast(pBody, b2Vec2(-0.16f, 0.32f)))
-		return true;
-
-	return false;
-}
-
 void PlayerEntity::SetItem(ItemTypes::Enum item)
 {
 	eItem = item;

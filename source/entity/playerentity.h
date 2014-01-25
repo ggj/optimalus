@@ -46,9 +46,6 @@ class PlayerEntity: public SpriteEntity,
 		void SetIsActive(bool isActive);
 		bool GetIsActive();
 
-	private:
-		bool CheckGround();
-
 	protected:
 		b2Body *pBody;
 		Sprite *pText;
