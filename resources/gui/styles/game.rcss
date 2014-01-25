@@ -16,32 +16,59 @@ game
 
 div
 {
-	height: 47px;
-	padding: 9px 0px 0px 65px;
-	margin: 0px 20px;
+	height: 0px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px;
 	font-size: 20;
 }
 
-div#hostages_div
-{
-	float: left;
-	width: 155px;
-	font-size: 30;
-
-	outline-font-effect: outline;
-	outline-width: 2px;
-	outline-color: black;
-}
-
-div#lifes_div
+div#score_div
 {
 	float: right;
-	width: 80px;
+	width: 240px;
 	font-size: 30;
 
 	outline-font-effect: outline;
 	outline-width: 2px;
 	outline-color: black;
+
+	background-decorator: tiled-box;
+	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
+	background-top-right-image: /textures/rocket_invader.png 136px 0px 146px 140px;
+	background-top-image: /textures/rocket_invader.png stretch 134px 0px 135px 140px;
+	background-bottom-left-image: /textures/rocket_invader.png 0px 140px 11px 151px;
+	background-bottom-right-image: /textures/rocket_invader.png 136px 140px 146px 151px;
+	background-bottom-image: /textures/rocket_invader.png stretch 11px 140px 12px 151px;
+	background-left-image: /textures/rocket_invader.png stretch 0px 139px 10px 140px;
+	background-center-image: /textures/rocket_invader.png stretch 11px 139px 12px 140px;
+
+	z-index: 2;
+	height: 100%;
+	overflow: hidden auto;
+	text-align: center;
+}
+
+div#score_div h1
+{
+		float: left;
+		width: 50px;
+		font-size: 12;
+
+		outline-font-effect: outline;
+		outline-width: 2px;
+		outline-color: black;
+}
+
+div#score_div span
+{
+		float: left;
+		width: 60px;
+		font-size: 16;
+		text-align: right;
+
+		outline-font-effect: outline;
+		outline-width: 2px;
+		outline-color: black;
 }
 
 icon
@@ -49,3 +76,76 @@ icon
 	display: block;
 	position: absolute;
 }
+
+div#attack_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 135px 153px 175px 193px;
+}
+
+div#gold_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 185px 153px 230px 193px;
+}
+
+div#life_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 334px 153px 379px 193px;
+}
+
+div#life_potion_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 230px 153px 275px 193px;
+}
+
+div#mana_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 385px 153px 430px 193px;
+}
+
+div#mana_potion_div icon
+{
+	float: left;
+	left: 0px;
+	top: 0px;
+	width: 45px;
+	height: 40px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 283px 153px 323px 193px;
+}
+

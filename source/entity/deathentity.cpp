@@ -127,7 +127,7 @@ void DeathEntity::OnCollision(const CollisionEvent &event)
 				if (player->OnDamage())
 				{
 					gSoundManager->Play(SND_DAMAGE);
-					gGameScene->RemoveLife();
+					//gGameScene->RemoveLife();
 				}
 			}
 		}

@@ -5,13 +5,55 @@
 	</head>
 	<body id="game_window">
 		<game id="game">
-			<div id="hostages_div">
-				<icon />
-				x <span id="hostages" />
-			</div>
-			<div id="lifes_div">
-				<icon />
-				x <span id="lifes">0</span>
+			<div id="score_div">
+				<p>
+					[Player Name]
+				</p>
+				<p>
+					<h1>Level:</h1>
+					<span>2</span>
+					<h1>XP Next:</h1>
+					<span>10</span>
+				</p>
+				<p>
+					<h1><div id="attack_div"><icon/></div></h1>
+					<span>15</span>
+					<h1><div id="gold_div"><icon/></div></h1>
+					<span>45</span>
+				</p>
+				<p>
+					<h1><div id="life_div"><icon/></div></h1>
+					<span>22/22</span>
+					<h1><div id="life_potion_div"><icon/></div></h1>
+					<span>2</span>
+				</p>
+				<p>
+					<h1><div id="mana_div"><icon/></div></h1>
+					<span>12/12</span>
+					<h1><div id="mana_potion_div"><icon/></div></h1>
+					<span>2</span>
+				</p>
+				<p>
+					Reaper
+				</p>
+				<p>
+					<h1>Damage:</h1>
+					<span>18</span>
+					<h1>Health:</h1>
+					<span>29</span>
+				</p>
+				<p>
+					<h1>Family:</h1>
+					<span>Undead</span>
+					<h1>Type:</h1>
+					<span>Magical Attack</span>
+				</p>
+				<p>
+					<h1>Ability:</h1>
+					<span>Mana burn</span>
+					<h1>Physical resist</h1>
+					<span>30%</span>
+				</p>
 			</div>
 		</game>
 	</body>
