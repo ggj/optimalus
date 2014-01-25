@@ -203,15 +203,29 @@ void GameScene::OnJobCompleted(FileLoader *job)
 		{
 			Entity* entity = clWorldManager.BuildEntity(*placeHolder, sprites);
 			//Log("%s", entity->GetName().c_str());
-			if (entity->GetClassName() == "Player")
+			if (entity->GetClassName() == "RealistPlayer")
 			{
-				pPlayer = static_cast<PlayerEntity*>(entity);
+				pPlayerRealist = static_cast<RealistPlayerEntity*>(entity);
+			}
+			if (entity->GetClassName() == "PessimistPlayer")
+			{
+				pPlayerPessimist = static_cast<PessimistPlayerEntity*>(entity);
+			}
+			if (entity->GetClassName() == "OptimistPlayer")
+			{
+				pPlayerOptimist = static_cast<OptimistPlayerEntity*>(entity);
 			}
 			else if (entity->GetClassName() == "Hostage")
 			{
 				++hostageNum;
 			}
 		}
+	}
+
+	// If the player is not set, the player will be optimist
+	if (pPlayer == NULL)
+	{
+		pPlayer = pPlayerRealist;
 	}
 
 	gGui->SetHostage(hostageNum);

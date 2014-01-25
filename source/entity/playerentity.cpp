@@ -20,6 +20,25 @@ PlayerEntity::PlayerEntity()
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsRunning(false)
+	, bIsActive(false)
+{
+}
+
+PlayerEntity::PlayerEntity(const char *className, const char *spriteName, bool bIsActive)
+	: SpriteEntity(className, spriteName)
+	, pBody(NULL)
+	, pIcon(NULL)
+	, vPlayerVectorDirection()
+	, eItem(ItemTypes::None)
+	, iPreviousState(Idle)
+	, iCurrentState(Idle)
+	, fVelocity(0.0f)
+	, fMove(0.0f)
+	, fUpDownMove(0.0f)
+	, fLandTime(0.0f)
+	, fInvicibleTime(0.0f)
+	, bIsRunning(false)
+	, bIsActive(bIsActive)
 {
 }
 
@@ -126,71 +145,82 @@ void PlayerEntity::Update(f32 dt)
 
 void PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
-	Key k = ev->GetKey();
-
-	b2Vec2 vel = pBody->GetLinearVelocity();
-
-	if ((k == eKey::Up || k == eKey::W) && iCurrentState != Jump)
+	if (this->bIsActive)
 	{
-		SetState(Run);
-		fUpDownMove = -1;
-	}
+		Key k = ev->GetKey();
 
-	if (k == eKey::Left || k == eKey::A)
-	{
-		SetState(Run);
-		fMove = -1;
-	}
+		b2Vec2 vel = pBody->GetLinearVelocity();
 
-	if (k == eKey::Right || k == eKey::D)
-	{
-		SetState(Run);
-		fMove = 1;
-	}
+		if ((k == eKey::Up || k == eKey::W) && iCurrentState != Jump)
+		{
+			SetState(Run);
+			fUpDownMove = -1;
+		}
 
-	if (k == eKey::Down || k == eKey::S)
-	{
-		SetState(Run);
-		fUpDownMove = 1;
+		if (k == eKey::Left || k == eKey::A)
+		{
+			SetState(Run);
+			fMove = -1;
+		}
+
+		if (k == eKey::Right || k == eKey::D)
+		{
+			SetState(Run);
+			fMove = 1;
+		}
+
+		if (k == eKey::Down || k == eKey::S)
+		{
+			SetState(Run);
+			fUpDownMove = 1;
+		}
 	}
 }
 
 void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
-	Key k = ev->GetKey();
-
-	b2Vec2 vel = pBody->GetLinearVelocity();
-	vel.x = 0;
-	vel.y = 0;
-
-	// Remove the directions
-	if (k == eKey::Up|| k == eKey::W)
+	if (this->bIsActive)
 	{
-		pBody->SetLinearVelocity(vel);
-		fUpDownMove = 0;
-	}
+		Key k = ev->GetKey();
 
-	if (k == eKey::Left|| k == eKey::A)
-	{
-		pBody->SetLinearVelocity(vel);
-		fMove = 0;
-	}
+		b2Vec2 vel = pBody->GetLinearVelocity();
+		vel.x = 0;
+		vel.y = 0;
 
-	if (k == eKey::Right|| k == eKey::D)
-	{
-		pBody->SetLinearVelocity(vel);
-		fMove = 0;
-	}
+		// Remove the directions
+		if (k == eKey::Up|| k == eKey::W)
+		{
+			pBody->SetLinearVelocity(vel);
+			fUpDownMove = 0;
+		}
 
-	if (k == eKey::Down|| k == eKey::S)
-	{
-		pBody->SetLinearVelocity(vel);
-		fUpDownMove = 0;
-	}
+		if (k == eKey::Left|| k == eKey::A)
+		{
+			pBody->SetLinearVelocity(vel);
+			fMove = 0;
+		}
 
-	if (fUpDownMove == 0 && fMove == 0)
-	{
-		SetState(Idle);
+		if (k == eKey::Right|| k == eKey::D)
+		{
+			pBody->SetLinearVelocity(vel);
+			fMove = 0;
+		}
+
+		if (k == eKey::Down|| k == eKey::S)
+		{
+			pBody->SetLinearVelocity(vel);
+			fUpDownMove = 0;
+		}
+
+		if (k == eKey::Space)
+		{
+			this->ChangePlayer();
+		}
+
+		if (fUpDownMove == 0 && fMove == 0)
+		{
+			SetState(Idle);
+		}
 	}
 }
 
@@ -212,9 +242,19 @@ void PlayerEntity::SetItem(ItemTypes::Enum item)
 	pIcon->SetVisible(eItem == ItemTypes::Heart);
 }
 
+void PlayerEntity::SetIsActive(bool isActive)
+{
+	bIsActive = isActive;
+}
+
 ItemTypes::Enum PlayerEntity::GetItem() const
 {
 	return eItem;
+}
+
+bool PlayerEntity::GetIsActive()
+{
+	return bIsActive;
 }
 
 void PlayerEntity::SetState(int newState)
@@ -230,4 +270,36 @@ bool PlayerEntity::OnDamage()
 
 	fInvicibleTime = 3;
 	return true;
+}
+
+void PlayerEntity::ChangePlayer()
+{
+	Log("Try to change the current player");
+
+	OptimistPlayerEntity* optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
+	RealistPlayerEntity* realistPlayer = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
+	PessimistPlayerEntity* pessimistPlayer = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
+
+	if (this->GetClassName() == "OptimistPlayer")
+	{
+		optimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsActive(false);
+		realistPlayer->SetIsActive(true);
+		return;
+	}
+	else if (this->GetClassName() == "RealistPlayer")
+	{
+		realistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsActive(true);
+		return;
+	}
+	else if (this->GetClassName() == "PessimistPlayer")
+	{
+		pessimistPlayer->SetIsActive(false);
+		realistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsActive(true);
+		return;
+	}
+
 }

@@ -340,10 +340,10 @@
          "objects":[
                 {
                  "height":0,
-                 "name":"Player",
+                 "name":"PessimistPlayer",
                  "properties":
                     {
-                     "Class":"Player"
+                     "Class":"PessimistPlayer"
                     },
                  "type":"",
                  "visible":true,
@@ -363,6 +363,32 @@
                  "width":0,
                  "x":440,
                  "y":360
+                }, 
+                {
+                 "height":0,
+                 "name":"RealistPlayer",
+                 "properties":
+                    {
+                     "Class":"RealistPlayer"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":120
+                }, 
+                {
+                 "height":0,
+                 "name":"OptimistPlayer",
+                 "properties":
+                    {
+                     "Class":"OptimistPlayer"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
