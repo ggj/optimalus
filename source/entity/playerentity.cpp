@@ -20,6 +20,7 @@ PlayerEntity::PlayerEntity()
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsActive(false)
+	, bIsInputEnabled(true)
 {
 }
 
@@ -37,6 +38,7 @@ PlayerEntity::PlayerEntity(const char *className, const char *spriteName, bool b
 	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsActive(bIsActive)
+	, bIsInputEnabled(true)
 {
 }
 
@@ -111,6 +113,12 @@ void PlayerEntity::Update(f32 dt)
 		{
 			pSprite->SetVisible(true);
 			fInvicibleTime = 0;
+			if (this->bIsActive)
+			{
+				this->bIsInputEnabled = true;
+				this->StopPlayerMovement();
+				SetState(Idle);
+			}
 		}
 	}
 
@@ -143,7 +151,7 @@ void PlayerEntity::Update(f32 dt)
 
 bool PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 {
-	if (this->bIsActive)
+	if (this->bIsActive && this->bIsInputEnabled)
 	{
 		Key k = ev->GetKey();
 
@@ -179,7 +187,7 @@ bool PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 
 bool PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
-	if (this->bIsActive)
+	if (this->bIsActive && this->bIsInputEnabled)
 	{
 		Key k = ev->GetKey();
 
@@ -233,14 +241,35 @@ void PlayerEntity::SetItem(ItemTypes::Enum item)
 	pText->SetVisible(eItem == ItemTypes::Text);
 }
 
+ItemTypes::Enum PlayerEntity::GetItem() const
+{
+	return eItem;
+}
+
 void PlayerEntity::SetIsActive(bool isActive)
 {
 	bIsActive = isActive;
 }
 
-ItemTypes::Enum PlayerEntity::GetItem() const
+void PlayerEntity::SetIsInputEnabled(bool isInputEnabled)
 {
-	return eItem;
+	bIsInputEnabled = isInputEnabled;
+}
+
+bool PlayerEntity::GetIsInputEnabled() const
+{
+	return bIsInputEnabled;
+}
+
+void PlayerEntity::StopPlayerMovement()
+{
+	b2Vec2 vel = pBody->GetLinearVelocity();
+	vel.x = 0;
+	vel.y = 0;
+
+	pBody->SetLinearVelocity(vel);
+	fUpDownMove = 0;
+	fMove = 0;
 }
 
 bool PlayerEntity::GetIsActive()
@@ -254,8 +283,14 @@ void PlayerEntity::SetState(int newState)
 	iCurrentState = newState;
 }
 
-bool PlayerEntity::OnDamage()
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 {
+	// Play damage sound
+	gSoundManager->Play(SND_DAMAGE);
+
+	// Apply force to player
+	pBody->ApplyForce(vec2Push, pBody->GetWorldCenter());
+
 	if (fInvicibleTime > 0)
 		return false;
 
