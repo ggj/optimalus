@@ -85,8 +85,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/menu_background.png \
 	resources/textures/background_gameover.png \
 	resources/textures/death_idle_frame1.png \
-	resources/textures/tileset.png \
-	resources/textures/fog.png
+	resources/textures/tileset.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
