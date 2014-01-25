@@ -122,8 +122,8 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("lifePotion") != nullptr)
 				pElementLifePotion = pDoc->GetElementById("lifePotion");
 
-			if (pDoc->GetElementById("mana") != nullptr)
-				pElementMana = pDoc->GetElementById("mana");
+			if (pDoc->GetElementById("stamina") != nullptr)
+				pElementMana = pDoc->GetElementById("stamina");
 
 			if (pDoc->GetElementById("manaPotion") != nullptr)
 				pElementManaPotion = pDoc->GetElementById("manaPotion");
@@ -342,9 +342,9 @@ void GuiManager::RemoveLife()
 
 void GuiManager::SetLifePotion(u32 lifePotion)
 {
-	char x[100];
-	snprintf(x, 100, "%d", lifePotion);
-	pElementLifePotion->SetInnerRML(Rocket::Core::String(x));
+	//char x[100];
+	//snprintf(x, 100, "%d", lifePotion);
+	//pElementLifePotion->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetLifePotion(lifePotion);
 }
 
@@ -370,9 +370,9 @@ void GuiManager::RemoveMana()
 
 void GuiManager::SetManaPotion(u32 manaPotion)
 {
-	char x[100];
-	snprintf(x, 100, "%d", manaPotion);
-	pElementManaPotion->SetInnerRML(Rocket::Core::String(x));
+	//char x[100];
+	//snprintf(x, 100, "%d", manaPotion);
+	//pElementManaPotion->SetInnerRML(Rocket::Core::String(x));
 	gGameData->SetManaPotion(manaPotion);
 }
 

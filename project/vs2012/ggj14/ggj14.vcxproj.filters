@@ -75,9 +75,6 @@
     <ClCompile Include="..\..\..\source\entity\heartentity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\entity\hostageentity.cpp">
-      <Filter>entity</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\entity\itementity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
@@ -121,6 +118,18 @@
       <Filter>entity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\entity\realistplayerentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\enemyentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\goldentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\healthpotionentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\manapotionentity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
   </ItemGroup>
@@ -169,9 +178,6 @@
     <ClInclude Include="..\..\..\source\entity\heartentity.h">
       <Filter>entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\entity\hostageentity.h">
-      <Filter>entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\entity\itementity.h">
       <Filter>entity</Filter>
     </ClInclude>
@@ -218,6 +224,18 @@
       <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\entity\realistplayerentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\enemyentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\goldentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\healthpotionentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\manapotionentity.h">
       <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>

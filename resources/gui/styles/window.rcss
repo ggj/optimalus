@@ -100,7 +100,7 @@ div#content
 p
 {
 	text-align: left;
-	margin-bottom: 1em;
+	margin-bottom: 0.7em;
 }
 
 h1
@@ -436,81 +436,77 @@ datagridexpand.collapsed
 	icon-image-t: 250px 267px;
 }
 
-
-
 scrollbarvertical
 {
 	margin-top: -6px;
 	margin-bottom: -6px;
-	margin-right: -11px;
-	width: 27px;
+	margin-right: -8px;
+	width: 14px;
 }
 
 scrollbarvertical slidertrack
 {
 	background-decorator: tiled-vertical;
-	background-top-image: /textures/rocket_invader.png 70px 199px 97px 201px;
-	background-center-image: /textures/rocket_invader.png stretch 70px 201px 97px 202px;
-	background-bottom-image: /textures/rocket_invader.png 70px 203px 97px 204px;
+	background-top-image: /textures/rocket_invader.png 345px 428px 360px 430px;
+	background-center-image: /textures/rocket_invader.png stretch 345px 430px 360px 431px;
+	background-bottom-image: /textures/rocket_invader.png 345px 432px 360px 433px;
 }
 
 scrollbarvertical sliderbar
 {
-	margin-left: 4px;
-	width: 23px;
+	margin-left: 1px;
+	width: 14px;
 	min-height: 46px;
 
 	background-decorator: tiled-vertical;
-	background-top-image: /textures/rocket_invader.png 56px 152px 79px 175px;
-	background-center-image: /textures/rocket_invader.png stretch 56px 175px 79px 175px;
-	background-bottom-image: /textures/rocket_invader.png 56px 176px 79px 198px;
+	background-top-image: /textures/rocket_invader.png 332px 400px 345px 413px;
+	background-center-image: /textures/rocket_invader.png stretch 332px 414px 345px 414px;
+	background-bottom-image: /textures/rocket_invader.png 332px 415px 345px 427px;
 }
 
 scrollbarvertical sliderbar:hover
 {
-	background-top-image-s: 80px 103px;
-	background-center-image-s: 80px 103px;
-	background-bottom-image-s: 80px 103px;
+	background-top-image-s: 346px 360px;
+	background-center-image-s: 346px 360px;
+	background-bottom-image-s: 346px 360px;
 }
 
 scrollbarvertical sliderbar:active
 {
-	background-top-image-s: 104px 127px;
-	background-center-image-s: 104px 127px;
-	background-bottom-image-s: 104px 127px;
+	background-top-image-s: 360px 374px;
+	background-center-image-s: 360px 374px;
+	background-bottom-image-s: 360px 374px;
 }
 
 scrollbarvertical sliderarrowdec
 {
-	width: 27px;
-	height: 24px;
+	width: 14px;
+	height: 14px;
 
 	icon-decorator: image;
-	icon-image: /textures/rocket_invader.png 0px 152px 27px 176px;
+	icon-image: /textures/rocket_invader.png 300px 400px 314px 414px;
 }
 
 scrollbarvertical sliderarrowdec:hover,
 scrollbarvertical sliderarrowinc:hover
 {
-	icon-image-t: 177px 201px;
+	icon-image-t: 415px 429px;
 }
 
 scrollbarvertical sliderarrowdec:active,
 scrollbarvertical sliderarrowinc:active
 {
-	icon-image-t: 202px 226px;
+	icon-image-t: 430px 444px;
 }
 
 scrollbarvertical sliderarrowinc
 {
-	width: 27px;
-	height: 24px;
+	width: 14px;
+	height: 14px;
 
 	icon-decorator: image;
-	icon-image: /textures/rocket_invader.png 28px 152px 55px 176px;
+	icon-image: /textures/rocket_invader.png 317px 400px 331px 414px;
 }
-
-
 
 scrollbarhorizontal
 {
