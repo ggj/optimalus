@@ -55,8 +55,8 @@ class GameScene : public IEventInputKeyboardListener,
 		virtual void LoadMapColliders();
 
 		void RemoveHostage();
-
 		void RemoveLife();
+		void ChangePlayer(const String currentPlayer);
 
 	private:
 		PlayerEntity	 *pPlayer;

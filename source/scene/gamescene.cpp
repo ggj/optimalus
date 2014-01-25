@@ -225,7 +225,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	// If the player is not set, the player will be optimist
 	if (pPlayer == NULL)
 	{
-		pPlayer = pPlayerRealist;
+		pPlayer = pPlayerOptimist;
 	}
 
 	gGui->SetHostage(hostageNum);
@@ -235,7 +235,10 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	clCamera.SetCamera(pCamera);
 	clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-	MapLayerTiled *bg = pGameMap->GetLayerByName("Background")->AsTiled();
+	MapLayerTiled *bg = pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled();
+	pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
+	pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
+
 
 	f32 hw = bg->GetWidth() * 0.5f;
 	f32 hh = bg->GetHeight() * 0.5f;
@@ -247,6 +250,56 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	pGameOverImg->SetVisible(false);
 
 	bInitialized = true;
+}
+
+void GameScene::ChangePlayer(const String currentPlayer)
+{
+	OptimistPlayerEntity *optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
+	RealistPlayerEntity *realistPlayer = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
+	PessimistPlayerEntity *pessimistPlayer = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
+
+	Log("Current player: %s", currentPlayer.c_str());
+
+	if (currentPlayer == "OptimistPlayer")
+	{
+		optimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsActive(false);
+		realistPlayer->SetIsActive(true);
+
+		pPlayer = realistPlayer;
+		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+
+		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(true);
+	}
+	else if (currentPlayer == "RealistPlayer")
+	{
+		realistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsActive(true);
+
+		pPlayer = pessimistPlayer;
+		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+
+		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(true);
+	}
+	else if (currentPlayer == "PessimistPlayer")
+	{
+		pessimistPlayer->SetIsActive(false);
+		realistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsActive(true);
+
+		pPlayer = optimistPlayer;
+		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+
+		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
+		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(true);
+	}
+
 }
 
 void GameScene::OnJobAborted()

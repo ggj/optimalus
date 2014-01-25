@@ -214,7 +214,7 @@ void PlayerEntity::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 
 		if (k == eKey::Space)
 		{
-			this->ChangePlayer();
+			gGameScene->ChangePlayer(this->GetClassName());
 		}
 
 		if (fUpDownMove == 0 && fMove == 0)
@@ -270,36 +270,4 @@ bool PlayerEntity::OnDamage()
 
 	fInvicibleTime = 3;
 	return true;
-}
-
-void PlayerEntity::ChangePlayer()
-{
-	Log("Try to change the current player");
-
-	OptimistPlayerEntity* optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
-	RealistPlayerEntity* realistPlayer = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
-	PessimistPlayerEntity* pessimistPlayer = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
-
-	if (this->GetClassName() == "OptimistPlayer")
-	{
-		optimistPlayer->SetIsActive(false);
-		pessimistPlayer->SetIsActive(false);
-		realistPlayer->SetIsActive(true);
-		return;
-	}
-	else if (this->GetClassName() == "RealistPlayer")
-	{
-		realistPlayer->SetIsActive(false);
-		optimistPlayer->SetIsActive(false);
-		pessimistPlayer->SetIsActive(true);
-		return;
-	}
-	else if (this->GetClassName() == "PessimistPlayer")
-	{
-		pessimistPlayer->SetIsActive(false);
-		realistPlayer->SetIsActive(false);
-		optimistPlayer->SetIsActive(true);
-		return;
-	}
-
 }
