@@ -7,13 +7,22 @@
 		<game id="game">
 			<div id="score_div">
 				<p>
-					<span id="playerName">[Player Name]</span>
+					<div id="displayPlayerName">
+						<strong id="playerName"></strong>
+					</div>
+				</p>
+				<p>
+					<div id="avatar_div">
+						<div id="avatar_optimist_div"></div>
+						<div id="avatar_realist_div"></div>
+						<div id="avatar_pessimist_div"></div>
+					</div>
 				</p>
 				<p>
 					<h1>Level:</h1>
 					<span id="level">1</span>
-					<h1>XP Next:</h1>
-					<span id="xp">100</span>
+					<h1>XP:</h1>
+					<span id="xp">100/100</span>
 				</p>
 				<p>
 					<h1><div id="attack_div"><icon/></div></h1>
@@ -34,7 +43,12 @@
 					<span id="manaPotion">0</span>
 				</p>
 				<p>
-					Reaper
+					<div id="displayEnemyName">
+						<strong id="enemyName">Reaper</strong>
+					</div>
+				</p>
+				<p>
+					<div id="avatar_div"></div>
 				</p>
 				<p>
 					<h1>Damage:</h1>
@@ -46,12 +60,12 @@
 					<h1>Family:</h1>
 					<span>Undead</span>
 					<h1>Type:</h1>
-					<span>Magical Attack</span>
+					<span>Magical</span>
 				</p>
 				<p>
 					<h1>Ability:</h1>
-					<span>Mana burn</span>
-					<h1>Physical resist</h1>
+					<span>Burn</span>
+					<h1>Resistence</h1>
 					<span>30%</span>
 				</p>
 			</div>

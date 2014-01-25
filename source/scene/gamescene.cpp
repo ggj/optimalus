@@ -82,15 +82,15 @@ bool GameScene::Initialize()
 	pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
-	gGui->SetPlayerName("Player");
-	gGui->SetLevel(gGameData->GetLevel());
-	gGui->SetXP(gGameData->GetXP());
-	gGui->SetAttackPower(gGameData->GetAttackPower());
-	gGui->SetGold(gGameData->GetGold());
-	gGui->SetLife(gGameData->GetLife());
-	gGui->SetLifePotion(gGameData->GetLifePotion());
-	gGui->SetMana(gGameData->GetMana());
-	gGui->SetManaPotion(gGameData->GetManaPotion());
+	gGui->SetPlayerName("OptimistPlayer");
+	gGui->SetLevel(1/*gGameData->GetLevel()*/);
+	gGui->SetXP(2/*gGameData->GetXP()*/);
+	gGui->SetAttackPower(3/*gGameData->GetAttackPower()*/);
+	gGui->SetGold(4/*gGameData->GetGold()*/);
+	gGui->SetLife(5/*gGameData->GetLife()*/);
+	gGui->SetLifePotion(6/*gGameData->GetLifePotion()*/);
+	gGui->SetMana(7/*gGameData->GetMana()*/);
+	gGui->SetManaPotion(8/*gGameData->GetManaPotion()*/);
 
 	return true;
 }
@@ -357,6 +357,8 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		musCur = &musThemeOptimist;
 	}
 
+	// Set the name of the player to UI
+	gGui->SetPlayerName(pPlayer->GetName());
 	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
 

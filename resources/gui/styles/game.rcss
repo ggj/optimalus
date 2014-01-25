@@ -31,6 +31,7 @@ div#score_div
 	outline-font-effect: outline;
 	outline-width: 2px;
 	outline-color: black;
+	background:#000000;
 
 	background-decorator: tiled-box;
 	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
@@ -48,15 +49,99 @@ div#score_div
 	text-align: center;
 }
 
+div#avatar_div
+{
+	margin: 0 auto;
+	width: 80px;
+	height: 80;
+
+	outline-font-effect: outline;
+	outline-width: 2px;
+	outline-color: black;
+
+	background-decorator: tiled-box;
+	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
+	background-top-right-image: /textures/rocket_invader.png 136px 0px 146px 140px;
+	background-top-image: /textures/rocket_invader.png stretch 134px 0px 135px 140px;
+	background-bottom-left-image: /textures/rocket_invader.png 0px 140px 11px 151px;
+	background-bottom-right-image: /textures/rocket_invader.png 136px 140px 146px 151px;
+	background-bottom-image: /textures/rocket_invader.png stretch 11px 140px 12px 151px;
+	background-left-image: /textures/rocket_invader.png stretch 0px 139px 10px 140px;
+	background-center-image: /textures/rocket_invader.png stretch 11px 139px 12px 140px;
+
+	z-index: 2;
+	overflow: hidden auto;
+	text-align: center;
+}
+
+div#avatar_optimist_div
+{
+	display: block;
+	margin: 0 auto;
+	left: 0px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 7px 323px 87px 403px;
+}
+
+div#avatar_realist_div
+{
+	display: block;
+	margin: 0 auto;
+	left: 0px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 88px 323px 176px 403px;
+}
+
+div#avatar_pessimist_div
+{
+	display: block;
+	margin: 0 auto;
+	left: 0px;
+	top: 0px;
+	width: 80px;
+	height: 80px;
+
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
+}
+
 div#score_div h1
 {
 		float: left;
 		width: 50px;
-		font-size: 12;
+		font-size: 18;
 
 		outline-font-effect: outline;
 		outline-width: 2px;
 		outline-color: black;
+}
+
+div#displayPlayerName
+{
+	font-size: 28;
+	outline-font-effect: outline;
+	outline-width: 2px;
+	outline-color: black;
+	text-align: center;
+	margin: 10px 10px;
+}
+
+div#displayEnemyName
+{
+	font-size: 28;
+	outline-font-effect: outline;
+	outline-width: 2px;
+	outline-color: black;
+	text-align: center;
+	margin: 10px 10px;
 }
 
 div#score_div span
