@@ -47,29 +47,33 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 		{
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
+			// Stop player movement
+			player->StopPlayerMovement();
+			player->SetIsInputEnabled(false);
+
 			// Define a vector to push the player
 			b2Vec2 vecToPush = b2Vec2(0, 0);
 
 			// Find where the player comes
 			if (gPhysics->RayCast(pBody, b2Vec2(0, -1.0f)))
 			{
-				// Right
-				vecToPush = b2Vec2(-10, 0);
+				Log("Push player right");
+				vecToPush = b2Vec2(-1, 0);
 			}
-			if (gPhysics->RayCast(pBody, b2Vec2(0, 1.0f)))
+			else if (gPhysics->RayCast(pBody, b2Vec2(0, 1.0f)))
 			{
-				// Left
-				vecToPush = b2Vec2(10, 0);
+				Log("Push player left");
+				vecToPush = b2Vec2(1, 0);
 			}
-			if (gPhysics->RayCast(pBody, b2Vec2(-1.0f, 0.0f)))
+			else if (gPhysics->RayCast(pBody, b2Vec2(-1.0f, 0.0f)))
 			{
-				// Up
-				vecToPush = b2Vec2(0, -10);
+				Log("Push player up");
+				vecToPush = b2Vec2(0, -1);
 			}
-			if (gPhysics->RayCast(pBody, b2Vec2(1.0f, 0.0f)))
+			else if (gPhysics->RayCast(pBody, b2Vec2(1.0f, 0.0f)))
 			{
-				// Down
-				vecToPush = b2Vec2(0, 10);
+				Log("Push player down");
+				vecToPush = b2Vec2(0, 1);
 			}
 
 			//Do damage to the player
