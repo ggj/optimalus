@@ -5,13 +5,34 @@
 	</head>
 	<body id="game_window">
 		<game id="game">
-			<div id="hostages_div">
-				<icon />
-				x <span id="hostages" />
-			</div>
-			<div id="lifes_div">
-				<icon />
-				x <span id="lifes">0</span>
+			<div id="score_div">
+				<p>
+					<h1>[Player Name]</h1>
+				</p>
+				<p>
+					<h1>Attack:</h1>
+					<span>15 (+50%)</span>
+				</p>
+				<p>
+					<h1>Gold:</h1>
+					<span>45</span>
+				</p>
+				<p>
+					<h1>Life:</h1>
+					<span>22/22</span>
+				</p>
+				<p>
+					<h1>Life Potion:</h1>
+					<span>2</span>
+				</p>
+				<p>
+					<h1>Mana:</h1>
+					<span>12/12</span>
+				</p>
+				<p>
+					<h1>Mana Potion:</h1>
+					<span>2</span>
+				</p>
 			</div>
 		</game>
 	</body>
