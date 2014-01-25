@@ -109,7 +109,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/optimist_enemy1_idle_frame1.png \
 	resources/textures/health_potion.png \
 	resources/textures/mana_potion.png \
-	resources/textures/gold.png
+	resources/textures/gold.png \
+	resources/textures/number_1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
