@@ -40,7 +40,7 @@ class PlayerEntity: public SpriteEntity,
 		ItemTypes::Enum GetItem() const;
 
 		void Teleport(const b2Vec2 &position);
-		bool OnDamage();
+		bool OnDamage(const b2Vec2 vec2Push);
 
 		void ChangePlayer();
 		void SetIsActive(bool isActive);

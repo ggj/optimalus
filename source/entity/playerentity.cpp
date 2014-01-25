@@ -254,8 +254,14 @@ void PlayerEntity::SetState(int newState)
 	iCurrentState = newState;
 }
 
-bool PlayerEntity::OnDamage()
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 {
+	// Play damage sound
+	gSoundManager->Play(SND_DAMAGE);
+
+	// Apply force to player
+	pBody->ApplyForce(vec2Push, pBody->GetWorldCenter());
+
 	if (fInvicibleTime > 0)
 		return false;
 
