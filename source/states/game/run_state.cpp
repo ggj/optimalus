@@ -13,12 +13,15 @@ RunState::~RunState()
 void RunState::OnStart(void *data)
 {
 	Log("Entering Run State");
-	gGui->LoadGUI("gui/views/game.rml");
 
 	if (data)
 	{
 		GameScene *g = static_cast<GameScene *>(data);
 		g->Resume();
+	}
+	else
+	{
+		gGui->LoadGUI("gui/views/game.rml");
 	}
 }
 

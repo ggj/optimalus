@@ -4,19 +4,20 @@
 #include <Rocket/Debugger.h>
 #include <Rocket/Controls.h>
 
-GuiManager *gGui = NULL;
+GuiManager *gGui = nullptr;
 
 GuiManager::GuiManager()
-	: pRocket(NULL)
-	, pContext(NULL)
-	, pDoc(NULL)
+	: pRocket(nullptr)
+	, pContext(nullptr)
+	, pDoc(nullptr)
+	, pStackedDoc(nullptr)
 {
 	gGui = this;
 }
 
 GuiManager::~GuiManager()
 {
-	gGui = NULL;
+	gGui = nullptr;
 }
 
 bool GuiManager::Initialize()
@@ -32,6 +33,40 @@ bool GuiManager::Shutdown()
 	return true;
 }
 
+bool GuiManager::UnloadStackedGUI()
+{
+	Log("Unloading Stacked GUI Document");
+	if (pStackedDoc)
+	{
+		pStackedDoc->Hide();
+		pContext->UnloadDocument(pStackedDoc);
+		pStackedDoc->RemoveReference();
+		pStackedDoc = nullptr;
+	}
+
+	return true;
+}
+
+bool GuiManager::LoadStackedGUI(const String &doc)
+{
+	if (this->UnloadStackedGUI())
+	{
+		Log("Loading Stacked GUI Document");
+		pStackedDoc = pContext->LoadDocument(doc.c_str());
+		if (pStackedDoc != nullptr)
+		{
+			Rocket::Core::Element *title = pStackedDoc->GetElementById("title");
+			if (title != nullptr)
+				title->SetInnerRML(pStackedDoc->GetTitle());
+
+			pStackedDoc->Focus();
+			pStackedDoc->Show();
+		}
+	}
+
+	return true;
+}
+
 bool GuiManager::UnloadGUI()
 {
 	Log("Unloading GUI Document");
@@ -40,7 +75,7 @@ bool GuiManager::UnloadGUI()
 		pDoc->Hide();
 		pContext->UnloadDocument(pDoc);
 		pDoc->RemoveReference();
-		pDoc = NULL;
+		pDoc = nullptr;
 	}
 
 	return true;
@@ -57,46 +92,49 @@ bool GuiManager::LoadGUI(const String &doc)
 	{
 		Log("Loading GUI Document");
 		pDoc = pContext->LoadDocument(doc.c_str());
-		if (pDoc != NULL)
+		if (pDoc != nullptr)
 		{
 			Rocket::Core::Element *title = pDoc->GetElementById("title");
-			if (title != NULL)
+			if (title != nullptr)
 				title->SetInnerRML(pDoc->GetTitle());
 
 			pDoc->Focus();
 			pDoc->Show();
 
-			if (pDoc->GetElementById("level") != NULL)
+			if (pDoc->GetElementById("playerName") != nullptr)
+				pElementPlayerName = pDoc->GetElementById("playerName");
+
+			if (pDoc->GetElementById("level") != nullptr)
 				pElementLevel = pDoc->GetElementById("level");
 
-			if (pDoc->GetElementById("xp") != NULL)
+			if (pDoc->GetElementById("xp") != nullptr)
 				pElementXP = pDoc->GetElementById("xp");
 
-			if (pDoc->GetElementById("attackPower") != NULL)
+			if (pDoc->GetElementById("attackPower") != nullptr)
 				pElementAttackPower = pDoc->GetElementById("attackPower");
 
-			if (pDoc->GetElementById("gold") != NULL)
+			if (pDoc->GetElementById("gold") != nullptr)
 				pElementGold = pDoc->GetElementById("gold");
 
-			if (pDoc->GetElementById("life") != NULL)
+			if (pDoc->GetElementById("life") != nullptr)
 				pElementLife = pDoc->GetElementById("life");
 
-			if (pDoc->GetElementById("lifePotion") != NULL)
+			if (pDoc->GetElementById("lifePotion") != nullptr)
 				pElementLifePotion = pDoc->GetElementById("lifePotion");
 
-			if (pDoc->GetElementById("mana") != NULL)
+			if (pDoc->GetElementById("mana") != nullptr)
 				pElementMana = pDoc->GetElementById("mana");
 
-			if (pDoc->GetElementById("manaPotion") != NULL)
+			if (pDoc->GetElementById("manaPotion") != nullptr)
 				pElementManaPotion = pDoc->GetElementById("manaPotion");
 
-			if (pDoc->GetElementById("sfx") != NULL && gGameData->IsSfxEnabled())
+			if (pDoc->GetElementById("sfx") != nullptr && gGameData->IsSfxEnabled())
 				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
 
-			if (pDoc->GetElementById("bgm") != NULL && gGameData->IsBgmEnabled())
+			if (pDoc->GetElementById("bgm") != nullptr && gGameData->IsBgmEnabled())
 				pDoc->GetElementById("bgm")->SetAttribute("checked", "");
 
-			if (pDoc->GetElementById("fullscreen") != NULL && gGameData->IsFullScreenEnabled())
+			if (pDoc->GetElementById("fullscreen") != nullptr && gGameData->IsFullScreenEnabled())
 				pDoc->GetElementById("fullscreen")->SetAttribute("checked", "");
 		}
 
@@ -117,7 +155,7 @@ bool GuiManager::InitializeGUI()
 	Rocket::Controls::Initialise();
 
 	pContext = Rocket::Core::CreateContext("main", Rocket::Core::Vector2i(pScreen->GetWidth(), pScreen->GetHeight()));
-	if (pContext == NULL)
+	if (pContext == nullptr)
 	{
 		Rocket::Core::Shutdown();
 		return false;
@@ -154,7 +192,7 @@ void GuiManager::ReleaseGUI()
 	if (pDoc)
 	{
 		pDoc->RemoveReference();
-		pDoc = NULL;
+		pDoc = nullptr;
 	}
 
 	pContext->RemoveReference();
@@ -245,6 +283,11 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 }
 
 // GUI Elements
+void GuiManager::SetPlayerName(String name)
+{
+	pElementPlayerName->SetInnerRML(Rocket::Core::String("Player"));
+}
+
 void GuiManager::SetLevel(u32 level)
 {
 	char x[100];
