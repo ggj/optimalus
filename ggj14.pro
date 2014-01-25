@@ -121,6 +121,9 @@ OTHER_FILES_GUI_VIEW = \
 
 OTHER_FILES_SOUND = \
 #Sounds
+	resources/sounds/optimist_theme.ogg \
+	resources/sounds/pessimist_theme.ogg \
+	resources/sounds/realist_theme.ogg \
 	resources/sounds/sfx.ogg \
 	resources/sounds/theme.ogg \
 	resources/sounds/wakeup.ogg \

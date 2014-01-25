@@ -217,11 +217,11 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	// Validate the music to play
 	if (gGameData->IsBgmEnabled() == true)
 	{
-		musThemeOptimist.Load("sounds/scottwills_time.ogg");
+		musThemeOptimist.Load("sounds/optimist_theme.ogg");
 		musThemeOptimist.SetVolume(1.0f);
-		musThemeRealist.Load("sounds/real.ogg");
+		musThemeRealist.Load("sounds/realist_theme.ogg");
 		musThemeRealist.SetVolume(1.0f);
-		musThemePessimist.Load("sounds/theme.ogg");
+		musThemePessimist.Load("sounds/pessimist_theme.ogg");
 		musThemePessimist.SetVolume(1.0f);
 	}
 
