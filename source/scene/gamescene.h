@@ -105,6 +105,13 @@ class GameScene : public IEventInputKeyboardListener,
 
 		Image *pGameOverImg;
 
+		// Lerp camera
+		Vector3f	vCameraFrom;
+		Vector3f	vCameraCurrent;
+		Vector3f	vCameraTo;
+		f32			fElapsed;
+		bool		bMoveCamera;
+
 };
 
 #endif // _GAMEFLOW_H_

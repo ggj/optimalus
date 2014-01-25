@@ -22,6 +22,11 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, fTimeToNextLevel(3.0f)
 	, bChangeLevel(false)
 	, pGameOverImg(nullptr)
+	, vCameraFrom(0.0f, 0.0f, 0.0f)
+	, vCameraCurrent(0.0f, 0.0f, 0.0f)
+	, vCameraTo(0.0f, 0.0f, 0.0f)
+	, fElapsed(0.0f)
+	, bMoveCamera(false)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -103,6 +108,25 @@ bool GameScene::Update(f32 dt)
 		clCamera.LookAt(pPlayer->GetPosition());
 	}
 
+	if (bMoveCamera)
+	{
+		fElapsed += dt - 0.5f;
+		if (fElapsed > 1.0f)
+			fElapsed = 1.0f;
+
+		if ((pCamera->GetPosition().getX() != vCameraTo.getX()) &&
+			(pCamera->GetPosition().getY() != vCameraTo.getY()))
+		{
+			vCameraCurrent = ((1.f - fElapsed) * vCameraFrom) + (fElapsed * vCameraTo);
+			pCamera->SetPosition(vCameraCurrent);
+		}
+		else
+		{
+			clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
+			bMoveCamera = false;
+		}
+	}
+
 	if (bChangeLevel)
 	{
 		fTimeToNextLevel -= dt;
@@ -150,7 +174,7 @@ bool GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		else
 			cFlow.OnEvent(&cOnPause, this);
 	}
-	
+
 	return true;
 }
 
@@ -274,13 +298,20 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsActive(true);
 		pessimistPlayer->SetIsActive(false);
 
-		pPlayer = realistPlayer;
-		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
-
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
+
+		//Lerp camera
+		vCameraFrom = optimistPlayer->GetSprite()->GetPosition();
+
+		vCameraTo.setX(f32(realistPlayer->GetSprite()->GetPosition().getX()));
+		vCameraTo.setY(f32(realistPlayer->GetSprite()->GetPosition().getY()));
+		vCameraTo += pCamera->GetPosition();
+		fElapsed = 0.0f;
+
+		pPlayer = realistPlayer;
 	}
 	else if (pPlayer == realistPlayer)
 	{
@@ -288,13 +319,20 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsActive(true);
 
-		pPlayer = pessimistPlayer;
-		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
-
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
+
+		//Lerp camera
+		vCameraFrom = realistPlayer->GetSprite()->GetPosition();
+
+		vCameraTo.setX(f32(pessimistPlayer->GetSprite()->GetPosition().getX()));
+		vCameraTo.setY(f32(pessimistPlayer->GetSprite()->GetPosition().getY()));
+		vCameraTo += pCamera->GetPosition();
+		fElapsed = 0.0f;
+
+		pPlayer = pessimistPlayer;
 	}
 	else if (pPlayer == pessimistPlayer)
 	{
@@ -302,13 +340,20 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsActive(false);
 
-		pPlayer = optimistPlayer;
-		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
-
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
+
+		//Lerp camera
+		vCameraFrom = pessimistPlayer->GetSprite()->GetPosition();
+
+		vCameraTo.setX(f32(optimistPlayer->GetSprite()->GetPosition().getX()));
+		vCameraTo.setY(f32(optimistPlayer->GetSprite()->GetPosition().getY()));
+		vCameraTo += pCamera->GetPosition();
+		fElapsed = 0.0f;
+
+		pPlayer = optimistPlayer;
 	}
 }
 
