@@ -16,7 +16,6 @@ class ItemEntity: public SpriteEntity
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
-		b2Body *pBody;
 		CollisionSensor clSensor;
 };
 

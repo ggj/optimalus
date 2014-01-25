@@ -24,6 +24,7 @@ void HealthPotionEntity::OnCollision(const CollisionEvent &event)
 
 			//Collect Item
 			player->OnCollect(ItemTypes::HealthPotion);
+
 		}
 	}
 }
