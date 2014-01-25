@@ -3,7 +3,7 @@
 
 #include "SpriteEntity.h"
 
-class DoorEntity: public Sprite
+class DoorEntity : public SpriteEntity
 {
 	public:
 		DoorEntity();
