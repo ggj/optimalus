@@ -7,7 +7,7 @@
 		<game id="game">
 			<div id="score_div">
 				<p>
-					<span id="playerName">[Player Name]</span>
+					<span id="playerName"><name/></span>
 				</p>
 				<p>
 					<h1>Level:</h1>

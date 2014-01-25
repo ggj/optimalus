@@ -77,15 +77,15 @@ bool GameScene::Initialize()
 	//pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
-	gGui->SetPlayerName("Player");
-	gGui->SetLevel(gGameData->GetLevel());
-	gGui->SetXP(gGameData->GetXP());
-	gGui->SetAttackPower(gGameData->GetAttackPower());
-	gGui->SetGold(gGameData->GetGold());
-	gGui->SetLife(gGameData->GetLife());
-	gGui->SetLifePotion(gGameData->GetLifePotion());
-	gGui->SetMana(gGameData->GetMana());
-	gGui->SetManaPotion(gGameData->GetManaPotion());
+	gGui->SetPlayerName("OptimistPlayer");
+	gGui->SetLevel(1/*gGameData->GetLevel()*/);
+	gGui->SetXP(2/*gGameData->GetXP()*/);
+	gGui->SetAttackPower(3/*gGameData->GetAttackPower()*/);
+	gGui->SetGold(4/*gGameData->GetGold()*/);
+	gGui->SetLife(5/*gGameData->GetLife()*/);
+	gGui->SetLifePotion(6/*gGameData->GetLifePotion()*/);
+	gGui->SetMana(7/*gGameData->GetMana()*/);
+	gGui->SetManaPotion(8/*gGameData->GetManaPotion()*/);
 
 	return true;
 }
@@ -150,7 +150,7 @@ bool GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		else
 			cFlow.OnEvent(&cOnPause, this);
 	}
-	
+
 	return true;
 }
 
@@ -310,6 +310,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
 	}
+
+	// Set the name of the player to UI
+	gGui->SetPlayerName(pPlayer->GetName());
 }
 
 void GameScene::OnJobAborted()

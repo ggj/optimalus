@@ -59,11 +59,22 @@ div#score_div h1
 		outline-color: black;
 }
 
+div#score_div#span name
+{
+		float: left;
+		width: 50px;
+		font-size: 32;
+
+		outline-font-effect: outline;
+		outline-width: 2px;
+		outline-color: black;
+}
+
 div#score_div span
 {
 		float: left;
 		width: 60px;
-		font-size: 16;
+		font-size: 26;
 		text-align: right;
 
 		outline-font-effect: outline;

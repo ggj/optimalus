@@ -250,7 +250,7 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 // GUI Elements
 void GuiManager::SetPlayerName(String name)
 {
-	pElementPlayerName->SetInnerRML(Rocket::Core::String("Player"));
+	pElementPlayerName->SetInnerRML(Rocket::Core::String(name.c_str()));
 }
 
 void GuiManager::SetLevel(u32 level)
