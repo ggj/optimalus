@@ -6,13 +6,13 @@
 			sType: Image
 			sName: TitleImage
 			sResource: textures/menu_background.png
-			cPosition: {x:115, y:85, z: 1000}
+			cPosition: {x:0, y:0, z: 1000}
 		}
 		{
 			sType: Camera
 			sName: MainCamera
 			sProjection: Orthogonal
-			cPosition: {x: -400, y: -300}
+			cPosition: {x: -512, y: -384}
 		}
 	]
 }

@@ -304,10 +304,6 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pPlayer = optimistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
 
-		pGameMap->GetLayerByName("BackgroundOptimist")->AsTiled()->SetVisible(true);
-		pGameMap->GetLayerByName("BackgroundRealist")->AsTiled()->SetVisible(false);
-		pGameMap->GetLayerByName("BackgroundPessimist")->AsTiled()->SetVisible(false);
-
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
