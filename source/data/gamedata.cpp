@@ -1,37 +1,10 @@
 #include "gamedata.h"
 
 GameData::GameData()
-	: sPlayer()
-	//, sRealistPlayer()
-	//, sPessimistPlayer()
+	: sGamePlay()
 	, sOptions()
 {
-	sPlayer.iLevel = 10;
-	sPlayer.iXP = 1;
-	sPlayer.iAttackPower = 15;
-	sPlayer.iGold = 20;
-	sPlayer.iLife = 0;
-	sPlayer.iLifePotion = 0;
-	sPlayer.iMana = 10;
-	sPlayer.iManaPotion = 0;
-
-	/*sRealistPlayer.iLevel = 1;
-	sRealistPlayer.iXP = 1;
-	sRealistPlayer.iAttackPower = 15;
-	sRealistPlayer.iGold = 0;
-	sRealistPlayer.iLife = 22;
-	sRealistPlayer.iLifePotion = 0;
-	sRealistPlayer.iMana = 10;
-	sRealistPlayer.iManaPotion = 0;
-
-	sPessimistPlayer.iLevel = 1;
-	sPessimistPlayer.iXP = 1;
-	sPessimistPlayer.iAttackPower = 15;
-	sPessimistPlayer.iGold = 0;
-	sPessimistPlayer.iLife = 22;
-	sPessimistPlayer.iLifePotion = 0;
-	sPessimistPlayer.iMana = 10;
-	sPessimistPlayer.iManaPotion = 0;*/
+	sGamePlay.bIsGameOver = false;
 
 	sOptions.bSfxEnabled = true;
 	sOptions.bBgmEnabled = true;
@@ -44,97 +17,16 @@ GameData::~GameData()
 {
 }
 
-u32 GameData::GetLevel() const
+bool GameData::IsGameOver() const
 {
-	return sPlayer.iLevel;
-}
-void GameData::SetLevel(const u32 level)
-{
-	sPlayer.iLevel = level;
+	return sGamePlay.bIsGameOver;
 }
 
-u32 GameData::GetXP() const
+void GameData::SetIsGameOver(bool b)
 {
-	return sPlayer.iXP;
-}
-void GameData::SetXP(const u32 xp)
-{
-	sPlayer.iXP = xp;
+	sGamePlay.bIsGameOver = b;
 }
 
-u32 GameData::GetAttackPower() const
-{
-	return sPlayer.iAttackPower;
-}
-void GameData::SetAttackPower(const u32 attackPower)
-{
-	sPlayer.iAttackPower = attackPower;
-}
-
-u32 GameData::GetGold() const
-{
-	return sPlayer.iGold;
-}
-void GameData::SetGold(const u32 gold)
-{
-	sPlayer.iGold = gold;
-}
-void GameData::RemoveGold()
-{
-	sPlayer.iGold--;
-}
-
-u32 GameData::GetLife() const
-{
-	return sPlayer.iLife;
-}
-void GameData::SetLife(const u32 life)
-{
-	sPlayer.iLife = life;
-}
-void GameData::RemoveLife()
-{
-	sPlayer.iLife--;
-}
-
-u32 GameData::GetLifePotion() const
-{
-	return sPlayer.iLifePotion;
-}
-void GameData::SetLifePotion(const u32 lifePotion)
-{
-	sPlayer.iLifePotion = lifePotion;
-}
-void GameData::RemoveLifePotion()
-{
-	sPlayer.iLifePotion--;
-}
-
-u32 GameData::GetMana() const
-{
-	return sPlayer.iMana;
-}
-void GameData::SetMana(const u32 mana)
-{
-	sPlayer.iMana = mana;
-}
-void GameData::RemoveMana()
-{
-	sPlayer.iMana--;
-}
-
-u32 GameData::GetManaPotion() const
-{
-	return sPlayer.iManaPotion;
-}
-void GameData::SetManaPotion(const u32 manaPotion)
-{
-	sPlayer.iManaPotion = manaPotion;
-}
-void GameData::RemoveManaPotion()
-{
-	sPlayer.iManaPotion--;
-}
 
 bool GameData::IsSfxEnabled() const
 {

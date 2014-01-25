@@ -140,7 +140,7 @@ bool GameScene::Update(f32 dt)
 		}
 	}
 
-	if (gGameData->GetLife() == 0)
+	/*if (gGameData->GetLife() == 0)
 	{
 		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
@@ -148,7 +148,7 @@ bool GameScene::Update(f32 dt)
 		cFlow.OnEvent(&cOnGameOver, this);
 
 		gGameData->SetLife(3);
-	}
+	}*/
 
 	return true;
 }
@@ -359,6 +359,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 
 	// Set the name of the player to UI
 	gGui->SetPlayerName(pPlayer->GetName());
+	gGui->SetLevel(pPlayer->GetLevel());
+	gGui->SetXP(pPlayer->GetXP());
+	gGui->SetLife(pPlayer->GetLife());
+	gGui->SetMana(pPlayer->GetMana());
+
 	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
 

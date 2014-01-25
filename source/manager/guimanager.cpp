@@ -293,7 +293,7 @@ void GuiManager::SetLevel(u32 level)
 	char x[100];
 	snprintf(x, 100, "%d", level);
 	pElementLevel->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetLevel(level);
+	//gGameData->SetLevel(level);
 }
 
 void GuiManager::SetXP(u32 xp)
@@ -301,7 +301,7 @@ void GuiManager::SetXP(u32 xp)
 	char x[100];
 	snprintf(x, 100, "%d", xp);
 	pElementXP->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetXP(xp);
+	//gGameData->SetXP(xp);
 }
 
 void GuiManager::SetAttackPower(u32 attackPower)
@@ -309,7 +309,7 @@ void GuiManager::SetAttackPower(u32 attackPower)
 	char x[100];
 	snprintf(x, 100, "%d", attackPower);
 	pElementAttackPower->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetAttackPower(attackPower);
+	//gGameData->SetAttackPower(attackPower);
 }
 
 void GuiManager::SetGold(u32 gold)
@@ -317,13 +317,13 @@ void GuiManager::SetGold(u32 gold)
 	char x[100];
 	snprintf(x, 100, "%d", gold);
 	pElementGold->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetGold(gold);
+	//gGameData->SetGold(gold);
 }
 
 void GuiManager::RemoveGold()
 {
-	gGameData->RemoveGold();
-	this->SetGold(gGameData->GetGold());
+	//gGameData->RemoveGold();
+	//this->SetGold(gGameData->GetGold());
 }
 
 void GuiManager::SetLife(u32 life)
@@ -331,13 +331,13 @@ void GuiManager::SetLife(u32 life)
 	char x[100];
 	snprintf(x, 100, "%d", life);
 	pElementLife->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetLife(life);
+	//gGameData->SetLife(life);
 }
 
 void GuiManager::RemoveLife()
 {
-	gGameData->RemoveLife();
-	this->SetLife(gGameData->GetLife());
+	//gGameData->RemoveLife();
+	//this->SetLife(gGameData->GetLife());
 }
 
 void GuiManager::SetLifePotion(u32 lifePotion)
@@ -345,13 +345,13 @@ void GuiManager::SetLifePotion(u32 lifePotion)
 	//char x[100];
 	//snprintf(x, 100, "%d", lifePotion);
 	//pElementLifePotion->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetLifePotion(lifePotion);
+	//gGameData->SetLifePotion(lifePotion);
 }
 
 void GuiManager::RemoveLifePotion()
 {
-	gGameData->RemoveLifePotion();
-	this->SetLifePotion(gGameData->GetLifePotion());
+	//gGameData->RemoveLifePotion();
+	//this->SetLifePotion(gGameData->GetLifePotion());
 }
 
 void GuiManager::SetMana(u32 mana)
@@ -359,13 +359,13 @@ void GuiManager::SetMana(u32 mana)
 	char x[100];
 	snprintf(x, 100, "%d", mana);
 	pElementMana->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetMana(mana);
+	//gGameData->SetMana(mana);
 }
 
 void GuiManager::RemoveMana()
 {
-	gGameData->RemoveMana();
-	this->SetMana(gGameData->GetMana());
+	//gGameData->RemoveMana();
+	//this->SetMana(gGameData->GetMana());
 }
 
 void GuiManager::SetManaPotion(u32 manaPotion)
@@ -373,13 +373,13 @@ void GuiManager::SetManaPotion(u32 manaPotion)
 	//char x[100];
 	//snprintf(x, 100, "%d", manaPotion);
 	//pElementManaPotion->SetInnerRML(Rocket::Core::String(x));
-	gGameData->SetManaPotion(manaPotion);
+	//gGameData->SetManaPotion(manaPotion);
 }
 
 void GuiManager::RemoveManaPotion()
 {
-	gGameData->RemoveManaPotion();
-	this->SetManaPotion(gGameData->GetManaPotion());
+	//gGameData->RemoveManaPotion();
+	//this->SetManaPotion(gGameData->GetManaPotion());
 }
 
 ISceneObject *GuiManager::GetSceneObject() const
