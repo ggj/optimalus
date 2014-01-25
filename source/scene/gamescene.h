@@ -42,14 +42,14 @@ class GameScene : public IEventInputKeyboardListener,
 		void Pause();
 		void Resume();
 
-		virtual void OnJobCompleted(FileLoader *job);
-		virtual void OnJobAborted();
+		void OnJobCompleted(FileLoader *job);
+		void OnJobAborted();
 
 		// IEventInputKeyboardListener
-		virtual void OnInputKeyboardRelease(const EventInputKeyboard *ev);
+		virtual bool OnInputKeyboardRelease(const EventInputKeyboard *ev) override;
 
 		// IRocketEventListener
-		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
+		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script) override;
 
 		// Load
 		virtual void LoadMapColliders();

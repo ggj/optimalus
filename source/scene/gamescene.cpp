@@ -2,26 +2,26 @@
 #include "../gameflow.h"
 #include "../manager/guimanager.h"
 
-SceneNode *gScene = NULL;
-PhysicsManager *gPhysics = NULL;
-SoundManager *gSoundManager =NULL;
-WorldManager *gWorldManager = NULL;
-GameScene *gGameScene = NULL;
+SceneNode *gScene = nullptr;
+PhysicsManager *gPhysics = nullptr;
+SoundManager *gSoundManager =nullptr;
+WorldManager *gWorldManager = nullptr;
+GameScene *gGameScene = nullptr;
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile)
-	: pPlayer(NULL)
+	: pPlayer(nullptr)
 	, pCamera(mainCamera)
 	, clCamera()
 	, pParentScene(parent)
 	, cScene()
 	, musTheme()
-	, pGameMap(NULL)
+	, pGameMap(nullptr)
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
 	, fTimeToNextLevel(3.0f)
 	, bChangeLevel(false)
-	, pGameOverImg(NULL)
+	, pGameOverImg(nullptr)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -32,7 +32,7 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 
 GameScene::~GameScene()
 {
-	gScene = NULL;
+	gScene = nullptr;
 }
 
 bool GameScene::Initialize()
@@ -74,7 +74,7 @@ bool GameScene::Initialize()
 	pJobManager->Add(sdNew(FileLoader(f + sSceneFile, cb)));
 
 	RocketEventManager::AddListener(this);
-	pInput->AddKeyboardListener(this);
+	//pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
 	gGui->SetPlayerName("Player");
@@ -132,7 +132,7 @@ bool GameScene::Shutdown()
 
 	pParentScene->Remove(&cScene);
 	cScene.Unload();
-	pParentScene = NULL;
+	pParentScene = nullptr;
 
 	pInput->RemoveKeyboardListener(this);
 	RocketEventManager::RemoveListener(this);
@@ -140,7 +140,7 @@ bool GameScene::Shutdown()
 	return true;
 }
 
-void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
+bool GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 {
 	Key k = ev->GetKey();
 	if (k == eKey::Escape)
@@ -150,6 +150,8 @@ void GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		else
 			cFlow.OnEvent(&cOnPause, this);
 	}
+	
+	return true;
 }
 
 void GameScene::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script)
@@ -226,7 +228,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	}
 
 	// If the player is not set, the player will be optimist
-	if (pPlayer == NULL)
+	if (pPlayer == nullptr)
 	{
 		pPlayer = pPlayerOptimist;
 	}
@@ -265,11 +267,12 @@ void GameScene::ChangePlayer(const String currentPlayer)
 
 	Log("Current player: %s", currentPlayer.c_str());
 
-	if (currentPlayer == "OptimistPlayer")
+	// otim -> real -> pess
+	if (pPlayer == optimistPlayer)
 	{
 		optimistPlayer->SetIsActive(false);
-		pessimistPlayer->SetIsActive(false);
 		realistPlayer->SetIsActive(true);
+		pessimistPlayer->SetIsActive(false);
 
 		pPlayer = realistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
@@ -279,10 +282,10 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
 	}
-	else if (currentPlayer == "RealistPlayer")
+	else if (pPlayer == realistPlayer)
 	{
-		realistPlayer->SetIsActive(false);
 		optimistPlayer->SetIsActive(false);
+		realistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsActive(true);
 
 		pPlayer = pessimistPlayer;
@@ -293,11 +296,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		auto set = tiles->GetTileSet();
 		set->SetTexture(tex);
 	}
-	else if (currentPlayer == "PessimistPlayer")
+	else if (pPlayer == pessimistPlayer)
 	{
-		pessimistPlayer->SetIsActive(false);
-		realistPlayer->SetIsActive(false);
 		optimistPlayer->SetIsActive(true);
+		realistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsActive(false);
 
 		pPlayer = optimistPlayer;
 		clCamera.LookAt(pPlayer->GetSprite()->GetPosition());
