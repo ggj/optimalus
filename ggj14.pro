@@ -97,7 +97,9 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/menu_background.png \
 	resources/textures/background_gameover.png \
 	resources/textures/death_idle_frame1.png \
-	resources/textures/tileset.png
+	resources/textures/optimist_ground_tileset.png \
+	resources/textures/realist_ground_tileset.png \
+	resources/textures/pessimist_ground_tileset.png \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
