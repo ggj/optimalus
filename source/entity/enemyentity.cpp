@@ -23,10 +23,15 @@ void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 
 	b2Vec2 customSize(32, 32);
 
-	pBody = gPhysics->CreateBody(pSprite, &customSize);
-
+	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::Normal, false, &customSize);
 	pBody->SetFixedRotation(true);
 	pBody->GetFixtureList()->SetUserData(this);
+}
+
+void EnemyEntity::Update(f32 dt)
+{
+	b2Vec2 vel = pBody->GetLinearVelocity();
+	pBody->SetLinearVelocity(vel);
 }
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)

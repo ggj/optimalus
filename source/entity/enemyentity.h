@@ -11,6 +11,8 @@ class EnemyEntity: public SpriteEntity
 		virtual ~EnemyEntity();
 
 		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
+		void Update(f32 dt);
+
 		virtual void OnCollision(const CollisionEvent &event);
 
 	private:
