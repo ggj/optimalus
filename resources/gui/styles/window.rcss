@@ -436,8 +436,6 @@ datagridexpand.collapsed
 	icon-image-t: 250px 267px;
 }
 
-
-
 scrollbarvertical
 {
 	margin-top: -6px;
@@ -509,8 +507,6 @@ scrollbarvertical sliderarrowinc
 	icon-decorator: image;
 	icon-image: /textures/rocket_invader.png 28px 152px 55px 176px;
 }
-
-
 
 scrollbarhorizontal
 {
