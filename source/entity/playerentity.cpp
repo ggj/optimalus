@@ -54,7 +54,7 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 
-	pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Heart"))));
+	pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Number1"))));
 	pText->SetPosition(0, 0);
 	pText->SetVisible(false);
 	gScene->Add(pText);
@@ -116,6 +116,7 @@ void PlayerEntity::Update(f32 dt)
 				this->bIsInputEnabled = true;
 				this->StopPlayerMovement();
 				SetState(Idle);
+				pText->SetVisible(false);
 			}
 		}
 	}
@@ -348,7 +349,7 @@ void PlayerEntity::RemoveMana()
 	sPlayer.iMana--;
 }
 
-bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push/*, EnemyEntity enemy*/)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -356,10 +357,16 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 	// Apply force to player
 	pBody->ApplyForce(vec2Push, pBody->GetWorldCenter());
 
+	// Create the ghost effect
 	if (fInvicibleTime > 0)
 		return false;
 
 	fInvicibleTime = 3;
+	pText->SetVisible(true);
+
+	// Receive the damage
+	//enemy.
+
 	return true;
 }
 
@@ -371,7 +378,7 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item)
 	if(item == ItemTypes::HealthPotion)
 		this->SetLife(this->GetLife() + 10);
 
-	if(item == ItemTypes::ManaPotion)
+	if(item == ItemTypes::StaminaPotion)
 		this->SetMana(this->GetMana() + 10);
 
 	if(item == ItemTypes::Gold)

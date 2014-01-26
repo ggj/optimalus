@@ -4,6 +4,7 @@
 #include <Box2D/Box2D.h>
 #include "../defines.h"
 #include "spriteentity.h"
+#include "enemyentity.h"
 
 namespace ItemTypes
 {
@@ -12,7 +13,7 @@ namespace ItemTypes
 		None,
 		Text,
 		HealthPotion,
-		ManaPotion,
+		StaminaPotion,
 		Gold
 	};
 }

@@ -123,10 +123,10 @@ bool GuiManager::LoadGUI(const String &doc)
 				pElementLifePotion = pDoc->GetElementById("lifePotion");
 
 			if (pDoc->GetElementById("stamina") != nullptr)
-				pElementMana = pDoc->GetElementById("stamina");
+				pElementStamina = pDoc->GetElementById("stamina");
 
-			if (pDoc->GetElementById("manaPotion") != nullptr)
-				pElementManaPotion = pDoc->GetElementById("manaPotion");
+			if (pDoc->GetElementById("staminaPotion") != nullptr)
+				pElementStaminaPotion = pDoc->GetElementById("staminaPotion");
 
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
@@ -412,7 +412,7 @@ void GuiManager::SetMana(u32 mana)
 {
 	char x[100];
 	snprintf(x, 100, "%d", mana);
-	pElementMana->SetInnerRML(Rocket::Core::String(x));
+	pElementStamina->SetInnerRML(Rocket::Core::String(x));
 }
 
 void GuiManager::RemoveMana()
