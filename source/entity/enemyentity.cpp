@@ -139,7 +139,7 @@ void EnemyEntity::Update(f32 dt)
 
 		f32 distance = dir.Normalize();
 
-		if (distance <= 1.0f && !bIsDead)
+		if (distance <= 1.0f && !bIsDead && !bPlayerLock)
 		{
 			bPlayerLock = true;
 			this->SetDisplayName(this->GetDisplayName());
