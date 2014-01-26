@@ -21,6 +21,7 @@ class EnemyEntity: public SpriteEntity
 		struct EnemyData
 		{
 			String displayName;
+			u32 enemyId;
 			u32 iLevel;
 			u32 iAttackPower;
 			u32 iDefensePower;
@@ -30,6 +31,7 @@ class EnemyEntity: public SpriteEntity
 		PlayerEntity *pTarget;
 		b2Body *pBody;
 		CollisionSensor clSensor;
+		bool bPlayerLock;
 
 		f32 fInvicibleTime;
 };

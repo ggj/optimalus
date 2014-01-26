@@ -2,6 +2,7 @@
 #include "entityfactory.h"
 #include "../scene/gamescene.h"
 #include "../util/sounds.h"
+#include "../manager/guimanager.h"
 
 ENTITY_CREATOR("Enemy", EnemyEntity)
 
@@ -10,6 +11,7 @@ EnemyEntity::EnemyEntity()
 	, pBody(nullptr)
 	, fInvicibleTime(0.0f)
 	, pTarget(nullptr)
+	, bPlayerLock(false)
 {
 }
 
@@ -63,9 +65,18 @@ void EnemyEntity::Update(f32 dt)
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 
 		f32 distance = dir.Normalize();
+
 		if (distance <= 1.0f)
 		{
+			bPlayerLock = true;
+			gGui->SelectEnemy("optimist", 0);
 			Log("Jogador encontrado, e esta no raio de ataque: %f", distance);
+		}
+
+		if(bPlayerLock && distance >= 1.0f)
+		{
+			bPlayerLock = false;
+			gGui->SelectEnemy("", 0);
 		}
 	}
 }

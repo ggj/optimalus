@@ -340,8 +340,7 @@ void GuiManager::SelectHero(const String &name)
 
 void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 {
-	if (hero == "optimist")
-	{
+	if (hero == "optimist") {
 		switch (enemyId)
 		{
 			case 0: pEnemyPicture->SetClassNames("enemy_1_optimist"); break;
