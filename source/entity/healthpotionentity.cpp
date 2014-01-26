@@ -23,7 +23,7 @@ void HealthPotionEntity::OnCollision(const CollisionEvent &event)
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
 			//Collect Item
-			player->OnCollect(ItemTypes::HealthPotion);
+			player->OnCollect(ItemTypes::HealthPotion, this->iAmount);
 
 		}
 	}

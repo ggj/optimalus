@@ -778,8 +778,8 @@
                  "visible":true,
                  "width":0,
                  "x":80,
-                 "y":920
-                }, 
+                 "y":600
+                },
                 {
                  "height":0,
                  "name":"RealistPlayer",
@@ -811,6 +811,7 @@
                  "name":"HealthPotion",
                  "properties":
                     {
+                     "Amount":"10",
                      "Class":"HealthPotion"
                     },
                  "type":"",
@@ -824,6 +825,7 @@
                  "name":"StaminaPotion",
                  "properties":
                     {
+                     "Amount":"20",
                      "Class":"StaminaPotion"
                     },
                  "type":"",
@@ -837,26 +839,14 @@
                  "name":"Gold",
                  "properties":
                     {
+                     "Amount":"55",
                      "Class":"Gold"
                     },
                  "type":"",
                  "visible":true,
                  "width":17,
-                 "x":1015,
-                 "y":138
-                }, 
-                {
-                 "height":0,
-                 "name":"Enemy",
-                 "properties":
-                    {
-                     "Class":"Enemy"
-                    },
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":600,
-                 "y":360
+                 "x":1020,
+                 "y":147
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -17,6 +17,11 @@ void ItemEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 	clSensor.Load(metadata, this);
+
+	if (!metadata.GetProperty("Amount").empty())
+		iAmount = std::stoi(metadata.GetProperty("Amount"));
+	else
+		iAmount = 1;
 }
 
 void ItemEntity::Update(f32 dt)

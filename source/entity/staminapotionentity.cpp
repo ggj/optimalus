@@ -23,7 +23,7 @@ void StaminaPotionEntity::OnCollision(const CollisionEvent &event)
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
 			//Collect Item
-			player->OnCollect(ItemTypes::StaminaPotion);
+			player->OnCollect(ItemTypes::StaminaPotion, this->iAmount);
 
 		}
 	}
