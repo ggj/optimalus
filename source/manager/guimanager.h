@@ -32,9 +32,10 @@ class GuiManager : public IRocketEventListener
 		bool LoadStackedGUI(const String &doc);
 		bool UnloadStackedGUI();
 
-		void SetPlayerName(String name);
+		void SetPlayerName(const String &name);
 		void SelectHero(const String &name);
 		void SelectEnemy(const String &hero, u32 enemyId);
+		void SetDialog(const String &text);
 		void SetLevel(u32 level);
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
@@ -78,6 +79,7 @@ class GuiManager : public IRocketEventListener
 
 		Rocket::Core::Element	*pHeroPicture[3];
 		Rocket::Core::Element	*pEnemyPicture;
+		Rocket::Core::Element	*pDialog;
 
 		Rocket::Core::Element	*pElementSfx;
 		Rocket::Core::Element	*pElementBgm;

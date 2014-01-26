@@ -131,6 +131,9 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
 
+			if (pDoc->GetElementById("dialog") != nullptr)
+				pDialog = pDoc->GetElementById("dialog");
+
 			if (pDoc->GetElementById("avatar_a") != nullptr && pDoc->GetElementById("avatar_b") != nullptr && pDoc->GetElementById("avatar_c") != nullptr)
 			{
 				pHeroPicture[0] = pDoc->GetElementById("avatar_a");
@@ -293,9 +296,14 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 }
 
 // GUI Elements
-void GuiManager::SetPlayerName(String name)
+void GuiManager::SetPlayerName(const String &name)
 {
 	pElementPlayerName->SetInnerRML(Rocket::Core::String(name.c_str()));
+}
+
+void GuiManager::SetDialog(const String &text)
+{
+	pDialog->SetInnerRML(Rocket::Core::String(text.c_str()));
 }
 
 void GuiManager::SelectHero(const String &name)
