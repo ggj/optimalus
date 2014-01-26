@@ -112,7 +112,8 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/gold.png \
 	resources/textures/ballon_optimist.png \
 	resources/textures/ballon_pessimist.png \
-	resources/textures/ballon_realist.png
+	resources/textures/ballon_realist.png \
+	resources/textures/fog_tileset.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

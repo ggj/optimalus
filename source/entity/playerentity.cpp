@@ -4,6 +4,7 @@
 #include "../scene/gamescene.h"
 #include "../util/sounds.h"
 #include "../manager/guimanager.h"
+#include "../gameflow.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 
@@ -412,7 +413,11 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 	pText->SetVisible(true);
 
 	// Receive the damage
-	this->SetLife(this->GetLife() - amount);
+	u32 life = this->GetLife() - amount;
+
+	if(life >= 0)
+		this->SetLife(life);
+
 
 	return true;
 }
