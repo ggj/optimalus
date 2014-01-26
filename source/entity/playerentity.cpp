@@ -434,3 +434,19 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 		this->SetGold(this->GetGold() + amount);
 }
 
+void PlayerEntity::OnCollision(const CollisionEvent &event)
+{
+	if (event.GetType() == CollisionEventType::OnEnter)
+	{
+		Entity *other = event.GetOtherEntity();
+		if ((other != nullptr && other->GetClassName() == "OptimistPlayer") ||
+			(other != nullptr && other->GetClassName() == "RealistPlayer") ||
+			(other != nullptr && other->GetClassName() == "PessimistPlayer"))
+		{
+			PlayerEntity *player = static_cast<PlayerEntity *>(other);
+
+			// Stop player movement
+			player->StopPlayerMovement();
+		}
+	}
+}
