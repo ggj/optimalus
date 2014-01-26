@@ -342,7 +342,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 
 void GameScene::ChangePlayer(const String currentPlayer)
 {
-	//pSoundSystem->StopMusic(10.0f);
+	pSoundSystem->StopMusic(10.0f);
 	bMoveCamera = true;
 
 	OptimistPlayerEntity *optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
@@ -432,7 +432,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	gGui->SetLife(pPlayer->GetLife(), pPlayer->GetLifeTotal());
 	gGui->SetStamina(pPlayer->GetStamina(), pPlayer->GetStaminaTotal());
 
-	//pSoundSystem->PlayMusic(musCur, 10.0f);
+	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
 
 void GameScene::OnJobAborted()

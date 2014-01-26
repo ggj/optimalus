@@ -73,6 +73,9 @@ void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 
 void EnemyEntity::Update(f32 dt)
 {
+	if(!pBody)
+		return;
+
 	b2Vec2 vel = pBody->GetLinearVelocity();
 	pBody->SetLinearVelocity(vel);
 
@@ -238,6 +241,7 @@ bool EnemyEntity::OnDamage(u32 amount)
 
 		// Add body to a list to remove
 		gPhysics->AddBodyToRemove(pBody);
+		pBody = nullptr;
 		bIsDead = true;
 	}
 	else
