@@ -14,6 +14,7 @@ EnemyEntity::EnemyEntity()
 
 EnemyEntity::~EnemyEntity()
 {
+	gPhysics->DestroyBody(pBody);
 }
 
 void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)

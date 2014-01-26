@@ -129,7 +129,7 @@
     <ClCompile Include="..\..\..\source\entity\healthpotionentity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\entity\manapotionentity.cpp">
+    <ClCompile Include="..\..\..\source\entity\staminapotionentity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
   </ItemGroup>
@@ -235,7 +235,7 @@
     <ClInclude Include="..\..\..\source\entity\healthpotionentity.h">
       <Filter>entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\entity\manapotionentity.h">
+    <ClInclude Include="..\..\..\source\entity\staminapotionentity.h">
       <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>

@@ -34,6 +34,7 @@ class GuiManager : public IRocketEventListener
 
 		void SetPlayerName(String name);
 		void SelectHero(const String &name);
+		void SelectEnemy(const String &hero, u32 enemyId);
 		void SetLevel(u32 level);
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
