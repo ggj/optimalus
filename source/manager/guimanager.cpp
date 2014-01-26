@@ -341,7 +341,7 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			default: break;
 		}
 	}
-	if (hero == "realist")
+	else if (hero == "realist")
 	{
 		switch (enemyId)
 		{
@@ -352,7 +352,7 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			default: break;
 		}
 	}
-	if (hero == "pessimist")
+	else if (hero == "pessimist")
 	{
 		switch (enemyId)
 		{
@@ -365,7 +365,7 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 	}
 	else
 	{
-		pEnemyPicture->SetClassNames("avatar_none");
+		pEnemyPicture->SetClassNames("");
 	}
 }
 

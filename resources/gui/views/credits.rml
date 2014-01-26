@@ -1,12 +1,12 @@
 <rml>
 	<head>
-		<title>Credits</title>
+		<title>The Optimalus</title>
 		<link type="text/template" href="window.rml" />
 		<style>
 			body
 			{
-				width: 380px;
-				height: 280px;
+				width: 400px;
+				height: 400px;
 				margin: auto;
 			}
 			p
@@ -26,13 +26,12 @@
 			}
 		</style>
 	</head>
-	<body template="window">
+	<body template="window"><br/><br/>
 		<p>
-			<h1 style="font-size: 30;">Programming:</h1><br/>
-			Danny Angelo Carminati Grein<br/>
-			Marlus Cadanus da Costa<br/>
-			Murilo Cadanus da Costa
-		</p>
+			Danny Angelo Carminati Grein<br/><br />
+			Marlus Cadanus da Costa<br/><br />
+			Murilo Cadanus da Costa<br /><br />
+		</p><br /><br /><br /><br /><br />
 		<button onClick="goto menu">Back</button>
 	</body>
 </rml>

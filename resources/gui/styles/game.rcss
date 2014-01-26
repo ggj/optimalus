@@ -137,83 +137,76 @@ div#enemy_div
 	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
 }
 
-
-.enemy_none
-{
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 0px 0px 0px 0px;
-}
-
 .enemy_1_optimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 7px 403px 87px 483px;
+	background-image: /textures/rocket_invader.png 177px 483px 265px 563px;
 }
 
 .enemy_2_optimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 7px 403px 87px 483px;
+	background-image: /textures/rocket_invader.png 177px 563px 265px 643px;
 }
 
 .enemy_3_optimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 7px 403px 87px 483px;
+	background-image: /textures/rocket_invader.png 177px 643px 265px 723px;
 }
 
 .enemy_4_optimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 7px 403px 87px 483px;
+	background-image: /textures/rocket_invader.png 177px 723px 265px 803px;
 }
 
 .enemy_1_pessimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 177px 403px 265px 483px;
+	background-image: /textures/rocket_invader.png 88px 483px 176px 563px;
 }
 
 .enemy_2_pessimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 177px 403px 265px 483px;
+	background-image: /textures/rocket_invader.png 88px 563px 176px 643px;
 }
 
 .enemy_3_pessimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 177px 403px 265px 483px;
+	background-image: /textures/rocket_invader.png 88px 643px 176px 723px;
 }
 
 .enemy_4_pessimist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 177px 403px 265px 483px;
+	background-image: /textures/rocket_invader.png 88px 723px 176px 803px;
 }
 
 .enemy_1_realist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
+	background-image: /textures/rocket_invader.png 7px 483px 87px 563px;
 }
 
 .enemy_2_realist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
+	background-image: /textures/rocket_invader.png 7px 563px 87px 643px;
 }
 
 .enemy_3_realist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
+	background-image: /textures/rocket_invader.png 7px 643px 87px 723px;
 }
 
 .enemy_4_realist
 {
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
+	background-image: /textures/rocket_invader.png 7px 723px 87px 803px;
 }
 
 
