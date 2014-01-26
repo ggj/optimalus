@@ -128,6 +128,20 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("manaPotion") != nullptr)
 				pElementManaPotion = pDoc->GetElementById("manaPotion");
 
+			if (pDoc->GetElementById("enemy_div") != nullptr)
+			{
+				pEnemyPicture = pDoc->GetElementById("enemy_div");
+				auto img = pEnemyPicture->GetClassNames();
+				pEnemyPicture->SetClass("avatar_pessimist", true);
+			}
+
+			if (pDoc->GetElementById("avatar_a") != nullptr && pDoc->GetElementById("avatar_b") != nullptr && pDoc->GetElementById("avatar_c") != nullptr)
+			{
+				pHeroPicture[0] = pDoc->GetElementById("avatar_a");
+				pHeroPicture[1] = pDoc->GetElementById("avatar_b");
+				pHeroPicture[2] = pDoc->GetElementById("avatar_c");
+			}
+
 			if (pDoc->GetElementById("sfx") != nullptr && gGameData->IsSfxEnabled())
 				pDoc->GetElementById("sfx")->SetAttribute("checked", "");
 
@@ -286,6 +300,28 @@ void GuiManager::OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String 
 void GuiManager::SetPlayerName(String name)
 {
 	pElementPlayerName->SetInnerRML(Rocket::Core::String(name.c_str()));
+}
+
+void GuiManager::SelectHero(const String &name)
+{
+	if (name == "optimist")
+	{
+		pHeroPicture[0]->SetClassNames("avatar_pessimist_off");
+		pHeroPicture[1]->SetClassNames("avatar_optimist_on");
+		pHeroPicture[2]->SetClassNames("avatar_realist_off");
+	}
+	if (name == "realist")
+	{
+		pHeroPicture[0]->SetClassNames("avatar_optimist_off");
+		pHeroPicture[1]->SetClassNames("avatar_realist_on");
+		pHeroPicture[2]->SetClassNames("avatar_pessimist_off");
+	}
+	if (name == "pessimist")
+	{
+		pHeroPicture[0]->SetClassNames("avatar_realist_off");
+		pHeroPicture[1]->SetClassNames("avatar_pessimist_on");
+		pHeroPicture[2]->SetClassNames("avatar_optimist_off");
+	}
 }
 
 void GuiManager::SetLevel(u32 level)

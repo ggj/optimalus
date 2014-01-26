@@ -12,9 +12,9 @@
 					</div>
 				</p>
 				<p id="avatar">
-					<h1><div id="avatar_a_div"/></h1>
-					<h1><div id="avatar_b_div"/></h1>
-					<h1><div id="avatar_c_div"/></h1>
+					<h1><div id="avatar_a" class="avatar_optimist_off"/></h1>
+					<h1><div id="avatar_b" class="avatar_realist_off"/></h1>
+					<h1><div id="avatar_c" class="avatar_pessimist_off"/></h1>
 				</p>
 				<p id="levelxp">
 					<h1>Level:</h1>

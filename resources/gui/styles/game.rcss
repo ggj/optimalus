@@ -101,34 +101,61 @@ div#enemy_div
 	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
 }
 
-div#avatar_a_div
+.avatar_optimist_on
 {
-	width: 80px;
-	height: 80px;
-	margin-left: -5px;
-	
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
 }
 
-div#avatar_b_div
+.avatar_realist_on
 {
-	width: 80px;
-	height: 80px;
-	margin-left: 17px;
-	
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 7px 323px 87px 403px;
 }
 
-div#avatar_c_div
+.avatar_pessimist_on
+{
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 88px 323px 176px 403px;
+}
+
+.avatar_optimist_off
+{
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 177px 403px 265px 483px;
+}
+
+.avatar_realist_off
+{
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 7px 403px 87px 483px;
+}
+
+.avatar_pessimist_off
+{
+	background-decorator: image;
+	background-image: /textures/rocket_invader.png 88px 403px 176px 483px;
+}
+
+div#avatar_a
+{
+	width: 80px;
+	height: 80px;
+	margin-left: -5px;
+}
+
+div#avatar_b
+{
+	width: 80px;
+	height: 80px;
+	margin-left: 17px;
+}
+
+div#avatar_c
 {
 	width: 80px;
 	height: 80px;
 	margin-left: 40px;
-	
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 88px 323px 176px 403px;
 }
 
 div#score_div h1

@@ -265,6 +265,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	{
 		pPlayer = pPlayerOptimist;
 		musCur = &musThemeOptimist;
+		gGui->SelectHero("optimist");
 		pSoundSystem->PlayMusic(musCur);
 	}
 
@@ -304,6 +305,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		optimistPlayer->SetIsActive(false);
 		realistPlayer->SetIsActive(true);
 		pessimistPlayer->SetIsActive(false);
+		gGui->SelectHero("realist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
@@ -323,6 +325,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		optimistPlayer->SetIsActive(false);
 		realistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsActive(true);
+		gGui->SelectHero("pessimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
@@ -342,6 +345,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		optimistPlayer->SetIsActive(true);
 		realistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsActive(false);
+		gGui->SelectHero("optimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();

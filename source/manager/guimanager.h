@@ -33,6 +33,7 @@ class GuiManager : public IRocketEventListener
 		bool UnloadStackedGUI();
 
 		void SetPlayerName(String name);
+		void SelectHero(const String &name);
 		void SetLevel(u32 level);
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
@@ -73,6 +74,9 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::Element	*pElementLifePotion;
 		Rocket::Core::Element	*pElementMana;
 		Rocket::Core::Element	*pElementManaPotion;
+
+		Rocket::Core::Element	*pHeroPicture[3];
+		Rocket::Core::Element	*pEnemyPicture;
 
 		Rocket::Core::Element	*pElementSfx;
 		Rocket::Core::Element	*pElementBgm;
