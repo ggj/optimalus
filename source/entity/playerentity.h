@@ -40,11 +40,16 @@ class PlayerEntity: public SpriteEntity,
 		ItemTypes::Enum GetItem() const;
 
 		void Teleport(const b2Vec2 &position);
-		bool OnDamage();
+		bool OnDamage(const b2Vec2 vec2Push);
 
+		void StopPlayerMovement();
 		void ChangePlayer();
+
 		void SetIsActive(bool isActive);
 		bool GetIsActive();
+
+		void SetIsInputEnabled(bool isKeyboardEnabled);
+		bool GetIsInputEnabled() const;
 
 	protected:
 		b2Body *pBody;
@@ -64,6 +69,7 @@ class PlayerEntity: public SpriteEntity,
 		f32 fInvicibleTime;
 
 		bool bIsActive;
+		bool bIsInputEnabled;
 		void SetState(int newState);
 };
 

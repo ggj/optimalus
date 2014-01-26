@@ -28,7 +28,10 @@ SOURCES += source/main.cpp \
 	source/entity/optimistplayerentity.cpp \
 	source/entity/pessimistplayerentity.cpp \
 	source/entity/realistplayerentity.cpp \
-	source/entity/enemyentity.cpp
+	source/entity/enemyentity.cpp \
+	source/entity/healthpotionentity.cpp \
+	source/entity/manapotionentity.cpp \
+	source/entity/goldentity.cpp
 
 HEADERS += \
 	source/defines.h \
@@ -62,7 +65,10 @@ HEADERS += \
 	source/entity/optimistplayerentity.h \
 	source/entity/pessimistplayerentity.h \
 	source/entity/realistplayerentity.h \
-	source/entity/enemyentity.h
+	source/entity/enemyentity.h \
+	source/entity/healthpotionentity.h \
+	source/entity/manapotionentity.h \
+	source/entity/goldentity.h
 
 OTHER_FILES_CONFIG = \
 #Configs
@@ -101,6 +107,9 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/realist_ground_tileset.png \
 	resources/textures/pessimist_ground_tileset.png \
 	resources/textures/optimist_enemy1_idle_frame1.png \
+	resources/textures/health_potion.png \
+	resources/textures/mana_potion.png \
+	resources/textures/gold.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

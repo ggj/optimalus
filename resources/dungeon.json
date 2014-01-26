@@ -805,6 +805,58 @@
                  "width":0,
                  "x":80,
                  "y":160
+                }, 
+                {
+                 "height":19,
+                 "name":"HealthPotion",
+                 "properties":
+                    {
+                     "Class":"HealthPotion"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":20,
+                 "x":574,
+                 "y":222
+                }, 
+                {
+                 "height":17,
+                 "name":"ManaPotion",
+                 "properties":
+                    {
+                     "Class":"ManaPotion"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":856,
+                 "y":735
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":1015,
+                 "y":138
+		},
+		{
+                 "height":0,
+                 "name":"Enemy",
+                 "properties":
+                    {
+                     "Class":"Enemy"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":600,
+                 "y":360
                 }],
          "opacity":1,
          "type":"objectgroup",

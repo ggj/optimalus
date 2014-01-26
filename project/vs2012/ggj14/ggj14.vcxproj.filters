@@ -123,6 +123,15 @@
     <ClCompile Include="..\..\..\source\entity\enemyentity.cpp">
       <Filter>entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\goldentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\healthpotionentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\entity\manapotionentity.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\defines.h" />
@@ -218,6 +227,15 @@
       <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\entity\enemyentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\goldentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\healthpotionentity.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\entity\manapotionentity.h">
       <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>
