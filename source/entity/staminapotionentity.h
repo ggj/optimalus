@@ -7,6 +7,7 @@ class StaminaPotionEntity: public ItemEntity
 {
 	public:
 		StaminaPotionEntity();
+		void OnCollision(const CollisionEvent &event);
 };
 
 #endif // _STAMINA_POTION_ENTITY_H

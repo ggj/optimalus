@@ -74,9 +74,9 @@ class PlayerEntity: public SpriteEntity,
 		void SetLife(u32);
 		void RemoveLife();
 
-		u32 GetMana() const;
-		void SetMana(u32);
-		void RemoveMana();
+		u32 GetStamina() const;
+		void SetStamina(u32);
+		void RemoveStamina();
 
 		struct PlayerData
 		{
@@ -86,7 +86,7 @@ class PlayerEntity: public SpriteEntity,
 			u32 iAttackPower;
 			u32 iGold;
 			u32 iLife;
-			u32 iMana;
+			u32 iStamina;
 			bool bGameOver;
 		} sPlayer;
 

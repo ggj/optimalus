@@ -13,6 +13,6 @@ PessimistPlayerEntity::PessimistPlayerEntity()
 	sPlayer.iAttackPower = 10;
 	sPlayer.iGold = 0;
 	sPlayer.iLife = 12;
-	sPlayer.iMana = 20;
+	sPlayer.iStamina = 20;
 }
 

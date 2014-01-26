@@ -8,3 +8,23 @@ GoldEntity::GoldEntity()
 	: ItemEntity("Gold", "Gold")
 {
 }
+
+void GoldEntity::OnCollision(const CollisionEvent &event)
+{
+	if (event.GetType() == CollisionEventType::OnEnter)
+	{
+		Log("On collided with health potion");
+
+		Entity *other = event.GetOtherEntity();
+		if ((other != nullptr && other->GetClassName() == "OptimistPlayer") ||
+			(other != nullptr && other->GetClassName() == "RealistPlayer") ||
+			(other != nullptr && other->GetClassName() == "PessimistPlayer"))
+		{
+			PlayerEntity *player = static_cast<PlayerEntity *>(other);
+
+			//Collect Item
+			player->OnCollect(ItemTypes::Gold);
+
+		}
+	}
+}
