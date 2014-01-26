@@ -408,14 +408,14 @@ void GuiManager::RemoveLife()
 	//this->SetLife(gGameData->GetLife());
 }
 
-void GuiManager::SetMana(u32 mana)
+void GuiManager::SetStamina(u32 stamina)
 {
 	char x[100];
-	snprintf(x, 100, "%d", mana);
+	snprintf(x, 100, "%d", stamina);
 	pElementStamina->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveMana()
+void GuiManager::RemoveStamina()
 {
 	//gGameData->RemoveMana();
 	//this->SetMana(gGameData->GetMana());

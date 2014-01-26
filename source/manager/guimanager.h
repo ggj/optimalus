@@ -44,8 +44,8 @@ class GuiManager : public IRocketEventListener
 		void RemoveLife();
 		void SetLifePotion(u32 lifePotion);
 		void RemoveLifePotion();
-		void SetMana(u32 mana);
-		void RemoveMana();
+		void SetStamina(u32 stamina);
+		void RemoveStamina();
 		void SetStaminaPotion(u32 staminaPotion);
 		void RemoveStaminaPotion();
 
