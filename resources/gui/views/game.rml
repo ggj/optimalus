@@ -33,6 +33,7 @@
 					<span id="life">10</span>
 					<h1><div id="stam_div"><icon/></div></h1>
 					<span id="stamina">10</span>
+
 				</p>
 				<p>
 					<h1><div id="gold_div"><icon/></div></h1>

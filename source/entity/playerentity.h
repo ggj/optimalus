@@ -73,9 +73,17 @@ class PlayerEntity: public SpriteEntity,
 		void SetLife(u32);
 		void RemoveLife();
 
+		u32 GetLifeTotal() const;
+		void SetLifeTotal(u32);
+		void RemoveLifeTotal();
+
 		u32 GetStamina() const;
 		void SetStamina(u32);
 		void RemoveStamina();
+
+		u32 GetStaminaTotal() const;
+		void SetStaminaTotal(u32);
+		void RemoveStaminaTotal();
 
 		struct PlayerData
 		{
@@ -85,7 +93,9 @@ class PlayerEntity: public SpriteEntity,
 			u32 iAttackPower;
 			u32 iGold;
 			u32 iLife;
+			u32 iLifeTotal;
 			u32 iStamina;
+			u32 iStaminaTotal;
 			bool bGameOver;
 		} sPlayer;
 
