@@ -252,6 +252,45 @@
 								}
 							]
 						}
+						{
+							sName: "PessimistEnemy1"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/pessimist_enemy_tileset.png
+									cBoundary: {iX: 0, iY: 40, iWidth: 40, iHeight: 40}
+								}
+							]
+						}
+						{
+							sName: "PessimistEnemy2"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/pessimist_enemy_tileset.png
+									cBoundary: {iX: 0, iY: 80, iWidth: 40, iHeight: 40}
+								}
+							]
+						}
+						{
+							sName: "PessimistEnemy3"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/pessimist_enemy_tileset.png
+									cBoundary: {iX: 0, iY: 120, iWidth: 40, iHeight: 40}
+								}
+							]
+						}
 					]
 				}
 				{
