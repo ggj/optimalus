@@ -262,7 +262,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 		pPlayer = pPlayerOptimist;
 		musCur = &musThemeOptimist;
 		gGui->SelectHero("optimist");
-		gGui->SelectEnemy("pessimist", 1);
+		gGui->SelectEnemy();
 		pSoundSystem->PlayMusic(musCur);
 	}
 

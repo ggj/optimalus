@@ -96,9 +96,6 @@ div#enemy_div
 	width: 80px;
 	height: 80px;
 	margin-left: 70px;
-
-	background-decorator: image;
-	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
 }
 
 .avatar_optimist_on
