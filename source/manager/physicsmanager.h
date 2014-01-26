@@ -22,6 +22,7 @@ enum class CollisionEventType
 typedef std::map<b2Body *, int> CollisionCounterMap;
 typedef std::map<b2Body *, CollisionCounterMap>  CollisionCacheMap;
 typedef std::list<CollisionEvent> CollisionEventList;
+typedef std::list<b2Body*> BodiesScheduledForRemoveList;
 
 class CollisionEvent
 {
@@ -82,6 +83,7 @@ class PhysicsManager: public b2ContactListener
 		void DestroyBody(b2Body *body);
 
 		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);
+		BodiesScheduledForRemoveList lstBodiesForRemove;
 
 	protected:
 		//Contact listener

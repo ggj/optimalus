@@ -14,6 +14,7 @@ EnemyEntity::EnemyEntity()
 	, bPlayerLock(false)
 {
 	sEnemy.displayName = "Enemy";
+	sEnemy.iEnemyId = 0;
 	sEnemy.iLevel = 1;
 	sEnemy.iAttackPower = 3;
 	sEnemy.iDefensePower = 2;
@@ -75,8 +76,10 @@ void EnemyEntity::Update(f32 dt)
 		if (distance <= 1.0f)
 		{
 			bPlayerLock = true;
-			gGui->SelectEnemy("optimist", 0);
-			Log("Jogador encontrado, e esta no raio de ataque: %f", distance);
+			this->SetDisplayName(this->GetDisplayName());
+			this->SetLevel(this->GetLevel());
+			this->SetLife(this->GetLife());
+			gGui->SelectEnemy(pTarget->GetDisplayName(), this->sEnemy.iEnemyId);
 		}
 
 		if(bPlayerLock && distance >= 1.0f)
@@ -143,12 +146,12 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 			player->OnDamage(vecToPush, damageToPlayer);
 
 			//Receive damage
-			this->OnDamage();
+			this->OnDamage(player->sPlayer.iAttackPower);
 		}
 	}
 }
 
-bool EnemyEntity::OnDamage()
+bool EnemyEntity::OnDamage(u32 amount)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -156,6 +159,52 @@ bool EnemyEntity::OnDamage()
 	if (fInvicibleTime > 0)
 		return false;
 
-	fInvicibleTime = 3;
+	// Receive the damage
+	this->SetLife(this->GetLife() - amount);
+
+	if((int)this->GetLife() <= 0)
+	{
+		// Disable item
+		this->pSprite->SetVisible(false);
+
+		// Add body to a list to remove
+		//gPhysics->lstBodiesForRemove.push_back(pBody);
+	}
+	else
+		fInvicibleTime = 3;
+
 	return true;
+}
+
+String EnemyEntity::GetDisplayName() const
+{
+	return sEnemy.displayName;
+}
+
+void EnemyEntity::SetDisplayName(String displayName)
+{
+	sEnemy.displayName = displayName;
+	gGui->SetEnemyName(displayName);
+}
+
+u32 EnemyEntity::GetLevel() const
+{
+	return sEnemy.iLevel;
+}
+
+void EnemyEntity::SetLevel(u32 level)
+{
+	sEnemy.iLevel = level;
+	gGui->SetEnemyLevel(level);
+}
+
+u32 EnemyEntity::GetLife() const
+{
+	return sEnemy.iLife;
+}
+
+void EnemyEntity::SetLife(u32 life)
+{
+	sEnemy.iLife = life;
+	gGui->SetEnemyLife(life, this->sEnemy.iLifeTotal);
 }

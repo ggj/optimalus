@@ -138,15 +138,15 @@ bool GameScene::Update(f32 dt)
 		}
 	}
 
-	/*if (gGameData->GetLife() == 0)
+	if (gGameData->sGamePlay.bIsGameOver == true)
 	{
 		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
 
-		gGameData->SetLife(3);
-	}*/
+		gGameData->sGamePlay.bIsGameOver = false;
+	}
 
 	return true;
 }
