@@ -375,18 +375,18 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 	return true;
 }
 
-void PlayerEntity::OnCollect(ItemTypes::Enum item)
+void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 {
-	// Play damage sound
+	// Play collect sound
 	gSoundManager->Play(SND_POWERUP);
 
 	if(item == ItemTypes::HealthPotion)
-		this->SetLife(this->GetLife() + 10);
+		this->SetLife(this->GetLife() + amount);
 
 	if(item == ItemTypes::StaminaPotion)
-		this->SetStamina(this->GetStamina() + 10);
+		this->SetStamina(this->GetStamina() + amount);
 
 	if(item == ItemTypes::Gold)
-		this->SetGold(this->GetGold() + 50);
+		this->SetGold(this->GetGold() + amount);
 }
 

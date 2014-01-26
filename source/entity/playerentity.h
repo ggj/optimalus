@@ -44,7 +44,7 @@ class PlayerEntity: public SpriteEntity,
 
 		void Teleport(const b2Vec2 &position);
 		bool OnDamage(const b2Vec2 vec2Push);
-		void OnCollect(ItemTypes::Enum item);
+		void OnCollect(ItemTypes::Enum item, u32 amount);
 
 		void StopPlayerMovement();
 		void ChangePlayer();

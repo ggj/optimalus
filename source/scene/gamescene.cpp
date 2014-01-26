@@ -82,7 +82,7 @@ bool GameScene::Initialize()
 	pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
-	gGui->SetPlayerName("OptimistPlayer");
+	gGui->SetPlayerName("Optimist");
 	gGui->SetLevel(1);
 	gGui->SetXP(100);
 	gGui->SetAttackPower(15);

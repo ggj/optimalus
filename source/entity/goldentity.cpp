@@ -23,7 +23,7 @@ void GoldEntity::OnCollision(const CollisionEvent &event)
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
 			//Collect Item
-			player->OnCollect(ItemTypes::Gold);
+			player->OnCollect(ItemTypes::Gold, this->iAmount);
 
 		}
 	}
