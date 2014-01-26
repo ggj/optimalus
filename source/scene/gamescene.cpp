@@ -387,5 +387,4 @@ void GameScene::LoadMapColliders()
 
 void GameScene::RemoveLife()
 {
-	gGui->RemoveLife();
 }

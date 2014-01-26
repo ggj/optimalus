@@ -340,6 +340,20 @@ void PlayerEntity::RemoveLife()
 	sPlayer.iLife--;
 }
 
+u32 PlayerEntity::GetLifeTotal() const
+{
+	return sPlayer.iLifeTotal;
+}
+void PlayerEntity::SetLifeTotal(const u32 lifeTotal)
+{
+	sPlayer.iLifeTotal = lifeTotal;
+	gGui->SetLifeTotal(lifeTotal);
+}
+void PlayerEntity::RemoveLifeTotal()
+{
+	sPlayer.iLifeTotal--;
+}
+
 u32 PlayerEntity::GetStamina() const
 {
 	return sPlayer.iStamina;
@@ -352,6 +366,20 @@ void PlayerEntity::SetStamina(const u32 stamina)
 void PlayerEntity::RemoveStamina()
 {
 	sPlayer.iStamina--;
+}
+
+u32 PlayerEntity::GetStaminaTotal() const
+{
+	return sPlayer.iStaminaTotal;
+}
+void PlayerEntity::SetStaminaTotal(const u32 staminaTotal)
+{
+	sPlayer.iStaminaTotal = staminaTotal;
+	gGui->SetStaminaTotal(staminaTotal);
+}
+void PlayerEntity::RemoveStaminaTotal()
+{
+	sPlayer.iStaminaTotal--;
 }
 
 bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)

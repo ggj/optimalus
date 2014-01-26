@@ -119,14 +119,14 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("life") != nullptr)
 				pElementLife = pDoc->GetElementById("life");
 
-			if (pDoc->GetElementById("lifePotion") != nullptr)
-				pElementLifePotion = pDoc->GetElementById("lifePotion");
+			if (pDoc->GetElementById("lifeTotal") != nullptr)
+				pElementLifeTotal = pDoc->GetElementById("lifeTotal");
 
 			if (pDoc->GetElementById("stamina") != nullptr)
 				pElementStamina = pDoc->GetElementById("stamina");
 
-			if (pDoc->GetElementById("staminaPotion") != nullptr)
-				pElementStaminaPotion = pDoc->GetElementById("staminaPotion");
+			if (pDoc->GetElementById("staminaTotal") != nullptr)
+				pElementStaminaTotal = pDoc->GetElementById("staminaTotal");
 
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
@@ -389,12 +389,6 @@ void GuiManager::SetGold(u32 gold)
 	pElementGold->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveGold()
-{
-	//gGameData->RemoveGold();
-	//this->SetGold(gGameData->GetGold());
-}
-
 void GuiManager::SetLife(u32 life)
 {
 	char x[100];
@@ -402,10 +396,11 @@ void GuiManager::SetLife(u32 life)
 	pElementLife->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveLife()
+void GuiManager::SetLifeTotal(u32 lifeTotal)
 {
-	//gGameData->RemoveLife();
-	//this->SetLife(gGameData->GetLife());
+	char x[100];
+	snprintf(x, 100, "%d", lifeTotal);
+	pElementLifeTotal->SetInnerRML(Rocket::Core::String(x));
 }
 
 void GuiManager::SetStamina(u32 stamina)
@@ -415,10 +410,11 @@ void GuiManager::SetStamina(u32 stamina)
 	pElementStamina->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveStamina()
+void GuiManager::SetStaminaTotal(u32 staminaTotal)
 {
-	//gGameData->RemoveMana();
-	//this->SetMana(gGameData->GetMana());
+	char x[100];
+	snprintf(x, 100, "%d", staminaTotal);
+	pElementStaminaTotal->SetInnerRML(Rocket::Core::String(x));
 }
 
 ISceneObject *GuiManager::GetSceneObject() const
