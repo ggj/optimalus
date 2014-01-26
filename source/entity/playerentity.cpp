@@ -371,7 +371,7 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item)
 	if(item == ItemTypes::HealthPotion)
 		this->SetLife(this->GetLife() + 10);
 
-	if(item == ItemTypes::ManaPotion)
+	if(item == ItemTypes::StaminaPotion)
 		this->SetMana(this->GetMana() + 10);
 
 	if(item == ItemTypes::Gold)

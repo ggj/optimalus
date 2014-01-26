@@ -12,7 +12,7 @@ namespace ItemTypes
 		None,
 		Text,
 		HealthPotion,
-		ManaPotion,
+		StaminaPotion,
 		Gold
 	};
 }
