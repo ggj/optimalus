@@ -22,8 +22,12 @@ void HealthPotionEntity::OnCollision(const CollisionEvent &event)
 		{
 			PlayerEntity *player = static_cast<PlayerEntity *>(other);
 
+			// Disable item
+			this->pSprite->SetVisible(false);
+			this->clSensor.Disable();
+
 			//Collect Item
-			player->OnCollect(ItemTypes::HealthPotion);
+			player->OnCollect(ItemTypes::HealthPotion, this->iAmount);
 
 		}
 	}

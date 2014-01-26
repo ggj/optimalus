@@ -7,6 +7,7 @@ class GoldEntity: public ItemEntity
 {
 	public:
 		GoldEntity();
+		void OnCollision(const CollisionEvent &event);
 };
 
 #endif // _GOLD_ENTITY_H

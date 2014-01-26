@@ -96,7 +96,7 @@ div#enemy_div
 	width: 80px;
 	height: 80px;
 	margin-left: 70px;
-	
+
 	background-decorator: image;
 	background-image: /textures/rocket_invader.png 177px 323px 265px 403px;
 }
@@ -304,7 +304,7 @@ div#defense_div icon
 	height: 40px;
 
 	background-decorator: image;
-	background-image: /textures/rocket_invader.png 135px 153px 175px 193px;
+	background-image: /textures/rocket_invader.png 182px 118px 227px 158px;
 }
 
 div#gold_div icon

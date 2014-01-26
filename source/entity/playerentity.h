@@ -4,7 +4,6 @@
 #include <Box2D/Box2D.h>
 #include "../defines.h"
 #include "spriteentity.h"
-#include "enemyentity.h"
 
 namespace ItemTypes
 {
@@ -45,7 +44,7 @@ class PlayerEntity: public SpriteEntity,
 
 		void Teleport(const b2Vec2 &position);
 		bool OnDamage(const b2Vec2 vec2Push);
-		void OnCollect(ItemTypes::Enum item);
+		void OnCollect(ItemTypes::Enum item, u32 amount);
 
 		void StopPlayerMovement();
 		void ChangePlayer();
@@ -74,9 +73,9 @@ class PlayerEntity: public SpriteEntity,
 		void SetLife(u32);
 		void RemoveLife();
 
-		u32 GetMana() const;
-		void SetMana(u32);
-		void RemoveMana();
+		u32 GetStamina() const;
+		void SetStamina(u32);
+		void RemoveStamina();
 
 		struct PlayerData
 		{
@@ -86,7 +85,7 @@ class PlayerEntity: public SpriteEntity,
 			u32 iAttackPower;
 			u32 iGold;
 			u32 iLife;
-			u32 iMana;
+			u32 iStamina;
 			bool bGameOver;
 		} sPlayer;
 

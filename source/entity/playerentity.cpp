@@ -3,6 +3,7 @@
 #include "entityfactory.h"
 #include "../scene/gamescene.h"
 #include "../util/sounds.h"
+#include "../manager/guimanager.h"
 
 ENTITY_CREATOR("Player", PlayerEntity)
 
@@ -125,6 +126,7 @@ void PlayerEntity::Update(f32 dt)
 	{
 		vel.x = fVelocity * fMove;
 		pBody->SetLinearVelocity(vel);
+
 	}
 
 	if (fUpDownMove != 0)
@@ -321,6 +323,7 @@ u32 PlayerEntity::GetGold() const
 void PlayerEntity::SetGold(const u32 gold)
 {
 	sPlayer.iGold = gold;
+	gGui->SetGold(gold);
 }
 
 u32 PlayerEntity::GetLife() const
@@ -330,26 +333,28 @@ u32 PlayerEntity::GetLife() const
 void PlayerEntity::SetLife(const u32 life)
 {
 	sPlayer.iLife = life;
+	gGui->SetLife(life);
 }
 void PlayerEntity::RemoveLife()
 {
 	sPlayer.iLife--;
 }
 
-u32 PlayerEntity::GetMana() const
+u32 PlayerEntity::GetStamina() const
 {
-	return sPlayer.iMana;
+	return sPlayer.iStamina;
 }
-void PlayerEntity::SetMana(const u32 mana)
+void PlayerEntity::SetStamina(const u32 stamina)
 {
-	sPlayer.iMana = mana;
+	sPlayer.iStamina = stamina;
+	gGui->SetStamina(stamina);
 }
-void PlayerEntity::RemoveMana()
+void PlayerEntity::RemoveStamina()
 {
-	sPlayer.iMana--;
+	sPlayer.iStamina--;
 }
 
-bool PlayerEntity::OnDamage(const b2Vec2 vec2Push/*, EnemyEntity enemy*/)
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -370,18 +375,18 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push/*, EnemyEntity enemy*/)
 	return true;
 }
 
-void PlayerEntity::OnCollect(ItemTypes::Enum item)
+void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 {
-	// Play damage sound
+	// Play collect sound
 	gSoundManager->Play(SND_POWERUP);
 
 	if(item == ItemTypes::HealthPotion)
-		this->SetLife(this->GetLife() + 10);
+		this->SetLife(this->GetLife() + amount);
 
 	if(item == ItemTypes::StaminaPotion)
-		this->SetMana(this->GetMana() + 10);
+		this->SetStamina(this->GetStamina() + amount);
 
 	if(item == ItemTypes::Gold)
-		this->SetGold(this->GetGold() + 50);
+		this->SetGold(this->GetGold() + amount);
 }
 

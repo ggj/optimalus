@@ -9,6 +9,7 @@ EnemyEntity::EnemyEntity()
 	: SpriteEntity("Enemy", "Enemy")
 	, pBody(nullptr)
 	, fInvicibleTime(0.0f)
+	, pTarget(nullptr)
 {
 }
 
@@ -44,6 +45,27 @@ void EnemyEntity::Update(f32 dt)
 		{
 			pSprite->SetVisible(true);
 			fInvicibleTime = 0;
+		}
+	}
+
+	// Search a nerby player
+	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
+		pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
+
+	if (pTarget == nullptr || (pTarget != nullptr &&!pTarget->GetIsActive()))
+		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
+
+	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
+		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
+
+	if (pTarget != nullptr && pTarget->GetIsActive())
+	{
+		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
+
+		f32 distance = dir.Normalize();
+		if (distance <= 1.0f)
+		{
+			Log("Jogador encontrado, e esta no raio de ataque: %f", distance);
 		}
 	}
 }

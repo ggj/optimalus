@@ -82,13 +82,13 @@ bool GameScene::Initialize()
 	pInput->AddKeyboardListener(this);
 
 	// Get the initial value from game data
-	gGui->SetPlayerName("OptimistPlayer");
+	gGui->SetPlayerName("Optimist");
 	gGui->SetLevel(1);
 	gGui->SetXP(100);
 	gGui->SetAttackPower(15);
 	gGui->SetGold(0);
 	gGui->SetLife(22);
-	gGui->SetMana(10);
+	gGui->SetStamina(10);
 
 	return true;
 }
@@ -229,8 +229,6 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
 	pGameMap = (GameMap *)cScene.GetChildByName("Map");
 
-	int hostageNum = 0;
-
 	strNextLevel = pGameMap->GetProperty("NextLevel");
 
 	MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();
@@ -365,7 +363,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	gGui->SetLevel(pPlayer->GetLevel());
 	gGui->SetXP(pPlayer->GetXP());
 	gGui->SetLife(pPlayer->GetLife());
-	gGui->SetMana(pPlayer->GetMana());
+	gGui->SetStamina(pPlayer->GetStamina());
 
 	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
