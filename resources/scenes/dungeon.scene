@@ -367,7 +367,7 @@
 			sType: Image
 			sName: GameOverImage
 			sResource: textures/background_gameover.png
-			cPosition: {z: -100}
+			cPosition: {z: -1000}
 			bVisible: false
 		}
 	]
