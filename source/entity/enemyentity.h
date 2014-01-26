@@ -25,6 +25,8 @@ class EnemyEntity: public SpriteEntity
 			u32 iLevel;
 			u32 iAttackPower;
 			u32 iDefensePower;
+			u32 iLife;
+			u32 iLifeTotal;
 		} sEnemy;
 
 	private:

@@ -13,6 +13,12 @@ EnemyEntity::EnemyEntity()
 	, pTarget(nullptr)
 	, bPlayerLock(false)
 {
+	sEnemy.displayName = "Enemy";
+	sEnemy.iLevel = 1;
+	sEnemy.iAttackPower = 3;
+	sEnemy.iDefensePower = 2;
+	sEnemy.iLife = 5;
+	sEnemy.iLifeTotal = 5;
 }
 
 EnemyEntity::~EnemyEntity()
@@ -131,10 +137,10 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 				vecToPush = b2Vec2(1.0f, 0.0f);
 			}
 
-			u32 damage = 0;
+			u32 damageToPlayer = (player->GetDefensePower() - sEnemy.iAttackPower) + (rand() % 3 + 1);
 
 			//Do damage to the player
-			player->OnDamage(vecToPush, damage);
+			player->OnDamage(vecToPush, damageToPlayer);
 
 			//Receive damage
 			this->OnDamage();
