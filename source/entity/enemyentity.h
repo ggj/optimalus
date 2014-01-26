@@ -17,6 +17,14 @@ class EnemyEntity: public SpriteEntity
 
 		bool OnDamage();
 
+		struct EnemyData
+		{
+			String displayName;
+			u32 iLevel;
+			u32 iAttackPower;
+			u32 iDefensePower;
+		} sEnemy;
+
 	private:
 		b2Body *pBody;
 		CollisionSensor clSensor;
