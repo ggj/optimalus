@@ -33,7 +33,7 @@ div#score_div
 	outline-font-effect: outline;
 	outline-width: 2px;
 	outline-color: black;
-	background:#ff00ff;
+	background:black;
 
 	background-decorator: tiled-box;
 	background-top-left-image: /textures/rocket_invader.png 0px 0px 133px 140px;
