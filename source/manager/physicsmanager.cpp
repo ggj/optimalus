@@ -76,7 +76,8 @@ void PhysicsManager::RemoveBodies()
 	// Remove all the bodies colected to be destroyed
 	for (BodiesScheduledForRemoveList::iterator it = lstBodiesForRemove.begin(), end = lstBodiesForRemove.end(); it != end; ++it)
 	{
-		this->DestroyBody(*it);
+		//this->DestroyBody(*it);
+		pWorld->DestroyBody(*it);
 	}
 	lstBodiesForRemove.clear();
 }
