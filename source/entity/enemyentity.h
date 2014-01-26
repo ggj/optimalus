@@ -3,6 +3,7 @@
 
 #include "spriteentity.h"
 #include "../util/collisionsensor.h"
+#include "playerentity.h"
 
 class EnemyEntity: public SpriteEntity
 {
@@ -26,6 +27,7 @@ class EnemyEntity: public SpriteEntity
 		} sEnemy;
 
 	private:
+		PlayerEntity *pTarget;
 		b2Body *pBody;
 		CollisionSensor clSensor;
 

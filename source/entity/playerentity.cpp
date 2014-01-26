@@ -126,6 +126,7 @@ void PlayerEntity::Update(f32 dt)
 	{
 		vel.x = fVelocity * fMove;
 		pBody->SetLinearVelocity(vel);
+
 	}
 
 	if (fUpDownMove != 0)
@@ -353,7 +354,7 @@ void PlayerEntity::RemoveStamina()
 	sPlayer.iStamina--;
 }
 
-bool PlayerEntity::OnDamage(const b2Vec2 vec2Push/*, EnemyEntity enemy*/)
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
