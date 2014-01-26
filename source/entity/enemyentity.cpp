@@ -14,12 +14,6 @@ EnemyEntity::EnemyEntity()
 	, bPlayerLock(false)
 {
 	sEnemy.displayName = "Enemy";
-	sEnemy.iEnemyId = 0;
-	sEnemy.iLevel = 1;
-	sEnemy.iAttackPower = 3;
-	sEnemy.iDefensePower = 2;
-	sEnemy.iLife = 5;
-	sEnemy.iLifeTotal = 5;
 }
 
 EnemyEntity::~EnemyEntity()
@@ -32,6 +26,41 @@ void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 	clSensor.Load(metadata, this);
+
+	if (!metadata.GetProperty("DisplayName").empty())
+		sEnemy.displayName = metadata.GetProperty("DisplayName");
+	else
+		sEnemy.displayName = "Enemy";
+
+	if (!metadata.GetProperty("EnemyId").empty())
+		sEnemy.iEnemyId = std::stoi(metadata.GetProperty("EnemyId"));
+	else
+		sEnemy.iEnemyId = 0;
+
+	if (!metadata.GetProperty("Level").empty())
+		sEnemy.iLevel = std::stoi(metadata.GetProperty("Level"));
+	else
+		sEnemy.iLevel = 1;
+
+	if (!metadata.GetProperty("AttackPower").empty())
+		sEnemy.iAttackPower = std::stoi(metadata.GetProperty("AttackPower"));
+	else
+		sEnemy.iAttackPower = 3;
+
+	if (!metadata.GetProperty("DefensePower").empty())
+		sEnemy.iDefensePower = std::stoi(metadata.GetProperty("DefensePower"));
+	else
+		sEnemy.iDefensePower = 2;
+
+	if (!metadata.GetProperty("Life").empty())
+		sEnemy.iLife = std::stoi(metadata.GetProperty("Life"));
+	else
+		sEnemy.iLife = 5;
+
+	if (!metadata.GetProperty("LifeTotal").empty())
+		sEnemy.iLifeTotal = std::stoi(metadata.GetProperty("LifeTotal"));
+	else
+		sEnemy.iLifeTotal = 5;
 
 	b2Vec2 customSize(40, 40);
 
