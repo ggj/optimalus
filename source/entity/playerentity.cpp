@@ -333,11 +333,24 @@ u32 PlayerEntity::GetLife() const
 void PlayerEntity::SetLife(const u32 life)
 {
 	sPlayer.iLife = life;
-	gGui->SetLife(life);
+	gGui->SetLife(life, this->sPlayer.iLifeTotal);
 }
 void PlayerEntity::RemoveLife()
 {
 	sPlayer.iLife--;
+}
+
+u32 PlayerEntity::GetLifeTotal() const
+{
+	return sPlayer.iLifeTotal;
+}
+void PlayerEntity::SetLifeTotal(const u32 lifeTotal)
+{
+	sPlayer.iLifeTotal = lifeTotal;
+}
+void PlayerEntity::RemoveLifeTotal()
+{
+	sPlayer.iLifeTotal--;
 }
 
 u32 PlayerEntity::GetStamina() const
@@ -347,11 +360,24 @@ u32 PlayerEntity::GetStamina() const
 void PlayerEntity::SetStamina(const u32 stamina)
 {
 	sPlayer.iStamina = stamina;
-	gGui->SetStamina(stamina);
+	gGui->SetStamina(stamina, this->sPlayer.iStaminaTotal);
 }
 void PlayerEntity::RemoveStamina()
 {
 	sPlayer.iStamina--;
+}
+
+u32 PlayerEntity::GetStaminaTotal() const
+{
+	return sPlayer.iStaminaTotal;
+}
+void PlayerEntity::SetStaminaTotal(const u32 staminaTotal)
+{
+	sPlayer.iStaminaTotal = staminaTotal;
+}
+void PlayerEntity::RemoveStaminaTotal()
+{
+	sPlayer.iStaminaTotal--;
 }
 
 bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
@@ -380,10 +406,12 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 	// Play collect sound
 	gSoundManager->Play(SND_POWERUP);
 
-	if(item == ItemTypes::HealthPotion)
+	if(item == ItemTypes::HealthPotion
+		&& (this->GetLife() + amount) < this->GetLifeTotal())
 		this->SetLife(this->GetLife() + amount);
 
-	if(item == ItemTypes::StaminaPotion)
+	if(item == ItemTypes::StaminaPotion
+		&& (this->GetStamina() + amount) < this->GetStaminaTotal())
 		this->SetStamina(this->GetStamina() + amount);
 
 	if(item == ItemTypes::Gold)

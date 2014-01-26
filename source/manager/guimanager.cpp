@@ -104,6 +104,9 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("playerName") != nullptr)
 				pElementPlayerName = pDoc->GetElementById("playerName");
 
+			if (pDoc->GetElementById("displayEnemyName") != nullptr)
+				pElementEnemyName = pDoc->GetElementById("displayEnemyName");
+
 			if (pDoc->GetElementById("level") != nullptr)
 				pElementLevel = pDoc->GetElementById("level");
 
@@ -119,17 +122,23 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("life") != nullptr)
 				pElementLife = pDoc->GetElementById("life");
 
-			if (pDoc->GetElementById("lifePotion") != nullptr)
-				pElementLifePotion = pDoc->GetElementById("lifePotion");
-
 			if (pDoc->GetElementById("stamina") != nullptr)
 				pElementStamina = pDoc->GetElementById("stamina");
 
-			if (pDoc->GetElementById("staminaPotion") != nullptr)
-				pElementStaminaPotion = pDoc->GetElementById("staminaPotion");
-
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
+
+			if (pDoc->GetElementById("levelxp_enemy") != nullptr)
+				pElementLevelXPBox = pDoc->GetElementById("levelxp_enemy");
+
+			if (pDoc->GetElementById("enemy_level") != nullptr)
+				pElementEnemyLevel = pDoc->GetElementById("enemy_level");
+
+			if (pDoc->GetElementById("enemy_life") != nullptr)
+				pElementEnemyLife = pDoc->GetElementById("enemy_life");
+
+			if (pDoc->GetElementById("dialog_title") != nullptr)
+				pElementDialogTitle = pDoc->GetElementById("dialog_title");
 
 			if (pDoc->GetElementById("dialog") != nullptr)
 				pDialog = pDoc->GetElementById("dialog");
@@ -149,6 +158,7 @@ bool GuiManager::LoadGUI(const String &doc)
 
 			if (pDoc->GetElementById("fullscreen") != nullptr && gGameData->IsFullScreenEnabled())
 				pDoc->GetElementById("fullscreen")->SetAttribute("checked", "");
+
 		}
 
 		sDocument = doc;
@@ -340,6 +350,11 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_optimist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else if (hero == "realist")
 	{
@@ -351,6 +366,11 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_realist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else if (hero == "pessimist")
 	{
@@ -362,10 +382,19 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_pessimist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else
 	{
 		pEnemyPicture->SetClassNames("");
+		pElementEnemyName->SetClassNames("hide");
+		pDialog->SetClassNames("hide");
+		pElementLevelXPBox->SetClassNames("hide");
+		pElementDialogTitle->SetClassNames("hide");
 	}
 }
 
@@ -397,36 +426,26 @@ void GuiManager::SetGold(u32 gold)
 	pElementGold->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveGold()
-{
-	//gGameData->RemoveGold();
-	//this->SetGold(gGameData->GetGold());
-}
-
-void GuiManager::SetLife(u32 life)
+void GuiManager::SetLife(u32 life, u32 lifeTotal)
 {
 	char x[100];
+	char y[100];
 	snprintf(x, 100, "%d", life);
+	snprintf(y, 100, "%d", lifeTotal);
+	strcat(x, "/");
+	strcat(x, y);
 	pElementLife->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::RemoveLife()
-{
-	//gGameData->RemoveLife();
-	//this->SetLife(gGameData->GetLife());
-}
-
-void GuiManager::SetStamina(u32 stamina)
+void GuiManager::SetStamina(u32 stamina, u32 staminaTotal)
 {
 	char x[100];
+	char y[100];
 	snprintf(x, 100, "%d", stamina);
+	snprintf(y, 100, "%d", staminaTotal);
+	strcat(x, "/");
+	strcat(x, y);
 	pElementStamina->SetInnerRML(Rocket::Core::String(x));
-}
-
-void GuiManager::RemoveStamina()
-{
-	//gGameData->RemoveMana();
-	//this->SetMana(gGameData->GetMana());
 }
 
 ISceneObject *GuiManager::GetSceneObject() const

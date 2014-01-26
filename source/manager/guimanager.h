@@ -40,15 +40,8 @@ class GuiManager : public IRocketEventListener
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
 		void SetGold(u32 gold);
-		void RemoveGold();
-		void SetLife(u32 life);
-		void RemoveLife();
-		void SetLifePotion(u32 lifePotion);
-		void RemoveLifePotion();
-		void SetStamina(u32 stamina);
-		void RemoveStamina();
-		void SetStaminaPotion(u32 staminaPotion);
-		void RemoveStaminaPotion();
+		void SetLife(u32 life, u32 lifeTotal);
+		void SetStamina(u32 stamina, u32 staminaTotal);
 
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
@@ -67,15 +60,19 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::ElementDocument *pStackedDoc;
 
 		// GUI Elements
+		Rocket::Core::Element	*pElementEnemyName;
+		Rocket::Core::Element	*pElementLevelXPBox;
 		Rocket::Core::Element	*pElementPlayerName;
+		Rocket::Core::Element	*pElementDialogTitle;
 		Rocket::Core::Element	*pElementLevel;
 		Rocket::Core::Element	*pElementXP;
 		Rocket::Core::Element	*pElementAttackPower;
 		Rocket::Core::Element	*pElementGold;
 		Rocket::Core::Element	*pElementLife;
-		Rocket::Core::Element	*pElementLifePotion;
 		Rocket::Core::Element	*pElementStamina;
 		Rocket::Core::Element	*pElementStaminaPotion;
+		Rocket::Core::Element	*pElementEnemyLevel;
+		Rocket::Core::Element	*pElementEnemyLife;
 
 		Rocket::Core::Element	*pHeroPicture[3];
 		Rocket::Core::Element	*pEnemyPicture;
