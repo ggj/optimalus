@@ -13,6 +13,7 @@ EnemyEntity::EnemyEntity()
 	, fInvicibleTime(0.0f)
 	, pTarget(nullptr)
 	, bPlayerLock(false)
+	, bIsDead(false)
 {
 	sEnemy.displayName = "Enemy";
 }
@@ -157,7 +158,7 @@ void EnemyEntity::Update(f32 dt)
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)
 {
-	if (event.GetType() == CollisionEventType::OnEnter)
+	if (event.GetType() == CollisionEventType::OnEnter && !bIsDead)
 	{
 		Log("ENEMY colidiu");
 
@@ -236,7 +237,8 @@ bool EnemyEntity::OnDamage(u32 amount)
 		this->pSprite->SetVisible(false);
 
 		// Add body to a list to remove
-		//gPhysics->lstBodiesForRemove.push_back(pBody);
+		gPhysics->AddBodyToRemove(pBody);
+		bIsDead = true;
 	}
 	else
 		fInvicibleTime = 3;
