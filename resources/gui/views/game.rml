@@ -41,11 +41,11 @@
 				</p>
 				<p>
 					<div id="displayEnemyName">
-						<strong id="enemyName">Reaper</strong>
+						<strong id="enemyName">Enemy Name</strong>
 					</div>
 				</p>
 				<p id="avatar">
-					<h1><div id="enemy_div" class="enemy_none"/></h1>
+					<h1><div id="enemy_div" class="avatar_optimist_off"/></h1>
 				</p>
 				<p id="levelxp">
 					<h1>Level:</h1>

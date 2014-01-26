@@ -1,12 +1,10 @@
 <rml>
 	<head>
-		<title>Main Menu</title>
-		<link type="text/template" href="window.rml" />
+		<title>The Optimalus</title>
+		<link type="text/template" href="window2.rml" />
 		<style>
 			body
 			{
-				width: 300px;
-				height: 225px;
 
 				margin: auto;
 			}
@@ -22,10 +20,10 @@
 			}
 		</style>
 	</head>
-	<body template="window">
-		<button onClick="goto game">Start Game</button><br />
+	<body template="window2">
+		<button onClick="goto game">Start</button><br />
 		<button onClick="goto options">Options</button><br />
-		<button onClick="goto credits">Credits</button><br />
+		<button onClick="goto credits">Credits</button><br /><br/><br />
 		<button onClick="exit">Exit</button>
 	</body>
 </rml>

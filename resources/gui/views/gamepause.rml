@@ -5,8 +5,8 @@
 		<style>
 			body
 			{
-				width: 300px;
-				height: 55px;
+				width: 200px;
+				height: 10px;
 
 				margin: auto;
 			}
@@ -24,6 +24,6 @@
 	</head>
 	<body template="window">
 		<button onCLick="resume">Resume</button>
-		<button onClick="quit">Return to menu</button>
+		<button onClick="quit">Main menu</button>
 	</body>
 </rml>

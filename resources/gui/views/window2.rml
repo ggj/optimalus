@@ -1,7 +1,7 @@
-<template name="window" content="content">
+<template name="window2" content="content">
 	<head>
 		<link type="text/rcss" href="/gui/styles/common.rcss"/>
-		<link type="text/rcss" href="/gui/styles/window.rcss"/>
+		<link type="text/rcss" href="/gui/styles/window2.rcss"/>
 	</head>
 	<body class="window">
 		<div id="title_bar">
@@ -12,6 +12,6 @@
 			<div id="content">
 			</div>
 		</div>
-		<handle size_target="#document" style="position: absolute; width: 16px; height: 16px; bottom: 0px; right: 0px;"></handle>
+		<handle size_target="#document"></handle>
 	</body>
 </template>
