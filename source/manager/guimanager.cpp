@@ -323,19 +323,19 @@ void GuiManager::SetDialog(const String &text)
 
 void GuiManager::SelectHero(const String &name)
 {
-	if (name == "optimist")
+	if (name == "Optimist")
 	{
 		pHeroPicture[0]->SetClassNames("avatar_pessimist_off");
 		pHeroPicture[1]->SetClassNames("avatar_optimist_on");
 		pHeroPicture[2]->SetClassNames("avatar_realist_off");
 	}
-	if (name == "realist")
+	if (name == "Realist")
 	{
 		pHeroPicture[0]->SetClassNames("avatar_optimist_off");
 		pHeroPicture[1]->SetClassNames("avatar_realist_on");
 		pHeroPicture[2]->SetClassNames("avatar_pessimist_off");
 	}
-	if (name == "pessimist")
+	if (name == "Pessimist")
 	{
 		pHeroPicture[0]->SetClassNames("avatar_realist_off");
 		pHeroPicture[1]->SetClassNames("avatar_pessimist_on");

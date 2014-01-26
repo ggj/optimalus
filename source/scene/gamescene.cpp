@@ -146,12 +146,14 @@ bool GameScene::Update(f32 dt)
 	}
 	else
 	{
+		clPhysicsManager.RemoveBodies();
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
 		this->FogReveal(pPlayerRealist->GetPosition(), 1);
 		this->FogReveal(pPlayerPessimist->GetPosition(), 1);
 		this->FogReveal(pPlayerOptimist->GetPosition(), 1);
+
 	}
 
 	if (bChangeLevel)
@@ -293,7 +295,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	{
 		pPlayer = pPlayerOptimist;
 		musCur = &musThemeOptimist;
-		gGui->SelectHero("optimist");
+		gGui->SelectHero("Optimist");
 		gGui->SelectEnemy();
 		pSoundSystem->PlayMusic(musCur);
 	}
@@ -358,7 +360,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(true);
 		pessimistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsInputEnabled(false);
-		gGui->SelectHero("realist");
+		gGui->SelectHero("Realist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
@@ -381,7 +383,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(true);
 		pessimistPlayer->SetIsInputEnabled(true);
-		gGui->SelectHero("pessimist");
+		gGui->SelectHero("Pessimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
@@ -404,7 +406,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsInputEnabled(false);
-		gGui->SelectHero("optimist");
+		gGui->SelectHero("Optimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();

@@ -201,7 +201,7 @@ bool EnemyEntity::OnDamage(u32 amount)
 		this->pSprite->SetVisible(false);
 
 		// Add body to a list to remove
-		//gPhysics->lstBodiesForRemove.push_back(pBody);
+		gPhysics->AddBodyToRemove(pBody);
 	}
 	else
 		fInvicibleTime = 3;
