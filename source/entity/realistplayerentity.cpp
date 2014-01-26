@@ -7,6 +7,8 @@ ENTITY_CREATOR("RealistPlayer", RealistPlayerEntity)
 RealistPlayerEntity::RealistPlayerEntity()
 	: PlayerEntity("RealistPlayer", "RealistPlayer", false)
 {
+	fVelocity = 1.5f;
+
 	sPlayer.displayName = "Realist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 100;

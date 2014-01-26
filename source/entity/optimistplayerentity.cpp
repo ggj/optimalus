@@ -7,6 +7,8 @@ ENTITY_CREATOR("OptimistPlayer", OptimistPlayerEntity)
 OptimistPlayerEntity::OptimistPlayerEntity()
 	: PlayerEntity("OptimistPlayer", "OptimistPlayer", true)
 {
+	fVelocity = 2.5f;
+
 	sPlayer.displayName = "Optimist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 80;

@@ -73,7 +73,7 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	pBody->GetFixtureList()->SetUserData(this);
 
 	pInput->AddKeyboardListener(this);
-	fVelocity = 2.0f;
+	//fVelocity = 2.0f;
 	vPlayerVectorDirection = VECTOR_ZERO;
 }
 
