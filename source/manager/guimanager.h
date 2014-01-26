@@ -47,6 +47,7 @@ class GuiManager : public IRocketEventListener
 		void RemoveMana();
 		void SetManaPotion(u32 manaPotion);
 		void RemoveManaPotion();
+		void SelectEnemy(const String &hero, u32 enemyId);
 
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);

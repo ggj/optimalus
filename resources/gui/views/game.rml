@@ -44,7 +44,7 @@
 					</div>
 				</p>
 				<p id="avatar">
-					<h1><div id="enemy_div"/></h1>
+					<h1><div id="enemy_div" class="enemy_none"/></h1>
 				</p>
 				<p id="levelxp">
 					<h1>Level:</h1>
