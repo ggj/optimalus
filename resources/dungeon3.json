@@ -297,7 +297,7 @@
  "orientation":"orthogonal",
  "properties":
     {
-     "NextLevel":"dungeon1.scene"
+     "NextLevel":"dungeon.scene"
     },
  "tileheight":40,
  "tilesets":[
