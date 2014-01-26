@@ -151,9 +151,9 @@ bool GameScene::Update(f32 dt)
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
-		this->FogReveal(pPlayerRealist->GetPosition(), 2);
+		this->FogReveal(pPlayerRealist->GetPosition(), 1);
 		this->FogReveal(pPlayerPessimist->GetPosition(), 1);
-		this->FogReveal(pPlayerOptimist->GetPosition(), 3);
+		this->FogReveal(pPlayerOptimist->GetPosition(), 1);
 	}
 
 	if (bChangeLevel)
