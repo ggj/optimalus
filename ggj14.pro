@@ -113,7 +113,10 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/ballon_optimist.png \
 	resources/textures/ballon_pessimist.png \
 	resources/textures/ballon_realist.png \
-	resources/textures/fog_tileset.png
+	resources/textures/fog_tileset.png \
+	resources/textures/pessimist_enemy_tileset.png \
+	resources/textures/realist_enemy_tileset.png \
+	resources/textures/optimist_enemy_tileset.png \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

@@ -99,6 +99,41 @@ void EnemyEntity::Update(f32 dt)
 
 	if (pTarget != nullptr && pTarget->GetIsActive())
 	{
+		// Change enemy sprites
+		if (pTarget->GetClassName() == "OptimistPlayer")
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("OptimistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("OptimistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("OptimistEnemy2");
+			else
+				pSprite->SetAnimation("OptimistEnemy3");
+		}
+		else if (pTarget->GetClassName() == "RealistPlayer")
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("RealistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("RealistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("RealistEnemy2");
+			else
+				pSprite->SetAnimation("RealistEnemy3");
+		}
+		else
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("PessimistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("PessimistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("PessimistEnemy2");
+			else
+				pSprite->SetAnimation("PessimistEnemy3");
+		}
+
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 
 		f32 distance = dir.Normalize();
