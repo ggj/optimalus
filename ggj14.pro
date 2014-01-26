@@ -110,6 +110,7 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/health_potion.png \
 	resources/textures/stamina_potion.png \
 	resources/textures/gold.png
+	resources/textures/number_1.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

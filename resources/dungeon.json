@@ -778,8 +778,8 @@
                  "visible":true,
                  "width":0,
                  "x":80,
-                 "y":600
-                },
+                 "y":920
+                }, 
                 {
                  "height":0,
                  "name":"RealistPlayer",
@@ -844,8 +844,8 @@
                  "width":17,
                  "x":1015,
                  "y":138
-        },
-        {
+                }, 
+                {
                  "height":0,
                  "name":"Enemy",
                  "properties":
