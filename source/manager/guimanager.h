@@ -67,7 +67,10 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::ElementDocument *pStackedDoc;
 
 		// GUI Elements
+		Rocket::Core::Element	*pElementEnemyName;
+		Rocket::Core::Element	*pElementLevelXPBox;
 		Rocket::Core::Element	*pElementPlayerName;
+		Rocket::Core::Element	*pElementDialogTitle;
 		Rocket::Core::Element	*pElementLevel;
 		Rocket::Core::Element	*pElementXP;
 		Rocket::Core::Element	*pElementAttackPower;
@@ -76,6 +79,8 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::Element	*pElementLifePotion;
 		Rocket::Core::Element	*pElementStamina;
 		Rocket::Core::Element	*pElementStaminaPotion;
+		Rocket::Core::Element	*pElementEnemyLevel;
+		Rocket::Core::Element	*pElementEnemyLife;
 
 		Rocket::Core::Element	*pHeroPicture[3];
 		Rocket::Core::Element	*pEnemyPicture;

@@ -15,6 +15,11 @@ game
 	height: 100%;
 }
 
+.hide
+{
+	visibility:hidden;
+}
+
 div
 {
 	height: 0px;
@@ -51,14 +56,14 @@ div#score_div
 	text-align: center;
 }
 
-p#levelxp
+p#levelxp, p#levelxp_enemy
 {
 	text-align: left;
 	margin: 0px;
 	padding: 0px;
 }
 
-p#centered
+p#dialog_title
 {
 	text-align: center;
 	margin: 0px;

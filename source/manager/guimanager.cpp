@@ -104,6 +104,9 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("playerName") != nullptr)
 				pElementPlayerName = pDoc->GetElementById("playerName");
 
+			if (pDoc->GetElementById("displayEnemyName") != nullptr)
+				pElementEnemyName = pDoc->GetElementById("displayEnemyName");
+
 			if (pDoc->GetElementById("level") != nullptr)
 				pElementLevel = pDoc->GetElementById("level");
 
@@ -131,6 +134,18 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
 
+			if (pDoc->GetElementById("levelxp_enemy") != nullptr)
+				pElementLevelXPBox = pDoc->GetElementById("levelxp_enemy");
+
+			if (pDoc->GetElementById("enemy_level") != nullptr)
+				pElementEnemyLevel = pDoc->GetElementById("enemy_level");
+
+			if (pDoc->GetElementById("enemy_life") != nullptr)
+				pElementEnemyLife = pDoc->GetElementById("enemy_life");
+
+			if (pDoc->GetElementById("dialog_title") != nullptr)
+				pElementDialogTitle = pDoc->GetElementById("dialog_title");
+
 			if (pDoc->GetElementById("dialog") != nullptr)
 				pDialog = pDoc->GetElementById("dialog");
 
@@ -149,6 +164,7 @@ bool GuiManager::LoadGUI(const String &doc)
 
 			if (pDoc->GetElementById("fullscreen") != nullptr && gGameData->IsFullScreenEnabled())
 				pDoc->GetElementById("fullscreen")->SetAttribute("checked", "");
+
 		}
 
 		sDocument = doc;
@@ -340,6 +356,11 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_optimist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else if (hero == "realist")
 	{
@@ -351,6 +372,11 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_realist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else if (hero == "pessimist")
 	{
@@ -362,10 +388,19 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 			case 3: pEnemyPicture->SetClassNames("enemy_4_pessimist"); break;
 			default: break;
 		}
+
+		pElementEnemyName->SetClassNames("");
+		pDialog->SetClassNames("");
+		pElementLevelXPBox->SetClassNames("");
+		pElementDialogTitle->SetClassNames("");
 	}
 	else
 	{
 		pEnemyPicture->SetClassNames("");
+		pElementEnemyName->SetClassNames("hide");
+		pDialog->SetClassNames("hide");
+		pElementLevelXPBox->SetClassNames("hide");
+		pElementDialogTitle->SetClassNames("hide");
 	}
 }
 
