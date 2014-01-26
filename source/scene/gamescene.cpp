@@ -166,7 +166,7 @@ bool GameScene::Update(f32 dt)
 	if (gGameData->sGamePlay.bIsGameOver == true)
 	{
 		pGameOverImg->SetVisible(true);
-		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
+		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-512.0f, -384.0f, 0.0f));
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
 		pFog->SetVisible(false);
