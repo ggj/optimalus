@@ -123,17 +123,13 @@ bool GuiManager::LoadGUI(const String &doc)
 				pElementLifePotion = pDoc->GetElementById("lifePotion");
 
 			if (pDoc->GetElementById("stamina") != nullptr)
-				pElementMana = pDoc->GetElementById("stamina");
+				pElementStamina = pDoc->GetElementById("stamina");
 
-			if (pDoc->GetElementById("manaPotion") != nullptr)
-				pElementManaPotion = pDoc->GetElementById("manaPotion");
+			if (pDoc->GetElementById("staminaPotion") != nullptr)
+				pElementStaminaPotion = pDoc->GetElementById("staminaPotion");
 
 			if (pDoc->GetElementById("enemy_div") != nullptr)
-			{
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
-				auto img = pEnemyPicture->GetClassNames();
-				pEnemyPicture->SetClass("avatar_pessimist", true);
-			}
 
 			if (pDoc->GetElementById("avatar_a") != nullptr && pDoc->GetElementById("avatar_b") != nullptr && pDoc->GetElementById("avatar_c") != nullptr)
 			{
@@ -324,6 +320,47 @@ void GuiManager::SelectHero(const String &name)
 	}
 }
 
+void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
+{
+	if (hero == "optimist")
+	{
+		switch (enemyId)
+		{
+			case 0: pEnemyPicture->SetClassNames("enemy_1_optimist"); break;
+			case 1: pEnemyPicture->SetClassNames("enemy_2_optimist"); break;
+			case 2: pEnemyPicture->SetClassNames("enemy_3_optimist"); break;
+			case 3: pEnemyPicture->SetClassNames("enemy_4_optimist"); break;
+			default: break;
+		}
+	}
+	if (hero == "realist")
+	{
+		switch (enemyId)
+		{
+			case 0: pEnemyPicture->SetClassNames("enemy_1_realist"); break;
+			case 1: pEnemyPicture->SetClassNames("enemy_2_realist"); break;
+			case 2: pEnemyPicture->SetClassNames("enemy_3_realist"); break;
+			case 3: pEnemyPicture->SetClassNames("enemy_4_realist"); break;
+			default: break;
+		}
+	}
+	if (hero == "pessimist")
+	{
+		switch (enemyId)
+		{
+			case 0: pEnemyPicture->SetClassNames("enemy_1_pessimist"); break;
+			case 1: pEnemyPicture->SetClassNames("enemy_2_pessimist"); break;
+			case 2: pEnemyPicture->SetClassNames("enemy_3_pessimist"); break;
+			case 3: pEnemyPicture->SetClassNames("enemy_4_pessimist"); break;
+			default: break;
+		}
+	}
+	else
+	{
+		pEnemyPicture->SetClassNames("avatar_none");
+	}
+}
+
 void GuiManager::SetLevel(u32 level)
 {
 	char x[100];
@@ -375,7 +412,7 @@ void GuiManager::SetMana(u32 mana)
 {
 	char x[100];
 	snprintf(x, 100, "%d", mana);
-	pElementMana->SetInnerRML(Rocket::Core::String(x));
+	pElementStamina->SetInnerRML(Rocket::Core::String(x));
 }
 
 void GuiManager::RemoveMana()
