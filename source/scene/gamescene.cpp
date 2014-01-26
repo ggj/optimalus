@@ -351,8 +351,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	if (pPlayer == optimistPlayer)
 	{
 		optimistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsInputEnabled(false);
 		realistPlayer->SetIsActive(true);
+		realistPlayer->SetIsInputEnabled(true);
 		pessimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsInputEnabled(false);
 		gGui->SelectHero("realist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
@@ -371,8 +374,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	else if (pPlayer == realistPlayer)
 	{
 		optimistPlayer->SetIsActive(false);
+		optimistPlayer->SetIsInputEnabled(false);
 		realistPlayer->SetIsActive(false);
+		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(true);
+		pessimistPlayer->SetIsInputEnabled(true);
 		gGui->SelectHero("pessimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
@@ -391,8 +397,11 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	else if (pPlayer == pessimistPlayer)
 	{
 		optimistPlayer->SetIsActive(true);
+		optimistPlayer->SetIsInputEnabled(true);
 		realistPlayer->SetIsActive(false);
+		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(false);
+		pessimistPlayer->SetIsInputEnabled(false);
 		gGui->SelectHero("optimist");
 
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));

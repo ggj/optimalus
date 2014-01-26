@@ -35,6 +35,8 @@ class PlayerEntity: public SpriteEntity,
 		// IEventInputKeyboardListener
 		bool OnInputKeyboardRelease(const EventInputKeyboard *ev) override;
 
+		void OnCollision(const CollisionEvent &event);
+
 		Vector3f GetPosition();
 		Sprite *GetSprite() const;
 		b2Vec2 GetBodyPosition() const;
