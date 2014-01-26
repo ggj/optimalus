@@ -55,10 +55,10 @@
     <ClCompile Include="..\..\..\source\data\gamedata.cpp" />
     <ClCompile Include="..\..\..\source\entity\deathentity.cpp" />
     <ClCompile Include="..\..\..\source\entity\doorentity.cpp" />
+    <ClCompile Include="..\..\..\source\entity\enemyentity.cpp" />
     <ClCompile Include="..\..\..\source\entity\entity.cpp" />
     <ClCompile Include="..\..\..\source\entity\entityfactory.cpp" />
     <ClCompile Include="..\..\..\source\entity\heartentity.cpp" />
-    <ClCompile Include="..\..\..\source\entity\hostageentity.cpp" />
     <ClCompile Include="..\..\..\source\entity\itementity.cpp" />
     <ClCompile Include="..\..\..\source\entity\optimistplayerentity.cpp" />
     <ClCompile Include="..\..\..\source\entity\pessimistplayerentity.cpp" />
@@ -90,10 +90,10 @@
     <ClInclude Include="..\..\..\source\defines.h" />
     <ClInclude Include="..\..\..\source\entity\deathentity.h" />
     <ClInclude Include="..\..\..\source\entity\doorentity.h" />
+    <ClInclude Include="..\..\..\source\entity\enemyentity.h" />
     <ClInclude Include="..\..\..\source\entity\entity.h" />
     <ClInclude Include="..\..\..\source\entity\entityfactory.h" />
     <ClInclude Include="..\..\..\source\entity\heartentity.h" />
-    <ClInclude Include="..\..\..\source\entity\hostageentity.h" />
     <ClInclude Include="..\..\..\source\entity\itementity.h" />
     <ClInclude Include="..\..\..\source\entity\optimistplayerentity.h" />
     <ClInclude Include="..\..\..\source\entity\pessimistplayerentity.h" />

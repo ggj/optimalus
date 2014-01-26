@@ -100,7 +100,7 @@ div#content
 p
 {
 	text-align: left;
-	margin-bottom: 1em;
+	margin-bottom: 0.7em;
 }
 
 h1

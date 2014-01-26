@@ -8,39 +8,35 @@
 			<div id="score_div">
 				<p>
 					<div id="displayPlayerName">
-						<strong id="playerName"></strong>
+						<strong id="playerName">Player</strong>
 					</div>
 				</p>
-				<p>
-					<div id="avatar_div">
-						<div id="avatar_optimist_div"></div>
-						<div id="avatar_realist_div"></div>
-						<div id="avatar_pessimist_div"></div>
-					</div>
+				<p id="avatar">
+					<h1><div id="avatar_a_div"/></h1>
+					<h1><div id="avatar_b_div"/></h1>
+					<h1><div id="avatar_c_div"/></h1>
 				</p>
-				<p>
+				<p id="levelxp">
 					<h1>Level:</h1>
 					<span id="level">1</span>
 					<h1>XP:</h1>
 					<span id="xp">100/100</span>
 				</p>
-				<p>
+				<p id="contains_icon">
 					<h1><div id="attack_div"><icon/></div></h1>
 					<span id="attackPower">15</span>
-					<h1><div id="gold_div"><icon/></div></h1>
-					<span id="gold">45</span>
+					<h1><div id="defense_div"><icon/></div></h1>
+					<span id="defensePower">15</span>
 				</p>
-				<p>
+				<p id="contains_icon">
 					<h1><div id="life_div"><icon/></div></h1>
 					<span id="life">10</span>
-					<h1><div id="life_potion_div"><icon/></div></h1>
-					<span id="lifePotion">0</span>
+					<h1><div id="stam_div"><icon/></div></h1>
+					<span id="stamina">10</span>
 				</p>
 				<p>
-					<h1><div id="mana_div"><icon/></div></h1>
-					<span id="mana">0</span>
-					<h1><div id="mana_potion_div"><icon/></div></h1>
-					<span id="manaPotion">0</span>
+					<h1><div id="gold_div"><icon/></div></h1>
+					<span id="gold">100</span>
 				</p>
 				<p>
 					<div id="displayEnemyName">
