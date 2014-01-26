@@ -362,6 +362,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pessimistPlayer->SetIsInputEnabled(false);
 		gGui->SelectHero("Realist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
@@ -385,6 +386,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pessimistPlayer->SetIsInputEnabled(true);
 		gGui->SelectHero("Pessimist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
@@ -408,6 +410,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		pessimistPlayer->SetIsInputEnabled(false);
 		gGui->SelectHero("Optimist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();

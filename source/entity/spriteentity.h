@@ -11,6 +11,7 @@ class SpriteEntity: public Entity
 		virtual ~SpriteEntity();
 
 		virtual void Load(MetadataObject &metadata, SceneNode *sprites);
+		virtual void Load(MetadataObject &metadata, SceneNode *sprites, const char *spriteName);
 
 	protected:
 		Sprite *pSprite;

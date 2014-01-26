@@ -48,3 +48,13 @@ void SpriteEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 
 	gScene->Add(pSprite);
 }
+
+void SpriteEntity::Load(MetadataObject &metadata, SceneNode *sprites, const char *spriteName)
+{
+	Entity::Load(metadata, sprites);
+
+	pSprite = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName(spriteName))));
+	pSprite->SetPosition(metadata.GetPosition());
+
+	gScene->Add(pSprite);
+}
