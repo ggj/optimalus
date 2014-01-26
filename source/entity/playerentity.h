@@ -85,12 +85,16 @@ class PlayerEntity: public SpriteEntity,
 		void SetStaminaTotal(u32);
 		void RemoveStaminaTotal();
 
+		u32 GetDefensePower() const;
+		void SetDefensePower(u32 defensePower);
+
 		struct PlayerData
 		{
 			String displayName;
 			u32 iLevel;
 			u32 iXP;
 			u32 iAttackPower;
+			u32 iDefensePower;
 			u32 iGold;
 			u32 iLife;
 			u32 iLifeTotal;

@@ -380,6 +380,16 @@ void PlayerEntity::RemoveStaminaTotal()
 	sPlayer.iStaminaTotal--;
 }
 
+u32 PlayerEntity::GetDefensePower() const
+{
+	return sPlayer.iDefensePower;
+}
+
+void PlayerEntity::SetDefensePower(u32 defensePower)
+{
+	sPlayer.iDefensePower = defensePower;
+}
+
 bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 {
 	// Play damage sound
