@@ -120,8 +120,10 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 				vecToPush = b2Vec2(1.0f, 0.0f);
 			}
 
+			u32 damage = 0;
+
 			//Do damage to the player
-			player->OnDamage(vecToPush);
+			player->OnDamage(vecToPush, damage);
 
 			//Receive damage
 			this->OnDamage();

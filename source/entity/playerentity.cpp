@@ -354,7 +354,7 @@ void PlayerEntity::RemoveStamina()
 	sPlayer.iStamina--;
 }
 
-bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -370,7 +370,7 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 	pText->SetVisible(true);
 
 	// Receive the damage
-	//enemy.
+	this->SetLife(this->GetLife() - amount);
 
 	return true;
 }

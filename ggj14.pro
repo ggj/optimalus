@@ -117,6 +117,7 @@ OTHER_FILES_GUI_STYLE = \
 	#Styles
 	resources/gui/styles/common.rcss \
 	resources/gui/styles/window.rcss \
+	resources/gui/styles/window2.rcss \
 	resources/gui/styles/game.rcss
 
 OTHER_FILES_GUI_VIEW = \
