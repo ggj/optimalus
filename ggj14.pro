@@ -109,8 +109,10 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/optimist_enemy1_idle_frame1.png \
 	resources/textures/health_potion.png \
 	resources/textures/stamina_potion.png \
-	resources/textures/gold.png
-	resources/textures/number_1.png
+	resources/textures/gold.png \
+	resources/textures/ballon_optimist.png \
+	resources/textures/ballon_pessimist.png \
+	resources/textures/ballon_realist.png
 
 #Gui
 OTHER_FILES_GUI_STYLE = \

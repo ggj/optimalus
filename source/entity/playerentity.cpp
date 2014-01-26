@@ -55,7 +55,13 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 
-	pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Number1"))));
+	if (this->GetClassName() == "OptimistPlayer")
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonOptimist"))));
+	else if (this->GetClassName() == "RealistPlayer")
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonRealist"))));
+	else
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonPessimist"))));
+
 	pText->SetPosition(0, 0);
 	pText->SetVisible(false);
 	gScene->Add(pText);

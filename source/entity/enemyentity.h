@@ -16,7 +16,7 @@ class EnemyEntity: public SpriteEntity
 
 		virtual void OnCollision(const CollisionEvent &event);
 
-		bool OnDamage();
+		bool OnDamage(u32 amount);
 
 		struct EnemyData
 		{

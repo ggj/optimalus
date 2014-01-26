@@ -131,13 +131,15 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 			//Do damage to the player
 			player->OnDamage(vecToPush, damageToPlayer);
 
+			u32 damageToEnemy = (sEnemy.iDefensePower - player->GetAttackPower()) + (rand() % 3 + 1);
+
 			//Receive damage
-			this->OnDamage();
+			this->OnDamage(damageToEnemy);
 		}
 	}
 }
 
-bool EnemyEntity::OnDamage()
+bool EnemyEntity::OnDamage(u32 amount)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -146,5 +148,9 @@ bool EnemyEntity::OnDamage()
 		return false;
 
 	fInvicibleTime = 3;
+
+	// Receive the damage
+	sEnemy.iLife -= amount;
+
 	return true;
 }
