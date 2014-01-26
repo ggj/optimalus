@@ -90,6 +90,8 @@ class PlayerEntity: public SpriteEntity,
 		u32 GetDefensePower() const;
 		void SetDefensePower(u32 defensePower);
 
+		void GoToNextLevel();
+
 		struct PlayerData
 		{
 			String displayName;
@@ -123,6 +125,7 @@ class PlayerEntity: public SpriteEntity,
 
 		bool bIsActive;
 		bool bIsInputEnabled;
+		u32 iNextLevelCounter;
 		void SetState(int newState);
 };
 

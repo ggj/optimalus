@@ -58,6 +58,7 @@ class GameScene : public IEventInputKeyboardListener,
 
 		void RemoveLife();
 		void ChangePlayer(const String currentPlayer);
+		void ChangeLevel();
 
 	private:
 		PlayerEntity	 *pPlayer;

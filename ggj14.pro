@@ -163,6 +163,7 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_MAPS} \
+    resources/scenes/dungeon2.scene
 
 include("app.pri")

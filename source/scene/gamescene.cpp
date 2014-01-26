@@ -449,6 +449,11 @@ void GameScene::LoadMapColliders()
 	}
 }
 
+void GameScene::ChangeLevel()
+{
+	bChangeLevel = true;
+}
+
 void GameScene::RemoveLife()
 {
 }
