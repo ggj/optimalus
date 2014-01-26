@@ -87,8 +87,8 @@ bool GameScene::Initialize()
 	gGui->SetXP(100);
 	gGui->SetAttackPower(15);
 	gGui->SetGold(0);
-	gGui->SetLife(22);
-	gGui->SetStamina(10);
+	gGui->SetLife(22, 22);
+	gGui->SetStamina(10, 10);
 
 	return true;
 }
@@ -361,8 +361,8 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	gGui->SetPlayerName(pPlayer->GetDisplayName());
 	gGui->SetLevel(pPlayer->GetLevel());
 	gGui->SetXP(pPlayer->GetXP());
-	gGui->SetLife(pPlayer->GetLife());
-	gGui->SetStamina(pPlayer->GetStamina());
+	gGui->SetLife(pPlayer->GetLife(), pPlayer->GetLifeTotal());
+	gGui->SetStamina(pPlayer->GetStamina(), pPlayer->GetStaminaTotal());
 
 	pSoundSystem->PlayMusic(musCur, 10.0f);
 }

@@ -333,7 +333,7 @@ u32 PlayerEntity::GetLife() const
 void PlayerEntity::SetLife(const u32 life)
 {
 	sPlayer.iLife = life;
-	gGui->SetLife(life);
+	gGui->SetLife(life, this->sPlayer.iLifeTotal);
 }
 void PlayerEntity::RemoveLife()
 {
@@ -347,7 +347,6 @@ u32 PlayerEntity::GetLifeTotal() const
 void PlayerEntity::SetLifeTotal(const u32 lifeTotal)
 {
 	sPlayer.iLifeTotal = lifeTotal;
-	gGui->SetLifeTotal(lifeTotal);
 }
 void PlayerEntity::RemoveLifeTotal()
 {
@@ -361,7 +360,7 @@ u32 PlayerEntity::GetStamina() const
 void PlayerEntity::SetStamina(const u32 stamina)
 {
 	sPlayer.iStamina = stamina;
-	gGui->SetStamina(stamina);
+	gGui->SetStamina(stamina, this->sPlayer.iStaminaTotal);
 }
 void PlayerEntity::RemoveStamina()
 {
@@ -375,7 +374,6 @@ u32 PlayerEntity::GetStaminaTotal() const
 void PlayerEntity::SetStaminaTotal(const u32 staminaTotal)
 {
 	sPlayer.iStaminaTotal = staminaTotal;
-	gGui->SetStaminaTotal(staminaTotal);
 }
 void PlayerEntity::RemoveStaminaTotal()
 {
@@ -408,10 +406,12 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 	// Play collect sound
 	gSoundManager->Play(SND_POWERUP);
 
-	if(item == ItemTypes::HealthPotion)
+	if(item == ItemTypes::HealthPotion
+		&& (this->GetLife() + amount) < this->GetLifeTotal())
 		this->SetLife(this->GetLife() + amount);
 
-	if(item == ItemTypes::StaminaPotion)
+	if(item == ItemTypes::StaminaPotion
+		&& (this->GetStamina() + amount) < this->GetStaminaTotal())
 		this->SetStamina(this->GetStamina() + amount);
 
 	if(item == ItemTypes::Gold)

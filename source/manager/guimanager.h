@@ -39,10 +39,8 @@ class GuiManager : public IRocketEventListener
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
 		void SetGold(u32 gold);
-		void SetLife(u32 life);
-		void SetLifeTotal(u32 life);
-		void SetStamina(u32 stamina);
-		void SetStaminaTotal(u32 stamina);
+		void SetLife(u32 life, u32 lifeTotal);
+		void SetStamina(u32 stamina, u32 staminaTotal);
 
 		// IRocketEventListener
 		virtual void OnGuiEvent(Rocket::Core::Event &ev, const Rocket::Core::String &script);
@@ -67,9 +65,7 @@ class GuiManager : public IRocketEventListener
 		Rocket::Core::Element	*pElementAttackPower;
 		Rocket::Core::Element	*pElementGold;
 		Rocket::Core::Element	*pElementLife;
-		Rocket::Core::Element	*pElementLifeTotal;
 		Rocket::Core::Element	*pElementStamina;
-		Rocket::Core::Element	*pElementStaminaTotal;
 
 		Rocket::Core::Element	*pHeroPicture[3];
 		Rocket::Core::Element	*pEnemyPicture;

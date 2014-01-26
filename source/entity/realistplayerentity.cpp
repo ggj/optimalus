@@ -13,5 +13,7 @@ RealistPlayerEntity::RealistPlayerEntity()
 	sPlayer.iAttackPower = 15;
 	sPlayer.iGold = 0;
 	sPlayer.iLife = 22;
+	sPlayer.iLifeTotal = 22;
 	sPlayer.iStamina = 10;
+	sPlayer.iStaminaTotal = 10;
 }

@@ -119,14 +119,8 @@ bool GuiManager::LoadGUI(const String &doc)
 			if (pDoc->GetElementById("life") != nullptr)
 				pElementLife = pDoc->GetElementById("life");
 
-			if (pDoc->GetElementById("lifeTotal") != nullptr)
-				pElementLifeTotal = pDoc->GetElementById("lifeTotal");
-
 			if (pDoc->GetElementById("stamina") != nullptr)
 				pElementStamina = pDoc->GetElementById("stamina");
-
-			if (pDoc->GetElementById("staminaTotal") != nullptr)
-				pElementStaminaTotal = pDoc->GetElementById("staminaTotal");
 
 			if (pDoc->GetElementById("enemy_div") != nullptr)
 				pEnemyPicture = pDoc->GetElementById("enemy_div");
@@ -389,32 +383,26 @@ void GuiManager::SetGold(u32 gold)
 	pElementGold->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::SetLife(u32 life)
+void GuiManager::SetLife(u32 life, u32 lifeTotal)
 {
 	char x[100];
+	char y[100];
 	snprintf(x, 100, "%d", life);
+	snprintf(y, 100, "%d", lifeTotal);
+	strcat(x, "/");
+	strcat(x, y);
 	pElementLife->SetInnerRML(Rocket::Core::String(x));
 }
 
-void GuiManager::SetLifeTotal(u32 lifeTotal)
+void GuiManager::SetStamina(u32 stamina, u32 staminaTotal)
 {
 	char x[100];
-	snprintf(x, 100, "%d", lifeTotal);
-	pElementLifeTotal->SetInnerRML(Rocket::Core::String(x));
-}
-
-void GuiManager::SetStamina(u32 stamina)
-{
-	char x[100];
+	char y[100];
 	snprintf(x, 100, "%d", stamina);
+	snprintf(y, 100, "%d", staminaTotal);
+	strcat(x, "/");
+	strcat(x, y);
 	pElementStamina->SetInnerRML(Rocket::Core::String(x));
-}
-
-void GuiManager::SetStaminaTotal(u32 staminaTotal)
-{
-	char x[100];
-	snprintf(x, 100, "%d", staminaTotal);
-	pElementStaminaTotal->SetInnerRML(Rocket::Core::String(x));
 }
 
 ISceneObject *GuiManager::GetSceneObject() const
