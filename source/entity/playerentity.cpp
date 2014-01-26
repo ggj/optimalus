@@ -445,14 +445,9 @@ void PlayerEntity::OnCollision(const CollisionEvent &event)
 	if (event.GetType() == CollisionEventType::OnEnter)
 	{
 		Entity *other = event.GetOtherEntity();
-		if ((other != nullptr && other->GetClassName() == "OptimistPlayer") ||
-			(other != nullptr && other->GetClassName() == "RealistPlayer") ||
-			(other != nullptr && other->GetClassName() == "PessimistPlayer"))
+		if (other != nullptr && other->GetClassName() == "Trigger")
 		{
-			PlayerEntity *player = static_cast<PlayerEntity *>(other);
-
-			// Stop player movement
-			player->StopPlayerMovement();
+			gGameScene->ChangeLevel();
 		}
 	}
 }

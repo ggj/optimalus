@@ -22,14 +22,15 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
-	, fTimeToNextLevel(3.0f)
+	, fTimeToNextLevel(0.0f)
 	, bChangeLevel(false)
 	, pGameOverImg(nullptr)
 	, vCameraFrom(0.0f, 0.0f, 0.0f)
 	, vCameraCurrent(0.0f, 0.0f, 0.0f)
 	, vCameraTo(0.0f, 0.0f, 0.0f)
 	, fElapsed(0.0f)
-	, bMoveCamera(false)
+	, bMoveCamera(false),
+	  iNextLevelCounter(0)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -448,6 +449,14 @@ void GameScene::LoadMapColliders()
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
 	}
+}
+
+void GameScene::ChangeLevel()
+{
+	iNextLevelCounter++;
+
+	if (iNextLevelCounter == 3)
+		bChangeLevel = true;
 }
 
 void GameScene::RemoveLife()

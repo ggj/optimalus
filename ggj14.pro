@@ -85,7 +85,8 @@ OTHER_FILES_FONT = \
 OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
-	resources/scenes/dungeon.scene
+	resources/scenes/dungeon.scene \
+	resources/scenes/dungeon2.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
@@ -154,7 +155,8 @@ OTHER_FILES_SOUND = \
 
 #Maps
 OTHER_FILES_MAPS = \
-	resources/dungeon.json
+	resources/dungeon.json \
+	resources/dungeon2.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -163,6 +165,6 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_MAPS} \
 
 include("app.pri")
