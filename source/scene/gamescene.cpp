@@ -229,8 +229,6 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	SceneNode *sprites = (SceneNode *)cScene.GetChildByName("Sprites");
 	pGameMap = (GameMap *)cScene.GetChildByName("Map");
 
-	int hostageNum = 0;
-
 	strNextLevel = pGameMap->GetProperty("NextLevel");
 
 	MapLayerMetadata *game = pGameMap->GetLayerByName("Game")->AsMetadata();

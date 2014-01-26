@@ -49,18 +49,16 @@ void EnemyEntity::Update(f32 dt)
 	}
 
 	// Search a nerby player
-	if (pTarget == NULL || !pTarget->GetIsActive())
-	{
+	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
 		pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
 
-		if (!pTarget->GetIsActive())
-			pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
+	if (pTarget == nullptr || (pTarget != nullptr &&!pTarget->GetIsActive()))
+		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
 
-		if (!pTarget->GetIsActive())
-			pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
-	}
+	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
+		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
 
-	if (pTarget->GetIsActive())
+	if (pTarget != nullptr && pTarget->GetIsActive())
 	{
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 
