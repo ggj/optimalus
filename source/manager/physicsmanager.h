@@ -76,7 +76,9 @@ class PhysicsManager: public b2ContactListener
 		void Update(f32 dt);
 
 		b2Body *CreateBody(ISceneObject *obj, b2Vec2 *customSize = NULL);
+		b2Body *CreateKinematicBody(ISceneObject *obj, b2Vec2 *customSize = NULL);
 		b2Body *CreateStaticBody(ISceneObject *obj, BodyType type = BodyType::Normal, bool track = false, b2Vec2 *customSize = NULL);
+
 		void DestroyBody(b2Body *body);
 
 		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);

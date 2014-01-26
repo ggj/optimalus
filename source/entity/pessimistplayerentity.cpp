@@ -8,3 +8,4 @@ PessimistPlayerEntity::PessimistPlayerEntity()
 	: PlayerEntity("PessimistPlayer", "PessimistPlayer", false)
 {
 }
+

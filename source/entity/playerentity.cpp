@@ -17,7 +17,6 @@ PlayerEntity::PlayerEntity()
 	, fVelocity(0.0f)
 	, fMove(0.0f)
 	, fUpDownMove(0.0f)
-	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsActive(false)
 	, bIsInputEnabled(true)
@@ -35,7 +34,6 @@ PlayerEntity::PlayerEntity(const char *className, const char *spriteName, bool b
 	, fVelocity(0.0f)
 	, fMove(0.0f)
 	, fUpDownMove(0.0f)
-	, fLandTime(0.0f)
 	, fInvicibleTime(0.0f)
 	, bIsActive(bIsActive)
 	, bIsInputEnabled(true)
@@ -283,6 +281,68 @@ void PlayerEntity::SetState(int newState)
 	iCurrentState = newState;
 }
 
+u32 PlayerEntity::GetLevel() const
+{
+	return sPlayer.iLevel;
+}
+void PlayerEntity::SetLevel(const u32 level)
+{
+	sPlayer.iLevel = level;
+}
+
+u32 PlayerEntity::GetXP() const
+{
+	return sPlayer.iXP;
+}
+void PlayerEntity::SetXP(const u32 xp)
+{
+	sPlayer.iXP = xp;
+}
+
+u32 PlayerEntity::GetAttackPower() const
+{
+	return sPlayer.iAttackPower;
+}
+void PlayerEntity::SetAttackPower(const u32 attackPower)
+{
+	sPlayer.iAttackPower = attackPower;
+}
+
+u32 PlayerEntity::GetGold() const
+{
+	return sPlayer.iGold;
+}
+void PlayerEntity::SetGold(const u32 gold)
+{
+	sPlayer.iGold = gold;
+}
+
+u32 PlayerEntity::GetLife() const
+{
+	return sPlayer.iLife;
+}
+void PlayerEntity::SetLife(const u32 life)
+{
+	sPlayer.iLife = life;
+}
+void PlayerEntity::RemoveLife()
+{
+	sPlayer.iLife--;
+}
+
+u32 PlayerEntity::GetMana() const
+{
+	return sPlayer.iMana;
+}
+void PlayerEntity::SetMana(const u32 mana)
+{
+	sPlayer.iMana = mana;
+}
+void PlayerEntity::RemoveMana()
+{
+	sPlayer.iMana--;
+}
+
 bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 {
 	// Play damage sound
@@ -297,3 +357,19 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 	fInvicibleTime = 3;
 	return true;
 }
+
+void PlayerEntity::OnCollect(ItemTypes::Enum item)
+{
+	// Play damage sound
+	gSoundManager->Play(SND_POWERUP);
+
+	if(item == ItemTypes::HealthPotion)
+		this->SetLife(this->GetLife() + 10);
+
+	if(item == ItemTypes::ManaPotion)
+		this->SetMana(this->GetMana() + 10);
+
+	if(item == ItemTypes::Gold)
+		this->SetGold(this->GetGold() + 50);
+}
+

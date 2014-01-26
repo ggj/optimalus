@@ -8,6 +8,7 @@ ENTITY_CREATOR("Enemy", EnemyEntity)
 EnemyEntity::EnemyEntity()
 	: SpriteEntity("Enemy", "Enemy")
 	, pBody(nullptr)
+	, fInvicibleTime(0.0f)
 {
 }
 
@@ -21,9 +22,9 @@ void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	pSprite->SetZ(-10);
 	clSensor.Load(metadata, this);
 
-	b2Vec2 customSize(32, 32);
+	b2Vec2 customSize(40, 40);
 
-	pBody = gPhysics->CreateStaticBody(pSprite, BodyType::Normal, false, &customSize);
+	pBody = gPhysics->CreateKinematicBody(pSprite, &customSize);
 	pBody->SetFixedRotation(true);
 	pBody->GetFixtureList()->SetUserData(this);
 }
@@ -32,6 +33,18 @@ void EnemyEntity::Update(f32 dt)
 {
 	b2Vec2 vel = pBody->GetLinearVelocity();
 	pBody->SetLinearVelocity(vel);
+
+	if (fInvicibleTime > 0)
+	{
+		pSprite->SetVisible(!pSprite->IsVisible());
+
+		fInvicibleTime -= dt;
+		if (fInvicibleTime <= 0)
+		{
+			pSprite->SetVisible(true);
+			fInvicibleTime = 0;
+		}
+	}
 }
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)
@@ -55,31 +68,52 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 			b2Vec2 vecToPush = b2Vec2(0, 0);
 
 			// Find where the player comes
-			if (gPhysics->RayCast(pBody, b2Vec2(0, -1.0f)))
-			{
-				Log("Push player right");
-				vecToPush = b2Vec2(-1, 0);
-			}
-			else if (gPhysics->RayCast(pBody, b2Vec2(0, 1.0f)))
-			{
-				Log("Push player left");
-				vecToPush = b2Vec2(1, 0);
-			}
-			else if (gPhysics->RayCast(pBody, b2Vec2(-1.0f, 0.0f)))
+			if (gPhysics->RayCast(pBody, b2Vec2(0, -0.32f)) ||
+				gPhysics->RayCast(pBody, b2Vec2(0.16f, -0.32f)) ||
+				gPhysics->RayCast(pBody, b2Vec2(-0.16f, -0.32f)))
 			{
 				Log("Push player up");
-				vecToPush = b2Vec2(0, -1);
+				vecToPush = b2Vec2(0.0f, -1.0f);
 			}
-			else if (gPhysics->RayCast(pBody, b2Vec2(1.0f, 0.0f)))
+			else if (gPhysics->RayCast(pBody, b2Vec2(0, 0.32f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(0.16f, 0.32f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(-0.16f, 0.32f)))
 			{
 				Log("Push player down");
-				vecToPush = b2Vec2(0, 1);
+				vecToPush = b2Vec2(0.0f, 1.0f);
+			}
+			else if (gPhysics->RayCast(pBody, b2Vec2(-0.32f, 0.0f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(-0.32f, 0.16f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(-0.32f, -0.16f)))
+			{
+				Log("Push player left");
+				vecToPush = b2Vec2(-1.0f, 0.0f);
+			}
+			else if (gPhysics->RayCast(pBody, b2Vec2(0.32f, 0.0f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(0.32f, 0.16f)) ||
+					 gPhysics->RayCast(pBody, b2Vec2(0.32f, -0.16f)))
+			{
+				Log("Push player right");
+				vecToPush = b2Vec2(1.0f, 0.0f);
 			}
 
 			//Do damage to the player
 			player->OnDamage(vecToPush);
 
 			//Receive damage
+			this->OnDamage();
 		}
 	}
+}
+
+bool EnemyEntity::OnDamage()
+{
+	// Play damage sound
+	gSoundManager->Play(SND_DAMAGE);
+
+	if (fInvicibleTime > 0)
+		return false;
+
+	fInvicibleTime = 3;
+	return true;
 }

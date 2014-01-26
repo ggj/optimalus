@@ -10,7 +10,10 @@ namespace ItemTypes
 	enum Enum
 	{
 		None,
-		Text
+		Text,
+		HealthPotion,
+		ManaPotion,
+		Gold
 	};
 }
 
@@ -41,6 +44,7 @@ class PlayerEntity: public SpriteEntity,
 
 		void Teleport(const b2Vec2 &position);
 		bool OnDamage(const b2Vec2 vec2Push);
+		void OnCollect(ItemTypes::Enum item);
 
 		void StopPlayerMovement();
 		void ChangePlayer();
@@ -50,6 +54,37 @@ class PlayerEntity: public SpriteEntity,
 
 		void SetIsInputEnabled(bool isKeyboardEnabled);
 		bool GetIsInputEnabled() const;
+
+		u32 GetLevel() const;
+		void SetLevel(u32);
+
+		u32 GetXP() const;
+		void SetXP(u32);
+
+		u32 GetAttackPower() const;
+		void SetAttackPower(u32);
+
+		u32 GetGold() const;
+		void SetGold(u32);
+
+		u32 GetLife() const;
+		void SetLife(u32);
+		void RemoveLife();
+
+		u32 GetMana() const;
+		void SetMana(u32);
+		void RemoveMana();
+
+		struct PlayerData
+		{
+			u32 iLevel;
+			u32 iXP;
+			u32 iAttackPower;
+			u32 iGold;
+			u32 iLife;
+			u32 iMana;
+			bool bGameOver;
+		} sPlayer;
 
 	protected:
 		b2Body *pBody;
@@ -65,7 +100,6 @@ class PlayerEntity: public SpriteEntity,
 		f32 fVelocity;
 		f32 fMove;
 		f32 fUpDownMove;
-		f32 fLandTime;
 		f32 fInvicibleTime;
 
 		bool bIsActive;
