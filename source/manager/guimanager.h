@@ -33,14 +33,17 @@ class GuiManager : public IRocketEventListener
 		bool UnloadStackedGUI();
 
 		void SetPlayerName(const String &name);
+		void SetEnemyName(const String &name);
 		void SelectHero(const String &name);
 		void SelectEnemy(const String &hero = "", u32 enemyId = 0);
 		void SetDialog(const String &text);
 		void SetLevel(u32 level);
+		void SetEnemyLevel(u32 level);
 		void SetXP(u32 xp);
 		void SetAttackPower(u32 attackPower);
 		void SetGold(u32 gold);
 		void SetLife(u32 life, u32 lifeTotal);
+		void SetEnemyLife(u32 life, u32 lifeTotal);
 		void SetStamina(u32 stamina, u32 staminaTotal);
 
 		// IRocketEventListener

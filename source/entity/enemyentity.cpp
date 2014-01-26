@@ -2,6 +2,8 @@
 #include "entityfactory.h"
 #include "../scene/gamescene.h"
 #include "../util/sounds.h"
+#include "../manager/guimanager.h"
+#include <cmath>
 
 ENTITY_CREATOR("Enemy", EnemyEntity)
 
@@ -10,7 +12,9 @@ EnemyEntity::EnemyEntity()
 	, pBody(nullptr)
 	, fInvicibleTime(0.0f)
 	, pTarget(nullptr)
+	, bPlayerLock(false)
 {
+	sEnemy.displayName = "Enemy";
 }
 
 EnemyEntity::~EnemyEntity()
@@ -23,6 +27,41 @@ void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 	clSensor.Load(metadata, this);
+
+	if (!metadata.GetProperty("DisplayName").empty())
+		sEnemy.displayName = metadata.GetProperty("DisplayName");
+	else
+		sEnemy.displayName = "Enemy";
+
+	if (!metadata.GetProperty("EnemyId").empty())
+		sEnemy.iEnemyId = std::stoi(metadata.GetProperty("EnemyId"));
+	else
+		sEnemy.iEnemyId = 0;
+
+	if (!metadata.GetProperty("Level").empty())
+		sEnemy.iLevel = std::stoi(metadata.GetProperty("Level"));
+	else
+		sEnemy.iLevel = 1;
+
+	if (!metadata.GetProperty("AttackPower").empty())
+		sEnemy.iAttackPower = std::stoi(metadata.GetProperty("AttackPower"));
+	else
+		sEnemy.iAttackPower = 3;
+
+	if (!metadata.GetProperty("DefensePower").empty())
+		sEnemy.iDefensePower = std::stoi(metadata.GetProperty("DefensePower"));
+	else
+		sEnemy.iDefensePower = 2;
+
+	if (!metadata.GetProperty("Life").empty())
+		sEnemy.iLife = std::stoi(metadata.GetProperty("Life"));
+	else
+		sEnemy.iLife = 5;
+
+	if (!metadata.GetProperty("LifeTotal").empty())
+		sEnemy.iLifeTotal = std::stoi(metadata.GetProperty("LifeTotal"));
+	else
+		sEnemy.iLifeTotal = 5;
 
 	b2Vec2 customSize(40, 40);
 
@@ -63,9 +102,20 @@ void EnemyEntity::Update(f32 dt)
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 
 		f32 distance = dir.Normalize();
+
 		if (distance <= 1.0f)
 		{
-			Log("Jogador encontrado, e esta no raio de ataque: %f", distance);
+			bPlayerLock = true;
+			this->SetDisplayName(this->GetDisplayName());
+			this->SetLevel(this->GetLevel());
+			this->SetLife(this->GetLife());
+			gGui->SelectEnemy(pTarget->GetDisplayName(), this->sEnemy.iEnemyId);
+		}
+
+		if(bPlayerLock && distance >= 1.0f)
+		{
+			bPlayerLock = false;
+			gGui->SelectEnemy("", 0);
 		}
 	}
 }
@@ -120,16 +170,21 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 				vecToPush = b2Vec2(1.0f, 0.0f);
 			}
 
+			u32 damageToPlayer = (player->GetDefensePower() - sEnemy.iAttackPower) + (rand() % 3 + 1);
+
 			//Do damage to the player
-			player->OnDamage(vecToPush);
+			player->OnDamage(vecToPush, damageToPlayer);
+
+			u32 damageEnemyBase = player->GetAttackPower() - sEnemy.iDefensePower + (rand() % 3 + 1);
+			u32 damageToEnemy = damageEnemyBase;
 
 			//Receive damage
-			this->OnDamage();
+			this->OnDamage(damageToEnemy);
 		}
 	}
 }
 
-bool EnemyEntity::OnDamage()
+bool EnemyEntity::OnDamage(u32 amount)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -137,6 +192,52 @@ bool EnemyEntity::OnDamage()
 	if (fInvicibleTime > 0)
 		return false;
 
-	fInvicibleTime = 3;
+	// Receive the damage
+	this->SetLife(this->GetLife() - amount);
+
+	if((int)this->GetLife() <= 0)
+	{
+		// Disable item
+		this->pSprite->SetVisible(false);
+
+		// Add body to a list to remove
+		//gPhysics->lstBodiesForRemove.push_back(pBody);
+	}
+	else
+		fInvicibleTime = 3;
+
 	return true;
+}
+
+String EnemyEntity::GetDisplayName() const
+{
+	return sEnemy.displayName;
+}
+
+void EnemyEntity::SetDisplayName(String displayName)
+{
+	sEnemy.displayName = displayName;
+	gGui->SetEnemyName(displayName);
+}
+
+u32 EnemyEntity::GetLevel() const
+{
+	return sEnemy.iLevel;
+}
+
+void EnemyEntity::SetLevel(u32 level)
+{
+	sEnemy.iLevel = level;
+	gGui->SetEnemyLevel(level);
+}
+
+u32 EnemyEntity::GetLife() const
+{
+	return sEnemy.iLife;
+}
+
+void EnemyEntity::SetLife(u32 life)
+{
+	sEnemy.iLife = life;
+	gGui->SetEnemyLife(life, this->sEnemy.iLifeTotal);
 }

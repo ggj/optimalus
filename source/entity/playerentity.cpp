@@ -55,7 +55,13 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	SpriteEntity::Load(metadata, sprites);
 	pSprite->SetZ(-10);
 
-	pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("Number1"))));
+	if (this->GetClassName() == "OptimistPlayer")
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonOptimist"))));
+	else if (this->GetClassName() == "RealistPlayer")
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonRealist"))));
+	else
+		pText = sdNew(Sprite(*static_cast<Sprite *>(sprites->GetChildByName("BallonPessimist"))));
+
 	pText->SetPosition(0, 0);
 	pText->SetVisible(false);
 	gScene->Add(pText);
@@ -67,7 +73,7 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	pBody->GetFixtureList()->SetUserData(this);
 
 	pInput->AddKeyboardListener(this);
-	fVelocity = 2.0f;
+	//fVelocity = 2.0f;
 	vPlayerVectorDirection = VECTOR_ZERO;
 }
 
@@ -380,7 +386,17 @@ void PlayerEntity::RemoveStaminaTotal()
 	sPlayer.iStaminaTotal--;
 }
 
-bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
+u32 PlayerEntity::GetDefensePower() const
+{
+	return sPlayer.iDefensePower;
+}
+
+void PlayerEntity::SetDefensePower(u32 defensePower)
+{
+	sPlayer.iDefensePower = defensePower;
+}
+
+bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 {
 	// Play damage sound
 	gSoundManager->Play(SND_DAMAGE);
@@ -396,7 +412,7 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push)
 	pText->SetVisible(true);
 
 	// Receive the damage
-	//enemy.
+	this->SetLife(this->GetLife() - amount);
 
 	return true;
 }

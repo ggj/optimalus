@@ -226,7 +226,7 @@
 					cPosition: {z: 100}
 					sType: Sprite
 					sBlending: none
-					sName: Number1
+					sName: BallonOptimist
 					cColor: {r: 255, g: 255, b: 255, a: 255}
 					bVisible: false
 					aAnimations:
@@ -239,7 +239,55 @@
 							aFrames:
 							[
 								{
-									sResource: textures/number_1.png
+									sResource: textures/ballon_optimist.png
+								}
+							]
+						}
+					]
+				}
+				{
+					cScale: {x: 1, y: 1, z: 1}
+					cPosition: {z: 100}
+					sType: Sprite
+					sBlending: none
+					sName: BallonRealist
+					cColor: {r: 255, g: 255, b: 255, a: 255}
+					bVisible: false
+					aAnimations:
+					[
+						{
+							sName: "Idle"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/ballon_realist.png
+								}
+							]
+						}
+					]
+				}
+				{
+					cScale: {x: 1, y: 1, z: 1}
+					cPosition: {z: 100}
+					sType: Sprite
+					sBlending: none
+					sName: BallonPessimist
+					cColor: {r: 255, g: 255, b: 255, a: 255}
+					bVisible: false
+					aAnimations:
+					[
+						{
+							sName: "Idle"
+							bAnimated: true
+							bLoop: true
+							iFps: 1
+							aFrames:
+							[
+								{
+									sResource: textures/ballon_pessimist.png
 								}
 							]
 						}

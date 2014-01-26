@@ -311,6 +311,11 @@ void GuiManager::SetPlayerName(const String &name)
 	pElementPlayerName->SetInnerRML(Rocket::Core::String(name.c_str()));
 }
 
+void GuiManager::SetEnemyName(const String &name)
+{
+	pElementEnemyName->SetInnerRML(Rocket::Core::String(name.c_str()));
+}
+
 void GuiManager::SetDialog(const String &text)
 {
 	pDialog->SetInnerRML(Rocket::Core::String(text.c_str()));
@@ -340,8 +345,7 @@ void GuiManager::SelectHero(const String &name)
 
 void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 {
-	if (hero == "optimist")
-	{
+	if (hero == "Optimist") {
 		switch (enemyId)
 		{
 			case 0: pEnemyPicture->SetClassNames("enemy_1_optimist"); break;
@@ -356,7 +360,7 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 		pElementLevelXPBox->SetClassNames("");
 		pElementDialogTitle->SetClassNames("");
 	}
-	else if (hero == "realist")
+	else if (hero == "Realist")
 	{
 		switch (enemyId)
 		{
@@ -372,7 +376,7 @@ void GuiManager::SelectEnemy(const String &hero, u32 enemyId)
 		pElementLevelXPBox->SetClassNames("");
 		pElementDialogTitle->SetClassNames("");
 	}
-	else if (hero == "pessimist")
+	else if (hero == "Pessimist")
 	{
 		switch (enemyId)
 		{
@@ -405,6 +409,13 @@ void GuiManager::SetLevel(u32 level)
 	pElementLevel->SetInnerRML(Rocket::Core::String(x));
 }
 
+void GuiManager::SetEnemyLevel(u32 level)
+{
+	char x[100];
+	snprintf(x, 100, "%d", level);
+	pElementEnemyLevel->SetInnerRML(Rocket::Core::String(x));
+}
+
 void GuiManager::SetXP(u32 xp)
 {
 	char x[100];
@@ -435,6 +446,17 @@ void GuiManager::SetLife(u32 life, u32 lifeTotal)
 	strcat(x, "/");
 	strcat(x, y);
 	pElementLife->SetInnerRML(Rocket::Core::String(x));
+}
+
+void GuiManager::SetEnemyLife(u32 life, u32 lifeTotal)
+{
+	char x[100];
+	char y[100];
+	snprintf(x, 100, "%d", life);
+	snprintf(y, 100, "%d", lifeTotal);
+	strcat(x, "/");
+	strcat(x, y);
+	pElementEnemyLife->SetInnerRML(Rocket::Core::String(x));
 }
 
 void GuiManager::SetStamina(u32 stamina, u32 staminaTotal)

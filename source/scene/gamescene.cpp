@@ -110,7 +110,7 @@ void GameScene::FogReveal(const Vector3f &pos, u32 radius)
 	{
 		for (auto x = -r; x <= r; x++)
 		{
-			pFog->SetTileAt(sx + x, sy + y, 1);
+			pFog->SetTileAt(sx + x, sy + y, 5); // 5 == ultimo tile, transparente
 		}
 	}
 }
@@ -149,7 +149,9 @@ bool GameScene::Update(f32 dt)
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
-		this->FogReveal(pPlayer->GetPosition(), 1);
+		this->FogReveal(pPlayerRealist->GetPosition(), 1);
+		this->FogReveal(pPlayerPessimist->GetPosition(), 1);
+		this->FogReveal(pPlayerOptimist->GetPosition(), 1);
 	}
 
 	if (bChangeLevel)
@@ -161,15 +163,15 @@ bool GameScene::Update(f32 dt)
 		}
 	}
 
-	/*if (gGameData->GetLife() == 0)
+	if (gGameData->sGamePlay.bIsGameOver == true)
 	{
 		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-400.0f, -300.0f, 0.0f));
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
 
-		gGameData->SetLife(3);
-	}*/
+		gGameData->sGamePlay.bIsGameOver = false;
+	}
 
 	return true;
 }

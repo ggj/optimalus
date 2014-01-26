@@ -772,13 +772,20 @@
                  "name":"Enemy",
                  "properties":
                     {
-                     "Class":"Enemy"
+                     "AttackPower":"3",
+                     "Class":"Enemy",
+                     "DefensePower":"4",
+                     "DisplayName":"Nosferaturu",
+                     "EnemyId":"3",
+                     "Level":"2",
+                     "Life":"5",
+                     "LifeTotal":"5"
                     },
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":80,
-                 "y":880
+                 "x":79,
+                 "y":883
                 }, 
                 {
                  "height":0,
@@ -853,7 +860,113 @@
                  "name":"Enemy",
                  "properties":
                     {
-                     "Class":"Enemy"
+                     "AttackPower":"2",
+                     "Class":"Enemy",
+                     "DefensePower":"3",
+                     "EnemyId":"1",
+                     "Level":"1"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":600,
+                 "y":360
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":200,
+                 "y":1040
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":240,
+                 "y":1040
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":280,
+                 "y":1040
+                }, 
+                {
+                 "height":0,
+                 "name":"Enemy",
+                 "properties":
+                    {
+                     "AttackPower":"1",
+                     "Class":"Enemy",
+                     "DefensePower":"1",
+                     "DisplayName":"Malkavian",
+                     "EnemyId":"2",
+                     "Level":"2",
+                     "Life":"4",
+                     "LifeTotal":"4"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":280,
+                 "y":920
+                }, 
+                {
+                 "height":0,
+                 "name":"Enemy",
+                 "properties":
+                    {
+                     "AttackPower":"2",
+                     "Class":"Enemy",
+                     "DefensePower":"2",
+                     "DisplayName":"Cthulu",
+                     "EnemyId":"0",
+                     "Level":"1",
+                     "Life":"2",
+                     "LifeTotal":"2"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":846,
+                 "y":857
+                }, 
+                {
+                 "height":0,
+                 "name":"Enemy",
+                 "properties":
+                    {
+                     "AttackPower":"2",
+                     "Class":"Enemy",
+                     "DefensePower":"3",
+                     "DisplayName":"Dragon",
+                     "EnemyId":"1",
+                     "Level":"1",
+                     "Life":"5",
+                     "LifeTotal":"5"
                     },
                  "type":"",
                  "visible":true,
@@ -878,7 +991,7 @@
         {
          "firstgid":1,
          "image":"textures\/optimist_ground_tileset.png",
-         "imageheight":160,
+         "imageheight":200,
          "imagewidth":40,
          "margin":0,
          "name":"ground_tileset",
