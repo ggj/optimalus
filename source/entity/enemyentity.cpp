@@ -139,7 +139,7 @@ void EnemyEntity::Update(f32 dt)
 
 		f32 distance = dir.Normalize();
 
-		if (distance <= 1.0f)
+		if (distance <= 1.0f && !bIsDead)
 		{
 			bPlayerLock = true;
 			this->SetDisplayName(this->GetDisplayName());
@@ -148,7 +148,7 @@ void EnemyEntity::Update(f32 dt)
 			gGui->SelectEnemy(pTarget->GetDisplayName(), this->sEnemy.iEnemyId);
 		}
 
-		if(bPlayerLock && distance >= 1.0f)
+		if(bPlayerLock && distance >= 0.8f)
 		{
 			bPlayerLock = false;
 			gGui->SelectEnemy("", 0);
