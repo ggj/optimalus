@@ -7,6 +7,8 @@ ENTITY_CREATOR("PessimistPlayer", PessimistPlayerEntity)
 PessimistPlayerEntity::PessimistPlayerEntity()
 	: PlayerEntity("PessimistPlayer", "PessimistPlayer", false)
 {
+	fVelocity = 0.7f;
+
 	sPlayer.displayName = "Pessimist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 200;

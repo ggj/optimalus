@@ -11,7 +11,7 @@ body
 
 body.window
 {
-	padding-top: 43px;
+	padding-top: 63px;
 	padding-bottom: 20px;
 }
 

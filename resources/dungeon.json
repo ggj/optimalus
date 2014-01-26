@@ -778,7 +778,7 @@
                  "visible":true,
                  "width":0,
                  "x":80,
-                 "y":880
+                 "y":920
                 }, 
                 {
                  "height":0,
@@ -860,6 +860,61 @@
                  "width":0,
                  "x":600,
                  "y":360
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":200,
+                 "y":1040
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":240,
+                 "y":1040
+                }, 
+                {
+                 "height":17,
+                 "name":"Gold",
+                 "properties":
+                    {
+                     "Amount":"55",
+                     "Class":"Gold"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":17,
+                 "x":280,
+                 "y":1040
+                }, 
+                {
+                 "height":0,
+                 "name":"Enemy",
+                 "properties":
+                    {
+                     "Class":"Enemy"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":280,
+                 "y":920
                 }],
          "opacity":1,
          "type":"objectgroup",

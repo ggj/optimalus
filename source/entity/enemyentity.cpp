@@ -145,8 +145,10 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 			//Do damage to the player
 			player->OnDamage(vecToPush, damageToPlayer);
 
+			u32 damageToEnemy = (sEnemy.iDefensePower - player->GetAttackPower()) + (rand() % 3 + 1);
+
 			//Receive damage
-			this->OnDamage(player->sPlayer.iAttackPower);
+			this->OnDamage(damageToEnemy);
 		}
 	}
 }
