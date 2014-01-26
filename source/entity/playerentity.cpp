@@ -22,7 +22,6 @@ PlayerEntity::PlayerEntity()
 	, fInvicibleTime(0.0f)
 	, bIsActive(false)
 	, bIsInputEnabled(true)
-	, iNextLevelCounter(0)
 {
 }
 
@@ -448,13 +447,7 @@ void PlayerEntity::OnCollision(const CollisionEvent &event)
 		Entity *other = event.GetOtherEntity();
 		if (other != nullptr && other->GetClassName() == "Trigger")
 		{
-			iNextLevelCounter++;
+			gGameScene->ChangeLevel();
 		}
 	}
-}
-
-void PlayerEntity::GoToNextLevel()
-{
-	if (iNextLevelCounter == 3)
-		gGameScene->ChangeLevel();
 }

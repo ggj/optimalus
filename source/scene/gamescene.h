@@ -110,6 +110,7 @@ class GameScene : public IEventInputKeyboardListener,
 		String strNextLevel;
 
 		f32 fTimeToNextLevel;
+		u32 iNextLevelCounter;
 		bool bChangeLevel;
 
 		Image *pGameOverImg;
