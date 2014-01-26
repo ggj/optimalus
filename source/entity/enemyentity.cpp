@@ -92,10 +92,10 @@ void EnemyEntity::Update(f32 dt)
 		pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
 
 	if (pTarget == nullptr || (pTarget != nullptr &&!pTarget->GetIsActive()))
-		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
+		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
 
 	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
-		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
+		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
 
 	if (pTarget != nullptr && pTarget->GetIsActive())
 	{
