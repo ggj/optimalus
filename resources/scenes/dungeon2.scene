@@ -504,7 +504,7 @@
 		{
 			sType: GameMap
 			sName: Map
-			sResource: dungeon.json
+			sResource: dungeon2.json
 			cPosition: {z: 200}
 		}
 		{

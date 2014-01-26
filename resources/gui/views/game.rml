@@ -52,16 +52,14 @@
 					<h1>HP:</h1>
 					<span id="enemy_life">100/100</span>
 				</p>
-				<p id="dialog_title">
-					Description
-				</p>
+				<p id="dialog_title"><!--Description--></p>
 				<p id="dialog">
-					<div id="dialog">
+					<!--div id="dialog">
+						<Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
 						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
 						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
 						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
-						Dialog box with description or comments whatever random junk our current here is thinking or talking.<br/>
-					</div>
+					</div-->
 				</p>
 			</div>
 		</game>

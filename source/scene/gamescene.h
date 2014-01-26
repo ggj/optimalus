@@ -58,6 +58,7 @@ class GameScene : public IEventInputKeyboardListener,
 
 		void RemoveLife();
 		void ChangePlayer(const String currentPlayer);
+		void ChangeLevel();
 
 	private:
 		PlayerEntity	 *pPlayer;
@@ -109,6 +110,7 @@ class GameScene : public IEventInputKeyboardListener,
 		String strNextLevel;
 
 		f32 fTimeToNextLevel;
+		u32 iNextLevelCounter;
 		bool bChangeLevel;
 
 		Image *pGameOverImg;

@@ -85,7 +85,8 @@ OTHER_FILES_FONT = \
 OTHER_FILES_SCENE = \
 #Scenes
 	resources/scenes/empty.scene \
-	resources/scenes/dungeon.scene
+	resources/scenes/dungeon.scene \
+	resources/scenes/dungeon2.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
@@ -113,7 +114,10 @@ OTHER_FILES_TEXTURE = \
 	resources/textures/ballon_optimist.png \
 	resources/textures/ballon_pessimist.png \
 	resources/textures/ballon_realist.png \
-	resources/textures/fog_tileset.png
+	resources/textures/fog_tileset.png \
+	resources/textures/pessimist_enemy_tileset.png \
+	resources/textures/realist_enemy_tileset.png \
+	resources/textures/optimist_enemy_tileset.png \
 
 #Gui
 OTHER_FILES_GUI_STYLE = \
@@ -151,7 +155,8 @@ OTHER_FILES_SOUND = \
 
 #Maps
 OTHER_FILES_MAPS = \
-	resources/dungeon.json
+	resources/dungeon.json \
+	resources/dungeon2.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
@@ -160,6 +165,6 @@ OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_GUI_STYLE} \
 	$${OTHER_FILES_GUI_VIEW} \
 	$${OTHER_FILES_SOUND} \
-	$${OTHER_FILES_MAPS}
+	$${OTHER_FILES_MAPS} \
 
 include("app.pri")

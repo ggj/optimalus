@@ -13,6 +13,7 @@ EnemyEntity::EnemyEntity()
 	, fInvicibleTime(0.0f)
 	, pTarget(nullptr)
 	, bPlayerLock(false)
+	, bIsDead(false)
 {
 	sEnemy.displayName = "Enemy";
 }
@@ -92,18 +93,53 @@ void EnemyEntity::Update(f32 dt)
 		pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
 
 	if (pTarget == nullptr || (pTarget != nullptr &&!pTarget->GetIsActive()))
-		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayerEntity"));
+		pTarget = static_cast<RealistPlayerEntity *>(gWorldManager->FindEntityByClassName("RealistPlayer"));
 
 	if (pTarget == nullptr || (pTarget != nullptr && !pTarget->GetIsActive()))
-		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayerEntity"));
+		pTarget = static_cast<PessimistPlayerEntity *>(gWorldManager->FindEntityByClassName("PessimistPlayer"));
 
 	if (pTarget != nullptr && pTarget->GetIsActive())
 	{
+		// Change enemy sprites
+		if (pTarget->GetClassName() == "OptimistPlayer")
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("OptimistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("OptimistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("OptimistEnemy2");
+			else
+				pSprite->SetAnimation("OptimistEnemy3");
+		}
+		else if (pTarget->GetClassName() == "RealistPlayer")
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("RealistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("RealistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("RealistEnemy2");
+			else
+				pSprite->SetAnimation("RealistEnemy3");
+		}
+		else
+		{
+			if (sEnemy.iEnemyId == 0)
+				pSprite->SetAnimation("PessimistEnemy");
+			else if (sEnemy.iEnemyId == 1)
+				pSprite->SetAnimation("PessimistEnemy1");
+			else if (sEnemy.iEnemyId == 2)
+				pSprite->SetAnimation("PessimistEnemy2");
+			else
+				pSprite->SetAnimation("PessimistEnemy3");
+		}
+
 		b2Vec2 dir = pTarget->GetBodyPosition() - pBody->GetPosition();
 
 		f32 distance = dir.Normalize();
 
-		if (distance <= 1.0f)
+		if (distance <= 1.0f && !bIsDead)
 		{
 			bPlayerLock = true;
 			this->SetDisplayName(this->GetDisplayName());
@@ -112,7 +148,7 @@ void EnemyEntity::Update(f32 dt)
 			gGui->SelectEnemy(pTarget->GetDisplayName(), this->sEnemy.iEnemyId);
 		}
 
-		if(bPlayerLock && distance >= 1.0f)
+		if(bPlayerLock && distance >= 0.8f)
 		{
 			bPlayerLock = false;
 			gGui->SelectEnemy("", 0);
@@ -122,7 +158,7 @@ void EnemyEntity::Update(f32 dt)
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)
 {
-	if (event.GetType() == CollisionEventType::OnEnter)
+	if (event.GetType() == CollisionEventType::OnEnter && !bIsDead)
 	{
 		Log("ENEMY colidiu");
 
@@ -201,7 +237,8 @@ bool EnemyEntity::OnDamage(u32 amount)
 		this->pSprite->SetVisible(false);
 
 		// Add body to a list to remove
-		//gPhysics->lstBodiesForRemove.push_back(pBody);
+		gPhysics->AddBodyToRemove(pBody);
+		bIsDead = true;
 	}
 	else
 		fInvicibleTime = 3;

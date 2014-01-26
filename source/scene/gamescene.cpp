@@ -22,14 +22,15 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
-	, fTimeToNextLevel(3.0f)
+	, fTimeToNextLevel(0.0f)
 	, bChangeLevel(false)
 	, pGameOverImg(nullptr)
 	, vCameraFrom(0.0f, 0.0f, 0.0f)
 	, vCameraCurrent(0.0f, 0.0f, 0.0f)
 	, vCameraTo(0.0f, 0.0f, 0.0f)
 	, fElapsed(0.0f)
-	, bMoveCamera(false)
+	, bMoveCamera(false),
+	  iNextLevelCounter(0)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -146,12 +147,13 @@ bool GameScene::Update(f32 dt)
 	}
 	else
 	{
+		clPhysicsManager.RemoveBodies();
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
-		this->FogReveal(pPlayerRealist->GetPosition(), 1);
+		this->FogReveal(pPlayerRealist->GetPosition(), 2);
 		this->FogReveal(pPlayerPessimist->GetPosition(), 1);
-		this->FogReveal(pPlayerOptimist->GetPosition(), 1);
+		this->FogReveal(pPlayerOptimist->GetPosition(), 3);
 	}
 
 	if (bChangeLevel)
@@ -293,7 +295,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	{
 		pPlayer = pPlayerOptimist;
 		musCur = &musThemeOptimist;
-		gGui->SelectHero("optimist");
+		gGui->SelectHero("Optimist");
 		gGui->SelectEnemy();
 		pSoundSystem->PlayMusic(musCur);
 	}
@@ -358,8 +360,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(true);
 		pessimistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsInputEnabled(false);
-		gGui->SelectHero("realist");
+		gGui->SelectHero("Realist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
@@ -381,8 +384,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(true);
 		pessimistPlayer->SetIsInputEnabled(true);
-		gGui->SelectHero("pessimist");
+		gGui->SelectHero("Pessimist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
@@ -404,8 +408,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		realistPlayer->SetIsInputEnabled(false);
 		pessimistPlayer->SetIsActive(false);
 		pessimistPlayer->SetIsInputEnabled(false);
-		gGui->SelectHero("optimist");
+		gGui->SelectHero("Optimist");
 
+		// Change the terrain tileset
 		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
@@ -444,6 +449,14 @@ void GameScene::LoadMapColliders()
 
 		clPhysicsManager.CreateStaticBody(placeHolder);
 	}
+}
+
+void GameScene::ChangeLevel()
+{
+	iNextLevelCounter++;
+
+	if (iNextLevelCounter == 3)
+		bChangeLevel = true;
 }
 
 void GameScene::RemoveLife()

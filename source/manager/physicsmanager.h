@@ -81,9 +81,10 @@ class PhysicsManager: public b2ContactListener
 		b2Body *CreateStaticBody(ISceneObject *obj, BodyType type = BodyType::Normal, bool track = false, b2Vec2 *customSize = NULL);
 
 		void DestroyBody(b2Body *body);
-
 		bool RayCast(b2Body *startingBody, b2Vec2 relativeDest);
-		BodiesScheduledForRemoveList lstBodiesForRemove;
+
+		void AddBodyToRemove(b2Body *body);
+		void RemoveBodies();
 
 	protected:
 		//Contact listener
@@ -99,6 +100,7 @@ class PhysicsManager: public b2ContactListener
 	private:
 		b2World *pWorld;
 		CollisionCacheMap mapCollisions;
+		BodiesScheduledForRemoveList lstBodiesForRemove;
 		CollisionEventList lstEvents;
 		f32 fTimeLeft;
 };
