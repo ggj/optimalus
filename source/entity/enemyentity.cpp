@@ -49,6 +49,7 @@ void EnemyEntity::Update(f32 dt)
 	}
 
 	// Search a nerby player
+	/*
 	if (pTarget == NULL || !pTarget->GetIsActive())
 	{
 		pTarget = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
@@ -69,7 +70,7 @@ void EnemyEntity::Update(f32 dt)
 		{
 			Log("Jogador encontrado, e esta no raio de ataque: %f", distance);
 		}
-	}
+	}*/
 }
 
 void EnemyEntity::OnCollision(const CollisionEvent &event)
