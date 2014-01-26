@@ -42,6 +42,8 @@ class GameScene : public IEventInputKeyboardListener,
 		void Pause();
 		void Resume();
 
+		void FogReveal(const Vector3f &pos, u32 radius);
+
 		void OnJobCompleted(FileLoader *job);
 		void OnJobAborted();
 
@@ -71,6 +73,9 @@ class GameScene : public IEventInputKeyboardListener,
 		Music			musThemeOptimist;
 		Music			*musCur;
 		GameMap			*pGameMap;
+		GameMap			*pFogMap;
+		MapLayerTiled	*pFog;
+		u32				iTileSize;
 		bool			bPaused;
 		bool			bInitialized;
 

@@ -16,6 +16,9 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, cScene()
 	, musCur(nullptr)
 	, pGameMap(nullptr)
+	, pFogMap(nullptr)
+	, pFog(nullptr)
+	, iTileSize(40) // READ FROM MAP - USED FOR FOG PIXEL TO TILE CONVERSION
 	, bPaused(false)
 	, bInitialized(false)
 	, sSceneFile(sceneFile)
@@ -93,6 +96,25 @@ bool GameScene::Initialize()
 	return true;
 }
 
+void GameScene::FogReveal(const Vector3f &pos, u32 radius)
+{
+	if (!pFog)
+		return;
+
+	f32 px = pos.getX() - 20;
+	f32 py = pos.getY() - 20;
+	s32 sx = static_cast<s32>((px / iTileSize) + iTileSize / 2) - 4;
+	s32 sy = static_cast<s32>((py / iTileSize) + iTileSize / 2) - 4;
+	s32 r = s32(radius);
+	for (auto y = -r; y <= r; y++)
+	{
+		for (auto x = -r; x <= r; x++)
+		{
+			pFog->SetTileAt(sx + x, sy + y, 1);
+		}
+	}
+}
+
 bool GameScene::Update(f32 dt)
 {
 	if (!bInitialized)
@@ -127,6 +149,7 @@ bool GameScene::Update(f32 dt)
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
+		this->FogReveal(pPlayer->GetPosition(), 1);
 	}
 
 	if (bChangeLevel)
@@ -177,6 +200,11 @@ bool GameScene::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 			cFlow.OnEvent(&cOnRun, this);
 		else
 			cFlow.OnEvent(&cOnPause, this);
+	}
+	else if (k == eKey::F12)
+	{
+		if (pFogMap)
+			pFogMap->SetVisible(!pFogMap->IsVisible());
 	}
 
 	return true;
@@ -281,6 +309,27 @@ void GameScene::OnJobCompleted(FileLoader *job)
 
 	pGameOverImg = (Image *)cScene.GetChildByName("GameOverImage");
 	pGameOverImg->SetVisible(false);
+
+	{
+		pFogMap = sdNew(GameMap);
+		pFogMap->sName = "Fog";
+		pFogMap->bMarkForDeletion = true;
+		pFogMap->SetPosition(pGameMap->GetPosition());
+		pFogMap->SetWidth(pGameMap->GetWidth());
+		pFogMap->SetHeight(pGameMap->GetHeight());
+		pFogMap->SetZ(-500);
+
+		pFog = pGameMap->GetLayerByName("Background")->AsTiled()->Clone();
+		pFog->sName = "Fog Layer";
+		pFogMap->AddLayer(pFog);
+
+		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/fog_tileset.png", ITexture::GetTypeId()));
+		auto set = pFog->GetTileSet();
+		set->SetTexture(tex);
+		pFog->SetTileSet(set); // Trigger mesh rebuild
+
+		cScene.Add(pFogMap);
+	}
 
 	bInitialized = true;
 }

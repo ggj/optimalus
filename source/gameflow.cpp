@@ -157,10 +157,6 @@ bool GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		cFlow.OnEvent(&cOnCredits);
 	else if (k == eKey::F10)
 		Rocket::Debugger::SetVisible(!Rocket::Debugger::IsVisible());
-	else if (k == eKey::F11)
-		pCamera->SetPosition(-512, -384);
-	else if (k == eKey::F12)
-		pScene->AddY(25.0f);
 
 	return true;
 }

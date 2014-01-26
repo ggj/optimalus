@@ -250,6 +250,7 @@
 		{
 			sName: Sounds
 			sType: SceneNode
+			bVisible: false
 			aObjects:
 			[
 				{
