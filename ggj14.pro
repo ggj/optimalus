@@ -87,7 +87,7 @@ OTHER_FILES_SCENE = \
 	resources/scenes/empty.scene \
 	resources/scenes/dungeon.scene \
 	resources/scenes/dungeon2.scene \
-	resources/scenes/dungeon3.scene \
+	resources/scenes/dungeon3.scene
 
 OTHER_FILES_TEXTURE = \
 #Textures
@@ -158,7 +158,7 @@ OTHER_FILES_SOUND = \
 OTHER_FILES_MAPS = \
 	resources/dungeon.json \
 	resources/dungeon2.json \
-	resources/dungeon3.json \
+	resources/dungeon3.json
 
 OTHER_FILES += $${OTHER_FILES_CONFIG} \
 	$${OTHER_FILES_FONT} \
