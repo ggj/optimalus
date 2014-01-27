@@ -216,7 +216,7 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 				damageToPlayer = 0;
 
 			//Do damage to the player
-			player->OnDamage(vecToPush, 50);//u32(damageToPlayer));
+			player->OnDamage(vecToPush, u32(damageToPlayer));
 
 			s32 damageEnemyBase = player->GetAttackPower() - sEnemy.iDefensePower + (rand() % 3 + 1);
 			if (damageEnemyBase < 0)
