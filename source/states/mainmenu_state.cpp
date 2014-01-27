@@ -22,7 +22,9 @@ void MainMenuState::OnStart(void *data)
 
 	musTheme.Load("sounds/scottwills_time.ogg");
 	musTheme.SetVolume(1.0f);
-	pSoundSystem->PlayMusic(&musTheme);
+
+	if (gGameData && gGameData->IsBgmEnabled() == true)
+		pSoundSystem->PlayMusic(&musTheme);
 
 	gFlow->ResetCamera();
 }

@@ -21,6 +21,7 @@ EnemyEntity::EnemyEntity()
 EnemyEntity::~EnemyEntity()
 {
 	gPhysics->DestroyBody(pBody);
+	pBody = nullptr;
 }
 
 void EnemyEntity::Load(MetadataObject &metadata, SceneNode *sprites)
@@ -210,16 +211,19 @@ void EnemyEntity::OnCollision(const CollisionEvent &event)
 				vecToPush = b2Vec2(1.0f, 0.0f);
 			}
 
-			u32 damageToPlayer = (player->GetDefensePower() - sEnemy.iAttackPower) + (rand() % 3 + 1);
+			s32 damageToPlayer = (player->GetDefensePower() - sEnemy.iAttackPower) + (rand() % 3 + 1);
+			if (damageToPlayer < 0)
+				damageToPlayer = 0;
 
 			//Do damage to the player
-			player->OnDamage(vecToPush, damageToPlayer);
+			player->OnDamage(vecToPush, 50);//u32(damageToPlayer));
 
-			u32 damageEnemyBase = player->GetAttackPower() - sEnemy.iDefensePower + (rand() % 3 + 1);
-			u32 damageToEnemy = damageEnemyBase;
+			s32 damageEnemyBase = player->GetAttackPower() - sEnemy.iDefensePower + (rand() % 3 + 1);
+			if (damageEnemyBase < 0)
+				damageEnemyBase = 0;
 
 			//Receive damage
-			this->OnDamage(damageToEnemy);
+			this->OnDamage(u32(damageEnemyBase));
 		}
 	}
 }

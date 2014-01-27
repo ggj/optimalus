@@ -9,6 +9,7 @@ CollisionSensor::CollisionSensor()
 CollisionSensor::~CollisionSensor()
 {
 	gPhysics->DestroyBody(pBody);
+	pBody = nullptr;
 }
 
 void CollisionSensor::Load(ISceneObject &metadata, void *userData)

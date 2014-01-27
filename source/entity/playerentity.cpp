@@ -49,6 +49,7 @@ PlayerEntity::~PlayerEntity()
 
 	pInput->RemoveKeyboardListener(this);
 	gPhysics->DestroyBody(pBody);
+	pBody = nullptr;
 }
 
 void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
@@ -421,7 +422,7 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 	if (fInvicibleTime > 0)
 		return false;
 
-	fInvicibleTime = 3;
+	fInvicibleTime = 1.0f;
 	//pText->SetVisible(true);
 
 	// Receive the damage

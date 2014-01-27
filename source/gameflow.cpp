@@ -157,6 +157,8 @@ bool GameFlow::OnInputKeyboardRelease(const EventInputKeyboard *ev)
 		cFlow.OnEvent(&cOnCredits);
 	else if (k == eKey::F10)
 		Rocket::Debugger::SetVisible(!Rocket::Debugger::IsVisible());
+	else if (k == eKey::F11)
+		gGameData->sGamePlay.bIsGameOver = true;
 
 	return true;
 }

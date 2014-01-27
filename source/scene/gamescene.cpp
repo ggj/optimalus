@@ -271,7 +271,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	Log("Scene Name: %s len %d", cScene.sName.c_str(), cScene.Size());
 
 	// Validate the music to play
-/*
+
 	if (gGameData->IsBgmEnabled() == true)
 	{
 		musThemeOptimist.Load("sounds/optimist_theme.ogg");
@@ -281,7 +281,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 		musThemePessimist.Load("sounds/pessimist_theme.ogg");
 		musThemePessimist.SetVolume(1.0f);
 	}
-*/
+
 	SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
 	clSoundManager.Init(*sounds);
 

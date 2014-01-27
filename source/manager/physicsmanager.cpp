@@ -18,6 +18,7 @@ PhysicsManager::PhysicsManager()
 
 PhysicsManager::~PhysicsManager()
 {
+	this->RemoveBodies();
 	this->ClearWorld();
 	sdDelete(pWorld);
 }
