@@ -427,7 +427,7 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 	// Receive the damage
 	u32 life = this->GetLife() - amount;
 
-	if((int)life > 1)
+	if ((int)life > 1)
 		this->SetLife(life);
 	else
 		gGameData->SetIsGameOver(true);

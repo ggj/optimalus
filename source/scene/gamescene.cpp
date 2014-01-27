@@ -191,6 +191,8 @@ bool GameScene::Update(f32 dt)
 	{
 		pGameOverImg->SetVisible(true);
 		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-512.0f, -384.0f, 0.0f));
+
+		pPlayer->Mute();
 		pPlayer->GetSprite()->SetVisible(false);
 		cFlow.OnEvent(&cOnGameOver, this);
 		pFog->SetVisible(false);
@@ -292,7 +294,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	game->SetVisible(false);
 	for (unsigned i = 0, len = game->Size(); i < len; ++i)
 	{
-		MetadataObject *placeHolder = static_cast<MetadataObject *>( game->GetChildAt(i));
+		MetadataObject *placeHolder = static_cast<MetadataObject *>(game->GetChildAt(i));
 		//const String &type = placeHolder->GetProperty("Type");
 		//if (type == "Entity")
 		{

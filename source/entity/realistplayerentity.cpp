@@ -14,7 +14,7 @@ RealistPlayerEntity::RealistPlayerEntity()
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 100;
 	sPlayer.iAttackPower = 10;
-	sPlayer.iAttackPower = 10;
+	sPlayer.iDefensePower = 10;
 	sPlayer.iGold = 0;
 	sPlayer.iLife = 22;
 	sPlayer.iLifeTotal = 22;
