@@ -1,6 +1,7 @@
 #include "gamescene.h"
 #include "../gameflow.h"
 #include "../manager/guimanager.h"
+#include "../manager/worldmanager.h"
 
 SceneNode *gScene = nullptr;
 PhysicsManager *gPhysics = nullptr;
@@ -197,6 +198,8 @@ bool GameScene::Update(f32 dt)
 		cFlow.OnEvent(&cOnGameOver, this);
 		pFog->SetVisible(false);
 		pGameMap->SetVisible(false);
+
+		clWorldManager.Clear();
 
 		gGameData->sGamePlay.bIsGameOver = false;
 	}
