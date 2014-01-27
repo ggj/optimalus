@@ -30,7 +30,7 @@ class EnemyEntity: public SpriteEntity
 		} sEnemy;
 
 		String GetDisplayName() const;
-		void SetDisplayName(String displayName);
+		void SetDisplayName(const String &displayName);
 
 		u32 GetLevel() const;
 		void SetLevel(u32 level);

@@ -9,6 +9,7 @@ OptimistPlayerEntity::OptimistPlayerEntity()
 {
 	fVelocity = 2.5f;
 
+	sPlayer.iKey = 1;
 	sPlayer.displayName = "Optimist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 80;

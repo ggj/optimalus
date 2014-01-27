@@ -60,6 +60,8 @@ class GameScene : public IEventInputKeyboardListener,
 		void ChangePlayer(const String currentPlayer);
 		void ChangeLevel();
 
+		void UseKey(u32 key);
+
 	private:
 		PlayerEntity	 *pPlayer;
 		PlayerEntity	 *pPlayerRealist;
@@ -79,6 +81,9 @@ class GameScene : public IEventInputKeyboardListener,
 		u32				iTileSize;
 		bool			bPaused;
 		bool			bInitialized;
+		Texture			*pTilesetOptimist;
+		Texture			*pTilesetPessimist;
+		Texture			*pTilesetRealist;
 
 		WorldManager	clWorldManager;
 		PhysicsManager	clPhysicsManager;
@@ -120,6 +125,7 @@ class GameScene : public IEventInputKeyboardListener,
 		Vector3f	vCameraCurrent;
 		Vector3f	vCameraTo;
 		f32			fElapsed;
+		bool		bRequiredKeys[3];
 		bool		bMoveCamera;
 
 };

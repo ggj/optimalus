@@ -54,6 +54,7 @@ Sprite *DeathEntity::GetSprite() const
 
 void DeathEntity::Update(f32 dt)
 {
+	UNUSED(dt);
 	/*
 	if (fSleep > 0)
 	{

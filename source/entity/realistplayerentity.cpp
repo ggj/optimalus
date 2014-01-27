@@ -9,6 +9,7 @@ RealistPlayerEntity::RealistPlayerEntity()
 {
 	fVelocity = 1.5f;
 
+	sPlayer.iKey = 2;
 	sPlayer.displayName = "Realist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 100;

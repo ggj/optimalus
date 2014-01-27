@@ -29,18 +29,25 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, vCameraCurrent(0.0f, 0.0f, 0.0f)
 	, vCameraTo(0.0f, 0.0f, 0.0f)
 	, fElapsed(0.0f)
-	, bMoveCamera(false),
-	  iNextLevelCounter(0)
+	, bMoveCamera(false)
+	, iNextLevelCounter(0)
+	, pTilesetOptimist(nullptr)
+	, pTilesetPessimist(nullptr)
+	, pTilesetRealist(nullptr)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
 	gSoundManager = &clSoundManager;
 	gWorldManager = &clWorldManager;
 	gGameScene = this;
+	memset(&bRequiredKeys, 0x00, sizeof(bRequiredKeys));
 }
 
 GameScene::~GameScene()
 {
+	pTilesetOptimist->Release();
+	pTilesetRealist->Release();
+	pTilesetPessimist->Release();
 	gScene = nullptr;
 }
 
@@ -67,6 +74,10 @@ bool GameScene::Initialize()
 	auto cb = [&](Job *self)
 	{
 		auto job = static_cast<FileLoader *>(self);
+
+		pTilesetOptimist = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
+		pTilesetRealist = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
+		pTilesetPessimist = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 
 		if(job->GetState() == eJobState::Completed)
 		{
@@ -95,6 +106,17 @@ bool GameScene::Initialize()
 	gGui->SetStamina(10, 10);
 
 	return true;
+}
+
+void GameScene::UseKey(u32 key)
+{
+	if (!key)
+		return;
+
+	bRequiredKeys[key - 1] = true;
+
+	if (bRequiredKeys[0] && bRequiredKeys[1] && bRequiredKeys[2])
+		this->ChangeLevel();
 }
 
 void GameScene::FogReveal(const Vector3f &pos, u32 radius)
@@ -151,9 +173,9 @@ bool GameScene::Update(f32 dt)
 		clPhysicsManager.Update(dt);
 		clWorldManager.Update(dt);
 		clCamera.LookAt(pPlayer->GetPosition());
-		this->FogReveal(pPlayerRealist->GetPosition(), 1);
-		this->FogReveal(pPlayerPessimist->GetPosition(), 1);
-		this->FogReveal(pPlayerOptimist->GetPosition(), 1);
+		this->FogReveal(pPlayerRealist->GetPosition(), 2);
+		this->FogReveal(pPlayerPessimist->GetPosition(), 2);
+		this->FogReveal(pPlayerOptimist->GetPosition(), 2);
 	}
 
 	if (bChangeLevel)
@@ -247,6 +269,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 	Log("Scene Name: %s len %d", cScene.sName.c_str(), cScene.Size());
 
 	// Validate the music to play
+/*
 	if (gGameData->IsBgmEnabled() == true)
 	{
 		musThemeOptimist.Load("sounds/optimist_theme.ogg");
@@ -256,7 +279,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 		musThemePessimist.Load("sounds/pessimist_theme.ogg");
 		musThemePessimist.SetVolume(1.0f);
 	}
-
+*/
 	SceneNode *sounds = (SceneNode *)cScene.GetChildByName("Sounds");
 	clSoundManager.Init(*sounds);
 
@@ -342,7 +365,7 @@ void GameScene::OnJobCompleted(FileLoader *job)
 
 void GameScene::ChangePlayer(const String currentPlayer)
 {
-	//pSoundSystem->StopMusic(10.0f);
+	pSoundSystem->StopMusic(10.0f);
 	bMoveCamera = true;
 
 	OptimistPlayerEntity *optimistPlayer = static_cast<OptimistPlayerEntity *>(gWorldManager->FindEntityByClassName("OptimistPlayer"));
@@ -363,10 +386,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		gGui->SelectHero("Realist");
 
 		// Change the terrain tileset
-		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/realist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
-		set->SetTexture(tex);
+		set->SetTexture(pTilesetOptimist);
 
 		//Lerp camera
 		vCameraFrom = optimistPlayer->GetSprite()->GetPosition();
@@ -387,10 +409,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		gGui->SelectHero("Pessimist");
 
 		// Change the terrain tileset
-		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/pessimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
-		set->SetTexture(tex);
+		set->SetTexture(pTilesetRealist);
 
 		//Lerp camera
 		vCameraFrom = realistPlayer->GetSprite()->GetPosition();
@@ -411,10 +432,9 @@ void GameScene::ChangePlayer(const String currentPlayer)
 		gGui->SelectHero("Optimist");
 
 		// Change the terrain tileset
-		auto tex = static_cast<Texture *>(pResourceManager->Get("textures/optimist_ground_tileset.png", ITexture::GetTypeId()));
 		auto tiles = pGameMap->GetLayerByName("Background")->AsTiled();
 		auto set = tiles->GetTileSet();
-		set->SetTexture(tex);
+		set->SetTexture(pTilesetPessimist);
 
 		//Lerp camera
 		vCameraFrom = pessimistPlayer->GetSprite()->GetPosition();
@@ -432,7 +452,7 @@ void GameScene::ChangePlayer(const String currentPlayer)
 	gGui->SetLife(pPlayer->GetLife(), pPlayer->GetLifeTotal());
 	gGui->SetStamina(pPlayer->GetStamina(), pPlayer->GetStaminaTotal());
 
-	//pSoundSystem->PlayMusic(musCur, 10.0f);
+	pSoundSystem->PlayMusic(musCur, 10.0f);
 }
 
 void GameScene::OnJobAborted()
@@ -453,10 +473,7 @@ void GameScene::LoadMapColliders()
 
 void GameScene::ChangeLevel()
 {
-	iNextLevelCounter++;
-
-	if (iNextLevelCounter == 3)
-		bChangeLevel = true;
+	bChangeLevel = true;
 }
 
 void GameScene::RemoveLife()

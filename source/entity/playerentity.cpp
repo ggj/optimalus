@@ -104,6 +104,18 @@ void PlayerEntity::Teleport(const b2Vec2 &position)
 	gSoundManager->Play(SND_TELEPORT);
 }
 
+void PlayerEntity::Talk()
+{
+	if (pText)
+		pText->SetVisible(true);
+}
+
+void PlayerEntity::Mute()
+{
+	if (pText)
+		pText->SetVisible(false);
+}
+
 void PlayerEntity::Update(f32 dt)
 {
 	pText->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
@@ -410,7 +422,7 @@ bool PlayerEntity::OnDamage(const b2Vec2 vec2Push, u32 amount)
 		return false;
 
 	fInvicibleTime = 3;
-	pText->SetVisible(true);
+	//pText->SetVisible(true);
 
 	// Receive the damage
 	u32 life = this->GetLife() - amount;
@@ -440,6 +452,18 @@ void PlayerEntity::OnCollect(ItemTypes::Enum item, u32 amount)
 		this->SetGold(this->GetGold() + amount);
 }
 
+u32 PlayerEntity::GiveKey()
+{
+	auto key = sPlayer.iKey;
+	sPlayer.iKey = 0;
+	return key;
+}
+
+void PlayerEntity::ReceiveKey(u32 key)
+{
+	sPlayer.iKey = key;
+}
+
 void PlayerEntity::OnCollision(const CollisionEvent &event)
 {
 	if (event.GetType() == CollisionEventType::OnEnter)
@@ -447,7 +471,7 @@ void PlayerEntity::OnCollision(const CollisionEvent &event)
 		Entity *other = event.GetOtherEntity();
 		if (other != nullptr && other->GetClassName() == "Trigger")
 		{
-			gGameScene->ChangeLevel();
+			gGameScene->UseKey(this->GiveKey());
 		}
 	}
 }

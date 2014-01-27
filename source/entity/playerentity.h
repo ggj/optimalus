@@ -87,6 +87,11 @@ class PlayerEntity: public SpriteEntity,
 		void SetStaminaTotal(u32);
 		void RemoveStaminaTotal();
 
+		void Talk();
+		void Mute();
+		u32 GiveKey();
+		void ReceiveKey(u32 key);
+
 		u32 GetDefensePower() const;
 		void SetDefensePower(u32 defensePower);
 
@@ -102,6 +107,7 @@ class PlayerEntity: public SpriteEntity,
 			u32 iLifeTotal;
 			u32 iStamina;
 			u32 iStaminaTotal;
+			u32 iKey;
 			bool bGameOver;
 		} sPlayer;
 

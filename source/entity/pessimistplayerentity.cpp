@@ -9,6 +9,7 @@ PessimistPlayerEntity::PessimistPlayerEntity()
 {
 	fVelocity = 0.7f;
 
+	sPlayer.iKey = 3;
 	sPlayer.displayName = "Pessimist";
 	sPlayer.iLevel = 1;
 	sPlayer.iXP = 200;
