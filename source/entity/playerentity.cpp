@@ -79,7 +79,7 @@ void PlayerEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	vPlayerVectorDirection = VECTOR_ZERO;
 }
 
-Vector3f PlayerEntity::GetPosition()
+vec3 PlayerEntity::GetPosition()
 {
 	return pSprite->GetPosition();
 }
@@ -119,7 +119,7 @@ void PlayerEntity::Mute()
 
 void PlayerEntity::Update(f32 dt)
 {
-	pText->SetPosition(pSprite->GetPosition() + Vector3f(0, -40, 0));
+	pText->SetPosition(pSprite->GetPosition() + vec3(0, -40, 0));
 
 	b2Vec2 vel = pBody->GetLinearVelocity();
 
@@ -176,7 +176,7 @@ bool PlayerEntity::OnInputKeyboardPress(const EventInputKeyboard *ev)
 	{
 		Key k = ev->GetKey();
 
-		b2Vec2 vel = pBody->GetLinearVelocity();
+//		b2Vec2 vel = pBody->GetLinearVelocity();
 
 		if ((k == eKey::Up || k == eKey::W) && iCurrentState != Jump)
 		{

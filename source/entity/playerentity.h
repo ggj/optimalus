@@ -37,7 +37,7 @@ class PlayerEntity: public SpriteEntity,
 
 		void OnCollision(const CollisionEvent &event);
 
-		Vector3f GetPosition();
+		vec3 GetPosition();
 		Sprite *GetSprite() const;
 		b2Vec2 GetBodyPosition() const;
 
@@ -114,7 +114,7 @@ class PlayerEntity: public SpriteEntity,
 	protected:
 		b2Body *pBody;
 		Sprite *pText;
-		Vector3f vPlayerVectorDirection;
+		vec3 vPlayerVectorDirection;
 
 		ItemTypes::Enum eItem;
 

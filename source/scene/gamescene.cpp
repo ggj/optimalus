@@ -11,6 +11,9 @@ GameScene *gGameScene = nullptr;
 
 GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneFile)
 	: pPlayer(nullptr)
+	, pPlayerRealist(nullptr)
+	, pPlayerPessimist(nullptr)
+	, pPlayerOptimist(nullptr)
 	, pCamera(mainCamera)
 	, clCamera()
 	, pParentScene(parent)
@@ -20,21 +23,20 @@ GameScene::GameScene(SceneNode *parent, Camera *mainCamera, const String &sceneF
 	, pFogMap(nullptr)
 	, pFog(nullptr)
 	, iTileSize(40) // READ FROM MAP - USED FOR FOG PIXEL TO TILE CONVERSION
-	, bPaused(false)
-	, bInitialized(false)
+	, pTilesetOptimist(nullptr)
+	, pTilesetPessimist(nullptr)
+	, pTilesetRealist(nullptr)
 	, sSceneFile(sceneFile)
 	, fTimeToNextLevel(0.0f)
-	, bChangeLevel(false)
 	, pGameOverImg(nullptr)
 	, vCameraFrom(0.0f, 0.0f, 0.0f)
 	, vCameraCurrent(0.0f, 0.0f, 0.0f)
 	, vCameraTo(0.0f, 0.0f, 0.0f)
 	, fElapsed(0.0f)
+	, bPaused(false)
+	, bInitialized(false)
 	, bMoveCamera(false)
-	, iNextLevelCounter(0)
-	, pTilesetOptimist(nullptr)
-	, pTilesetPessimist(nullptr)
-	, pTilesetRealist(nullptr)
+	, bChangeLevel(false)
 {
 	gScene = &cScene;
 	gPhysics = &clPhysicsManager;
@@ -120,16 +122,16 @@ void GameScene::UseKey(u32 key)
 		this->ChangeLevel();
 }
 
-void GameScene::FogReveal(const Vector3f &pos, u32 radius)
+void GameScene::FogReveal(const vec3 &pos, u32 radius)
 {
 	if (!pFog)
 		return;
 
-	f32 px = pos.getX() - 20;
-	f32 py = pos.getY() - 20;
-	s32 sx = static_cast<s32>((px / iTileSize) + iTileSize / 2) - 4;
-	s32 sy = static_cast<s32>((py / iTileSize) + iTileSize / 2) - 4;
-	s32 r = s32(radius);
+	auto px = pos.x - 20.f;
+	auto py = pos.y - 20.f;
+	auto sx = s32((px / iTileSize) + iTileSize / 2) - 4;
+	auto sy = s32((py / iTileSize) + iTileSize / 2) - 4;
+	auto r = s32(radius);
 	for (auto y = -r; y <= r; y++)
 	{
 		for (auto x = -r; x <= r; x++)
@@ -191,7 +193,7 @@ bool GameScene::Update(f32 dt)
 	if (gGameData->sGamePlay.bIsGameOver == true)
 	{
 		pGameOverImg->SetVisible(true);
-		pGameOverImg->SetPosition(pCamera->GetPosition() - Vector3f(-512.0f, -384.0f, 0.0f));
+		pGameOverImg->SetPosition(pCamera->GetPosition() - vec3(-512.0f, -384.0f, 0.0f));
 
 		pPlayer->Mute();
 		pPlayer->GetSprite()->SetVisible(false);

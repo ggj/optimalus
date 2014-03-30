@@ -10,7 +10,6 @@ ENTITY_CREATOR("Death", DeathEntity)
 
 DeathEntity::DeathEntity()
 	: SpriteEntity("Death", "Death")
-	, pTarget(NULL)
 	, fSleepConfig(SLEEP_TIME)
 	, fSleep(SLEEP_TIME)
 	, fSpeedFactor(1.0f)
@@ -42,7 +41,7 @@ void DeathEntity::Load(MetadataObject &metadata, SceneNode *sprites)
 	}
 }
 
-Vector3f DeathEntity::GetPosition()
+vec3 DeathEntity::GetPosition()
 {
 	return pSprite->GetPosition();
 }

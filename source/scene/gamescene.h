@@ -42,7 +42,7 @@ class GameScene : public IEventInputKeyboardListener,
 		void Pause();
 		void Resume();
 
-		void FogReveal(const Vector3f &pos, u32 radius);
+		void FogReveal(const vec3 &pos, u32 radius);
 
 		void OnJobCompleted(FileLoader *job);
 		void OnJobAborted();
@@ -79,8 +79,6 @@ class GameScene : public IEventInputKeyboardListener,
 		GameMap			*pFogMap;
 		MapLayerTiled	*pFog;
 		u32				iTileSize;
-		bool			bPaused;
-		bool			bInitialized;
 		Texture			*pTilesetOptimist;
 		Texture			*pTilesetPessimist;
 		Texture			*pTilesetRealist;
@@ -115,19 +113,19 @@ class GameScene : public IEventInputKeyboardListener,
 		String strNextLevel;
 
 		f32 fTimeToNextLevel;
-		u32 iNextLevelCounter;
-		bool bChangeLevel;
 
 		Image *pGameOverImg;
 
 		// Lerp camera
-		Vector3f	vCameraFrom;
-		Vector3f	vCameraCurrent;
-		Vector3f	vCameraTo;
-		f32			fElapsed;
-		bool		bRequiredKeys[3];
-		bool		bMoveCamera;
-
+		vec3	vCameraFrom;
+		vec3	vCameraCurrent;
+		vec3	vCameraTo;
+		f32		fElapsed;
+		bool	bRequiredKeys[3];
+		bool	bPaused;
+		bool	bInitialized;
+		bool	bMoveCamera;
+		bool	bChangeLevel;
 };
 
 #endif // _GAMEFLOW_H_
