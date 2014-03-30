@@ -3,10 +3,10 @@ CONFIG += console
 CONFIG -= qt
 CONFIG += sdl2
 
-BASE = ../seed/
+BASE = ../../
 INCLUDEPATH += $${BASE}/include
-include("../seed/compiler.pri")
-include("../seed/platform.pri")
+include($${BASE}/compiler.pri)
+include($${BASE}/platform.pri)
 
 unix:!macx {
 		DEFINES += LINUX PHYSFS_NO_CDROM_SUPPORT
